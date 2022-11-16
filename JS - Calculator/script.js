@@ -26,6 +26,7 @@ function add(value, event) {
       start = false;
     } else return result.innerText += value;
   } else {
+    finished = false;
     return result.innerText = value;
   }
 }
@@ -39,7 +40,6 @@ function calculate() {
   historial.insertAdjacentHTML('beforeend', `<p>${history}</p>`);
   result.innerText = cal;
   finished = true;
-  console.log(history);
 }
 
 const checkbox = document.querySelector('#theme input[type="checkbox"]');
