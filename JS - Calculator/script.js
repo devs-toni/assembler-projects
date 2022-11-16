@@ -51,18 +51,16 @@ function themeSwitch(event) {
   } else {
     document.documentElement.setAttribute('theme', 'light');
   }
-
 }
 
 
 function showHistory() {
+  console.log('HOlaaaaaaaaaaaa');
   let historial = document.getElementById("log");
   if (historial.getAttribute("name") === "show") {
     historial.setAttribute("name", "hide");
   } else {
-    console.log(historial);
     historial.setAttribute("name", "show");
-    // historial.innerText = historial;
   }
   return;
 }

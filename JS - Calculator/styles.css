@@ -147,9 +147,13 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.main .history {
-    background-color: rgb(85, 90, 96);
+.main .history-container {
 }
+
+.main .history-container .history-btn {
+
+}
+
 /* show or hide the history */
 div[name="hide"]{
   display: none;
@@ -158,8 +162,6 @@ div[name="show"]{
   display: flex;
   flex-flow: column;
 }
-
-
 
 /* The switch - the box around the slider */
 .switch {
