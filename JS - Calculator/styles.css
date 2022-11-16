@@ -166,6 +166,12 @@ div[name="hide"]{
 div[name="show"]{
   display: flex;
   flex-flow: column;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 325px;
+  position: absolute;
+  top: 332px;
+  width: 320px;;
 }
 
 /* The switch - the box around the slider */
