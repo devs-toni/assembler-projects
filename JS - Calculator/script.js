@@ -1,13 +1,15 @@
 let result = document.getElementById('result');
 let operacion = document.getElementById('operation');
 let history = '';
+let start = true;
 let finished = false;
 let mode = true;
 
 function clearScreen() {
-  result.innerText = "";
+  result.innerText = "0";
   operacion.innerText = "";
   finished = false;
+  start = true;
 }
 
 function add(value, event) {
@@ -19,7 +21,10 @@ function add(value, event) {
   }
 
   if (!finished) {
-    return result.innerText += value;
+    if (start) {
+      result.innerText = value;
+      start = false;
+    } else return result.innerText += value;
   } else {
     return result.innerText = value;
   }
