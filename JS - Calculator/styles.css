@@ -148,10 +148,15 @@
 }
 
 .main .history-container {
+
 }
 
 .main .history-container .history-btn {
 
+}
+
+.main .history {
+  background-color: #555a60;
 }
 
 /* show or hide the history */
