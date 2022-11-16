@@ -41,62 +41,66 @@
   box-shadow: 0 0 20px -10px;
 }
 
-.main .modeColour .flash-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.main .flash-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .main .modeColour {
-  position: relative;
-  min-height: 200px;
+  min-height: 50px;
   padding: 30px 30px 0 30px;
 }
 
-.main .modeColour .history-btn {
+.main .history-btn {
   cursor: pointer;
   background-color: var(--main-background-color);
   border: none;
   color: var(--color-moon);
 }
 
-.main .modeColour .box-screen {
-  position: absolute;
-  top: 50px;
-  right: -10px;
+.main .box-screen {
   width: 80%;
-  text-align: end;
+  text-align: right;
   padding: 30px 40px 0 40px;
   height: 125px;
 }
 
-.main .modeColour .box-screen .op {
+.main .box-screen .op {
   font-size: 0.8em;
   margin: 10px 0 20px 0;
   color: var(--color-primary);
 }
 
-
-.main .modeColour .box-screen .result {
-  overflow-x: auto;
-  text-align: end;
+.main .box-screen .result {
   font-size: 2.8em;
-  margin: 0;
+  margin: 10px 0 20px 0;
   color: var(--color-primary);
+  overflow-x: auto;
+}
+
+.main .box-screen .result p {
+  width: 100px;
+  text-align: right;
 }
 
 .result::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px;
+  /* width of the entire scrollbar */
 }
 
 .result::-webkit-scrollbar-track {
-  background: #eee;        /* color of the tracking area */
+  background: #eee;
+  /* color of the tracking area */
 }
 
 .result::-webkit-scrollbar-thumb {
-  background-color: #aaa;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid #eee;  /* creates padding around scroll thumb */
+  background-color: #aaa;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #eee;
+  /* creates padding around scroll thumb */
 }
 
 .main .buttons {
@@ -127,19 +131,19 @@
 }
 
 .main .buttons .btn:hover {
-    background-color: var(--main-buttons-btn-hover);
-  }
+  background-color: var(--main-buttons-btn-hover);
+}
 
 .main .buttons .btn.gray {
-    background-color: var(--btn-background-color);
+  background-color: var(--btn-background-color);
 }
 
 .main .buttons .btn.gray:hover {
-    background-color: var(--main-buttons-btn-gray-hover);
+  background-color: var(--main-buttons-btn-gray-hover);
 }
 
 .main .buttons .btn.yellow {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .main .buttons .btn.double {
@@ -147,32 +151,21 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.main .history-container {
-
-}
-
-.main .history-container .history-btn {
-
-}
-
 .main .history {
-  background-color: #555a60;
+  background-color: rgb(85, 90, 96);
 }
 
 /* show or hide the history */
-div[name="hide"]{
+div[name="hide"] {
   display: none;
 }
-div[name="show"]{
+
+div[name="show"] {
   display: flex;
   flex-flow: column;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  height: 325px;
-  position: absolute;
-  top: 332px;
-  width: 320px;
 }
+
+
 
 /* The switch - the box around the slider */
 .switch {
@@ -194,7 +187,7 @@ div[name="show"]{
   position: absolute;
   cursor: pointer;
   top: 0;
-  left:0;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: var(--color-primary);
@@ -217,22 +210,22 @@ div[name="show"]{
 }
 
 .flash {
-    position: relative;
-    z-index: 1;
-    left: 2.5px;
-    top: 30px;
-    bottom: 0;
+  position: relative;
+  z-index: 1;
+  left: 2.5px;
+  top: 30px;
+  bottom: 0;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--input-checked-slider);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px var(--input-checked-slider);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateY(29px);
   -ms-transform: translateY(29px);
   transform: translateY(29px);
@@ -268,7 +261,6 @@ input:checked + .slider:before {
 #history {
   position: absolute;
   width: 75px;
-  left: 5px;
   font-size: 23px;
 }
 
@@ -282,7 +274,5 @@ input:checked + .slider:before {
     width: 90%;
     height: 100%;
   }
-  
+
 }
-
-
