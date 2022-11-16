@@ -55,7 +55,6 @@ function themeSwitch(event) {
 
 
 function showHistory() {
-  console.log('HOlaaaaaaaaaaaa');
   let historial = document.getElementById("log");
   if (historial.getAttribute("name") === "show") {
     historial.setAttribute("name", "hide");
