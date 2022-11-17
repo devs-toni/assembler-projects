@@ -39,29 +39,26 @@ document.body.addEventListener('keydown', function (event) {
       display.deleteAll();
       break;
     case eventKey:
-      if (!isNaN(eventKey)) {
+      if (!isNaN(eventKey) || eventKey === '.' || eventKey === ',') {
         display.addNumber(eventKey);
       } else {
         if (eventKey === 'Enter' || eventKey === '=') {
-          display.chooseOperation('equal')
+          display.chooseOperation('equal');
           return;
         } else if (eventKey === '+') {
-          display.chooseOperation('add')
+          display.chooseOperation('add');
           return;
         } else if (eventKey === '-') {
-          display.chooseOperation('substract')
+          display.chooseOperation('substract');
           return;
         } else if (eventKey === '*') {
-          display.chooseOperation('multiply')
+          display.chooseOperation('multiply');
           return;
         } else if (eventKey === '/') {
-          display.chooseOperation('divide')
+          display.chooseOperation('divide');
           return;
         } else if (eventKey === '%') {
-          display.chooseOperation('percent')
-        } else if (eventKey === '.' || eventKey === ',') {
-          display.addNumber(eventKey);
-          return;
+          display.chooseOperation('percent');
         } else return;
       }
       break;
