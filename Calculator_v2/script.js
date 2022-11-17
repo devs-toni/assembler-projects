@@ -32,6 +32,11 @@ function showHistory() {
 document.body.addEventListener('keydown', function (event) {
 
     switch (event.key) {
+        case '.':
+            btnNumbers.forEach(btn => {
+                if (btn.innerHTML === '.') display.addNumber(btn.innerHTML);
+            });
+            break;
         case '0':
             btnNumbers.forEach(btn => {
                 if (btn.innerHTML === '0') display.addNumber(btn.innerHTML);
