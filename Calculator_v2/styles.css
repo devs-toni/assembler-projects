@@ -152,27 +152,31 @@
 }
 
 .main .history {
-  background-color: --t-background-primary;
+  background-color: var(--t-background-primary);
 }
 
 /* show or hide the history */
 div[name="hide"] {
-  display: none;
+height: 0;
+opacity: 0;
 }
 
 div[name="show"] {
   display: flex;
-  flex-flow: column-reverse;
+  flex-flow: column;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   height: 325px;
   position: absolute;
-  top: 366.3px;
+  bottom: 162.3px;
   width: 320px;
+  opacity: 1;
+  transition: height 2s ease-in-out, opacity 2s;
+  overflow: scroll;
 }
 
 div[name="show"] p {
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 
