@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+:root {
+  --color-primary: #f4ab41;
+  --t-background-primary: #ccc;
+}
+
+:root[theme="light"] {
+  --main-background-color: #fff;
+  --color-btn-numbers: #555a60;
+  --color-btn-numbers-background: #fff;
+  --btn-background-color: #E3E9EC;
+  --main-buttons-btn-hover: #00000018;
+  --main-buttons-btn-gray-hover: #00000018;
+  --input-checked-slider: #f4ab41;
+  --slider-dot: #555a60;
+  --color-moon: #000;
+}
+
+:root[theme="dark"] {
+  --main-background-color: #555a60;
+  --color-btn-numbers: #e3e9ec;
+  --color-btn-numbers-background: #555a60;
+  --btn-background-color: #6d6a65;
+  --main-buttons-btn-hover: #00000018;
+  --main-buttons-btn-gray-hover: #00000018;
+  --input-checked-slider: #000;
+  --slider-dot: #f4ab41;
+  --color-moon: #f4ab41;
+}
+
+.main {
+  width: 320px;
+  height: auto;
+  margin: 100px auto;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-size: 16px;
+  border-radius: 30px;
+  background-color: var(--main-background-color);
+  box-shadow: 0 0 20px -10px;
+}
+
+.main .flash-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main .modeColour {
+  min-height: 50px;
+  padding: 30px 30px 0 30px;
+}
+
+.main .history-btn {
+  cursor: pointer;
+  background-color: var(--main-background-color);
+  border: none;
+  color: var(--color-moon);
+}
+
+.main .box-screen {
+  width: 80%;
+  text-align: right;
+  padding: 30px 40px 0 40px;
+  height: 125px;
+}
+
+.main .box-screen .op {
+  font-size: 1.7em;
+  margin: 10px 0 20px 0;
+  color: var(--color-primary);
+}
+
+.main .box-screen .result {
+  font-size: 2.8em;
+  margin: 10px 0 20px 0;
+  color: var(--color-primary);
+  overflow-x: auto;
+}
+
+.main .box-screen .result p {
+  width: 100px;
+  text-align: right;
+}
+
+.result::-webkit-scrollbar {
+  width: 12px;
+  /* width of the entire scrollbar */
+}
+
+.result::-webkit-scrollbar-track {
+  background: #eee;
+  /* color of the tracking area */
+}
+
+.result::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #eee;
+  /* creates padding around scroll thumb */
+}
+
+.main .buttons {
+  width: 100%;
+}
+
+.main .buttons .box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .buttons .btn {
+  width: 25%;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  min-height: 50px;
+  min-width: 50px;
+  color: var(--color-btn-numbers);
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 40px;
+  background-color: var(--color-btn-numbers-background);
+  margin: 0.1em 0.7em 0.7em 0.7em;
+  cursor: pointer;
+}
+
+.main .buttons .btn:hover {
+  background-color: var(--main-buttons-btn-hover);
+}
+
+.main .buttons .btn.gray {
+  background-color: var(--btn-background-color);
+}
+
+.main .buttons .btn.gray:hover {
+  background-color: var(--main-buttons-btn-gray-hover);
+}
+
+.main .buttons .btn.yellow {
+  color: var(--color-primary);
+}
+
+.main .buttons .btn.double {
+  width: 60%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.main .history {
+  background-color: rgb(85, 90, 96);
+}
+
+/* show or hide the history */
+div[name="hide"] {
+  display: none;
+}
+
+div[name="show"] {
+  display: flex;
+  flex-flow: column;
+}
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 60px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 33px;
+  background-color: var(--slider-dot);
+  border-radius: 30px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.flash {
+  position: relative;
+  z-index: 1;
+  left: 2.5px;
+  top: 30px;
+  bottom: 0;
+}
+
+input:checked+.slider {
+  background-color: var(--input-checked-slider);
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px var(--input-checked-slider);
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateY(29px);
+  -ms-transform: translateY(29px);
+  transform: translateY(29px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#sun {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 6px;
+  bottom: 30px;
+  color: var(--slider-dot);
+}
+
+#moon {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 6px;
+  bottom: 0px;
+  color: var(--color-moon);
+}
+
+#history {
+  position: absolute;
+  width: 75px;
+  font-size: 23px;
+}
+
+/* .darkMode{
+  color: black;
+} */
+
+@media screen and (max-width:600px) {
+  .main {
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+  }
+
+}
