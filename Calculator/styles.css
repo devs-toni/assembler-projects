@@ -9,7 +9,7 @@
   --main-background-color: #fff;
   --color-btn-numbers: #555a60;
   --color-btn-numbers-background: #fff;
-  --btn-background-color: #E3E9EC;
+  --btn-background-color: #e3e9ec;
   --main-buttons-btn-hover: #00000018;
   --main-buttons-btn-gray-hover: #00000018;
   --input-checked-slider: #f4ab41;
@@ -30,7 +30,7 @@
 }
 
 .main {
-  width: 320px;
+/*   width: 320px; */
   height: auto;
   margin: 100px auto;
   font-family: "Montserrat", sans-serif;
@@ -171,8 +171,6 @@ div[name="show"] {
   width: 320px;
 }
 
-
-
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -223,15 +221,15 @@ div[name="show"] {
   bottom: 0;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: var(--input-checked-slider);
 }
 
-input:focus+.slider {
+input:focus + .slider {
   box-shadow: 0 0 1px var(--input-checked-slider);
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateY(29px);
   -ms-transform: translateY(29px);
   transform: translateY(29px);
@@ -274,11 +272,10 @@ input:checked+.slider:before {
   color: black;
 } */
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
   .main {
     margin: 0 auto;
     width: 90%;
     height: 100%;
   }
-
 }
