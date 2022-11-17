@@ -152,7 +152,7 @@
 }
 
 .main .history {
-  background-color: rgb(85, 90, 96);
+  background-color: --t-background-primary;
 }
 
 /* show or hide the history */
@@ -162,9 +162,18 @@ div[name="hide"] {
 
 div[name="show"] {
   display: flex;
-  flex-flow: column;
+  flex-flow: column-reverse;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 325px;
+  position: absolute;
+  top: 366.3px;
+  width: 320px;
 }
 
+div[name="show"] p {
+  margin-left: 5px;
+}
 
 
 /* The switch - the box around the slider */

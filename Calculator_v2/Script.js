@@ -11,6 +11,17 @@ btnOperators.forEach(btn => btn.addEventListener('click', () => display.chooseOp
 btnNumbers.forEach(btn => btn.addEventListener('', () => display.addNumber(btn.innerHTML)));
 btnOperators.forEach(btn => btn.addEventListener('', () => display.chooseOperation(btn.value)));
 
+const checkbox = document.querySelector('#theme input[type="checkbox"]');
+checkbox.addEventListener('change', (event) => themeSwitch(event));
+
+function themeSwitch(event) {
+  if (event.target.checked) {
+    document.documentElement.setAttribute('theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('theme', 'light');
+  }
+}
+
 function showHistory() {
     if (logger.getAttribute("name") === "show") {
         logger.setAttribute("name", "hide");
