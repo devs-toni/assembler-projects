@@ -75,7 +75,9 @@ class Display {
 
     log(text) {
         let logger = document.getElementById("log");
+        let pastResult = document.getElementById("history-result");
         logger.insertAdjacentHTML('beforeend', `<p>${text}</p>`);
+        pastResult.insertAdjacentHTML('beforeend', `<p>${text}</p>`);
     }
 
     delete() {

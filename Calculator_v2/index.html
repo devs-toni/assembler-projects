@@ -15,6 +15,7 @@
 
 <body>
   <div class="main">
+    <div class="full-content">
     <div class="modeColour">
       <!-- Rounded switch -->
       <div class="flash-container">
@@ -30,10 +31,10 @@
     <button class="history-btn" onclick="showHistory()">
       <i class="uil uil-history" id="history"></i>
     </button>
-    <div class="box-screen">
-      <p class="op" id="previous"></p>
+      <p class="past-result" id="history-result"></p>
+      <p class="op" id="previous">0</p>
       <p id="result" class="result">0</p>
-    </div>
+  </div>
     <div class="buttons">
       <div class="box">
         <button id="" class="btn yellow" onclick="display.deleteAll()">C</button>
