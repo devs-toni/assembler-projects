@@ -7,8 +7,6 @@ class Display {
         this.previousValue = '';
         this.actualValue = '';
         this.tempNumberForHistory = '';
-        this.rememberNegativeNumber = '';
-        this.rememberNegative = false;
         this.operators = {
             add: '+',
             substract: '-',
@@ -32,12 +30,13 @@ class Display {
         if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
             if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[previousOperator]} ${this.tempNumberForHistory}% = ${this.actualValue}`);
             else this.log(`${this.previousValue} ${this.operators[previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-            this.rememberNegativeNumber = this.actualValue;
-        }
-        this.previousValue = this.actualValue || this.previousValue;
+/*             else this.log(`${this.previousValue}  (${this.tempNumberForHistory}) = ${this.actualValue}`);
+ */        }
+        if (this.actualValue === 0) {
+            this.previousValue = this.actualValue;
+        } else this.previousValue = this.actualValue || this.previousValue;
         this.actualValue = '';
         this.refreshDisplay();
-
     }
 
     calculate() {
@@ -51,10 +50,7 @@ class Display {
     otherCalc(operation) {
         const { actualVal } = this.conversion();
         if (isNaN(actualVal)) return;
-        if (operation === 'opposite') {
-            this.actualValue = this.calculator[operation](actualVal);
-            this.rememberNegative = true;
-        } else this.actualValue = this.calculator[operation](actualVal);
+        this.actualValue = this.calculator[operation](actualVal);
         this.refreshDisplay();
     }
 
@@ -65,15 +61,15 @@ class Display {
         }
     }
 
+    negate() {
+        this.actualValue = -this.actualValue;
+        this.refreshDisplay();
+    }
+
 
     refreshDisplay() {
         if (this.actualValue % 1 != 0) this.actualValue = parseFloat(this.actualValue).toFixed(3);
         this.actualDisplay.textContent = this.actualValue;
-        if (this.rememberNegative && this.lastCommand === 'equal') {
-            this.previousDisplay.textContent = this.rememberNegativeNumber;
-            this.rememberNegative = false;
-            return;
-        }
         this.previousDisplay.textContent = `${this.previousValue} ${this.operators[this.lastCommand] || ''}`;
     }
 

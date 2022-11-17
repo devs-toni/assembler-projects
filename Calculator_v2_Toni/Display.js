@@ -7,13 +7,8 @@ class Display {
         this.previousValue = '';
         this.actualValue = '';
         this.tempNumberForHistory = '';
-        this.rememberNegativeNumber = '';
-        this.rememberNegative = false;
         this.operators = {
-            add: '+',
             substract: '-',
-            multiply: '*',
-            divide: '/'
         }
     }
 
@@ -24,56 +19,45 @@ class Display {
     }
 
     chooseOperation(operator) {
-        if (this.lastCommand !== 'equal' && this.lastCommand !== 'percent' && this.lastCommand !== 'opposite') this.calculate();
+        console.log(1+ "  " + operator);
+        console.log("INTRODUCIMOS OPERADOR -  " + this.actualValue + " actual ||| " + this.previousValue + "  previo");
+        if (this.lastCommand !== 'equal') this.calculate();
+        console.log(3+ "  " + operator);
         let previousOperator = this.lastCommand;
         this.lastCommand = operator;
-        if (this.lastCommand === 'opposite') this.otherCalc(this.lastCommand);
-        if (this.lastCommand === 'percent') this.otherCalc(this.lastCommand);
-        if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
-            if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[previousOperator]} ${this.tempNumberForHistory}% = ${this.actualValue}`);
-            else this.log(`${this.previousValue} ${this.operators[previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-            this.rememberNegativeNumber = this.actualValue;
+        console.log("IGUALAMOS OPERADOR - " + this.actualValue + " actual ||| " + this.previousValue + "  previo");
+        if (this.lastCommand === 'equal') {
+            this.log(`${this.previousValue} ${this.operators[previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
         }
-        this.previousValue = this.actualValue || this.previousValue;
+
+        if (this.actualValue === 0) {  
+            this.previousValue = this.actualValue;
+        } 
+        else this.previousValue = this.actualValue || this.previousValue;
         this.actualValue = '';
         this.refreshDisplay();
 
     }
 
     calculate() {
-        const { previousVal, actualVal } = this.conversion();
+        console.log(2);
+        const previousVal = parseFloat(this.previousValue);
+        const actualVal = parseFloat(this.actualValue);
         if (isNaN(previousVal) || isNaN(actualVal)) return;
         this.tempNumberForHistory = this.actualValue;
         this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
         this.refreshDisplay();
     }
 
-    otherCalc(operation) {
-        const { actualVal } = this.conversion();
-        if (isNaN(actualVal)) return;
-        if (operation === 'opposite') {
-            this.actualValue = this.calculator[operation](actualVal);
-            this.rememberNegative = true;
-        } else this.actualValue = this.calculator[operation](actualVal);
-        this.refreshDisplay();
-    }
-
-    conversion() {
-        return {
-            previousVal: parseFloat(this.previousValue),
-            actualVal: parseFloat(this.actualValue)
-        }
-    }
-
 
     refreshDisplay() {
-        if (this.actualValue % 1 != 0) this.actualValue = parseFloat(this.actualValue).toFixed(3);
         this.actualDisplay.textContent = this.actualValue;
         if (this.rememberNegative && this.lastCommand === 'equal') {
             this.previousDisplay.textContent = this.rememberNegativeNumber;
             this.rememberNegative = false;
             return;
         }
+
         this.previousDisplay.textContent = `${this.previousValue} ${this.operators[this.lastCommand] || ''}`;
     }
 
