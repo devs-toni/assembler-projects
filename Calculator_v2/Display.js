@@ -2,7 +2,7 @@ class Display {
     constructor(previousDisplay, actualDisplay) {
         this.previousDisplay = previousDisplay;
         this.actualDisplay = actualDisplay;
-        this.calculator = new Calc();
+        this.calculator = new Calculadora();
         this.lastCommand = undefined;
         this.previousValue = '';
         this.actualValue = '';
