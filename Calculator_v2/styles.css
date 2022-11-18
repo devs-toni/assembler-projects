@@ -15,7 +15,7 @@
   --input-checked-slider: #f4ab41;
   --slider-dot: #555a60;
   --color-moon: #000;
-  --full-content-background-color: #cedff468;
+  --full-content-background-color: #ebf2fb;
   --full-content-last-child: #555a60;
   --full-content-last-child-two: #94989e;
   --scrollbar-background: #eee;
@@ -60,7 +60,7 @@
   position: relative;
   height: 250px;
   margin-bottom: 10px;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: var(--full-content-background-color);
 }
 
