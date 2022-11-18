@@ -22,7 +22,6 @@ class Display {
   }
 
   addNumber(number) {
-    console.log(equalIsPushed);
     if (!this.actualValue && number === '.') this.actualValue = '0';
     if (equalIsPushed) this.previousValue = '';
     if (number === '.' && this.actualValue.includes('.')) return;
@@ -136,16 +135,35 @@ class Display {
   }
 
   log(text) {
+
+    //Controlar decimales
     const logText = text.toString().split('.');
     const decimals = logText[logText.length - 1].substring(0, numDecimals);
     let newResult = [];
 
-    console.log("decimals" + decimals);
     for (const i in logText) {
       newResult.push(logText[i])
     }
     (newResult.length > 1) && newResult.pop(newResult.length - 1) && newResult.push(decimals);
     newResult = newResult.toString().replace(/,/g, '.');
+
+    let position;
+    for (const iterator in newResult) {
+      if (newResult[iterator] === '.') {
+        if (!isNaN(newResult[iterator + 1])) {
+          position = iterator;
+        }
+      }
+    }
+
+    //Quitar punto 3.
+    let array = [];
+    for (const i in newResult) {
+      if (newResult[i] === '.' && newResult[(parseInt(i)+parseInt(1))] === ' ');
+      else array.push(newResult[i]);
+    }
+
+    newResult = array.toString().replace(/,/g, '');
     this.operationsDisplay.insertAdjacentHTML('beforeend', `<p>${newResult}</p>`);
     this.logger.insertAdjacentHTML('beforeend', `<p class="select-historial" onclick="display.sendOperationToScreen(event);">${newResult}</p>`);
   }
