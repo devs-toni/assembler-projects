@@ -1,4 +1,5 @@
 const numDecimals = 3;
+let equalIsPushed = false;
 
 class Display {
   constructor(previousDisplay, actualDisplay, operationsDisplay, logger) {
@@ -21,6 +22,9 @@ class Display {
   }
 
   addNumber(number) {
+    console.log(equalIsPushed);
+    if (!this.actualValue && number === '.') this.actualValue = '0';
+    if (equalIsPushed) this.previousValue = '';
     if (number === '.' && this.actualValue.includes('.')) return;
     this.actualValue = this.actualValue.toString() + number.toString();
     this.refreshDisplay();
@@ -28,6 +32,12 @@ class Display {
 
   chooseOperation(operator) {
     //Calc controllers
+
+    if (operator === 'equal' || operator === 'percent') {
+      if (!this.actualValue) return;
+      else if (!this.previousValue) return;
+    }
+
     if (operator === 'percent') {
       this.otherCalc(this.lastCommand);
       this.previousOperator = this.lastCommand;
@@ -42,13 +52,14 @@ class Display {
     //Print controllers
     if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
       if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-      else this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+      else if (this.lastCommand === 'equal') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
     }
     if (this.actualValue === 0) {
       this.previousValue = this.actualValue;
     } else this.previousValue = this.actualValue || this.previousValue;
 
     //General
+    operator === 'equal' ? equalIsPushed = true : equalIsPushed = false;
     this.actualValue = '';
     this.refreshDisplay();
   }
@@ -86,6 +97,7 @@ class Display {
   }
 
   negate() {
+    if (!this.actualValue) return;
     this.actualValue = -this.actualValue;
     this.refreshDisplay();
   }
@@ -128,11 +140,12 @@ class Display {
     const decimals = logText[logText.length - 1].substring(0, numDecimals);
     let newResult = [];
 
+    console.log("decimals" + decimals);
     for (const i in logText) {
       newResult.push(logText[i])
     }
     (newResult.length > 1) && newResult.pop(newResult.length - 1) && newResult.push(decimals);
-
+    newResult = newResult.toString().replace(/,/g, '.');
     this.operationsDisplay.insertAdjacentHTML('beforeend', `<p>${newResult}</p>`);
     this.logger.insertAdjacentHTML('beforeend', `<p class="select-historial" onclick="display.sendOperationToScreen(event);">${newResult}</p>`);
   }

@@ -26,6 +26,7 @@ class Display {
 
     chooseOperation(operator) {
         //Calc controllers
+        if (operator === 'percent' && !this.previousValue) return;
         if (operator === 'percent') {
             this.otherCalc(this.lastCommand);
             this.previousOperator = this.lastCommand;
