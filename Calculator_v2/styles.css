@@ -347,16 +347,3 @@ input:checked+.slider:before {
   width: 75px;
   font-size: 23px;
 }
-
-/* .darkMode{
-  color: black;
-} */
-
-@media screen and (max-width:600px) {
-  .main {
-    margin: 0 auto;
-    width: 90%;
-    height: 100%;
-  }
-
-}
