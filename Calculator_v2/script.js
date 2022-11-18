@@ -26,6 +26,7 @@ const evalMode = document.querySelector('#evalMode');
 evalMode.addEventListener('click', (event) => evalSwitch(event));
 
 function evalSwitch(event) {
+  changeColor(event);
   withEval = !withEval;
   console.log(withEval);
   displayPreviousValue.innerText = ''
@@ -39,8 +40,17 @@ function evalSwitch(event) {
   display.tempNumberForHistory = '';
   display.previousOperator = '';
   display.refreshDisplay();
-  if (!withEval) event.target.style.color = 'red';
-  else event.target.style.color = 'var(--color-moon)';
+}
+
+async function changeColor(event) {
+  if (withEval) {
+    document.querySelector('.heart').style.color = 'red';
+/*     event.target.style.color = 'red';
+ */  }
+  else {
+    document.querySelector('.heart').style.color = 'var(--color-moon)';
+/*     event.target.style.color = 'var(--color-moon)';
+ */  }
 }
 
 function showHistory() {
