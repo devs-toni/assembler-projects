@@ -32,7 +32,7 @@ function showHistory() {
 }
 
 document.body.addEventListener('keydown', function (event) {
-  const eventKey = event.key;
+  let eventKey = event.key;
   switch (eventKey) {
     case 'Backspace':
       display.delete();
