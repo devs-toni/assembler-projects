@@ -107,7 +107,7 @@
   overflow-x: auto;
 }
 
-.main .past-result p{
+.main .past-result p {
   position: absolute;
   bottom: 120px;
   right: 20px;
@@ -123,30 +123,39 @@
   color: #7f868fbd;
 }
 
-.main .past-result p:last-child{
+.main .past-result p:last-child {
   color: var(--full-content-last-child);
   overflow-x: auto;
   margin-bottom: 10px;
 }
 
-.main .past-result p:nth-last-child(2){
+.main .past-result p:nth-last-child(2) {
   color: var(--full-content-last-child-two);
   overflow-x: auto;
   margin-bottom: 60px;
 }
 
-.result::-webkit-scrollbar, .op::-webkit-scrollbar, .past-result p::-webkit-scrollbar{
+.result::-webkit-scrollbar,
+.op::-webkit-scrollbar,
+.past-result p::-webkit-scrollbar,
+.history::-webkit-scrollbar {
   width: 12px;
   /* width of the entire scrollbar */
 }
 
-.result::-webkit-scrollbar-track, .op::-webkit-scrollbar-track, .past-result p::-webkit-scrollbar-track{
+.result::-webkit-scrollbar-track,
+.op::-webkit-scrollbar-track,
+.past-result p::-webkit-scrollbar-track,
+.history::-webkit-scrollbar-track {
   background: var(--scrollbar-background);
   border-radius: 20px;
   /* color of the tracking area */
 }
 
-.result::-webkit-scrollbar-thumb, .op::-webkit-scrollbar-thumb, .past-result p::-webkit-scrollbar-thumb {
+.result::-webkit-scrollbar-thumb,
+.op::-webkit-scrollbar-thumb,
+.past-result p::-webkit-scrollbar-thumb,
+.history::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-background-color);
   /* color of the scroll thumb */
   border-radius: 20px;
