@@ -1,5 +1,6 @@
 const numDecimals = 3;
 let equalIsPushed = false;
+let withEval = true;
 
 class Display {
   constructor(previousDisplay, actualDisplay, operationsDisplay, logger) {
@@ -13,6 +14,7 @@ class Display {
     this.actualValue = '';
     this.tempNumberForHistory = '';
     this.previousOperator = '';
+    this.operator = '';
     this.operators = {
       add: '+',
       substract: '-',
@@ -22,52 +24,82 @@ class Display {
   }
 
   addNumber(number) {
-    if (!this.actualValue && number === '.') this.actualValue = '0';
-    if (equalIsPushed) this.previousValue = '';
-    if (number === '.' && this.actualValue.includes('.')) return;
-    this.actualValue = this.actualValue.toString() + number.toString();
+    if (!withEval) {
+      if (!this.actualValue && number === '.') this.actualValue = '0';
+      if (equalIsPushed) this.previousValue = '';
+      if (number === '.' && this.actualValue.includes('.')) return;
+      this.actualValue = this.actualValue.toString() + number.toString();
+    } else {
+      if (number === '.' && this.actualValue.includes('.')) return;
+      this.actualValue = this.actualValue.toString() + number.toString();
+    }
     this.refreshDisplay();
   }
 
   chooseOperation(operator) {
-    //Calc controllers
+    if (!withEval) {
+      if (operator !== '=') this.operator = operator;
+      //Calc controllers
+      if (operator === 'equal' || operator === 'percent') {
+        if (!this.actualValue) return;
+        else if (!this.previousValue) return;
+      }
+      if (operator === 'percent') {
+        this.otherCalc(this.lastCommand);
+        this.previousOperator = this.lastCommand;
+        this.lastCommand = operator;
+      } else {
+        if (this.lastCommand !== 'equal' && this.lastCommand !== 'percent' && this.lastCommand !== 'opposite') this.calculate();
+        if (this.lastCommand === 'opposite') this.otherCalc(this.lastCommand);
+        this.previousOperator = this.lastCommand;
+        this.lastCommand = operator;
+      }
+      //Print controllers
+      if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
+        if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+        else if (this.lastCommand === 'equal') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+      }
+      if (this.actualValue === 0) {
+        this.previousValue = this.actualValue;
+      } else this.previousValue = this.actualValue || this.previousValue;
 
-    if (operator === 'equal' || operator === 'percent') {
-      if (!this.actualValue) return;
-      else if (!this.previousValue) return;
-    }
-
-    if (operator === 'percent') {
-      this.otherCalc(this.lastCommand);
-      this.previousOperator = this.lastCommand;
-      this.lastCommand = operator;
+      //General
+      operator === 'equal' ? equalIsPushed = true : equalIsPushed = false;
+      this.actualValue = '';
     } else {
-      if (this.lastCommand !== 'equal' && this.lastCommand !== 'percent' && this.lastCommand !== 'opposite') this.calculate();
-      if (this.lastCommand === 'opposite') this.otherCalc(this.lastCommand);
-      this.previousOperator = this.lastCommand;
-      this.lastCommand = operator;
+      let operation;
+      if (operator !== 'equal') {
+        switch (operator) {
+          case 'add':
+            operation = '+';
+            break;
+          case 'substract':
+            operation = '-';
+            break;
+          case 'divide':
+            operation = '/';
+            break;
+          case 'multiply':
+            operation = '*';
+            break;
+        }
+        this.actualValue += operation;
+      } else {
+        this.calculate(operation);
+      }
     }
-
-    //Print controllers
-    if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
-      if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-      else if (this.lastCommand === 'equal') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-    }
-    if (this.actualValue === 0) {
-      this.previousValue = this.actualValue;
-    } else this.previousValue = this.actualValue || this.previousValue;
-
-    //General
-    operator === 'equal' ? equalIsPushed = true : equalIsPushed = false;
-    this.actualValue = '';
     this.refreshDisplay();
   }
 
   calculate() {
-    const { previousVal, actualVal } = this.conversion();
-    if (isNaN(previousVal) || isNaN(actualVal)) return;
-    this.tempNumberForHistory = this.actualValue;
-    this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
+    if (!withEval) {
+      const { previousVal, actualVal } = this.conversion();
+      if (isNaN(previousVal) || isNaN(actualVal)) return;
+      this.tempNumberForHistory = this.actualValue;
+      this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
+    } else if (withEval) {
+      this.actualValue = eval(`${this.actualValue} ${this.operator} ${this.previousValue}`);
+    }
     this.refreshDisplay();
   }
 
@@ -159,7 +191,7 @@ class Display {
     //Quitar punto 3.
     let array = [];
     for (const i in newResult) {
-      if (newResult[i] === '.' && newResult[(parseInt(i)+parseInt(1))] === ' ');
+      if (newResult[i] === '.' && newResult[(parseInt(i) + parseInt(1))] === ' ');
       else array.push(newResult[i]);
     }
 

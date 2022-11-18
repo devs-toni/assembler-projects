@@ -6,7 +6,7 @@ const logger = document.getElementById("log");
 const btnNumbers = document.querySelectorAll("[data-btn='number']");
 const btnOperators = document.querySelectorAll("[data-btn='operator']");
 
-const display = new Display(displayPreviousValue, displayActualValue, displayOperationsValue, logger);
+let display = new Display(displayPreviousValue, displayActualValue, displayOperationsValue, logger);
 
 btnNumbers.forEach(btn => btn.addEventListener('click', () => display.addNumber(btn.innerHTML)));
 btnOperators.forEach(btn => btn.addEventListener('click', () => display.chooseOperation(btn.value)));
@@ -20,6 +20,27 @@ function themeSwitch(event) {
   } else {
     document.documentElement.setAttribute('theme', 'light');
   }
+}
+
+const evalMode = document.querySelector('#evalMode');
+evalMode.addEventListener('click', (event) => evalSwitch(event));
+
+function evalSwitch(event) {
+  withEval = !withEval;
+  console.log(withEval);
+  displayPreviousValue.innerText = ''
+  displayActualValue.innerText = ''
+  displayOperationsValue.innerText = ''
+  display.actualValue = '';
+  display.operator = '';
+  display.previousValue = '';
+  display.logger.innerText = '';
+  display.lastCommand = undefined;
+  display.tempNumberForHistory = '';
+  display.previousOperator = '';
+  display.refreshDisplay();
+  if (!withEval) event.target.style.color = 'red';
+  else event.target.style.color = 'var(--color-moon)';
 }
 
 function showHistory() {

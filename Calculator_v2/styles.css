@@ -9,7 +9,7 @@
   --main-background-color: #fff;
   --color-btn-numbers: #555a60;
   --color-btn-numbers-background: #fff;
-  --btn-background-color: #E3E9EC;
+  --btn-background-color: #e3e9ec;
   --main-buttons-btn-hover: #00000018;
   --main-buttons-btn-gray-hover: #00000018;
   --input-checked-slider: #f4ab41;
@@ -39,6 +39,7 @@
   --scrollbar-background-color: #ae792b;
 }
 
+/***************************************************** PRINCIPAL STYLES */
 .main {
   width: 320px;
   margin: 20px auto;
@@ -69,10 +70,34 @@
   padding: 30px 30px 0 30px;
 }
 
-.main .history-btn {
+.main .links {
+  margin-top: 10px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+}
+
+.main .links .history-btn {
   cursor: pointer;
   background-color: var(--full-content-background-color);
   border: none;
+  color: var(--color-moon);
+}
+
+.main .links .mode-btn {
+  cursor: pointer;
+  background-color: var(--full-content-background-color);
+  border: none;
+  color: var(--color-moon);
+}
+
+.icon {
+  font-size: 1.8em;
+}
+.icon2 {
+  font-size: 0.8em;
   color: var(--color-moon);
 }
 
@@ -251,6 +276,8 @@ div[name="show"] p {
   background-color: #555a6031;
 }
 
+/***************************************************** STYLES SLIDER THEME */
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -301,15 +328,15 @@ div[name="show"] p {
   bottom: 0;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: var(--input-checked-slider);
 }
 
-input:focus+.slider {
+input:focus + .slider {
   box-shadow: 0 0 1px var(--input-checked-slider);
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateY(29px);
   -ms-transform: translateY(29px);
   transform: translateY(29px);
@@ -340,10 +367,4 @@ input:checked+.slider:before {
   left: 6px;
   bottom: 0px;
   color: var(--color-moon);
-}
-
-#history {
-  position: absolute;
-  width: 75px;
-  font-size: 23px;
 }
