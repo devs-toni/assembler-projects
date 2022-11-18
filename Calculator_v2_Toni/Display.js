@@ -1,14 +1,20 @@
 class Display {
-    constructor(previousDisplay, actualDisplay) {
+    constructor(previousDisplay, actualDisplay, operationsDisplay, logger) {
         this.previousDisplay = previousDisplay;
         this.actualDisplay = actualDisplay;
-        this.calculator = new Calc();
+        this.operationsDisplay = operationsDisplay;
+        this.logger = logger;
+        this.calculator = new Calculadora();
         this.lastCommand = undefined;
         this.previousValue = '';
         this.actualValue = '';
         this.tempNumberForHistory = '';
+        this.previousOperator = '';
         this.operators = {
+            add: '+',
             substract: '-',
+            multiply: '*',
+            divide: '/'
         }
     }
 
@@ -19,51 +25,87 @@ class Display {
     }
 
     chooseOperation(operator) {
-        console.log(1+ "  " + operator);
-        console.log("INTRODUCIMOS OPERADOR -  " + this.actualValue + " actual ||| " + this.previousValue + "  previo");
-        if (this.lastCommand !== 'equal') this.calculate();
-        console.log(3+ "  " + operator);
-        let previousOperator = this.lastCommand;
-        this.lastCommand = operator;
-        console.log("IGUALAMOS OPERADOR - " + this.actualValue + " actual ||| " + this.previousValue + "  previo");
-        if (this.lastCommand === 'equal') {
-            this.log(`${this.previousValue} ${this.operators[previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+        //Calc controllers
+        if (operator === 'percent') {
+            this.otherCalc(this.lastCommand);
+            this.previousOperator = this.lastCommand;
+            this.lastCommand = operator;
+        } else {
+            if (this.lastCommand !== 'equal' && this.lastCommand !== 'percent' && this.lastCommand !== 'opposite') this.calculate();
+            if (this.lastCommand === 'opposite') this.otherCalc(this.lastCommand);
+            this.previousOperator = this.lastCommand;
+            this.lastCommand = operator;
         }
 
-        if (this.actualValue === 0) {  
+        //Print controllers
+        if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
+            if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+            else this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+        }
+        if (this.actualValue === 0) {
             this.previousValue = this.actualValue;
-        } 
-        else this.previousValue = this.actualValue || this.previousValue;
+        } else this.previousValue = this.actualValue || this.previousValue;
+
+        //General
         this.actualValue = '';
         this.refreshDisplay();
-
     }
 
     calculate() {
-        console.log(2);
-        const previousVal = parseFloat(this.previousValue);
-        const actualVal = parseFloat(this.actualValue);
+        const { previousVal, actualVal } = this.conversion();
         if (isNaN(previousVal) || isNaN(actualVal)) return;
         this.tempNumberForHistory = this.actualValue;
         this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
         this.refreshDisplay();
     }
 
+    otherCalc(operation) {
+        const { actualVal, previousVal } = this.conversion();
+        if (isNaN(actualVal)) return;
+        const { result, totalPercent, onlyPercent } = this.calculator['percent'](previousVal, actualVal, operation);
+        console.log(result);
+        this.actualValue = result;
+        switch (operation) {
+            case "add": case "substract":
+                this.tempNumberForHistory = totalPercent;
+                break;
+            case "multiply": case "divide":
+                this.tempNumberForHistory = onlyPercent;
+                break;
+        }
+        this.refreshDisplay();
+    }
+
+    conversion() {
+        return {
+            previousVal: parseFloat(this.previousValue),
+            actualVal: parseFloat(this.actualValue)
+        }
+    }
+
+    negate() {
+        this.actualValue = -this.actualValue;
+        this.refreshDisplay();
+    }
+
+    sendOperationToScreen(event) {
+        this.operationsDisplay.innerHTML = '';
+        let history = event.target.innerHTML;
+        const array = history.split('=');
+        this.actualValue = array[1];
+        this.previousValue = '';
+        this.refreshDisplay();
+    }
+
 
     refreshDisplay() {
         this.actualDisplay.textContent = this.actualValue;
-        if (this.rememberNegative && this.lastCommand === 'equal') {
-            this.previousDisplay.textContent = this.rememberNegativeNumber;
-            this.rememberNegative = false;
-            return;
-        }
-
         this.previousDisplay.textContent = `${this.previousValue} ${this.operators[this.lastCommand] || ''}`;
     }
 
     log(text) {
-        let logger = document.getElementById("log");
-        logger.insertAdjacentHTML('beforeend', `<p>${text}</p>`);
+        this.operationsDisplay.insertAdjacentHTML('beforeend', `<p>${text}</p>`);
+        this.logger.insertAdjacentHTML('beforeend', `<p class="select-historial" onclick="display.sendOperationToScreen(event);">${text}</p>`);
     }
 
     delete() {
@@ -72,6 +114,7 @@ class Display {
     }
 
     deleteAll() {
+        this.operationsDisplay.innerHTML = '';
         this.previousValue = '';
         this.actualValue = '';
         this.lastCommand = undefined;

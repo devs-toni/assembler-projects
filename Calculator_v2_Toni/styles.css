@@ -15,6 +15,11 @@
   --input-checked-slider: #f4ab41;
   --slider-dot: #555a60;
   --color-moon: #000;
+  --full-content-background-color: #cedff4;
+  --full-content-last-child: #555a60;
+  --full-content-last-child-two: #94989e;
+  --scrollbar-background: #eee;
+  --scrollbar-background-color: #aaa;
 }
 
 :root[theme="dark"] {
@@ -27,12 +32,16 @@
   --input-checked-slider: #000;
   --slider-dot: #f4ab41;
   --color-moon: #f4ab41;
+  --full-content-background-color: #65696d;
+  --full-content-last-child: #cbbba3;
+  --full-content-last-child-two: #b39a75;
+  --scrollbar-background: #aaa;
+  --scrollbar-background-color: #ae792b;
 }
 
 .main {
   width: 320px;
-  height: auto;
-  margin: 100px auto;
+  margin: 20px auto;
   font-family: "Montserrat", sans-serif;
   color: black;
   font-size: 16px;
@@ -47,6 +56,14 @@
   justify-content: space-between;
 }
 
+.main .full-content {
+  position: relative;
+  height: 250px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: var(--full-content-background-color);
+}
+
 .main .modeColour {
   min-height: 50px;
   padding: 30px 30px 0 30px;
@@ -54,52 +71,96 @@
 
 .main .history-btn {
   cursor: pointer;
-  background-color: var(--main-background-color);
+  background-color: var(--full-content-background-color);
   border: none;
   color: var(--color-moon);
 }
 
-.main .box-screen {
-  width: 80%;
+.main .op {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  margin: 0px;
+  vertical-align: baseline;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 280px;
   text-align: right;
-  padding: 30px 40px 0 40px;
-  height: 125px;
-}
-
-.main .box-screen .op {
   font-size: 1.7em;
-  margin: 10px 0 20px 0;
-  color: var(--color-primary);
-}
-
-.main .box-screen .result {
-  font-size: 2.8em;
-  margin: 10px 0 20px 0;
   color: var(--color-primary);
   overflow-x: auto;
 }
 
-.main .box-screen .result p {
-  width: 100px;
+.main .result {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  margin: 0px;
+  vertical-align: baseline;
+  padding-bottom: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 280px;
   text-align: right;
+  font-size: 2.8em;
+  color: var(--color-primary);
+  overflow-x: auto;
 }
 
-.result::-webkit-scrollbar {
+.main .past-result p {
+  position: absolute;
+  bottom: 120px;
+  right: 20px;
+  margin: 0px;
+  margin-bottom: 200px;
+  vertical-align: baseline;
+  padding-bottom: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 220px;
+  text-align: right;
+  font-size: 1.2em;
+  color: #7f868fbd;
+}
+
+.main .past-result p:last-child {
+  color: var(--full-content-last-child);
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
+
+.main .past-result p:nth-last-child(2) {
+  color: var(--full-content-last-child-two);
+  overflow-x: auto;
+  margin-bottom: 60px;
+}
+
+.result::-webkit-scrollbar,
+.op::-webkit-scrollbar,
+.past-result p::-webkit-scrollbar,
+.history::-webkit-scrollbar {
   width: 12px;
   /* width of the entire scrollbar */
 }
 
-.result::-webkit-scrollbar-track {
-  background: #eee;
+.result::-webkit-scrollbar-track,
+.op::-webkit-scrollbar-track,
+.past-result p::-webkit-scrollbar-track,
+.history::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+  border-radius: 20px;
   /* color of the tracking area */
 }
 
-.result::-webkit-scrollbar-thumb {
-  background-color: #aaa;
+.result::-webkit-scrollbar-thumb,
+.op::-webkit-scrollbar-thumb,
+.past-result p::-webkit-scrollbar-thumb,
+.history::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-background-color);
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */
-  border: 3px solid #eee;
+  border: 3px solid var(--scrollbar-background);
   /* creates padding around scroll thumb */
 }
 
@@ -152,20 +213,43 @@
 }
 
 .main .history {
-  background-color: rgb(85, 90, 96);
+  background-color: var(--t-background-primary);
 }
 
 /* show or hide the history */
 div[name="hide"] {
-  display: none;
+  height: 0;
+  opacity: 0;
 }
 
 div[name="show"] {
   display: flex;
   flex-flow: column;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 340px;
+  position: absolute;
+  top: 270px;
+  width: 320px;
+  opacity: 1;
+  transition: height 2s ease-in-out, opacity 2s;
+  overflow-y: auto;
 }
 
+div[name="show"] p {
+  margin-left: 10px;
+}
 
+.select-historial {
+  cursor: pointer;
+  margin: 0 !important;
+  margin-left: 0;
+  padding: 20px;
+}
+
+.select-historial:hover {
+  background-color: #555a6031;
+}
 
 /* The switch - the box around the slider */
 .switch {

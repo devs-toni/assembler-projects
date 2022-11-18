@@ -1,10 +1,12 @@
 const displayPreviousValue = document.getElementById('previous');
 const displayActualValue = document.getElementById('result');
+const displayOperationsValue = document.getElementById('history-result');
+const logger = document.getElementById("log");
+
 const btnNumbers = document.querySelectorAll("[data-btn='number']");
 const btnOperators = document.querySelectorAll("[data-btn='operator']");
-let logger = document.getElementById("log");
 
-const display = new Display(displayPreviousValue, displayActualValue);
+const display = new Display(displayPreviousValue, displayActualValue, displayOperationsValue, logger);
 
 btnNumbers.forEach(btn => btn.addEventListener('click', () => display.addNumber(btn.innerHTML)));
 btnOperators.forEach(btn => btn.addEventListener('click', () => display.chooseOperation(btn.value)));

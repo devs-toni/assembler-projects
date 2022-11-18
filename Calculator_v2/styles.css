@@ -240,6 +240,16 @@ div[name="show"] p {
   margin-left: 10px;
 }
 
+.select-historial {
+  cursor: pointer;
+  margin: 0 !important;
+  margin-left: 0;
+  padding: 20px;
+}
+
+.select-historial:hover {
+  background-color: #555a6031;
+}
 
 /* The switch - the box around the slider */
 .switch {
