@@ -1,123 +1,158 @@
+const numDecimals = 3;
+
 class Display {
-    constructor(previousDisplay, actualDisplay, operationsDisplay, logger) {
-        this.previousDisplay = previousDisplay;
-        this.actualDisplay = actualDisplay;
-        this.operationsDisplay = operationsDisplay;
-        this.logger = logger;
-        this.calculator = new Calculadora();
-        this.lastCommand = undefined;
-        this.previousValue = '';
-        this.actualValue = '';
-        this.tempNumberForHistory = '';
-        this.previousOperator = '';
-        this.operators = {
-            add: '+',
-            substract: '-',
-            multiply: '*',
-            divide: '/'
-        }
+  constructor(previousDisplay, actualDisplay, operationsDisplay, logger) {
+    this.previousDisplay = previousDisplay;
+    this.actualDisplay = actualDisplay;
+    this.operationsDisplay = operationsDisplay;
+    this.logger = logger;
+    this.calculator = new Calculadora();
+    this.lastCommand = undefined;
+    this.previousValue = '';
+    this.actualValue = '';
+    this.tempNumberForHistory = '';
+    this.previousOperator = '';
+    this.operators = {
+      add: '+',
+      substract: '-',
+      multiply: '*',
+      divide: '/'
+    }
+  }
+
+  addNumber(number) {
+    if (number === '.' && this.actualValue.includes('.')) return;
+    this.actualValue = this.actualValue.toString() + number.toString();
+    this.refreshDisplay();
+  }
+
+  chooseOperation(operator) {
+    //Calc controllers
+    if (operator === 'percent') {
+      this.otherCalc(this.lastCommand);
+      this.previousOperator = this.lastCommand;
+      this.lastCommand = operator;
+    } else {
+      if (this.lastCommand !== 'equal' && this.lastCommand !== 'percent' && this.lastCommand !== 'opposite') this.calculate();
+      if (this.lastCommand === 'opposite') this.otherCalc(this.lastCommand);
+      this.previousOperator = this.lastCommand;
+      this.lastCommand = operator;
     }
 
-    addNumber(number) {
-        if (number === '.' && this.actualValue.includes('.')) return;
-        this.actualValue = this.actualValue.toString() + number.toString();
-        this.refreshDisplay();
+    //Print controllers
+    if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
+      if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
+      else this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
     }
+    if (this.actualValue === 0) {
+      this.previousValue = this.actualValue;
+    } else this.previousValue = this.actualValue || this.previousValue;
 
-    chooseOperation(operator) {
-        //Calc controllers
-        if (operator === 'percent') {
-            this.otherCalc(this.lastCommand);
-            this.previousOperator = this.lastCommand;
-            this.lastCommand = operator;
-        } else {
-            if (this.lastCommand !== 'equal' && this.lastCommand !== 'percent' && this.lastCommand !== 'opposite') this.calculate();
-            if (this.lastCommand === 'opposite') this.otherCalc(this.lastCommand);
-            this.previousOperator = this.lastCommand;
-            this.lastCommand = operator;
-        }
+    //General
+    this.actualValue = '';
+    this.refreshDisplay();
+  }
 
-        //Print controllers
-        if (this.lastCommand === 'equal' || this.lastCommand === 'percent') {
-            if (this.lastCommand === 'percent') this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-            else this.log(`${this.previousValue} ${this.operators[this.previousOperator]} ${this.tempNumberForHistory} = ${this.actualValue}`);
-        }
-        if (this.actualValue === 0) {
-            this.previousValue = this.actualValue;
-        } else this.previousValue = this.actualValue || this.previousValue;
+  calculate() {
+    const { previousVal, actualVal } = this.conversion();
+    if (isNaN(previousVal) || isNaN(actualVal)) return;
+    this.tempNumberForHistory = this.actualValue;
+    this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
+    this.refreshDisplay();
+  }
 
-        //General
-        this.actualValue = '';
-        this.refreshDisplay();
+  otherCalc(operation) {
+    const { actualVal, previousVal } = this.conversion();
+    if (isNaN(actualVal)) return;
+    const { result, totalPercent, onlyPercent } = this.calculator['percent'](previousVal, actualVal, operation);
+    console.log(result);
+    this.actualValue = result;
+    switch (operation) {
+      case "add": case "substract":
+        this.tempNumberForHistory = totalPercent;
+        break;
+      case "multiply": case "divide":
+        this.tempNumberForHistory = onlyPercent;
+        break;
     }
+    this.refreshDisplay();
+  }
 
-    calculate() {
-        const { previousVal, actualVal } = this.conversion();
-        if (isNaN(previousVal) || isNaN(actualVal)) return;
-        this.tempNumberForHistory = this.actualValue;
-        this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
-        this.refreshDisplay();
+  conversion() {
+    return {
+      previousVal: parseFloat(this.previousValue),
+      actualVal: parseFloat(this.actualValue)
     }
+  }
 
-    otherCalc(operation) {
-        const { actualVal, previousVal } = this.conversion();
-        if (isNaN(actualVal)) return;
-        const { result, totalPercent, onlyPercent } = this.calculator['percent'](previousVal, actualVal, operation);
-        console.log(result);
-        this.actualValue = result;
-        switch (operation) {
-            case "add": case "substract":
-                this.tempNumberForHistory = totalPercent;
-                break;
-            case "multiply": case "divide":
-                this.tempNumberForHistory = onlyPercent;
-                break;
-        }
-        this.refreshDisplay();
+  negate() {
+    this.actualValue = -this.actualValue;
+    this.refreshDisplay();
+  }
+
+  sendOperationToScreen(event) {
+    this.operationsDisplay.innerHTML = '';
+    let history = event.target.innerHTML;
+    const array = history.split('=');
+    this.actualValue = array[1];
+    this.previousValue = '';
+    this.refreshDisplay();
+  }
+
+  sendOperationToScreen(event) {
+    this.operationsDisplay.innerHTML = '';
+    let history = event.target.innerHTML;
+    const array = history.split('=');
+    this.actualValue = array[1];
+    this.previousValue = '';
+    this.refreshDisplay();
+  }
+
+
+  refreshDisplay() {
+    let prevValue = this.previousValue && this.previousValue.toString().split('.');
+    let prevValueDecimals = () => {
+      if (prevValue[1]) {
+        return prevValue[0] + '.' + prevValue[1].substring(0, numDecimals);
+      } else {
+        return this.previousValue;
+      }
     }
+    this.previousValue = prevValueDecimals();
+    this.actualDisplay.textContent = this.actualValue;
+    this.previousDisplay.textContent = `${prevValueDecimals()} ${this.operators[this.lastCommand] || ''}`;
+  }
 
-    conversion() {
-        return {
-            previousVal: parseFloat(this.previousValue),
-            actualVal: parseFloat(this.actualValue)
-        }
+  log(text) {
+    const logText = text.toString().split('.');
+    const decimals = logText[logText.length - 1].substring(0, numDecimals);
+    let newResult = [];
+
+    for (const i in logText) {
+      newResult.push(logText[i])
     }
+    (newResult.length > 1) && newResult.pop(newResult.length - 1) && newResult.push(decimals);
 
-    negate() {
-        this.actualValue = -this.actualValue;
-        this.refreshDisplay();
-    }
+    this.operationsDisplay.insertAdjacentHTML('beforeend', `<p>${newResult}</p>`);
+    this.logger.insertAdjacentHTML('beforeend', `<p class="select-historial" onclick="display.sendOperationToScreen(event);">${newResult}</p>`);
+  }
 
-    sendOperationToScreen(event) {
-        this.operationsDisplay.innerHTML = '';
-        let history = event.target.innerHTML;
-        const array = history.split('=');
-        this.actualValue = array[1];
-        this.previousValue = '';
-        this.refreshDisplay();
-    }
+  delete() {
+    this.actualValue = this.actualValue.toString().slice(0, -1);
+    this.refreshDisplay();
+  }
 
-
-    refreshDisplay() {
-        this.actualDisplay.textContent = this.actualValue;
-        this.previousDisplay.textContent = `${this.previousValue} ${this.operators[this.lastCommand] || ''}`;
-    }
-
-    log(text) {
-        this.operationsDisplay.insertAdjacentHTML('beforeend', `<p>${text}</p>`);
-        this.logger.insertAdjacentHTML('beforeend', `<p class="select-historial" onclick="display.sendOperationToScreen(event);">${text}</p>`);
-    }
-
-    delete() {
-        this.actualValue = this.actualValue.toString().slice(0, -1);
-        this.refreshDisplay();
-    }
-
-    deleteAll() {
-        this.operationsDisplay.innerHTML = '';
-        this.previousValue = '';
-        this.actualValue = '';
-        this.lastCommand = undefined;
-        this.refreshDisplay();
-    }
+  deleteAll() {
+    this.previousValue = '';
+    this.actualValue = '';
+    this.lastCommand = undefined;
+    this.refreshDisplay();
+  }
+  deleteAll() {
+    this.operationsDisplay.innerHTML = '';
+    this.previousValue = '';
+    this.actualValue = '';
+    this.lastCommand = undefined;
+    this.refreshDisplay();
+  }
 }
