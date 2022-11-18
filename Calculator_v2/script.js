@@ -32,7 +32,7 @@ function showHistory() {
 }
 
 document.body.addEventListener('keydown', function (event) {
-  let eventKey = event.key;
+  const eventKey = event.key;
   switch (eventKey) {
     case 'Backspace':
       display.delete();
@@ -41,27 +41,23 @@ document.body.addEventListener('keydown', function (event) {
       display.deleteAll();
       break;
     case eventKey:
-      if (!isNaN(eventKey) || eventKey === '.' || eventKey === ',') {
+      if (!isNaN(eventKey)) {
         display.addNumber(eventKey);
+      } else if (eventKey === '.') {
+        if (!parseInt(displayActualValue.innerText)) {
+          display.addNumber(`0${eventKey}`);
+        } else {
+          display.addNumber(eventKey);
+        }
       } else {
-        if (eventKey === 'Enter' || eventKey === '=') {
-          display.chooseOperation('equal');
-          return;
-        } else if (eventKey === '+') {
-          display.chooseOperation('add');
-          return;
-        } else if (eventKey === '-') {
-          display.chooseOperation('substract');
-          return;
-        } else if (eventKey === '*') {
-          display.chooseOperation('multiply');
-          return;
-        } else if (eventKey === '/') {
-          display.chooseOperation('divide');
-          return;
-        } else if (eventKey === '%') {
-          display.chooseOperation('percent');
-        } else return;
+        (eventKey === 'Enter' || eventKey === '=') && (eventKey = 'equal');
+        (eventKey === '+') && (eventKey = 'add');
+        (eventKey === '-') && (eventKey = 'substract');
+        (eventKey === '*') && (eventKey = 'multiply');
+        (eventKey === '/') && (eventKey = 'divide');
+        (eventKey === '%') && (eventKey = 'percent');
+
+        display.chooseOperation(eventKey);
       }
       break;
   }
