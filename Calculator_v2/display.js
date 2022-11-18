@@ -203,6 +203,7 @@ class Display {
   delete() {
     this.actualValue = this.actualValue.toString().slice(0, -1);
     this.refreshDisplay();
+    this.displayFontSize();
   }
 
   deleteAll() {
@@ -217,5 +218,25 @@ class Display {
     this.actualValue = '';
     this.lastCommand = undefined;
     this.refreshDisplay();
+  }
+
+  displayFontSize() {
+    const actualLength = displayActualValue.innerText.length;
+    const previousLength = displayPreviousValue.innerText.length;
+
+    let actualSize = (prop) => displayActualValue.style.fontSize = prop;
+    !actualLength && actualSize('2.8rem');
+    actualLength >= 9 && actualSize('2.6rem');
+    actualLength >= 10 && actualSize('2.2rem');
+    actualLength >= 12 && actualSize('1.8rem');
+    actualLength >= 14 && actualSize('1.4rem');
+    actualLength >= 18 && actualSize('1rem');
+
+    let previousSize = (prop) => displayPreviousValue.style.fontSize = prop;
+    !previousLength && previousSize('1.8rem');
+    previousLength >= 13 && previousSize('1.7rem');
+    previousLength >= 15 && previousSize('1.4rem');
+    previousLength >= 17 && previousSize('1.2rem');
+    previousLength >= 19 && previousSize('1rem');
   }
 }

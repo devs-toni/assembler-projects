@@ -8,8 +8,14 @@ const btnOperators = document.querySelectorAll("[data-btn='operator']");
 
 let display = new Display(displayPreviousValue, displayActualValue, displayOperationsValue, logger);
 
-btnNumbers.forEach(btn => btn.addEventListener('click', () => display.addNumber(btn.innerHTML)));
-btnOperators.forEach(btn => btn.addEventListener('click', () => display.chooseOperation(btn.value)));
+btnNumbers.forEach(btn => btn.addEventListener('click', () => {
+  display.addNumber(btn.innerText);
+  display.displayFontSize();
+}));
+btnOperators.forEach(btn => btn.addEventListener('click', () => {
+  display.chooseOperation(btn.value);
+  display.displayFontSize();
+}));
 
 const checkbox = document.querySelector('#theme input[type="checkbox"]');
 checkbox.addEventListener('change', (event) => themeSwitch(event));
@@ -23,12 +29,15 @@ function themeSwitch(event) {
 }
 
 const evalMode = document.querySelector('#evalMode');
-evalMode.addEventListener('click', (event) => evalSwitch(event));
+evalMode.addEventListener('click', (event) => {
+  evalSwitch(event);
+  display.displayFontSize()
+});
 
 function evalSwitch(event) {
   changeColor(event);
   withEval = !withEval;
-  console.log(withEval);
+  // console.log(withEval);
   displayPreviousValue.innerText = ''
   displayActualValue.innerText = ''
   displayOperationsValue.innerText = ''
@@ -64,6 +73,7 @@ function showHistory() {
 
 document.body.addEventListener('keydown', function (event) {
   let eventKey = event.key;
+  display.displayFontSize();
   switch (eventKey) {
     case 'Backspace':
       display.delete();
