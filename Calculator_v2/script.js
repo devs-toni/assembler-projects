@@ -2,7 +2,6 @@ const displayPreviousValue = document.getElementById('previous');
 const displayActualValue = document.getElementById('result');
 const displayOperationsValue = document.getElementById('history-result');
 const logger = document.getElementById("log");
-const historyButton = document.getElementsByClassName('history-btn');
 
 const btnNumbers = document.querySelectorAll("[data-btn='number']");
 const btnOperators = document.querySelectorAll("[data-btn='operator']");
@@ -70,6 +69,7 @@ function showHistory() {
     logger.setAttribute("name", "hide");
   } else {
     logger.setAttribute("name", "show");
+    logger.classList.add('show');
   }
   return;
 }

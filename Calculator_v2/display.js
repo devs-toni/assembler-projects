@@ -1,6 +1,7 @@
 const numDecimals = 3;
 let equalIsPushed = false;
 let withEval = true;
+const historyButton = document.getElementsByClassName('history-btn');
 
 class Display {
   constructor(previousDisplay, actualDisplay, operationsDisplay, logger) {
