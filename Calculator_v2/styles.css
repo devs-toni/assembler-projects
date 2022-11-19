@@ -419,6 +419,11 @@ input:checked + .slider:before {
     border-radius: 0;
     animation: fadeIn .6s alternate ease-in-out !important;
   }
+
+  .main .past-result p {
+    max-width: 75vw;
+    margin-bottom: 1000px;
+  }
 }
 
 @media (max-width:380px) {
