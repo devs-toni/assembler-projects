@@ -206,18 +206,20 @@ class Display {
     this.displayFontSize();
   }
 
-  deleteAll() {
-    this.previousValue = '';
-    this.actualValue = '';
-    this.lastCommand = undefined;
-    this.refreshDisplay();
-  }
+  // deleteAll() {
+  //   this.previousValue = '';
+  //   this.actualValue = '';
+  //   this.lastCommand = undefined;
+  //   this.refreshDisplay();
+  // }
+  
   deleteAll() {
     this.operationsDisplay.innerHTML = '';
     this.previousValue = '';
     this.actualValue = '';
     this.lastCommand = undefined;
     this.refreshDisplay();
+    this.displayFontSize();
   }
 
   displayFontSize() {
@@ -226,11 +228,12 @@ class Display {
 
     let actualSize = (prop) => displayActualValue.style.fontSize = prop;
     !actualLength && actualSize('2.8rem');
-    actualLength >= 9 && actualSize('2.6rem');
-    actualLength >= 10 && actualSize('2.2rem');
-    actualLength >= 12 && actualSize('1.8rem');
-    actualLength >= 14 && actualSize('1.4rem');
-    actualLength >= 18 && actualSize('1rem');
+    actualLength >= 10 && actualSize('2.6rem');
+    actualLength >= 11 && actualSize('2.2rem');
+    actualLength >= 13 && actualSize('1.8rem');
+    actualLength >= 16 && actualSize('1.4rem');
+    actualLength >= 19 && actualSize('1.2rem');
+    actualLength >= 21 && actualSize('1rem');
 
     let previousSize = (prop) => displayPreviousValue.style.fontSize = prop;
     !previousLength && previousSize('1.8rem');
