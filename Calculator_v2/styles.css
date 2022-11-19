@@ -369,8 +369,16 @@ input:checked + .slider:before {
   color: var(--color-moon);
 }
 
-/************ MEDIA QUERIES **************/
+.hide {
+  opacity: 0;
+}
 
+.show {
+  visibility: visible;
+  animation: fadeIn 1s alternate ease-in-out;
+}
+
+/************ MEDIA QUERIES **************/
 @media (max-width:600px) {
   * {
     margin: 0;
@@ -402,6 +410,15 @@ input:checked + .slider:before {
   .main .buttons>.box {
     height: 19%;
   }
+
+  .main .history {
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    border-radius: 0;
+    animation: fadeIn .6s alternate ease-in-out !important;
+  }
 }
 
 @media (max-width:380px) {
@@ -416,4 +433,10 @@ input:checked + .slider:before {
   .main .buttons>.box {
     height: 20%;
   }
+}
+
+/************ KEYFRAMES ******************/
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
