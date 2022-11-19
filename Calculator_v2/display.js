@@ -204,6 +204,7 @@ class Display {
     this.actualValue = this.actualValue.toString().slice(0, -1);
     this.refreshDisplay();
     this.displayFontSize();
+    this.showHideHistoryButton();
   }
 
   // deleteAll() {
@@ -212,7 +213,7 @@ class Display {
   //   this.lastCommand = undefined;
   //   this.refreshDisplay();
   // }
-  
+
   deleteAll() {
     this.operationsDisplay.innerHTML = '';
     this.previousValue = '';
@@ -220,6 +221,7 @@ class Display {
     this.lastCommand = undefined;
     this.refreshDisplay();
     this.displayFontSize();
+    this.showHideHistoryButton();
   }
 
   displayFontSize() {
@@ -241,5 +243,14 @@ class Display {
     previousLength >= 15 && previousSize('1.4rem');
     previousLength >= 17 && previousSize('1.2rem');
     previousLength >= 19 && previousSize('1rem');
+  }
+
+  showHideHistoryButton() {
+    if (logger.innerText.length === 0) {
+      historyButton[0].classList.add('hide');
+    } else {
+      historyButton[0].classList.remove('hide');      
+      historyButton[0].classList.add('show');
+    }
   }
 }

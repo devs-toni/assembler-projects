@@ -2,6 +2,7 @@ const displayPreviousValue = document.getElementById('previous');
 const displayActualValue = document.getElementById('result');
 const displayOperationsValue = document.getElementById('history-result');
 const logger = document.getElementById("log");
+const historyButton = document.getElementsByClassName('history-btn');
 
 const btnNumbers = document.querySelectorAll("[data-btn='number']");
 const btnOperators = document.querySelectorAll("[data-btn='operator']");
@@ -11,10 +12,12 @@ let display = new Display(displayPreviousValue, displayActualValue, displayOpera
 btnNumbers.forEach(btn => btn.addEventListener('click', () => {
   display.addNumber(btn.innerText);
   display.displayFontSize();
+  display.showHideHistoryButton();
 }));
 btnOperators.forEach(btn => btn.addEventListener('click', () => {
   display.chooseOperation(btn.value);
   display.displayFontSize();
+  display.showHideHistoryButton();
 }));
 
 const checkbox = document.querySelector('#theme input[type="checkbox"]');
@@ -74,6 +77,7 @@ function showHistory() {
 document.body.addEventListener('keydown', function (event) {
   let eventKey = event.key;
   display.displayFontSize();
+  display.showHideHistoryButton();
   switch (eventKey) {
     case 'Backspace':
       display.delete();
