@@ -38,9 +38,8 @@ evalMode.addEventListener('click', (event) => {
 });
 
 function evalSwitch(event) {
-  changeColor(event);
-  withEval = !withEval;
-  // console.log(withEval);
+  changeStyle(event);
+  evalIsDisabled = !evalIsDisabled;
   displayPreviousValue.innerText = ''
   displayActualValue.innerText = ''
   displayOperationsValue.innerText = ''
@@ -54,15 +53,13 @@ function evalSwitch(event) {
   display.refreshDisplay();
 }
 
-async function changeColor(event) {
-  if (withEval) {
-    document.querySelector('.heart').style.color = 'red';
-/*     event.target.style.color = 'red';
- */  }
+function changeStyle(event) {
+  if (evalIsDisabled) {
+    document.querySelector('#evalMode').style.textDecoration = 'line-through';
+  }
   else {
-    document.querySelector('.heart').style.color = 'var(--color-moon)';
-/*     event.target.style.color = 'var(--color-moon)';
- */  }
+    document.querySelector('#evalMode').style.textDecoration = 'none';
+  }
 }
 
 function showHistory() {

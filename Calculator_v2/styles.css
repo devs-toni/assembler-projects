@@ -300,6 +300,12 @@ div[name="showTrash"] button{
   margin-left: 45%;
 }
 
+#evalMode {
+  text-decoration: line-through;
+  color: var(--color-btn-numbers);
+  font-weight: 800;
+}
+
 /***************************************************** STYLES SLIDER THEME */
 
 /* The switch - the box around the slider */

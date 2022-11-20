@@ -1,6 +1,6 @@
 const numDecimals = 3;
 let equalIsPushed = false;
-let withEval = true;
+let evalIsDisabled = false;
 const historyButton = document.getElementsByClassName('history-btn');
 
 class Display {
@@ -25,7 +25,7 @@ class Display {
   }
 
   addNumber(number) {
-    if (!withEval) {
+    if (!evalIsDisabled) {
       if (!this.actualValue && number === '.') this.actualValue = '0';
       if (equalIsPushed) this.previousValue = '';
       if (number === '.' && this.actualValue.includes('.')) return;
@@ -38,7 +38,7 @@ class Display {
   }
 
   chooseOperation(operator) {
-    if (!withEval) {
+    if (!evalIsDisabled) {
       if (operator !== '=') this.operator = operator;
       //Calc controllers
       if (operator === 'equal' || operator === 'percent') {
@@ -93,12 +93,12 @@ class Display {
   }
 
   calculate() {
-    if (!withEval) {
+    if (!evalIsDisabled) {
       const { previousVal, actualVal } = this.conversion();
       if (isNaN(previousVal) || isNaN(actualVal)) return;
       this.tempNumberForHistory = this.actualValue;
       this.actualValue = this.calculator[this.lastCommand](previousVal, actualVal);
-    } else if (withEval) {
+    } else if (evalIsDisabled) {
       this.actualValue = eval(`${this.actualValue} ${this.operator} ${this.previousValue}`);
     }
     this.refreshDisplay();
