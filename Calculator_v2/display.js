@@ -258,5 +258,7 @@ class Display {
 
   deleteHistory() {
     display.logger.innerText = '';
+    showHistory();
+    this.showHideHistoryButton();
   }
 }
