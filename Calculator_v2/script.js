@@ -2,6 +2,7 @@ const displayPreviousValue = document.getElementById('previous');
 const displayActualValue = document.getElementById('result');
 const displayOperationsValue = document.getElementById('history-result');
 const logger = document.getElementById("log");
+const trash = document.getElementById("trash");
 
 const btnNumbers = document.querySelectorAll("[data-btn='number']");
 const btnOperators = document.querySelectorAll("[data-btn='operator']");
@@ -67,8 +68,10 @@ async function changeColor(event) {
 function showHistory() {
   if (logger.getAttribute("name") === "show") {
     logger.setAttribute("name", "hide");
+    trash.setAttribute("name", "hideTrash");
   } else {
     logger.setAttribute("name", "show");
+    trash.setAttribute("name", "showTrash");
     logger.classList.add('show');
   }
   return;
@@ -106,4 +109,6 @@ document.body.addEventListener('keydown', function (event) {
       }
       break;
   }
+
+
 });

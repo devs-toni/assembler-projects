@@ -254,4 +254,9 @@ class Display {
       historyButton[0].classList.add('show');
     }
   }
+
+
+  deleteHistory() {
+    display.logger.innerText = '';
+  }
 }

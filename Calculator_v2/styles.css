@@ -61,7 +61,9 @@
   position: relative;
   height: 250px;
   margin-bottom: 10px;
-  border-radius: 30px;
+  /* border-radius: 30px; */
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
   background-color: var(--full-content-background-color);
 }
 
@@ -250,9 +252,8 @@ div[name="hide"] {
 div[name="show"] {
   display: flex;
   flex-flow: column;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  height: 340px;
+
+  height: 303.5px;
   position: absolute;
   top: 270px;
   width: 320px;
@@ -274,6 +275,29 @@ div[name="show"] p {
 
 .select-historial:hover {
   background-color: #555a6031;
+}
+
+#trash {
+  background-color: var(--t-background-primary);
+}
+
+div[name="hideTrash"] {
+  height: 0;
+  opacity: 0;
+}
+
+div[name="showTrash"] {
+  position: absolute;
+  width: 320px;
+  top: 573.5px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transition: height 1.9s ease-in-out, opacity 1.9s;
+
+}
+
+div[name="showTrash"] button{
+  margin-left: 45%;
 }
 
 /***************************************************** STYLES SLIDER THEME */
