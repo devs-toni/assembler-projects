@@ -135,23 +135,13 @@ class Display {
   }
 
   sendOperationToScreen(event) {
-    this.operationsDisplay.innerHTML = '';
-    let history = event.target.innerHTML;
+    this.operationsDisplay.textContent = '';
+    let history = event.target.textContent;
     const array = history.split('=');
     this.actualValue = array[1];
     this.previousValue = '';
     this.refreshDisplay();
   }
-
-  sendOperationToScreen(event) {
-    this.operationsDisplay.innerHTML = '';
-    let history = event.target.innerHTML;
-    const array = history.split('=');
-    this.actualValue = array[1];
-    this.previousValue = '';
-    this.refreshDisplay();
-  }
-
 
   refreshDisplay() {
     let prevValue = this.previousValue && this.previousValue.toString().split('.');
@@ -168,7 +158,6 @@ class Display {
   }
 
   log(text) {
-
     //Controlar decimales
     const logText = text.toString().split('.');
     const decimals = logText[logText.length - 1].substring(0, numDecimals);
@@ -208,15 +197,8 @@ class Display {
     this.showHideHistoryButton();
   }
 
-  // deleteAll() {
-  //   this.previousValue = '';
-  //   this.actualValue = '';
-  //   this.lastCommand = undefined;
-  //   this.refreshDisplay();
-  // }
-
   deleteAll() {
-    this.operationsDisplay.innerHTML = '';
+    this.operationsDisplay.textContent = '';
     this.previousValue = '';
     this.actualValue = '';
     this.lastCommand = undefined;
@@ -250,14 +232,14 @@ class Display {
     if (logger.innerText.length === 0) {
       historyButton[0].classList.add('hide');
     } else {
-      historyButton[0].classList.remove('hide');      
+      historyButton[0].classList.remove('hide');
       historyButton[0].classList.add('show');
     }
   }
 
 
   deleteHistory() {
-    display.logger.innerText = '';
+    logger.innerText = '';
     showHistory();
     this.showHideHistoryButton();
   }
