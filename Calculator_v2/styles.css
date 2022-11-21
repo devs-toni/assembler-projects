@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
+body {
+  margin: 0;
+}
+
 :root {
   --color-primary: #f4ab41;
   --t-background-primary: #ccc;
@@ -42,7 +46,7 @@
 /***************************************************** PRINCIPAL STYLES */
 .main {
   width: 320px;
-  margin: 20px auto;
+  margin: 60px auto;
   font-family: "Montserrat", sans-serif;
   color: black;
   font-size: 16px;
@@ -61,7 +65,6 @@
   position: relative;
   height: 250px;
   margin-bottom: 10px;
-  /* border-radius: 30px; */
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   background-color: var(--full-content-background-color);
@@ -293,10 +296,9 @@ div[name="showTrash"] {
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   transition: height 1.9s ease-in-out, opacity 1.9s;
-
 }
 
-div[name="showTrash"] button{
+div[name="showTrash"] button {
   margin-left: 45%;
 }
 
@@ -408,8 +410,24 @@ input:checked + .slider:before {
   animation: fadeIn 1s alternate ease-in-out;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  padding-top: 50px;
+  background-color: #555A60;
+  text-align: center;
+  color: white;
+}
+
+.bold {
+  color: var(--color-primary);
+}
+
 /************ MEDIA QUERIES **************/
-@media (max-width:600px) {
+@media (max-width: 600px) {
   * {
     margin: 0;
   }
@@ -437,7 +455,7 @@ input:checked + .slider:before {
     padding-top: 10px;
   }
 
-  .main .buttons>.box {
+  .main .buttons > .box {
     height: 19%;
   }
 
@@ -447,7 +465,7 @@ input:checked + .slider:before {
     bottom: 0;
     height: auto;
     border-radius: 0;
-    animation: fadeIn .6s alternate ease-in-out !important;
+    animation: fadeIn 0.6s alternate ease-in-out !important;
   }
 
   .main .past-result p {
@@ -456,7 +474,7 @@ input:checked + .slider:before {
   }
 }
 
-@media (max-width:380px) {
+@media (max-width: 380px) {
   .main .full-content {
     height: 50vh;
   }
@@ -465,13 +483,17 @@ input:checked + .slider:before {
     height: 50vh;
   }
 
-  .main .buttons>.box {
+  .main .buttons > .box {
     height: 20%;
   }
 }
 
 /************ KEYFRAMES ******************/
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
