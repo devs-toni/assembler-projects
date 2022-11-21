@@ -135,8 +135,8 @@ class Display {
   }
 
   sendOperationToScreen(event) {
-    this.operationsDisplay.innerHTML = '';
-    let history = event.target.innerHTML;
+    this.operationsDisplay.textContent = '';
+    let history = event.target.textContent;
     const array = history.split('=');
     this.actualValue = array[1];
     this.previousValue = '';
@@ -198,7 +198,7 @@ class Display {
   }
 
   deleteAll() {
-    this.operationsDisplay.innerHTML = '';
+    this.operationsDisplay.textContent = '';
     this.previousValue = '';
     this.actualValue = '';
     this.lastCommand = undefined;
