@@ -282,8 +282,7 @@ div[name="show"] p {
 }
 
 div[name="hideTrash"] {
-  height: 0;
-  opacity: 0;
+  display: none;
 }
 
 div[name="showTrash"] {
