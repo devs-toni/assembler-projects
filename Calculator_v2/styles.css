@@ -240,7 +240,8 @@
 }
 
 .main .history {
-  background-color: var(--t-background-primary);
+  background-color: var(--main-background-color);
+  color: var(--color-primary);
 }
 
 /* show or hide the history */
@@ -278,7 +279,14 @@ div[name="show"] p {
 }
 
 #trash {
-  background-color: var(--t-background-primary);
+  background-color: var(--main-background-color);
+}
+
+.trash {
+    background-color: var(--main-background-color);
+    color: var(--color-btn-numbers);
+    border: 0;
+    cursor: pointer;
 }
 
 div[name="hideTrash"] {

@@ -74,7 +74,7 @@ function showHistory() {
   return;
 }
 
-document.body.addEventListener('keydown', function (event) {
+document.body.addEventListener('keydown', function(event) {
   let eventKey = event.key;
   display.displayFontSize();
   display.showHideHistoryButton();
@@ -106,6 +106,4 @@ document.body.addEventListener('keydown', function (event) {
       }
       break;
   }
-
-
 });
