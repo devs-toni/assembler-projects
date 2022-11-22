@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- PRODUCT PAGE -->
-    <div class="product-page">
+    <div class="product-page hide">
       <header>
         <a href="index.html">OURLOGO</a>
       </header>
@@ -26,12 +26,21 @@
     </div>
 
     <!-- ORDER PAGE -->
-    <div class="shipments-form hide">
-      <div class="profile"></div>
-      <div class="address"></div>
-      <div class="shipping"></div>
-      <div class="finish"></div>
-    </div>
+    <section class="shipments-form hide">
+      <header class="shipments-form__progress-bar">
+        Progress
+      </header>
+
+        <div class="shipments-form__profile"></div>
+        <div class="shipments-form__address"></div>
+        <div class="shipments-form__shipping"></div>
+        <div class="shipments-form__finish"></div>
+
+      <footer class="shipments-form__footer">
+        <button>Clear Form</button>
+        <button>Next</button>
+      </footer>
+    </section>
 
     <!-- THANKS PAGE -->
     <div class="thanks-page hide"></div>
