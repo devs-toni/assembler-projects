@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/product-page.css" />
     <link rel="stylesheet" href="./css/order-page.css" />
     <link rel="stylesheet" href="./css/thanks-page.css" />
+    <script src="./js/formValidations.js"></script>
     <title>Shopping Wizard</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- PRODUCT PAGE -->
     <div class="product-page hide">
       <header>
@@ -19,40 +20,77 @@
       <nav class="menu-main">
         <a href="#shop">Shop</a>
       </nav>
-      <article>
-        Article
-      </article>
-      <footer>
-        Shop 2022
-      </footer>
+      <article>Article</article>
+      <footer>Shop 2022</footer>
     </div>
 
     <!-- ORDER PAGE -->
-    <section class="order-form hide">
-      <header class="progress-bar">
-        Progress
-      </header>
+    <section class="order-form">
+      <header class="progress-bar hide"></header>
 
-        <div class="profile">
-          Profile
+      <div class="profile hide">Profile</div>
+
+      <div class="address">
+        <div class="form">
+            <h2>Address</h2>
+          <form id="formId" onSubmit="javascript:submitAddress(event);">
+            <div class="formEntry">
+              <label for="firstname">First name</label>
+              <input type="text" id="firstname" name="firstname" class="firstnameInput" required />
+            </div>
+            <div class="formEntry">
+              <label for="lastname">Last name</label>
+              <input type="text" id="lastname" name="lastname" class="lastnameInput" required />
+            </div>
+            <div class="formEntry">
+              <label for="birthday">Birthday</label>
+              <input type="text" id="birthday" name="birthday" class="birthdayInput" placeholder="dd/mm/yyyy" required />
+            </div>
+            <div class="formEntry">
+              <label for="addressOne">Adress 1</label>
+              <input type="text" id="addressOne" name="addressOne" class="addressOneInput" required />
+            </div>
+            <div class="formEntry">
+              <label for="addressTwo">Adress 2</label>
+              <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
+            </div>
+            <div class="formEntry">
+              <label for="postalCode">Postal Code</label>
+              <input type="text" id="postalCode" class="postalCodeInput" required />
+            </div>
+            <div class="formEntry">
+              <label for="country">Country</label>
+              <select type="text" id="country" name="country" class="countrySelect" required>
+                <option value="andorra">Andorra</option>
+                <option value="espanya">España</option>
+                <option value="francia">Francia</option>
+                <option value="alemania">Alemania</option>
+              </select> 
+            </div>
+            <div class="formEntry">
+              <label for="phone">Phone</label>
+              <input type="text" id="phone" name="phone" class="phone" required />
+            </div>
+            <div class="formEntryCheckbox">
+                <label for="regularAdress">This is my regular address</label>
+                <input type="checkbox" id="regularAddress" name="regularAddress" class="phone" />
+              </div>
+          </form>
         </div>
-        <div class="address hide">
-          Address
+        <div class="info">
+            <p>You started registering <span>x minutes ago.</span></p>
+            <p>Hurry up!</p>
         </div>
-        <div class="shipping hide">
-          Shipping
-        </div>
-        <div class="finish hide">
-          Finish
-        </div>
-        <div class="thanks-page hide">
-          Thanks Page
-        </div>
+      </div>
+      <div class="shipping hide">Shipping</div>
+      <div class="finish hide">Finish</div>
+      <div class="thanks-page hide">Thanks Page</div>
 
       <footer class="footer">
+        <input type="submit" form="formId" />
         <button>Clear Form</button>
         <button>Next</button>
       </footer>
     </section>
-</body>
+  </body>
 </html>

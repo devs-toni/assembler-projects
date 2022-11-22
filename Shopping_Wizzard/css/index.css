@@ -1,4 +1,9 @@
 /* VARIABLES GENERALES */
+html {
+  font-family: Verdana, serif;
+  font-size: 0.8em;
+}
+
 :root {
   --color-primary: red;
   --color-secondary: #fff;

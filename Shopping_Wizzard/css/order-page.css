@@ -1,0 +1,77 @@
+/* Adress */
+
+.address {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 15px 60px;
+    max-width: 50vw;
+}
+
+.address div.form {
+    width: 85%;
+}
+
+.address .form h2 {
+    margin-bottom: 40px
+}
+
+.address .form form div.formEntry {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.address .form form .formEntry label {
+    margin-bottom: 8px;
+
+}
+
+.address .form .formEntry input, .formEntry select {
+    outline: 1px solid black;
+    min-width: 250px;
+}
+
+.address .form form div.formEntryCheckbox {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    margin-bottom: 20px;
+}
+
+.address .form form div.formEntryCheckbox input {
+    margin-right: 10px;
+}
+
+select {
+    margin: 0;
+    padding:0;
+}
+
+.address div.info {
+    margin-top: 20px;
+    max-width: 150px;
+    background-color: rgb(223, 222, 222);
+    border: 1px solid rgba(0, 0, 0, 0.243);
+    padding: 10px 20px;
+    max-height: 80px;
+}
+
+.address .info p {}
+
+.address .info p span {
+    font-weight: bold;
+}
+
+@media  screen and (max-width: 650px) {
+    .address {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .address div.info {
+    }
+}
+
+
