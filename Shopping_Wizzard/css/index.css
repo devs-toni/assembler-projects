@@ -1,3 +1,4 @@
+/* VARIABLES GENERALES */
 :root {
   --color-primary: red;
   --color-secondary: #fff;
@@ -6,4 +7,3 @@
 .hide {
   display: none;
 }
-/* VARIABLES GENERALES */
