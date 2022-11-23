@@ -24,9 +24,14 @@ html {
 }
 
 section.order-form {
-  width: 60%;
-  margin: 0 auto;
-  padding: 50px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+body {
+    max-width: 1500px;
+    margin:  0 auto;
 }
 
 .width-50 {
@@ -43,7 +48,7 @@ section.order-form {
   left: 0;
   right: 0;
   top: 0;
-  background-color: var(--header-footer-bacground-color-primary)
+  background-color: var(--header-footer-bacground-color-primary);
 }
 
 /******** HEADER PRODUCT ********/

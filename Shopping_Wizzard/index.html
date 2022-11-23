@@ -39,35 +39,35 @@
         </div>
     </header>
     <!-- PRODUCT PAGE -->
-    <article class="product-page hide">
+   <article class="product-page">
         <div class="product-images">
-            <div class="product-thumbnails"></div>
             <div class="product-image">
-                <img src="./assets/products/black/black-1.png" width="500" alt="black">
+                <img src="./assets/products/black/black-1.png" alt="black">
             </div>
+            <div class="product-thumbnails"></div>
         </div>
         <div class="product-info">
             <h2>Patinete eléctrico</h2>
-            <p>Price <span>15€</span></p>
-            <form>
-                <select form="battery">
-                    <option value="10000mah">10000mAh</option>
-                    <option value="20000mah">20000mAh</option>
-                    <option value="30000mah">30000mAh</option>
-                </select>
-
-                <br>
-
-                <label for="color">Color</label>
+            <p>699 €</p>
+            <form id="product-page-form">
+                <div>
+                    <label for="battery">Capacidad de la bateria</label>
+                    <select name="battery">
+                        <option value="10000mah">10000mAh</option>
+                        <option value="20000mah">20000mAh</option>
+                        <option value="30000mah">30000mAh</option>
+                    </select>
+                </div>
+                <label for="color" class="hide">Color</label>
                 <input type="radio" name="color" value="black" onclick="changeColor('black')" checked>
                 <input type="radio" name="color" value="white" onclick="changeColor('white')">
                 <input type="radio" name="color" value="blue" onclick="changeColor('blue')">
                 <input type="radio" name="color" value="red" onclick="changeColor('red')">
+                <br>
+                <input type="submit" value="Buy">
             </form>
         </div>
-        <input type="submit" form="formId" />
     </article>
-
     <!-- ORDER PAGE -->
     <section class="order-form">
         <!-- profile page -->

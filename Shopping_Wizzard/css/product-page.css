@@ -1,9 +1,148 @@
 .product-page {
-  margin: 60px 0px;
+    display: flex;
+    align-items: center;
+    max-width: 1260px;
+    margin: 0 auto;
+    margin-top: 60px;
 }
 
-/* .product-page header {} */
+.product-page .product-images {
+    display: flex;
+    width: 70vw;
+    max-width: 800px;
+}
 
-/* .product-page nav {} */
-/* .product-page article {} */
-/* .product-page footer {} */
+.product-page .product-thumbnails {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    align-content: baseline;
+    padding-top: 260px;
+}
+
+.product-page .product-image img {
+    width: 100vw;
+    max-width: 800px;
+    max-height: 800px;
+    margin-right: -100px;
+}
+
+.product-page .product-info {
+    width: 30vw;
+    align-content: center;
+    padding-left: 50px;
+}
+
+.product-page .product-info h2 {
+    font-size: 2.6em;
+}
+
+.product-page .product-info p {
+    font-size: 2.4em;
+    padding: 20px 0;
+
+}
+
+.product-page .product-info form select {
+    width: auto;
+    border: 0;
+}
+
+.product-page .product-info form select,
+.product-page .product-info form label {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+
+}
+
+.product-page .product-info form input[type='radio'] {
+    background-color: red !important;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+
+.product-page .product-info form input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #000;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid grey;
+}
+
+.product-page .product-info form input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    box-shadow: 3px solid black;
+}
+
+.product-page .product-info form input[value='white']:after {
+    background-color: #fff;
+}
+
+.product-page .product-info form input[value='blue']:after {
+    background-color: blue;
+}
+
+.product-page .product-info form input[value='red']:after {
+    background-color: red;
+}
+
+.product-page .product-info form input[type='submit'] {
+    background-color: red;
+    color: #fff;
+    width: 100%;
+    max-width: 250px;
+    font-size: 2em;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+@media (max-width: 1268px) {
+    .product-page {
+        flex-direction: column;
+    }
+
+    .product-page .product-images {
+        flex-direction: column;
+        width: 100vw;
+        margin: 0 auto;
+    }
+
+    .product-page .product-info {
+        width: 100vw;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px;
+    }
+
+    .product-page .product-info>h2 {
+        text-align: center;
+        width: 100vw;
+        text-align: center;
+
+    }
+
+    .product-page .product-thumbnails {
+        flex-direction: row;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .product-page .product-image img {
+        margin: 0;
+        padding: 0;
+    }
+}
