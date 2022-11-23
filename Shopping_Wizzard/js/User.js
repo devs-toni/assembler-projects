@@ -1,5 +1,5 @@
 class User {
-    constructor() {
+    constructor(product) {
         this.email = '';
         this.password = '';
         this.firstname = '';
@@ -10,6 +10,7 @@ class User {
         this.postalCode = '';
         this.country = '';
         this.phone = '';
+        this.product = product;
         this.isRegularAdress = false;
     }
 
@@ -21,40 +22,34 @@ class User {
         e.preventDefault();
 
         if (firstname.value.length > 20) {
-            alert('El campo "First name" no puede contener más de 20 caracteres.');
             return;
         }
         if (lastname.value.length > 20) {
-            alert('El campo "Last name" no puede contener más de 20 caracteres.');
             return;
         }
         if (addressOne.value.length > 50) {
-            alert('El campo "Address 1" no puede contener más de 20 caracteres.');
             return;
         }
         if (addressTwo.value.length > 50) {
-            alert('El campo "Address 2" no puede contener más de 20 caracteres.');
             return;
         }
         if (!postalCode.value.match(/^\d{5}(-\d{4})?$/)) {
-            alert('El campo "Postal Code" no es correcto.');
             return;
         }
         if (country.value) {
 
         }
         if (!phone.value.match(/^[0-9]{9}$/)) {
-            alert('El campo "Phone" no es correcto.');
             return;
         }
 
         this.assignFormValues();
         this.showUser();
+        removeAddressEventListeners();
     }
 
     submitLogin = (e) => {
         e.preventDefault();
-    
         if(this.password === "") {  
             document.getElementById("pswdMessage").innerHTML = "**Fill the password please!";  
             return false;  
@@ -104,7 +99,7 @@ class User {
         this.addressTwo = addressTwo.value;
         this.postalCode = postalCode.value;
         this.country = country.value;
-        this.phone = phone.value;
+        this.phone = countryPhone.value + phone.value;
         this.isRegularAdress = regularAddress.checked;
     }
 

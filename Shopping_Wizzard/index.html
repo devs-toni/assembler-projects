@@ -89,52 +89,61 @@
           <form id="formId" onSubmit="user.submitAddress(event);">
               <div class="formEntry">
                   <label for="firstname">First name</label>
-                  <input type="text" id="firstname" name="firstname" class="firstnameInput" />
+                  <input type="text" id="firstname" name="firstname" class="firstnameInput" required />
+                  <span data-target="firstname" id="error" class="error"></span>
               </div>
               <div class="formEntry">
                   <label for="lastname">Last name</label>
-                  <input type="text" id="lastname" name="lastname" class="lastnameInput" />
+                  <input type="text" id="lastname" name="lastname" class="lastnameInput" required />
+                  <span data-target="lastname" id="error" class="error"></span>
               </div>
               <div class="formEntry">
                   <label for="birthday">Birthday</label>
                   <input type="date" id="birthday" name="birthday" class="birthdayInput" placeholder="dd/mm/yyyy"
-                       />
+                  required />
+                  <span data-target="birthday" id="error" class="error"></span>
               </div>
               <div class="formEntry">
                   <label for="addressOne">Adress 1</label>
-                  <input type="text" id="addressOne" name="addressOne" class="addressOneInput"  />
+                  <input type="text" id="addressOne" name="addressOne" class="addressOneInput" required />
+                  <span data-target="addressOne" id="error" class="error"></span>
               </div>
               <div class="formEntry">
                   <label for="addressTwo">Adress 2</label>
                   <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
+                  <span data-target="addressTwo" id="error" class="error"></span>
               </div>
               <div class="formEntry">
                   <label for="postalCode">Postal Code</label>
-                  <input type="text" id="postalCode" class="postalCodeInput"  />
+                  <input type="text" id="postalCode" class="postalCodeInput" required />
+                  <span data-target="postalCode" id="error" class="error"></span>
               </div>
               <div class="formEntry">
                   <label for="country">Country</label>
-                  <select type="text" id="country" name="country" class="countrySelect" >
-                      <option value="andorra">Andorra</option>
-                      <option value="espanya">España</option>
-                      <option value="francia">Francia</option>
-                      <option value="alemania">Alemania</option>
-                      <option value="grecia">Grecia</option>
+                  <select type="text" id="country" name="country" class="countrySelect" required >
+                      <option value="" selected disabled></option>
+                      <option value="Andorra">Andorra</option>
+                      <option value="Espanya">España</option>
+                      <option value="Francia">Francia</option>
+                      <option value="Alemania">Alemania</option>
+                      <option value="Grecia">Grecia</option>
                   </select>
+                  <span data-target="country" id="error" class="error"></span>
               </div>
               <div class="formEntry together">
                   <label for="phone">Phone</label>
                   <div class="phoneInput">
                       <select name="countryPhone" id="countryPhone" disabled>
-                          <option value="" selected disabled></option>
-                          <option data-country='andorra' value="376">AND</option>
-                          <option data-country='espanya' value="34">ESP</option>
-                          <option data-country='francia' value="33">FRA</option>
-                          <option data-country='alemania' value="49">ALE</option>
-                          <option data-country='grecia' value="30">GRE</option>
+                          <option data-country='' value="" selected disabled></option>
+                          <option data-country='Andorra' value="+376">+376</option>
+                          <option data-country='Espanya' value="+34">+34</option>
+                          <option data-country='Francia' value="+33">+33</option>
+                          <option data-country='Alemania' value="+49">+49</option>
+                          <option data-country='Grecia' value="+30">+30</option>
                       </select>
-                      <input type="tel" id="phone" name="phone" class="phone"  />
+                      <input type="tel" id="phone" name="phone" class="phone" required />
                   </div>
+                  <span data-target="phone" id="error" class="error"></span>
               </div>
               <div class="formEntryCheckbox">
                   <label for="regularAdress">This is my regular address</label>
