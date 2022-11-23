@@ -17,9 +17,22 @@ function verifyPassword(){
        return false;  
     }  
     
-  //maximum length of password validation  
-    if(pw.length > 15) {  
-       document.getElementById("pswdMessage").innerHTML = "**Password length must not exceed 15 characters";  
+    //contains number validation
+    if(pw.search(/[0-9]/) < 0){
+        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 number";  
+    }
+    
+    //contains uppercas validation
+    if(pw.search(/[A-Z]/) < 0){
+        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 uppercase letter";  
+    }
+    //contains lowercase validation
+    if(pw.search(/[a-z]/) < 0){
+        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 lowercase letter";  
+    }
+    //maximum length of password validation  
+    if(pw.length > 20) {  
+       document.getElementById("pswdMessage").innerHTML = "**Password length must not exceed 20 characters";  
        return false;  
     } else {  
        alert("Password is correct");  
