@@ -41,7 +41,8 @@ section.order-form {
   background-color: var(--header-footer-bacground-color-primary)
 }
 
-.header-main {
+/******** HEADER PRODUCT ********/
+.header-main-product {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,8 +52,8 @@ section.order-form {
   margin: auto;
 }
 
-.header .header-main i,
-a {
+.header .header-main-product i,
+a, p {
   color: var(--header-footer-color);
   text-decoration: none;
   font-weight: 700;
@@ -61,23 +62,41 @@ a {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-.shop-main {
-  float: right;
-}
-
-.menu-main-logo {
+.menu-main-product-logo {
   display: flex;
   align-content: center;
   align-items: center;
   padding: 0 5px;
 }
 
-.menu-main-shop {
+.menu-main-product-shop {
   display: flex;
   align-content: center;
   align-items: center;
   padding: 0 5px;
 }
+
+/******** HEADER ORDER ********/
+.header-main-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  max-width: 980px;
+  padding: 10px;
+  margin: auto;
+}
+
+.header .header-main-order i,
+a, p {
+  color: var(--header-footer-color);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5em;
+  padding: 0 3px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
 /******** FOOTER ********/
 .footer {
   position: fixed;
