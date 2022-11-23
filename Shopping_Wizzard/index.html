@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/product-page.css" />
     <link rel="stylesheet" href="./css/order-page.css" />
     <link rel="stylesheet" href="./css/thanks-page.css" />
     <script src="./js/formValidations.js"></script>
-    <title>Shopping Wizard</title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html">OURLOGO</a>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Electric Scooter Factory | Shopping Wizard</title>
+</head>
+<body>
+    <header id="navbar">
+        <div class="menu-main">
+          <div class="menu-main-logo">
+            <i class="uil uil-streering"></i>
+            <a class="logo-main" href="index.html">Electric Scooter Factory</a>
+          </div>
+          <div class="menu-main-shop">
+            <i class="uil uil-store"></i>
+            <a class="shop-main" href="#shop">Shop</a>
+          </div>
+        </div>
     </header>
-    <main class="content">
       <!-- PRODUCT PAGE -->
-      <div class="product-page hide">
-        <nav class="menu-main">
-          <a href="#shop">Shop</a>
-        </nav>
-        <article>Article</article>
-      </div>
+      <article class="product-page hide">
+        Article
+      </article>
 
       <!-- ORDER PAGE -->
       <section class="order-form">
-        <header class="progress-bar hide"></header>
-
         <div class="profile hide">Profile</div>
-
         <div class="address">
           <div class="form">
             <h2>Address</h2>
@@ -138,13 +141,12 @@
         <div class="finish hide">Finish</div>
         <div class="thanks-page hide">Thanks Page</div>
 
-        <footer class="footer">
+        
+      </section>
+    <footer class="footer">
           <input type="submit" form="formId" />
           <button>Clear Form</button>
           <button>Next</button>
-        </footer>
-      </section>
-    </main>
-    <footer>Shop 2022</footer>
+    </footer>
   </body>
 </html>

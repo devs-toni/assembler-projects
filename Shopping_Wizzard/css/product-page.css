@@ -1,8 +1,52 @@
-/* .product-page {} */
-/* .product-page header {} */
-.product-page header a {
-  color: var(--color-primary);
+.menu-main {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+  max-width: 820px;
+  padding-left: 1rem 1.4rem;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+#navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #df001f;
+}
+
+#navbar i,
+a {
+  color: aliceblue;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8em;
+  padding: 0 3px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.shop-main {
+  float: right;
+}
+
+.menu-main-logo {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.menu-main-shop {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 0 5px;
+}
+
+/* .product-page header {} */
+
 /* .product-page nav {} */
 /* .product-page article {} */
 /* .product-page footer {} */

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mukta:wght@300;400;500;700&display=swap');
+
 /* VARIABLES GENERALES */
 html {
   font-family: Verdana, serif;
@@ -7,6 +10,13 @@ html {
 :root {
   --color-primary: red;
   --color-secondary: #fff;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Mukta', sans-serif;
 }
 
 .hide {
