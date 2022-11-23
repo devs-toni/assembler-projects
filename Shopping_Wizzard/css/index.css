@@ -3,204 +3,229 @@
 
 /* VARIABLES GENERALES */
 html {
-  font-family: Verdana, serif;
-  font-size: 0.8em;
+    font-family: Verdana, serif;
+    font-size: 0.8em;
 }
 
 :root {
-  --color-primary: #333;
-  --color-secondary: #959595;
-  --header-footer-color: #fff;
-  --header-footer-bacground-color-primary: #df001f;
-  --header-progress:#7d2626;
+    --color-primary: #333;
+    --color-secondary: #959595;
+    --header-footer-color: #fff;
+    --header-footer-bacground-color-primary: #df001f;
+    --header-progress: #7d2626;
+    --footer-buttons-color: #7d2626;
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  font-family: 'Mukta', sans-serif;
-  color: var(--color-primary);
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Mukta', sans-serif;
+    color: var(--color-primary);
 }
 
 section.order-form {
-    width: 60%;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 50px;
+    padding: 68px 0;
 }
 
 body {
     max-width: 1500px;
-    margin:  0 auto;
+    margin: 0 auto;
 }
 
 .width-50 {
-  width: 50%;
+    width: 50%;
 }
 
 .ml-auto {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 /******** HEADER ********/
 .header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  background-color: var(--header-footer-bacground-color-primary);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: var(--header-footer-bacground-color-primary);
 }
 
 /******** HEADER PRODUCT ********/
 .header-main-product {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  max-width: 980px;
-  padding: 10px;
-  margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    max-width: 980px;
+    padding: 10px;
+    margin: auto;
 }
 
 .header .header-main-product i,
-a, p {
-  color: var(--header-footer-color);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.5em;
-  padding: 0 3px;
-  font-family: 'Noto Sans JP', sans-serif;
+a,
+p {
+    color: var(--header-footer-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 0 3px;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .menu-main-product-logo {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  padding: 0 5px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 0 5px;
 }
 
 .menu-main-product-shop {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  padding: 0 5px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 0 5px;
 }
 
 /******** HEADER ORDER ********/
 .header-main-order {
-  max-width: 980px;
-  padding: 10px;
-  margin: auto;
+    max-width: 980px;
+    padding: 10px;
+    margin: auto;
 }
 
 .header .header-main-order i,
-a, p {
-  color: var(--header-footer-color);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.5em;
-  padding: 0 3px;
-  font-family: 'Noto Sans JP', sans-serif;
+a,
+p {
+    color: var(--header-footer-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 0 3px;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .progressbar {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  counter-reset: step;
-  margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin-bottom: 20px;
 }
 
 .progressbar::before,
 .progress {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 4px;
-  width: 100%;
-  background-color: #dcdcdc;
-  z-index: -1;
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: -1;
 }
 
 .progress {
-  background-color: var(--header-progress);
-  width: 0%;
-  transition: 0.3s;
+    background-color: var(--header-progress);
+    width: 0%;
+    transition: 0.3s;
 }
 
 .progress-step {
-  width: 2.1875rem;
-  height: 2.1875rem;
-  background-color: #dcdcdc;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .progress-step::before {
-  counter-increment: step;
-  content: counter(step);
+    counter-increment: step;
+    content: counter(step);
 }
 
 .progress-step::after {
-  content: attr(data-title);
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  font-size: 0.85rem;
-  color: var(--header-footer-color)
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: var(--header-footer-color)
 }
 
 .progress-step-active {
-  background-color: #7d2626;
-  color: #f3f3f3;
+    background-color: #7d2626;
+    color: #f3f3f3;
 }
 
 .form-step {
-  display: none;
-  transform-origin: top;
-  animation: animate 0.5s;
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
 }
 
 .form-step-active {
-  display: block;
+    display: block;
 }
 
 .btns-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    gap: 0.8rem;
+    justify-content: right;
 }
+
 /******** FOOTER ********/
 .footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--header-footer-bacground-color-primary)
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--header-footer-bacground-color-primary)
 }
 
 .footer-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 60px;
-  max-width: 980px;
-  padding: 10px;
-  margin: auto;
+    max-width: 980px;
+    padding: 10px;
+    margin: auto;
 }
 
-.footer .footer-main .footer-main-product p{
-  color: var(--header-footer-color)
+.footer .footer-main .footer-main-product p {
+    color: var(--header-footer-color)
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    color: var(--footer-buttons-color);
+    border: none;
+    border-radius: 3px;
+}
+
+#formId {
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 0 3px;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 /****** Temporal *****/
 
 p {
-  color: var(--color-secondary)
+    color: var(--color-secondary)
 }
 
 .hide {
-  display: none !important;
+    display: none !important;
+}
+
+@media  screen and (max-width: 680px) {
+    .btns-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0.8rem;
+    }
 }

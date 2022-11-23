@@ -6,14 +6,16 @@
 
 .address {
     margin: 0 auto;
-    display: flex;
-    flex-flow: row nowrap;
-    padding: 15px 60px;
-    max-width: 50vw;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto 200px;
 }
 
-.address div.form {
-    width: 85%;
+.adress-group {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 50%);
 }
 
 .address .form h2 {
@@ -23,7 +25,6 @@
 .address .form form div.formEntry {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     margin-bottom: 20px;
 }
 
@@ -38,17 +39,14 @@
 }
 
 .address .form form .formEntry.together .phoneInput select {
-   min-width: 60px;
-   width: 60px;
    border-bottom-right-radius: 0;
    border-top-right-radius: 0;
 }
 .address .form form .formEntry.together .phoneInput input {
-    min-width: 190px !important;
-    width: 192px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     border-left: 0;
+    width: 100%;
  }
 
 .address .form form .formEntry label, .formEntry.together label {
@@ -59,8 +57,6 @@
     font-size: 0.9em;
     outline: none;
     border: 1px solid black;
-    min-width: 250px;
-    width: 250px;
     padding: 3px 5px;
 }
 
@@ -76,20 +72,13 @@
     margin-right: 10px;
     border-radius: 5px;
 }
-.address .form form div.formEntryCheckbox label {
-
-}
 
 .address div.info {
-    margin-top: 20px;
-    max-width: 170px;
     background-color: rgb(223, 222, 222);
     border: 1px solid rgba(0, 0, 0, 0.243);
     padding: 10px 20px;
     height: fit-content;
 }
-
-.address .info p {}
 
 .address .info p span {
     font-weight: bold;
@@ -106,6 +95,17 @@
     width: 100%;
 }
 
+@media  screen and (max-width: 680px) {
+    .address {
+        grid-template-columns: auto;
+    }
+    
+    .adress-group {
+        grid-template-columns: auto;
+    }
+}
+
+/*
 @media  screen and (max-width: 1300px) {
     .address {
         flex-direction: column-reverse;
@@ -131,5 +131,5 @@
         margin-bottom: 40px;
     }
 }
-
+*/
 
