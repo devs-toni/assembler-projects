@@ -29,7 +29,7 @@
     </div>
   </header>
   <!-- PRODUCT PAGE -->
-  <article class="product-page">
+  <article class="product-page hide">
     <div class="product-images">
       <div class="product-thumbnails"></div>
       <div class="product-image">
@@ -57,76 +57,95 @@
     </div>
   </article>
 
-    <!-- ORDER PAGE -->
-    <section class="order-form">
-        <div class="profile hide">Profile</div>
-        <div class="address">
-            <div class="form">
-                <h2>Address</h2>
-                <form id="formId" onSubmit="user.submitAddress(event);">
-                    <div class="formEntry">
-                        <label for="firstname">First name</label>
-                        <input type="text" id="firstname" name="firstname" class="firstnameInput" />
-                    </div>
-                    <div class="formEntry">
-                        <label for="lastname">Last name</label>
-                        <input type="text" id="lastname" name="lastname" class="lastnameInput" />
-                    </div>
-                    <div class="formEntry">
-                        <label for="birthday">Birthday</label>
-                        <input type="date" id="birthday" name="birthday" class="birthdayInput" placeholder="dd/mm/yyyy"
-                             />
-                    </div>
-                    <div class="formEntry">
-                        <label for="addressOne">Adress 1</label>
-                        <input type="text" id="addressOne" name="addressOne" class="addressOneInput"  />
-                    </div>
-                    <div class="formEntry">
-                        <label for="addressTwo">Adress 2</label>
-                        <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
-                    </div>
-                    <div class="formEntry">
-                        <label for="postalCode">Postal Code</label>
-                        <input type="text" id="postalCode" class="postalCodeInput"  />
-                    </div>
-                    <div class="formEntry">
-                        <label for="country">Country</label>
-                        <select type="text" id="country" name="country" class="countrySelect" >
-                            <option value="andorra">Andorra</option>
-                            <option value="espanya">España</option>
-                            <option value="francia">Francia</option>
-                            <option value="alemania">Alemania</option>
-                            <option value="grecia">Grecia</option>
-                        </select>
-                    </div>
-                    <div class="formEntry together">
-                        <label for="phone">Phone</label>
-                        <div class="phoneInput">
-                            <select name="countryPhone" id="countryPhone" disabled>
-                                <option value="" selected disabled></option>
-                                <option data-country='andorra' value="376">AND</option>
-                                <option data-country='espanya' value="34">ESP</option>
-                                <option data-country='francia' value="33">FRA</option>
-                                <option data-country='alemania' value="49">ALE</option>
-                                <option data-country='grecia' value="30">GRE</option>
-                            </select>
-                            <input type="tel" id="phone" name="phone" class="phone"  />
-                        </div>
-                    </div>
-                    <div class="formEntryCheckbox">
-                        <label for="regularAdress">This is my regular address</label>
-                        <input type="checkbox" id="regularAddress" name="regularAddress" class="phone" />
-                    </div>
-                </form>
-            </div>
-            <div class="info">
-                <p>You started registering <span>x minutes ago.</span></p>
-                <p class="hurryUp">Hurry up!</p>
-            </div>
-        </div>
-        <div class="shipping hide">Shipping</div>
-        <div class="finish hide">Finish</div>
-        <div class="thanks-page hide">Thanks Page</div>
+  <!-- ORDER PAGE -->
+  <section class="order-form">
+    <div class="profile hide">
+      <h2>Profile</h2>
+      <div class="formEntry">
+       <label for="username">Username</label><br>
+       <input type="text" id="username" class="usernameInput" required>
+      </div>
+      <div class="formEntry">
+       <label for="email">Email</label><br>
+       <input type="email" id="email" class="emailInput" required>
+      </div>
+      <div class="formEntry">
+       <label for="password">Password</label><br>
+       <input type="password" id="password" class="passwordInput" required>
+       <span id="pswdMessage"></span>
+      </div>
+      <div class="formEntry">
+       <label for="passwordConfirm">Confirm password</label><br>
+       <input type="password" id="passwordConfirm" class="passwordConfirmInput" required>
+      </div>
+    </div>
+    <div class="address">
+      <div class="form">
+          <h2>Address</h2>
+          <form id="formId" onSubmit="user.submitAddress(event);">
+              <div class="formEntry">
+                  <label for="firstname">First name</label>
+                  <input type="text" id="firstname" name="firstname" class="firstnameInput" />
+              </div>
+              <div class="formEntry">
+                  <label for="lastname">Last name</label>
+                  <input type="text" id="lastname" name="lastname" class="lastnameInput" />
+              </div>
+              <div class="formEntry">
+                  <label for="birthday">Birthday</label>
+                  <input type="date" id="birthday" name="birthday" class="birthdayInput" placeholder="dd/mm/yyyy"
+                       />
+              </div>
+              <div class="formEntry">
+                  <label for="addressOne">Adress 1</label>
+                  <input type="text" id="addressOne" name="addressOne" class="addressOneInput"  />
+              </div>
+              <div class="formEntry">
+                  <label for="addressTwo">Adress 2</label>
+                  <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
+              </div>
+              <div class="formEntry">
+                  <label for="postalCode">Postal Code</label>
+                  <input type="text" id="postalCode" class="postalCodeInput"  />
+              </div>
+              <div class="formEntry">
+                  <label for="country">Country</label>
+                  <select type="text" id="country" name="country" class="countrySelect" >
+                      <option value="andorra">Andorra</option>
+                      <option value="espanya">España</option>
+                      <option value="francia">Francia</option>
+                      <option value="alemania">Alemania</option>
+                      <option value="grecia">Grecia</option>
+                  </select>
+              </div>
+              <div class="formEntry together">
+                  <label for="phone">Phone</label>
+                  <div class="phoneInput">
+                      <select name="countryPhone" id="countryPhone" disabled>
+                          <option value="" selected disabled></option>
+                          <option data-country='andorra' value="376">AND</option>
+                          <option data-country='espanya' value="34">ESP</option>
+                          <option data-country='francia' value="33">FRA</option>
+                          <option data-country='alemania' value="49">ALE</option>
+                          <option data-country='grecia' value="30">GRE</option>
+                      </select>
+                      <input type="tel" id="phone" name="phone" class="phone"  />
+                  </div>
+              </div>
+              <div class="formEntryCheckbox">
+                  <label for="regularAdress">This is my regular address</label>
+                  <input type="checkbox" id="regularAddress" name="regularAddress" class="phone" />
+              </div>
+          </form>
+      </div>
+      <div class="info">
+          <p>You started registering <span>x minutes ago.</span></p>
+          <p class="hurryUp">Hurry up!</p>
+      </div>
+  </div>
+    <div class="shipping hide">Shipping</div>
+    <div class="finish hide">Finish</div>
+    <div class="thanks-page hide">Thanks Page</div>
 
 
   </section>

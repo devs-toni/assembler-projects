@@ -29,7 +29,7 @@ section.order-form {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 /******** HEADER ********/
