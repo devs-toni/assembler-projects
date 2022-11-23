@@ -1,9 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mukta:wght@300;400;500;700&display=swap');
+
 /* VARIABLES GENERALES */
+html {
+  font-family: Verdana, serif;
+  font-size: 0.8em;
+}
+
 :root {
-  --color-primary: red;
-  --color-secondary: #fff;
+  --color-primary: #333;
+  --color-secondary: #959595;
+  --header-footer-color: #fff;
+  --header-footer-bacground-color-primary: #df001f;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Mukta', sans-serif;
+  color: var(--color-primary);
 }
 
 .hide {
-  display: none;
+  display: none !important;
+}
+
+/******** HEADER ********/
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: var(--header-footer-bacground-color-primary)
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  max-width: 980px;
+  padding: 10px;
+  margin: auto;
+}
+
+.header .header-main i,
+a {
+  color: var(--header-footer-color);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5em;
+  padding: 0 3px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.shop-main {
+  float: right;
+}
+
+.menu-main-logo {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.menu-main-shop {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 0 5px;
+}
+/******** FOOTER ********/
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--header-footer-bacground-color-primary)
+}
+
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  max-width: 980px;
+  padding: 10px;
+  margin: auto;
+}
+
+.footer .footer-main .footer-main-product p{
+  color: var(--header-footer-color)
 }

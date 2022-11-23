@@ -1,8 +1,9 @@
-/* .product-page {} */
-/* .product-page header {} */
-.product-page header a {
-  color: var(--color-primary);
+.product-page {
+  margin: 60px 0px;
 }
+
+/* .product-page header {} */
+
 /* .product-page nav {} */
 /* .product-page article {} */
 /* .product-page footer {} */
