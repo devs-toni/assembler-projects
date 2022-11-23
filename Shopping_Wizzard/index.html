@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/order-page.css" />
     <script type="text/javascript" src="./js/productPage.js" defer></script>
     <script type="text/javascript" src="./js/User.js"></script>
+    <script type="text/javascript" src="./js/Product.js"></script>
     <script type="text/javascript" src="./js/Main.js" defer></script>
     <script type="text/javascript" src="./js/progressBar.js" defer></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -18,7 +19,7 @@
 
 <body>
     <header class="header">
-        <div class="header-main-product hide">
+        <div class="header-main-product">
             <div class="menu-main-product-logo">
                 <i class="uil uil-streering"></i>
                 <a class="logo-main" href="index.html">Electric Scooter Factory</a>
@@ -28,7 +29,7 @@
                 <a class="shop-main" href="#shop">Shop</a>
             </div>
         </div>
-        <div class="header-main-order">
+        <div class="header-main-order hide">
             <div class="progressbar">
                 <div class="progress" id="progress"></div>
                 <div class="progress-step progress-step-active" data-title="Profile"></div>
@@ -39,7 +40,7 @@
         </div>
     </header>
     <!-- PRODUCT PAGE -->
-    <article class="product-page hide">
+    <article class="product-page">
         <div class="product-images">
             <div class="product-image">
                 <img src="./assets/products/black/black-1.png" alt="black">
@@ -69,9 +70,9 @@
         </div>
     </article>
     <!-- ORDER PAGE -->
-    <section class="order-form">
+    <section class="order-form hide">
         <!-- profile page -->
-        <div class="form-step form-step-active ">
+        <div class="form-step form-step-active">
             <div class="profile order-form-margin">
                 <h2>Profile</h2>
                 <div class="formEntry">
@@ -192,10 +193,10 @@
     </section>
     <footer class="footer">
         <div class="footer-main">
-            <div class="footer-main-product hide">
+            <div class="footer-main-product">
                 <p>Copyright © 2022 Electric Scooter Factory S.L. All rights reserved.</p>
             </div>
-            <div class="footer-main-order">
+            <div class="footer-main-order hide">
                 <div class="btns-group">
                     <input type="submit" id="formId" />
                     <a href="#" class="btn btn-prev">Previous</a>
