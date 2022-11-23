@@ -2,16 +2,42 @@ const thumbnails = document.querySelector('.product-thumbnails');
 const thumbnailsChildren = thumbnails.children
 const image = document.querySelector('.product-image');
 const productPageForm = document.getElementById('product-page-form');
+// DOM
+const productPage = document.querySelector('.product-page');
+const orderPage = document.querySelector('.order-form');
+const headerMainProduct = document.querySelector('.header-main-product');
+const headerMainOrder = document.querySelector('.header-main-order');
+const footerMainProduct = document.querySelector('.footer-main-product');
+const footerMainOrder = document.querySelector('.footer-main-order');
+
+const product = new Product();
 
 function submitForm(e) {
     e.preventDefault();
-    console.log(e.target.battery.value);
-    console.log(e.target.color.value);
+
+    // Create product
+    product.productName = 'Scooter MQT45F';
+    product.color = e.target.color.value;
+    product.batteryCapacity = e.target.battery.value;
+    product.price = 695;
+
+    // DOM change
+    productPage.classList.add('hide');
+    productPage.style.display = 'none';
+    orderPage.classList.remove('hide');
+    headerMainProduct.classList.add('hide');
+    headerMainProduct.style.display = 'none';
+    headerMainOrder.classList.remove('hide');
+    footerMainProduct.classList.add('hide');
+    footerMainProduct.style.display = 'none';
+    footerMainOrder.classList.remove('hide');
+
+    return product;
 }
 
 function getThumbnails(color) {
     for (let i = 0; i < 4; i++) {
-        let img = 
+        let img =
             `<img 
                 onclick="changeImage(${i + 1}, '${color}')" 
                 src="./assets/products/${color}/thumbnails/thumb-${color}-${i + 1}.png" 
@@ -37,3 +63,4 @@ function changeColor(color) {
 
 getThumbnails('black');
 productPageForm && productPageForm.addEventListener('submit', (e) => submitForm(e));
+
