@@ -2,16 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/index.css" />
-  <link rel="stylesheet" href="./css/product-page.css" />
-  <link rel="stylesheet" href="./css/order-page.css" />
-  <script type="text/javascript" src="./js/productPage.js" defer></script>
-  <script src="./js/formValidations.js"></script>
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <title>Electric Scooter Factory | Shopping Wizard</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/product-page.css" />
+    <link rel="stylesheet" href="./css/order-page.css" />
+    <script type="text/javascript" src="./js/productPage.js" defer></script>
+    <script type="text/javascript" src="./js/User.js"></script>
+    <script type="text/javascript" src="./js/Main.js" defer></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Electric Scooter Factory | Shopping Wizard</title>
 </head>
 
 <body>
@@ -56,64 +57,76 @@
     </div>
   </article>
 
-  <!-- ORDER PAGE -->
-  <section class="order-form hide">
-    <div class="profile hide">Profile</div>
-    <div class="address">
-      <div class="form">
-        <h2>Address</h2>
-        <form id="formId" onSubmit="javascript:submitAddress(event);">
-          <div class="formEntry">
-            <label for="firstname">First name</label>
-            <input type="text" id="firstname" name="firstname" class="firstnameInput" required />
-          </div>
-          <div class="formEntry">
-            <label for="lastname">Last name</label>
-            <input type="text" id="lastname" name="lastname" class="lastnameInput" required />
-          </div>
-          <div class="formEntry">
-            <label for="birthday">Birthday</label>
-            <input type="text" id="birthday" name="birthday" class="birthdayInput" placeholder="dd/mm/yyyy" required />
-          </div>
-          <div class="formEntry">
-            <label for="addressOne">Adress 1</label>
-            <input type="text" id="addressOne" name="addressOne" class="addressOneInput" required />
-          </div>
-          <div class="formEntry">
-            <label for="addressTwo">Adress 2</label>
-            <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
-          </div>
-          <div class="formEntry">
-            <label for="postalCode">Postal Code</label>
-            <input type="text" id="postalCode" class="postalCodeInput" required />
-          </div>
-          <div class="formEntry">
-            <label for="country">Country</label>
-            <select type="text" id="country" name="country" class="countrySelect" required>
-              <option value="andorra">Andorra</option>
-              <option value="espanya">España</option>
-              <option value="francia">Francia</option>
-              <option value="alemania">Alemania</option>
-            </select>
-          </div>
-          <div class="formEntry">
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" name="phone" class="phone" required />
-          </div>
-          <div class="formEntryCheckbox">
-            <label for="regularAdress">This is my regular address</label>
-            <input type="checkbox" id="regularAddress" name="regularAddress" class="phone" />
-          </div>
-        </form>
-      </div>
-      <div class="info">
-        <p>You started registering <span>x minutes ago.</span></p>
-        <p>Hurry up!</p>
-      </div>
-    </div>
-    <div class="shipping hide">Shipping</div>
-    <div class="finish hide">Finish</div>
-    <div class="thanks-page hide">Thanks Page</div>
+    <!-- ORDER PAGE -->
+    <section class="order-form">
+        <div class="profile hide">Profile</div>
+        <div class="address">
+            <div class="form">
+                <h2>Address</h2>
+                <form id="formId" onSubmit="user.submitAddress(event);">
+                    <div class="formEntry">
+                        <label for="firstname">First name</label>
+                        <input type="text" id="firstname" name="firstname" class="firstnameInput" />
+                    </div>
+                    <div class="formEntry">
+                        <label for="lastname">Last name</label>
+                        <input type="text" id="lastname" name="lastname" class="lastnameInput" />
+                    </div>
+                    <div class="formEntry">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" id="birthday" name="birthday" class="birthdayInput" placeholder="dd/mm/yyyy"
+                             />
+                    </div>
+                    <div class="formEntry">
+                        <label for="addressOne">Adress 1</label>
+                        <input type="text" id="addressOne" name="addressOne" class="addressOneInput"  />
+                    </div>
+                    <div class="formEntry">
+                        <label for="addressTwo">Adress 2</label>
+                        <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
+                    </div>
+                    <div class="formEntry">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="text" id="postalCode" class="postalCodeInput"  />
+                    </div>
+                    <div class="formEntry">
+                        <label for="country">Country</label>
+                        <select type="text" id="country" name="country" class="countrySelect" >
+                            <option value="andorra">Andorra</option>
+                            <option value="espanya">España</option>
+                            <option value="francia">Francia</option>
+                            <option value="alemania">Alemania</option>
+                            <option value="grecia">Grecia</option>
+                        </select>
+                    </div>
+                    <div class="formEntry together">
+                        <label for="phone">Phone</label>
+                        <div class="phoneInput">
+                            <select name="countryPhone" id="countryPhone" disabled>
+                                <option value="" selected disabled></option>
+                                <option data-country='andorra' value="376">AND</option>
+                                <option data-country='espanya' value="34">ESP</option>
+                                <option data-country='francia' value="33">FRA</option>
+                                <option data-country='alemania' value="49">ALE</option>
+                                <option data-country='grecia' value="30">GRE</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" class="phone"  />
+                        </div>
+                    </div>
+                    <div class="formEntryCheckbox">
+                        <label for="regularAdress">This is my regular address</label>
+                        <input type="checkbox" id="regularAddress" name="regularAddress" class="phone" />
+                    </div>
+                </form>
+            </div>
+            <div class="info">
+                <p>You started registering <span>x minutes ago.</span></p>
+                <p class="hurryUp">Hurry up!</p>
+            </div>
+        </div>
+        <div class="shipping hide">Shipping</div>
+        <div class="finish hide">Finish</div>
+        <div class="thanks-page hide">Thanks Page</div>
 
 
   </section>

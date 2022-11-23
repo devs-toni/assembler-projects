@@ -22,6 +22,12 @@ html {
   color: var(--color-primary);
 }
 
+section.order-form {
+  width: 60%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
 .hide {
   display: none;
 }
