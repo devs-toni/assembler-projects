@@ -12,6 +12,7 @@ html {
   --color-secondary: #959595;
   --header-footer-color: #fff;
   --header-footer-bacground-color-primary: #df001f;
+  --header-progress:#7d2626;
 }
 
 * {
@@ -28,8 +29,12 @@ section.order-form {
   padding: 50px;
 }
 
-.hide {
-  display: none !important;
+.width-50 {
+  width: 50%;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 /******** HEADER ********/
@@ -78,10 +83,6 @@ a, p {
 
 /******** HEADER ORDER ********/
 .header-main-order {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
   max-width: 980px;
   padding: 10px;
   margin: auto;
@@ -97,6 +98,75 @@ a, p {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin-bottom: 20px;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--header-progress);
+  width: 0%;
+  transition: 0.3s;
+}
+
+.progress-step {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 0.85rem;
+  color: var(--header-footer-color)
+}
+
+.progress-step-active {
+  background-color: #7d2626;
+  color: #f3f3f3;
+}
+
+.form-step {
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
+}
+
+.form-step-active {
+  display: block;
+}
+
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
 /******** FOOTER ********/
 .footer {
   position: fixed;
@@ -118,4 +188,14 @@ a, p {
 
 .footer .footer-main .footer-main-product p{
   color: var(--header-footer-color)
+}
+
+/****** Temporal *****/
+
+p {
+  color: var(--color-secondary)
+}
+
+.hide {
+  display: none;
 }
