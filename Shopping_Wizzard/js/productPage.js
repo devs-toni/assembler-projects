@@ -32,6 +32,7 @@ function submitForm(e) {
     footerMainProduct.style.display = 'none';
     footerMainOrder.classList.remove('hide');
 
+    removeEventListener('submit', submitForm, true);
     return product;
 }
 
