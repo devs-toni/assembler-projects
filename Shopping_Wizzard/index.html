@@ -17,15 +17,18 @@
 
 <body>
   <header class="header">
-    <div class="header-main">
-      <div class="menu-main-logo">
+    <div class="header-main-product">
+      <div class="menu-main-product-logo">
         <i class="uil uil-streering"></i>
         <a class="logo-main" href="index.html">Electric Scooter Factory</a>
       </div>
-      <div class="menu-main-shop">
+      <div class="menu-main-product-shop">
         <i class="uil uil-store"></i>
         <a class="shop-main" href="#shop">Shop</a>
       </div>
+    </div>
+    <div class="header-main-order hide">
+      <p>hola</p>
     </div>
   </header>
   <!-- PRODUCT PAGE -->
@@ -55,6 +58,7 @@
         <input type="radio" name="color" value="red" onclick="changeColor('red')">
       </form>
     </div>
+    <input type="submit" form="formId" />
   </article>
 
   <!-- ORDER PAGE -->
@@ -160,11 +164,10 @@
   </section>
   <footer class="footer">
     <div class="footer-main">
-      <div class="footer-main-product hide">
+      <div class="footer-main-product">
         <p>Copyright © 2022 Electric Scooter Factory S.L. All rights reserved.</p>
       </div>
-      <div class="footer-main-order">
-        <input type="submit" form="formId" />
+      <div class="footer-main-order hide">
         <button>Clear Form</button>
         <button>Next</button>
       </div>
