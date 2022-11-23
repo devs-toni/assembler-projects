@@ -28,28 +28,45 @@
     </div>
 
     <!-- ORDER PAGE -->
-    <section class="order-form hide">
-      <header class="progress-bar">
+    <section class="order-form ">
+      <header class="order-form__progress-bar">
         Progress
       </header>
 
-        <div class="profile">
-          Profile
+        <div class="order-form__profile">
+          <h2>Profile</h2>
+         <div class="formEntry">
+          <label for="username">Username</label><br>
+          <input type="text" id="username" class="usernameInput" required>
+         </div>
+         <div class="formEntry">
+          <label for="email">Email</label><br>
+          <input type="email" id="email" class="emailInput" required>
+         </div>
+         <div class="formEntry">
+          <label for="password">Password</label><br>
+          <input type="password" id="password" class="passwordInput" required>
+          <span id="pswdMessage"></span>
+         </div>
+         <div class="formEntry">
+          <label for="passwordConfirm">Confirm password</label><br>
+          <input type="password" id="passwordConfirm" class="passwordConfirmInput" required>
+         </div>
         </div>
-        <div class="address hide">
+        <div class="order-form__address hide">
           Address
         </div>
-        <div class="shipping hide">
+        <div class="order-form__shipping hide">
           Shipping
         </div>
-        <div class="finish hide">
+        <div class="order-form__finish hide">
           Finish
         </div>
-        <div class="thanks-page hide">
+        <div class="order-form__thanks-page hide">
           Thanks Page
         </div>
 
-      <footer class="footer">
+      <footer class="order-form__footer">
         <button>Clear Form</button>
         <button>Next</button>
       </footer>
