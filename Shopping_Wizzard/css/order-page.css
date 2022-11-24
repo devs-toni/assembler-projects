@@ -1,5 +1,5 @@
 .order-form-margin {
-  margin: 60px 0px;
+    margin: 60px 0px;
 }
 
 
@@ -20,146 +20,154 @@
 
 .profile .profileForm h2 {
     margin-bottom: 40px;
-  }
+}
 
-  .profile .profileForm form div.formEntry {
+.profile .profileForm form div.formEntry {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-  }
+}
 
-  .profile .profileForm form .formEntry label {
-  margin-bottom: 8px;
+.profile .profileForm form .formEntry label {
+    margin-bottom: 8px;
 }
 
 .profileGroup {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(2, 50%);
-  }
-  
+}
+
 
 .profile .profileForm .formEntry input {
-  font-size: 0.9em;
-  outline: none;
-  border: 1px solid black;
-  padding: 3px 5px;
+    font-size: 0.9em;
+    outline: none;
+    border: 1px solid black;
+    padding: 3px 5px;
 }
+
 /* Adress */
 
 .address {
-  margin: 0 auto;
-  padding: 20px;
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: auto 200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto 200px;
 }
 
 .adress-group {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, 50%);
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(2, 50%);
 }
 
 .address .form h2 {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
-.address .form form div.formEntry {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+.address .form .adress-group .formEntry {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.address .form form div.formEntry.together {
-  display: flex;
-  flex-direction: column;
+.address .form .adress-group .formEntry.together {
+    display: flex;
+    flex-direction: column;
 }
 
-.address .form form .formEntry.together .phoneInput {
-  display: flex;
-  flex-direction: row;
+.address .form .adress-group .formEntry.together .phoneInput {
+    display: flex;
+    flex-direction: row;
 }
 
-.address .form form .formEntry.together .phoneInput select {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-}
-.address .form form .formEntry.together .phoneInput input {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-left: 0;
-  width: 100%;
+.address .form .adress-group .formEntry.together .phoneInput select {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
 }
 
-.address .form form .formEntry label,
+.address .form .adress-group .formEntry.together .phoneInput input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left: 0;
+    width: 100%;
+}
+
+.address .form .adress-group .formEntry label,
 .formEntry.together label {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
-.address .form .formEntry input,
+.address .form .adress-group .formEntry input,
 .formEntry select {
-  font-size: 0.9em;
-  outline: none;
-  border: 1px solid black;
-  padding: 3px 5px;
+    font-size: 0.9em;
+    outline: none;
+    border: 1px solid black;
+    padding: 3px 5px;
 }
 
-.address .form form div.formEntryCheckbox {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: start;
-  align-items: center;
-  margin-bottom: 20px;
+.address .form .adress-group .formEntryCheckbox {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.address .form form div.formEntryCheckbox input {
-  margin-right: 10px;
-  border-radius: 5px;
+.address .form .adress-group .formEntryCheckbox input {
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 .address div.info {
-  background-color: rgb(223, 222, 222);
-  border: 1px solid rgba(0, 0, 0, 0.243);
-  padding: 10px 20px;
-  height: fit-content;
+    background-color: rgb(223, 222, 222);
+    border: 1px solid rgba(0, 0, 0, 0.243);
+    padding: 10px 20px;
+    height: fit-content;
 }
 
 .address .info p span {
-  font-weight: bold;
+    font-weight: bold;
 }
+
 .address .info p.hurryUp {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .error {
-  color: red;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 8px;
-  width: 100%;
+    color: red;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 8px;
+    width: 100%;
 }
 
 /* Shipping */
 
+.shipping {
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .ship-title {
-  margin-bottom: 18px;
+    margin-bottom: 18px;
 }
 
 .ship-type {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .ship-type .form-entry {
-  margin-bottom: 10px;
-  display: inline-flex;
-  align-items: center;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .ship-type h3 {
-  margin-bottom: 10px;
-  font-size: 0.9em;
+    margin-bottom: 10px;
+    font-size: 0.9em;
 }
 
 .ship-type input[type="radio"] {
@@ -174,7 +182,7 @@
 }
 
 .ship-type label span {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .ship-date {
@@ -202,18 +210,18 @@
 }
 
 .ship-gift {
-  margin-top: 10px;
-  display: inline-flex;
-  align-items: center;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .ship-gift input[type="checkbox"] {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 
 .ship-gift label {
-  font-size: 0.8em;
-  font-weight: lighter;
+    font-size: 0.8em;
+    font-weight: lighter;
 }
 
 .ship-gift-options {
@@ -246,31 +254,31 @@
   display: flex;
 }
 
-@media screen and (max-width: 680px) {
-  .address {
-    grid-template-columns: auto;
-  }
 
-  .adress-group {
-    grid-template-columns: auto;
-  }
+/* thanks page */
+
+.thanks-page {
+    margin: 0 auto;
+    padding: 20px;
 }
 
-@media  screen and (max-width: 1300px) {
+/*
+@media screen and (max-width: 1300px) {
     .address {
         flex-direction: column-reverse;
         align-items: center;
         text-align: left;
     }
 
-    .address .form form div.formEntry, .formEntryCheckbox {
+    .address .form .adress-group .formEntry,
+    .formEntryCheckbox {
         width: 50%;
         align-items: center;
         justify-content: center;
         margin: 30px auto;
     }
 
-    .address .form form .formEntryCheckbox label {
+    .address .form .adress-group .formEntryCheckbox label {
         flex-grow: 1;
     }
 
@@ -281,3 +289,15 @@
         margin-bottom: 40px;
     }
 }
+*/
+
+@media screen and (max-width: 680px) {
+    .address {
+        grid-template-columns: auto;
+    }
+
+    .adress-group {
+        grid-template-columns: auto;
+    }
+}
+

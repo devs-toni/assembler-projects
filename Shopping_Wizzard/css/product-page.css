@@ -1,9 +1,12 @@
-.product-page {
-    display: flex;
-    align-items: center;
-    max-width: 1260px;
+.grid-container {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr;
+    grid-gap: 20px;
     margin: 0 auto;
-    margin-top: 60px;
+    padding: 20px;
+    max-width: 980px;
+    place-items: center;
+    height: 100%;
 }
 
 .product-page .product-images {
@@ -17,20 +20,23 @@
     flex-direction: column;
     align-items: baseline;
     align-content: baseline;
-    padding-top: 260px;
+}
+
+.product-page .product-image {
+    height: auto;
+    width: auto;
+    max-width: 240px;
+    max-height: 300px;
+    overflow: hidden;
 }
 
 .product-page .product-image img {
-    width: 100vw;
-    max-width: 800px;
-    max-height: 800px;
-    margin-right: -100px;
+    transform: scale(0.2);
+    margin: -977px 0px 0px -981px;
 }
 
 .product-page .product-info {
-    width: 30vw;
     align-content: center;
-    padding-left: 50px;
 }
 
 .product-page .product-info h2 {
@@ -110,38 +116,37 @@
     border-radius: 5px;
 }
 
-@media (max-width: 1268px) {
-    .product-page {
-        flex-direction: column;
-    }
-
-    .product-page .product-images {
-        flex-direction: column;
-        width: 100vw;
+@media screen and (max-width: 740px) {
+    .grid-container {
+        grid-template-columns: 80px 1fr;
+        grid-gap: 20px;
         margin: 0 auto;
+        padding: 20px;
+        max-width: 980px;
+        place-items: center;
+        height: 100%;
+        grid-template-areas:
+            "a b b"
+            "c c c";
     }
 
-    .product-page .product-info {
-        width: 100vw;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 80px;
+    .product-thumbnails {
+        grid-area: a;
     }
 
     .product-page .product-info>h2 {
         text-align: center;
         text-align: center;
-
+    }
+    
+    .product-image {
+        grid-area: b;
     }
 
-    .product-page .product-thumbnails {
-        flex-direction: row;
-        padding: 0;
-        margin: 0 auto;
+    .product-info {
+        grid-area: c;
     }
-
-    .product-page .product-image img {
-        margin: 0;
-        padding: 0;
+    .product-page .product-info form input[type='submit'] {
+        margin-bottom: 50px;
     }
 }
