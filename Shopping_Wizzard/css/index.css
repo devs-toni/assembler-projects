@@ -242,7 +242,7 @@ p {
 
 .btns-group {
     display: grid;
-    grid-template-columns: 20% 20% 20%;
+    grid-template-columns: 20% 20%;
     gap: 0.8rem;
     justify-content: right;
 }
@@ -330,7 +330,7 @@ p {
 @media screen and (max-width: 680px) {
     .btns-group {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 0.8rem;
     }
     
