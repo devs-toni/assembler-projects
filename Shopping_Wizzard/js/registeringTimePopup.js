@@ -30,7 +30,7 @@ function registeringPopup() {
                 <p class="hurryUp">Hurry up!</p>
             </div>`;
 
-        if ((timeElapsed > 3000 && timeElapsed < 5000) ||
+        if ((timeElapsed > 30000 && timeElapsed < 35000) ||
             (timeElapsed > 60000 && timeElapsed < 65000) ||
             (timeElapsed > 90000 && timeElapsed < 95000) ||
             (timeElapsed > 120000 && timeElapsed < 125000)) {
