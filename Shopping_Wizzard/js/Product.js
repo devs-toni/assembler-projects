@@ -13,7 +13,7 @@ class Product {
         // Create product
         product.color = e.target.color.value;
         product.batteryCapacity = e.target.battery.value;
-        product.image = `./assets/products/${e.target.color.value}/${e.target.color.value}-1.png`;    
+        product.image = `./assets/products/${e.target.color.value}/${e.target.color.value}-1.png`;
         switch (e.target.color.value) {
             case 'black':
                 product.productName = 'Scooter MQT45BK';
@@ -50,6 +50,7 @@ class Product {
         footerMainProduct.style.display = 'none';
         footerMainOrder.classList.remove('hide');
 
+        // Remove eventlisteners
         removeEventListener('submit', this.submitForm, true);
         removeEventListener('click', this.changeBatteryModel, true);
         removeEventListener('click', this.changeColor, true);
@@ -118,5 +119,11 @@ class Product {
         image.children[0].src = `./assets/products/${color}/${color}-${imageNumber}.png`;
     }
 
-
+    removeProduct() {
+        this.productName = '';
+        this.price = '';
+        this.color = '';
+        this.batteryCapacity = '';
+        this.image = '';
+    }
 }
