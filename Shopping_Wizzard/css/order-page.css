@@ -164,15 +164,41 @@
 
 .ship-type input[type="radio"] {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .ship-type label {
   font-size: 0.8em;
   font-weight: lighter;
+  cursor: pointer;
 }
 
 .ship-type label span {
   font-weight: bold;
+}
+
+.ship-date {
+  display: none;
+  flex-direction: column;
+}
+
+.ship-date h4 {
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+
+.ship-date .estimate-date {
+  font-size: 0.5em;
+  margin: 10px 0 15px 0;
+  padding-left: 0;
+}
+
+.ship-date .delivery-date {
+  color: black;
+  font-size: 0.6em;
+  margin-bottom: 10px;
+  font-weight: lighter;
+  padding-left: 0;
 }
 
 .ship-gift {
@@ -190,32 +216,34 @@
   font-weight: lighter;
 }
 
-.ship-gift-message {
-    margin-top: 10px;
+.ship-gift-options {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-.ship-gift-message p {
-    font-size: 0.7em;
-    color: black;
-    font-weight: lighter;
+.ship-gift-options label {
+  font-size: 0.7em;
+  color: black;
+  font-weight: lighter;
+  padding-left: 0;
 }
 
-.ship-gift-message textarea {
-    margin-top: 10px;
+.ship-gift-options textarea, .ship-gift-options input {
+  margin-top: 10px;
+  width: 300px;
+  margin-bottom: 10px;
+  outline: none;
+  resize: none;
 }
 
-.ship-gift-image {
-
+.ship-gift-options span.error {
+  font-size: 0.8em;
+  margin: 0 0 10px 0;
 }
 
-.ship-gift-image p {
-    font-size: 0.7em;
-    color: black;
-    font-weight: lighter;
-}
-
-.ship-gift-image input[type="file"] {
-    margin-top: 8px;
+.visible {
+  display: flex;
 }
 
 @media screen and (max-width: 680px) {

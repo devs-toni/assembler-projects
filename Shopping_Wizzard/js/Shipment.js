@@ -1,6 +1,6 @@
 class Shipment {
     constructor(){
-
+        this.type = '';
     }
     
 }
