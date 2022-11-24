@@ -1,5 +1,6 @@
 const registeringPopupDiv = document.querySelector('.registering-time-popup');
 const registeringPopupSpan = document.querySelector('#registerinTimePopup');
+const productForm = document.getElementById('product-page-form');
 
 let timeElapsed = 0;
 let secondsElapsed = 0;
@@ -12,7 +13,7 @@ function registeringPopup() {
         timeElapsed = Date.now() - startTime;
         secondsToTime(Math.round(timeElapsed / 1000))
         registeringPopupSpan.innerHTML = '';
-        registeringPopupSpan.textContent = `${minutesElapsed}:${secondsElapsed} minutes ago`
+        registeringPopupSpan.textContent = `${minutesElapsed}:${secondsElapsed} minutes ago`;
 
         if ((timeElapsed > 60000 && timeElapsed < 65000) ||
             (timeElapsed > 120000 && timeElapsed < 125000) ||
@@ -23,7 +24,6 @@ function registeringPopup() {
         } else {
             registeringPopupDiv.classList.remove('show-popup');
             registeringPopupDiv.classList.add('hide-popup');
-            registeringPopupDiv.style.style = 'none';
         }
     }, 1000);
 
@@ -35,4 +35,4 @@ function secondsToTime(e) {
     secondsElapsed = Math.floor(e % 60).toString().padStart(2, '0');
 }
 
-productPageForm.addEventListener('submit', () => registeringPopup());
+productForm.addEventListener('submit', () => registeringPopup());
