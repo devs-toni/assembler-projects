@@ -129,7 +129,6 @@ const chooseShipmentType = (event) => {
             maxDate.setDate(now.getDate() + 2);
             break;
     }
-
     document.getElementById('minDate').style.fontWeight = 'bold';
     document.getElementById('maxDate').style.fontWeight = 'bold';
     document.getElementById('minDate').textContent = `${minDate.getDate()} de ${months[minDate.getMonth()]} de ${minDate.getFullYear()}`;

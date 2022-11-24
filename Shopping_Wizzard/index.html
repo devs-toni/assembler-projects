@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,14 +16,11 @@
     <script type="text/javascript" src="./js/Main.js" defer></script>
     <script type="text/javascript" src="./js/productPage.js" defer></script>
     <script type="text/javascript" src="./js/progressBar.js" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <title>Electric Scooter Factory | Shopping Wizard</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="registering-time-popup hide">
         <div>
             <p>You started registering <span id="registerinTimePopup">x minutes ago.</span></p>
@@ -30,370 +28,238 @@
         </div>
     </div>
     <header class="header">
-      <div class="header-main-product">
-        <div class="menu-main-product-logo">
-          <i class="uil uil-streering"></i>
-          <a class="logo-main" href="index.html">Electric Scooter Factory</a>
+        <div class="header-main-product">
+            <div class="menu-main-product-logo">
+                <i class="uil uil-streering"></i>
+                <a class="logo-main" href="index.html">Electric Scooter Factory</a>
+            </div>
+            <div class="menu-main-product-shop">
+                <i class="uil uil-store"></i>
+                <a class="shop-main" href="#shop">Shop</a>
+            </div>
         </div>
-        <div class="menu-main-product-shop">
-          <i class="uil uil-store"></i>
-          <a class="shop-main" href="#shop">Shop</a>
+        <div class="header-main-order hide">
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>
+                <div class="progress-step progress-step-active" data-title="Profile"></div>
+                <div class="progress-step" data-title="Adress"></div>
+                <div class="progress-step" data-title="Shipping"></div>
+                <div class="progress-step" data-title="Finish"></div>
+            </div>
         </div>
-      </div>
-      <div class="header-main-order hide">
-        <div class="progressbar">
-          <div class="progress" id="progress"></div>
-          <div
-            class="progress-step progress-step-active"
-            data-title="Profile"
-          ></div>
-          <div class="progress-step" data-title="Adress"></div>
-          <div class="progress-step" data-title="Shipping"></div>
-          <div class="progress-step" data-title="Finish"></div>
-        </div>
-      </div>
     </header>
     <!-- PRODUCT PAGE -->
     <article class="product-page">
-      <div class="product-images">
-        <div class="product-image">
-          <img src="./assets/products/black/black-1.png" alt="black" />
+        <div class="product-images">
+            <div class="product-image">
+                <img src="./assets/products/black/black-1.png" alt="black" />
+            </div>
+            <div class="product-thumbnails"></div>
         </div>
-        <div class="product-thumbnails"></div>
-      </div>
-      <div class="product-info">
-        <h2 id="productTitle">Scooter MQT45BK</h2>
-        <p id="productPrice">695 €</p>
-        <form id="product-page-form">
-          <div>
-            <label for="battery">Capacidad de la bateria</label>
-            <select id="batterySelect" name="battery">
-              <option value="10000mAh">10000mAh</option>
-              <option value="20000mAh">20000mAh</option>
-              <option value="30000mAh">30000mAh</option>
-            </select>
-          </div>
-          <label for="color" class="hide">Color</label>
-          <input
-            type="radio"
-            name="color"
-            value="black"
-            onclick="changeColor('black')"
-            checked
-          />
-          <input
-            type="radio"
-            name="color"
-            value="white"
-            onclick="changeColor('white')"
-          />
-          <input
-            type="radio"
-            name="color"
-            value="blue"
-            onclick="changeColor('blue')"
-          />
-          <input
-            type="radio"
-            name="color"
-            value="red"
-            onclick="changeColor('red')"
-          />
-          <br />
-          <input type="submit" value="Buy" />
-        </form>
-      </div>
+        <div class="product-info">
+            <h2 id="productTitle">Scooter MQT45BK</h2>
+            <p id="productPrice">695 €</p>
+            <form id="product-page-form">
+                <div>
+                    <label for="battery">Capacidad de la bateria</label>
+                    <select id="batterySelect" name="battery">
+                        <option value="10000mAh">10000mAh</option>
+                        <option value="20000mAh">20000mAh</option>
+                        <option value="30000mAh">30000mAh</option>
+                    </select>
+                </div>
+                <label for="color" class="hide">Color</label>
+                <input type="radio" name="color" value="black" onclick="changeColor('black')" checked />
+                <input type="radio" name="color" value="white" onclick="changeColor('white')" />
+                <input type="radio" name="color" value="blue" onclick="changeColor('blue')" />
+                <input type="radio" name="color" value="red" onclick="changeColor('red')" />
+                <br />
+                <input type="submit" value="Buy" />
+            </form>
+        </div>
     </article>
     <!-- ORDER PAGE -->
     <section class="order-form hide">
-      <!-- profile page -->
-      <div class="form-step form-step-active">
-        <div class="profile order-form-margin">
-              <div class="profileForm">
-          <h2>Profile</h2>
-                <form id="profileForm" onSubmit="user.submitLogin(event);">
-                <div class="profileGroup">
-          <div class="formEntry">
-            <label for="username">Username</label><br />
-            <input type="text" id="username" class="usernameInput" required />
-          </div>
-          <div class="formEntry">
-            <label for="email">Email</label><br />
-            <input type="email" id="email" class="emailInput" required />
-          </div>
-          <div class="formEntry">
-            <label for="password">Password</label><br />
-            <input
-              type="password"
-              id="password"
-              class="passwordInput"
-              required
-            />
-            <span id="pswdMessage"></span>
-          </div>
-          <div class="formEntry">
-            <label for="passwordConfirm">Confirm password</label><br />
-            <input
-              type="password"
-              id="passwordConfirm"
-              class="passwordConfirmInput"
-              required
-            />
+        <!-- profile page -->
+        <div class="form-step form-step-active">
+            <div class="profile order-form-margin">
+                <div class="profileForm">
+                    <h2>Profile</h2>
+                    <form id="profileForm" onSubmit="user.submitLogin(event);">
+                        <div class="profileGroup">
+                            <div class="formEntry">
+                                <label for="username">Username</label><br />
+                                <input type="text" id="username" class="usernameInput" required />
+                            </div>
+                            <div class="formEntry">
+                                <label for="email">Email</label><br />
+                                <input type="email" id="email" class="emailInput" required />
+                            </div>
+                            <div class="formEntry">
+                                <label for="password">Password</label><br />
+                                <input type="password" id="password" class="passwordInput" required />
+                                <span id="pswdMessage"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="passwordConfirm">Confirm password</label><br />
+                                <input type="password" id="passwordConfirm" class="passwordConfirmInput" required />
+                            </div>
+                    </form>
                 </div>
+            </div>
+        </div>
+        </div>
+        <!-- address page -->
+        <div class="form-step">
+            <div class="address order-form-margin">
+                <div class="form">
+                    <h2>Address</h2>
+                    <form id="formIdAddress" onSubmit="user.submitAddress(event);">
+                        <div class="adress-group">
+                            <div class="formEntry">
+                                <label for="firstname">First name</label>
+                                <input type="text" id="firstname" name="firstname" class="firstnameInput" required />
+                                <span data-target="firstname" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="lastname">Last name</label>
+                                <input type="text" id="lastname" name="lastname" class="lastnameInput" required />
+                                <span data-target="lastname" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="birthday">Birthday</label>
+                                <input type="date" id="birthday" name="birthday" class="birthdayInput"
+                                    placeholder="dd/mm/yyyy" required />
+                                <span data-target="birthday" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="addressOne">Adress 1</label>
+                                <input type="text" id="addressOne" name="addressOne" class="addressOneInput" required />
+                                <span data-target="addressOne" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="addressTwo">Adress 2</label>
+                                <input type="text" id="addressTwo" name="addressTwo" class="addressTwoInput" />
+                                <span data-target="addressTwo" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="postalCode">Postal Code</label>
+                                <input type="text" id="postalCode" class="postalCodeInput" required />
+                                <span data-target="postalCode" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry">
+                                <label for="country">Country</label>
+                                <select type="text" id="country" name="country" class="countrySelect" required>
+                                    <option value="" selected disabled></option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Espanya">España</option>
+                                    <option value="Francia">Francia</option>
+                                    <option value="Alemania">Alemania</option>
+                                    <option value="Grecia">Grecia</option>
+                                </select>
+                                <span data-target="country" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntry together">
+                                <label for="phone">Phone</label>
+                                <div class="phoneInput">
+                                    <select name="countryPhone" id="countryPhone" disabled>
+                                        <option data-country="" value="" selected disabled></option>
+                                        <option data-country="Andorra" value="+376">+376</option>
+                                        <option data-country="Espanya" value="+34">+34</option>
+                                        <option data-country="Francia" value="+33">+33</option>
+                                        <option data-country="Alemania" value="+49">+49</option>
+                                        <option data-country="Grecia" value="+30">+30</option>
+                                    </select>
+                                    <input type="tel" id="phone" name="phone" class="phone" required />
+                                </div>
+                                <span data-target="phone" id="error" class="error"></span>
+                            </div>
+                            <div class="formEntryCheckbox">
+                                <label for="regularAdress">This is my regular address</label>
+                                <input type="checkbox" id="regularAddress" name="regularAddress" class="phone" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="info">
+                    <p>You started registering <span>x minutes ago.</span></p>
+                    <p class="hurryUp">Hurry up!</p>
+                </div>
+            </div>
+        </div>
+        <!-- shipping page -->
+        <div class="form-step">
+            <div class="shipping order-form-margin">
+                <form id="formIdShipment" onSubmit="delivery.submitShipment(event);">
+                    <h2 class="ship-title">Shipping</h2>
+                    <div class="ship-type">
+                        <h3>Shipping type</h3>
+                        <div class="form-entry">
+                            <input type="radio" name="radioShipType" id="freeShipment" value="72" required />
+                            <label for="freeShipment">Free Shipment (72H)</label>
+                        </div>
+                        <div class="form-entry">
+                            <input type="radio" name="radioShipType" id="extraShipment" value="48" required />
+                            <label for="extraShipment">Extra shipping (48H)
+                                <span class="price-shipment">4,99 €</span></label>
+                        </div>
+                        <div class="form-entry">
+                            <input type="radio" name="radioShipType" id="premiumShipment" value="24" required />
+                            <label for="premiumShipment">Premium (24H)
+                                <span class="price-shipment">9,99 €</span></label>
+                        </div>
+                    </div>
+                    <div class="ship-date" id="shipDate">
+                        <h4>Your order will arrive:</h4>
+                        <p class="estimate-date">ESTIMATE DELIVERY DATE:</p>
+                        <span class="delivery-date">Between <span id="minDate"></span> and
+                            <span id="maxDate"></span>
+                        </span>
+                    </div>
+                    <div class="ship-gift">
+                        <input type="checkbox" id="isGift" value="isGift" />
+                        <label for="isGift">Is it a gift?</label>
+                    </div>
+                    <div class="ship-gift-options" id="shipGiftOptions">
+                        <label class="ship-gift-message-title" for="giftTitle">Gitf title</label>
+                        <input type="text" id="giftTitle" name="giftTitle" />
+                        <label class="ship-gift-message-title" for="giftMessage">Gift message</label>
+                        <textarea name="giftMessage" id="giftMessage" rows="6"></textarea>
+                        <span data-target="giftMessage" id="error" class="error"></span>
+                        <label>Gift wrapper image</label>
+                        <input type="file" name="giftImageFile" id="giftImage" accept="image/png, image/jpeg" />
+                    </div>
                 </form>
-              </div>
-          </div>
-        </div>
-      </div>
-      <!-- address page -->
-      <div class="form-step">
-        <div class="address order-form-margin">
-          <div class="form">
-            <h2>Address</h2>
-            <form id="formAddress" onSubmit="user.submitAddress(event);">
-              <div class="adress-group">
-                <div class="formEntry">
-                  <label for="firstname">First name</label>
-                  <input
-                    type="text"
-                    id="firstname"
-                    name="firstname"
-                    class="firstnameInput"
-                    required
-                  />
-                  <span data-target="firstname" id="error" class="error"></span>
-                </div>
-                <div class="formEntry">
-                  <label for="lastname">Last name</label>
-                  <input
-                    type="text"
-                    id="lastname"
-                    name="lastname"
-                    class="lastnameInput"
-                    required
-                  />
-                  <span data-target="lastname" id="error" class="error"></span>
-                </div>
-                <div class="formEntry">
-                  <label for="birthday">Birthday</label>
-                  <input
-                    type="date"
-                    id="birthday"
-                    name="birthday"
-                    class="birthdayInput"
-                    placeholder="dd/mm/yyyy"
-                    required
-                  />
-                  <span data-target="birthday" id="error" class="error"></span>
-                </div>
-                <div class="formEntry">
-                  <label for="addressOne">Adress 1</label>
-                  <input
-                    type="text"
-                    id="addressOne"
-                    name="addressOne"
-                    class="addressOneInput"
-                    required
-                  />
-                  <span
-                    data-target="addressOne"
-                    id="error"
-                    class="error"
-                  ></span>
-                </div>
-                <div class="formEntry">
-                  <label for="addressTwo">Adress 2</label>
-                  <input
-                    type="text"
-                    id="addressTwo"
-                    name="addressTwo"
-                    class="addressTwoInput"
-                  />
-                  <span
-                    data-target="addressTwo"
-                    id="error"
-                    class="error"
-                  ></span>
-                </div>
-                <div class="formEntry">
-                  <label for="postalCode">Postal Code</label>
-                  <input
-                    type="text"
-                    id="postalCode"
-                    class="postalCodeInput"
-                    required
-                  />
-                  <span
-                    data-target="postalCode"
-                    id="error"
-                    class="error"
-                  ></span>
-                </div>
-                <div class="formEntry">
-                  <label for="country">Country</label>
-                  <select
-                    type="text"
-                    id="country"
-                    name="country"
-                    class="countrySelect"
-                    required
-                  >
-                    <option value="" selected disabled></option>
-                    <option value="Andorra">Andorra</option>
-                    <option value="Espanya">España</option>
-                    <option value="Francia">Francia</option>
-                    <option value="Alemania">Alemania</option>
-                    <option value="Grecia">Grecia</option>
-                  </select>
-                  <span data-target="country" id="error" class="error"></span>
-                </div>
-                <div class="formEntry together">
-                  <label for="phone">Phone</label>
-                  <div class="phoneInput">
-                    <select name="countryPhone" id="countryPhone" disabled>
-                      <option
-                        data-country=""
-                        value=""
-                        selected
-                        disabled
-                      ></option>
-                      <option data-country="Andorra" value="+376">+376</option>
-                      <option data-country="Espanya" value="+34">+34</option>
-                      <option data-country="Francia" value="+33">+33</option>
-                      <option data-country="Alemania" value="+49">+49</option>
-                      <option data-country="Grecia" value="+30">+30</option>
-                    </select>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      class="phone"
-                      required
-                    />
-                  </div>
-                  <span data-target="phone" id="error" class="error"></span>
-                </div>
-                <div class="formEntryCheckbox">
-                  <label for="regularAdress">This is my regular address</label>
-                  <input
-                    type="checkbox"
-                    id="regularAddress"
-                    name="regularAddress"
-                    class="phone"
-                  />
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="info">
-            <p>You started registering <span>x minutes ago.</span></p>
-            <p class="hurryUp">Hurry up!</p>
-          </div>
-        </div>
-      </div>
-      <!-- shipping page -->
-      <div class="form-step">
-        <div class="shipping order-form-margin">
-          <form id="formId" onSubmit="ship.submitShipment(event);">
-            <h2 class="ship-title">Shipping</h2>
-            <div class="ship-type">
-              <h3>Shipping type</h3>
-              <div class="form-entry">
-                <input
-                  type="radio"
-                  name="radioShipType"
-                  id="freeShipment"
-                  value="72"
-                  required
-                />
-                <label for="freeShipment">Free Shipment (72H)</label>
-              </div>
-              <div class="form-entry">
-                <input
-                  type="radio"
-                  name="radioShipType"
-                  id="extraShipment"
-                  value="48"
-                  required
-                />
-                <label for="extraShipment"
-                  >Extra shipping (48H)
-                  <span class="price-shipment">4,99 €</span></label
-                >
-              </div>
-              <div class="form-entry">
-                <input
-                  type="radio"
-                  name="radioShipType"
-                  id="premiumShipment"
-                  value="24"
-                  required
-                />
-                <label for="premiumShipment"
-                  >Premium (24H)
-                  <span class="price-shipment">9,99 €</span></label
-                >
-              </div>
             </div>
-            <div class="ship-date" id="shipDate">
-              <h4>Your order will arrive:</h4>
-              <p class="estimate-date">ESTIMATE DELIVERY DATE:</p>
-              <span class="delivery-date"
-                >Between <span id="minDate"></span> and
-                <span id="maxDate"></span>
-              </span>
-            </div>
-            <div class="ship-gift">
-              <input type="checkbox" id="isGift" value="isGift" />
-              <label for="isGift">Is it a gift?</label>
-            </div>
-            <div class="ship-gift-options" id="shipGiftOptions">
-              <label class="ship-gift-message-title" for="giftTitle"
-                >Gitf title</label
-              >
-              <input type="text" id="giftTitle" name="giftTitle" />
-              <label class="ship-gift-message-title" for="giftMessage"
-                >Gift message</label
-              >
-              <textarea name="giftMessage" id="giftMessage" rows="6"></textarea>
-              <span data-target="giftMessage" id="error" class="error"></span>
-              <label>Gift wrapper image</label>
-              <input
-                type="file"
-                name="giftImageFile"
-                id="giftImageFile"
-                accept="image/png, image/jpeg"
-              />
-            </div>
-          </form>
         </div>
-      </div>
-      <!-- thank you page -->
-      <div class="form-step">
-        <div class="thanks-page order-form-margin">
-          <p>Thanks-page Hola, mundo!</p>
-          <p>Hola, mundo!</p>
-          <p>Hola, mundo!</p>
-          <p>Hola, mundo!</p>
-          <p>Hola, mundo!</p>
+        <!-- thank you page -->
+        <div class="form-step">
+            <div class="thanks-page order-form-margin">
+                <p>Thanks-page Hola, mundo!</p>
+                <p>Hola, mundo!</p>
+                <p>Hola, mundo!</p>
+                <p>Hola, mundo!</p>
+                <p>Hola, mundo!</p>
+            </div>
         </div>
-      </div>
     </section>
     <footer class="footer">
-      <div class="footer-main">
-        <div class="footer-main-product">
-          <p>
-            Copyright © 2022 Electric Scooter Factory S.L. All rights reserved.
-          </p>
+        <div class="footer-main">
+            <div class="footer-main-product">
+                <p>
+                    Copyright © 2022 Electric Scooter Factory S.L. All rights reserved.
+                </p>
+            </div>
+            <div class="footer-main-order hide">
+                <div class="btns-group">
+                    <input type="submit" form="formIdAddress" class="btn" />
+                    <input type="submit" form="formIdShipment" class="btn" />
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <a id='next' href="#" class="btn btn-next" form="profileForm">Next</a>
+                </div>
+            </div>
         </div>
-        <div class="footer-main-order hide">
-          <div class="btns-group">
-            <input type="submit" form="formId" class="btn" />
-            <a href="#" class="btn btn-prev">Previous</a>
-            <a href="#" class="btn btn-next">Next</a>
-          </div>
-        </div>
-      </div>
     </footer>
-  </body>
+</body>
+
 </html>
