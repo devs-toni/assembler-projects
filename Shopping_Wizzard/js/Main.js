@@ -1,6 +1,7 @@
 //Variables ********************************
 const user = new User();
 const delivery = new Shipment();
+const product = new Product();
 
 //Address Form EventListeners *************************************************************************************
 const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
