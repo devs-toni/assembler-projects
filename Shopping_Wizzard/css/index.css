@@ -212,6 +212,13 @@ p {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+#profileForm {
+  font-weight: 700;
+  font-size: 1.5em;
+  padding: 0 3px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
 /****** Temporal *****/
 
 p {

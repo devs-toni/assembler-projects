@@ -74,7 +74,10 @@
         <!-- profile page -->
         <div class="form-step form-step-active">
             <div class="profile order-form-margin">
+              <div class="profileForm">
                 <h2>Profile</h2>
+                <form id="profileForm" onSubmit="user.submitLogin(event);">
+                <div class="profileGroup">
                 <div class="formEntry">
                     <label for="username">Username</label><br />
                     <input type="text" id="username" class="usernameInput" required />
@@ -92,6 +95,9 @@
                     <label for="passwordConfirm">Confirm password</label><br />
                     <input type="password" id="passwordConfirm" class="passwordConfirmInput" required />
                 </div>
+                </div>
+                </form>
+              </div>
             </div>
         </div>
         <!-- address page -->

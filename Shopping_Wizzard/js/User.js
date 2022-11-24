@@ -74,6 +74,10 @@ class User {
         if(this.password.search(/[a-z]/) < 0){
             document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 lowercase letter";  
         }
+     //contains soecial characters validation
+        if(this.password.search([/!@#$%^&*/]) < 0){
+            document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 special character";  
+        }
      //maximum length of password validation  
         if(this.password.length > 20) {  
            document.getElementById("pswdMessage").innerHTML = "**Password length must not exceed 20 characters";  
