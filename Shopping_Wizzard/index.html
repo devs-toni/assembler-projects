@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/product-page.css" />
     <link rel="stylesheet" href="./css/order-page.css" />
+    <link rel="stylesheet" href="./css/registering-time-popup.css" />
     <script type="text/javascript" src="./js/productPage.js" defer></script>
+    <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
     <script type="text/javascript" src="./js/User.js"></script>
     <script type="text/javascript" src="./js/Product.js"></script>
     <script type="text/javascript" src="./js/Main.js" defer></script>
@@ -18,6 +20,12 @@
 </head>
 
 <body>
+    <div class="registering-time-popup hide">
+        <div>
+            <p>You started registering <span id="registerinTimePopup">x minutes ago.</span></p>
+            <p class="hurryUp">Hurry up!</p>
+        </div>
+    </div>
     <header class="header">
         <div class="header-main-product">
             <div class="menu-main-product-logo">
@@ -171,10 +179,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="info">
-                    <p>You started registering <span>x minutes ago.</span></p>
-                    <p class="hurryUp">Hurry up!</p>
                 </div>
             </div>
         </div>

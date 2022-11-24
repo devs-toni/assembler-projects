@@ -1,0 +1,58 @@
+/******* REGISTRATION POPUP *************/
+.registering-time-popup {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: fit-content;
+    margin-top: 80px;
+    position: fixed;
+    top: 20px;
+    right: 70px;
+}
+
+.registering-time-popup div {
+    max-width: 300px;
+    padding: 10px 20px;
+    background-color: rgb(223, 222, 222);
+    border: 1px solid rgba(0, 0, 0, 0.243);
+    border-radius: 5px;
+}
+
+.registering-time-popup p span {
+    font-weight: bold;
+}
+
+.registering-time-popup p.hurryUp {
+    margin-top: 20px;
+}
+
+.hide-popup {
+    animation: 1s alternate slideout;
+    top: -500px;
+}
+
+.show-popup {
+    animation: 1s alternate slidein;
+    top: 20px;
+}
+
+@media  screen and (max-width: 980px) {
+    .registering-time-popup {
+        margin-top: 80px;
+        justify-content: center;
+        right: 0;
+        top: 0;
+    }
+}
+
+@keyframes slideout {
+    from {top: 20px}
+    to {
+        top: -500px;
+    }
+}
+
+@keyframes slidein {
+    from {top: -500px}
+    to {top: 20px}
+}
