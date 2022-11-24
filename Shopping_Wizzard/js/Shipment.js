@@ -1,5 +1,4 @@
-class Shippment {
-
+class Shipment {
     constructor(){
 
     }

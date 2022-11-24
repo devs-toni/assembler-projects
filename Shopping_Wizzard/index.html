@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/product-page.css" />
     <link rel="stylesheet" href="./css/order-page.css" />
@@ -13,7 +13,7 @@
     <script type="text/javascript" src="./js/Product.js"></script>
     <script type="text/javascript" src="./js/Main.js" defer></script>
     <script type="text/javascript" src="./js/progressBar.js" defer></script>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <title>Electric Scooter Factory | Shopping Wizard</title>
 </head>
 
@@ -43,7 +43,7 @@
     <article class="product-page">
         <div class="product-images">
             <div class="product-image">
-                <img src="./assets/products/black/black-1.png" alt="black">
+                <img src="./assets/products/black/black-1.png" alt="black" />
             </div>
             <div class="product-thumbnails"></div>
         </div>
@@ -60,12 +60,12 @@
                     </select>
                 </div>
                 <label for="color" class="hide">Color</label>
-                <input type="radio" name="color" value="black" onclick="changeColor('black')" checked>
-                <input type="radio" name="color" value="white" onclick="changeColor('white')">
-                <input type="radio" name="color" value="blue" onclick="changeColor('blue')">
-                <input type="radio" name="color" value="red" onclick="changeColor('red')">
-                <br>
-                <input type="submit" value="Buy">
+                <input type="radio" name="color" value="black" onclick="changeColor('black')" checked />
+                <input type="radio" name="color" value="white" onclick="changeColor('white')" />
+                <input type="radio" name="color" value="blue" onclick="changeColor('blue')" />
+                <input type="radio" name="color" value="red" onclick="changeColor('red')" />
+                <br />
+                <input type="submit" value="Buy" />
             </form>
         </div>
     </article>
@@ -76,21 +76,21 @@
             <div class="profile order-form-margin">
                 <h2>Profile</h2>
                 <div class="formEntry">
-                    <label for="username">Username</label><br>
-                    <input type="text" id="username" class="usernameInput" required>
+                    <label for="username">Username</label><br />
+                    <input type="text" id="username" class="usernameInput" required />
                 </div>
                 <div class="formEntry">
-                    <label for="email">Email</label><br>
-                    <input type="email" id="email" class="emailInput" required>
+                    <label for="email">Email</label><br />
+                    <input type="email" id="email" class="emailInput" required />
                 </div>
                 <div class="formEntry">
-                    <label for="password">Password</label><br>
-                    <input type="password" id="password" class="passwordInput" required>
+                    <label for="password">Password</label><br />
+                    <input type="password" id="password" class="passwordInput" required />
                     <span id="pswdMessage"></span>
                 </div>
                 <div class="formEntry">
-                    <label for="passwordConfirm">Confirm password</label><br>
-                    <input type="password" id="passwordConfirm" class="passwordConfirmInput" required>
+                    <label for="passwordConfirm">Confirm password</label><br />
+                    <input type="password" id="passwordConfirm" class="passwordConfirmInput" required />
                 </div>
             </div>
         </div>
@@ -148,12 +148,12 @@
                                 <label for="phone">Phone</label>
                                 <div class="phoneInput">
                                     <select name="countryPhone" id="countryPhone" disabled>
-                                        <option data-country='' value="" selected disabled></option>
-                                        <option data-country='Andorra' value="+376">+376</option>
-                                        <option data-country='Espanya' value="+34">+34</option>
-                                        <option data-country='Francia' value="+33">+33</option>
-                                        <option data-country='Alemania' value="+49">+49</option>
-                                        <option data-country='Grecia' value="+30">+30</option>
+                                        <option data-country="" value="" selected disabled></option>
+                                        <option data-country="Andorra" value="+376">+376</option>
+                                        <option data-country="Espanya" value="+34">+34</option>
+                                        <option data-country="Francia" value="+33">+33</option>
+                                        <option data-country="Alemania" value="+49">+49</option>
+                                        <option data-country="Grecia" value="+30">+30</option>
                                     </select>
                                     <input type="tel" id="phone" name="phone" class="phone" required />
                                 </div>
@@ -175,11 +175,38 @@
         <!-- shipping page -->
         <div class="form-step">
             <div class="shipping order-form-margin">
-                <p>shipping Hola, mundo!</p>
-                <p>Hola, mundo!</p>
-                <p>Hola, mundo!</p>
-                <p>Hola, mundo!</p>
-                <p>Hola, mundo!</p>
+                <form id="formId" onSubmit="ship.submitShipment(event);">
+                    <h2 class="ship-title">Shipping</h2>
+                    <div class="ship-type">
+                        <h3>Shipping type</h3>
+                        <div class="form-entry">
+                            <input type="radio" name="radioShipType" id="freeShipment" />
+                            <label for="freeShipment">Free Shipment (72H)</label>
+                        </div>
+                        <div class="form-entry">
+                            <input type="radio" name="radioShipType" id="extraShipment" />
+                            <label for="freeShipment">Extra shipping (48H)
+                                <span class="price-shipment">4,99 €</span></label>
+                        </div>
+                        <div class="form-entry">
+                            <input type="radio" name="radioShipType" id="premiumShipment" />
+                            <label for="freeShipment">Premium (24H)
+                                <span class="price-shipment">9,99 €</span></label>
+                        </div>
+                    </div>
+                    <div class="ship-gift">
+                        <input type="checkbox" id="isGift" value="isGift" />
+                        <label for="isGift">Is it a gift?</label>
+                    </div>
+                    <div class="ship-gift-message">
+                        <p class="ship-gift-message-title">Gift message</p>
+                        <textarea name="giftMessage" id="giftMessage" cols="50" rows="6"></textarea>
+                    </div>
+                    <div class="ship-gift-image">
+                        <p>Gift wrapper image</p>
+                        <input type="file" name="giftImageFile" id="giftImageFile" />
+                    </div>
+                </form>
             </div>
         </div>
         <!-- thank you page -->
@@ -192,12 +219,13 @@
                 <p>Hola, mundo!</p>
             </div>
         </div>
-
     </section>
     <footer class="footer">
         <div class="footer-main">
             <div class="footer-main-product">
-                <p>Copyright © 2022 Electric Scooter Factory S.L. All rights reserved.</p>
+                <p>
+                    Copyright © 2022 Electric Scooter Factory S.L. All rights reserved.
+                </p>
             </div>
             <div class="footer-main-order hide">
                 <div class="btns-group">
