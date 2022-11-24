@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/product-page.css" />
     <link rel="stylesheet" href="./css/order-page.css" />
     <link rel="stylesheet" href="./css/registering-time-popup.css" />
+    <link rel="stylesheet" href="./css/confirm-order.css" />
     <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
     <script type="text/javascript" src="./js/User.js"></script>
     <script type="text/javascript" src="./js/Product.js"></script>
@@ -77,16 +78,16 @@
                                 <div>
                                     <label for="battery">Capacidad de la bateria</label>
                                     <select id="batterySelect" name="battery">
-                                        <option value="10000mah">10000mAh</option>
-                                        <option value="20000mah">20000mAh</option>
-                                        <option value="30000mah">30000mAh</option>
+                                        <option value="10000mAh">10000mAh</option>
+                                        <option value="20000mAh">20000mAh</option>
+                                        <option value="30000mAh">30000mAh</option>
                                     </select>
                                 </div>
                                 <label for="color" class="hide">Color</label>
-                                <input type="radio" name="color" value="black" onclick="changeColor('black')" checked />
-                                <input type="radio" name="color" value="white" onclick="changeColor('white')" />
-                                <input type="radio" name="color" value="blue" onclick="changeColor('blue')" />
-                                <input type="radio" name="color" value="red" onclick="changeColor('red')" />
+                                <input type="radio" name="color" value="black" checked />
+                                <input type="radio" name="color" value="white" />
+                                <input type="radio" name="color" value="blue" />
+                                <input type="radio" name="color" value="red" />
                                 <br />
                                 <input type="submit" value="Buy" />
                             </form>
@@ -300,6 +301,37 @@
             </div>
         </div>
     </div>
+
+    <div class="confirm-order">
+        <div>
+            <div>
+                <h2>Your purchase</h2>
+                <div>
+                    <img>
+                    <div>
+                        <h2>Product</h2>
+                        <p>Battery</p>
+                        <p>Color</p>
+                    </div>
+                </div>
+            </div>
+            <form>
+                <label>
+                    <input type="checkbox">
+                    I have read and iI accept terms and conditions
+                </label>
+                <p class="">Please accept the terms and conditions</p>
+                <input type="submit" value="Buy now">
+            </form>
+        </div>
+        <div>
+            <h3>Your order</h3>
+            <p>Product: <span>695</span>€</p>
+            <p>Shipping: <span>9.99</span>€</p>
+            <p>Total: <span>704.94</span>€</p>
+        </div>
+    </div>
+
 </body>
 
 </html>
