@@ -5,7 +5,7 @@
     width: 1280px;
     height: fit-content;
     position: fixed;
-    top: 100px;
+    top: 30px;
     z-index: 1000;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .registering-time-popup p.hurryUp {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .hide-popup {
@@ -31,7 +31,7 @@
 
 .show-popup {
     animation: 1s alternate slidein;
-    top: 100px;
+    top: 30px;
 }
 
 @media  screen and (max-width: 980px) {
@@ -44,11 +44,11 @@
 }
 
 @keyframes slideout {
-    from {top: 100px}
+    from {top: 30px}
     to {top: -500px}
 }
 
 @keyframes slidein {
     from {top: -500px}
-    to {top: 100px}
+    to {top: 30px}
 }
