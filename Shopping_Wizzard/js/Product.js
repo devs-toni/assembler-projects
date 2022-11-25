@@ -41,13 +41,10 @@ class Product {
 
         // DOM change
         productPage.classList.add('hide');
-        productPage.style.display = 'none';
         orderPage.classList.remove('hide');
         headerMainProduct.classList.add('hide');
-        headerMainProduct.style.display = 'none';
         headerMainOrder.classList.remove('hide');
         footerMainProduct.classList.add('hide');
-        footerMainProduct.style.display = 'none';
         footerMainOrder.classList.remove('hide');
 
         // Remove eventlisteners

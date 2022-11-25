@@ -58,7 +58,7 @@ function registeringPopup() {
             registeringPopupDiv.classList.remove('show-popup');
             registeringPopupDiv.classList.add('hide-popup');
         }
-    }, 3000);
+    }, 1000);
 
     productForm.removeEventListener('submit', registeringPopup, true);
 }

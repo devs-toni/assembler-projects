@@ -1,18 +1,15 @@
 /******* REGISTRATION POPUP *************/
 .registering-time-popup {
     display: flex;
-    justify-content: end;
-    width: 100%;
+    justify-content: center;
+    width: 1280px;
     height: fit-content;
-    margin-top: 80px;
     position: fixed;
-    top: 20px;
-    right: 70px;
+    top: 100px;
     z-index: 1000;
 }
 
 .registering-time-popup div {
-    max-width: 300px;
     padding: 10px 20px;
     background-color: rgb(223, 222, 222);
     border: 1px solid rgba(0, 0, 0, 0.243);
@@ -34,7 +31,7 @@
 
 .show-popup {
     animation: 1s alternate slidein;
-    top: 20px;
+    top: 100px;
 }
 
 @media  screen and (max-width: 980px) {
@@ -47,13 +44,11 @@
 }
 
 @keyframes slideout {
-    from {top: 20px}
-    to {
-        top: -500px;
-    }
+    from {top: 100px}
+    to {top: -500px}
 }
 
 @keyframes slidein {
     from {top: -500px}
-    to {top: 20px}
+    to {top: 100px}
 }
