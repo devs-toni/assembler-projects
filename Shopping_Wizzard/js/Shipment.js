@@ -1,4 +1,3 @@
-const confirmOrder = document.querySelector('.confirm-order');
 const orderImg = document.querySelector('#confirmOrderImg');
 const orderProductName = document.querySelector('#confirmOrderProduct');
 const orderBattery = document.querySelector('#confirmOrderBattery');
@@ -67,11 +66,12 @@ class Shipment {
     submitConfirmForm (e) {
         e.preventDefault();
         if (confirmOrderCheckbox.checked) {
-            confirmOrder.classList.add('hide');
+            document.getElementById('div-confirm').classList.remove('form-step-active');
+            document.getElementById('divThankyouPage').classList.add('form-step-active');
         } else {
             confirmOrderTermsCheckbox.classList.remove('hide');
         }
-        confirmOrder.removeEventListener('submit', submitConfirmForm, true);
+        confirmOrderForm.removeEventListener('submit', this.submitConfirmForm, true);
     }
 
     assignConfirmHtmlValues () {

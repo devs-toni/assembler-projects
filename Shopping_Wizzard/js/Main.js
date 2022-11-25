@@ -210,8 +210,8 @@ const addShipmentEventListeners = () => {
     });
     const shipment = document.getElementById('shipmentForm');
     shipment.addEventListener('submit', (e) => delivery.submitShipment(e));
-    const confirmOrder = document.querySelector('.confirm-order');
-    confirmOrder.addEventListener('submit', (e) => shipment.submitConfirmForm(e));
+    const confirmOrderForm = document.querySelector('#confirmOrderForm');
+    confirmOrderForm.addEventListener('submit', (e) => delivery.submitConfirmForm(e));
 }
 
 const removeShipmentEventListeners = () => {
