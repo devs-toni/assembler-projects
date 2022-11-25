@@ -8,9 +8,9 @@ const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'post
 const profileElements = ['username', 'email', 'password', 'password2'];
 
 const addProfileEventListeners = () => {
-    fprofileElements.forEach((element) => {
-        document.getElementById(element).addEventListener('focusout', validateProfile);
-        document.getElementById(element).addEventListener('keydown', validateProfile);
+    profileElements.forEach((profileInput) => {
+        document.getElementById(profileInput).addEventListener('focusout', validateProfile);
+        document.getElementById(profileInput).addEventListener('keydown', validateProfile);
     });
 }
 const addAddressEventListeners = () => {
@@ -54,49 +54,44 @@ const validateProfile = (event) => {
         switch (event.target.id){
             case 'username':
                 if (profileElement.value.length < 5 || formElement.value.length > 20){
-                    setErrorField(profileElement, 'show');
-                } else {
-                    setErrorField(profileElement, 'hide');
                 }
                 break;
             case 'email':
                 if (profileElement.value.length > 50){
                     setErrorField(profileElement, 'show');
-                } else {
-                    setErrorField(profileElement, 'hide');
                 }
                 break;
                 case 'password':
                     if(profileElement.value === "") {  
-                        document.getElementById("pswdMessage").innerHTML = "**Fill the password please!";  
+                        document.getElementById("pswdEmpty").innerHTML = "**Fill the password please!";  
                      }  
                       
                     //minimum password length validation  
-                     if(profileElement.value.length < 8) {  
-                        document.getElementById("pswdMessage").innerHTML = "**Password length must be at least 8 characters";  
-                     }  
-                     
+                    if(profileElement.value.length < 8) {  
+                        document.getElementById("pswdLength").innerHTML = "**Password length must be at least 8 characters";  
+                    }  
+                    //maximum length of password validation  
+                    if(profileElement.value.length > 20) {  
+                        document.getElementById("pswdLength").innerHTML = "**Password length must not exceed 20 characters";  
+                    }
+
                      //contains number validation
                     if(profileElement.value.search(/[0-9]/) < 0){
-                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 number";  
+                        document.getElementById("pswdNumber").innerHTML = "**Password must contain at least 1 number";  
                     }
                  
                  //contains uppercase validation
                     if(profileElement.value.search(/[A-Z]/) < 0){
-                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 uppercase letter";  
+                        document.getElementById("pswdCase").innerHTML = "**Password must contain at least 1 uppercase letter";  
                     }
                  //contains lowercase validation
                     if(profileElement.value.search(/[a-z]/) < 0){
-                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 lowercase letter";  
+                        document.getElementById("pswdCase").innerHTML = "**Password must contain at least 1 lowercase letter";  
                     }
                  //contains soecial characters validation
                     if(profileElement.value.search([/!@#$%^&*/]) < 0){
-                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 special character";  
-                    }
-                 //maximum length of password validation  
-                    if(profileElement.value.length > 20) {  
-                       document.getElementById("pswdMessage").innerHTML = "**Password length must not exceed 20 characters";  
-                       return false;  
+                        document.getElementById("special").innerHTML = "**Password must contain at least 1 special character";  
+                    
                     } else {  
                         document.getElementById("pswdMessage").innerHTML = "Password is correct";
                     }  

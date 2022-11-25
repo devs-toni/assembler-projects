@@ -106,12 +106,20 @@
                                             <div class="formEntry">
                                                 <label for="password">Password</label><br />
                                                 <input type="password" id="password" class="passwordInput" required />
-                                                <span id="pswdMessage"></span>
+                                                <span id="pswdMessage">
+                                                  <p id="pswdEmpty"></p>
+                                                  <p id="pswdLength"></p>
+                                                  <p id="pswdNumber"></p>
+                                                  <p id="pswdCase"></p>
+                                                  <p id="special"></p>
+                                                </span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="passwordConfirm">Confirm password</label><br />
-                                                <input type="password" id="passwordConfirm" class="passwordConfirmInput"
+                                                <input type="password" id="password2" class="passwordConfirmInput"
                                                     required />
+                                                    <span id="pswdConfirmMessage">
+
                                             </div>
                                         </div>
                                     </form>
