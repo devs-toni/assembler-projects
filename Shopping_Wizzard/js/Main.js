@@ -28,9 +28,11 @@ const addProductEventListeners = () => {
         footerMainProduct.classList.remove('hide');
         footerMainProduct.style.display = 'flex';
         footerMainOrder.classList.add('hide');
+        registeringPopupDiv.classList.add('hide');
         user.removeUser();
         product.removeProduct();
         delivery.removeShipment();
+        clearInterval(popupInterval);
     });
 }
 

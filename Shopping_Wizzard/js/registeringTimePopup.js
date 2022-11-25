@@ -1,6 +1,7 @@
 const registeringPopupDiv = document.querySelector('.registering-time-popup');
 const registeringPopupSpan = document.querySelector('#registerinTimePopup');
 const productForm = document.getElementById('productForm');
+let popupInterval;
 
 let timeElapsed = 0;
 let secondsElapsed = 0;
@@ -9,7 +10,7 @@ let minutesElapsed = 0;
 function registeringPopup() {
     const startTime = Date.now();
 
-    let interval = setInterval(() => {
+    popupInterval = setInterval(() => {
         timeElapsed = Date.now() - startTime;
         minutesSecondsElapsed(Math.round(timeElapsed / 1000));
         registeringPopupSpan.innerHTML = '';
@@ -51,7 +52,7 @@ function registeringPopup() {
                 footerMainProduct.classList.remove('hide');
                 registeringPopupDiv.classList.remove('show-popup');
                 registeringPopupDiv.classList.add('hide-popup');
-                clearInterval(interval);
+                clearInterval(popupInterval);
                 product.removeProduct();
             }
         } else {
