@@ -58,7 +58,7 @@
 .product-page .product-info form label {
     font-size: 1.5em;
     margin-bottom: 20px;
-
+    cursor: pointer;
 }
 
 .product-page .product-info form input[type='radio'] {
@@ -79,6 +79,7 @@
     display: inline-block;
     visibility: visible;
     border: 1px solid grey;
+    cursor: pointer;
 }
 
 .product-page .product-info form input[type='radio']:checked:after {
@@ -114,6 +115,7 @@
     font-size: 2em;
     margin-top: 20px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 740px) {
@@ -138,7 +140,7 @@
         text-align: center;
         text-align: center;
     }
-    
+
     .product-image {
         grid-area: b;
     }
@@ -146,6 +148,7 @@
     .product-info {
         grid-area: c;
     }
+
     .product-page .product-info form input[type='submit'] {
         margin-bottom: 50px;
     }
