@@ -107,19 +107,15 @@ class Product {
 
         switch (color) {
             case 'black':
-                productTitle.innerHTML = '';
                 productTitle.textContent = 'Scooter MQT45BK';
                 break;
             case 'white':
-                productTitle.innerHTML = '';
                 productTitle.textContent = 'Scooter MQT45W';
                 break;
             case 'blue':
-                productTitle.innerHTML = '';
                 productTitle.textContent = 'Scooter MQT45BE';
                 break;
             case 'red':
-                productTitle.innerHTML = '';
                 productTitle.textContent = 'Scooter MQT45R';
                 break;
         }
