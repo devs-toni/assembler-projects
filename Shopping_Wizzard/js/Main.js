@@ -4,6 +4,14 @@ const ship = new Shipment();
 
 //Address Form EventListeners *************************************************************************************
 const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
+const profileElements = ['username', 'email', 'password', 'password2'];
+
+const addProfileEventListeners = () => {
+    fprofileElements.forEach((element) => {
+        document.getElementById(element).addEventListener('focusout', validateProfile);
+        document.getElementById(element).addEventListener('keydown', validateProfile);
+    });
+}
 const addAddressEventListeners = () => {
     formElements.forEach((element) => {
         document.getElementById(element).addEventListener('focusout', validateForm);
@@ -23,11 +31,87 @@ const removeAddressEventListeners = () => {
     document.getElementById('country').removeEventListener('change', changeCountryPhoneSelect);
 }
 
+const removeProfileEventListeners = () => {
+    console.log(profileElements);
+    profileElements.forEach((element) => {
+        document.getElementById(element).removeEventListener('keydown', validateProfile);
+        document.getElementById(element).removeEventListener('focusout', validateProfile);
+    });
+}
+
 const changeCountryPhoneSelect = (event) => {
     const select = document.getElementById('countryPhone');
     const optionToSelect = document.querySelector(`[data-country=${event.target.value}]`);
     select.value = optionToSelect.value;
     select.removeAttribute('disabled');
+}
+
+const validateProfile = (event) => {
+    const profileElement = event.target;
+    if (event.type === 'keydown') setErrorField(formElement, 'hide');
+    else{
+        switch (event.target.id){
+            case 'username':
+                if (profileElement.value.length < 5 || formElement.value.length > 20){
+                    setErrorField(profileElement, 'show');
+                } else {
+                    setErrorField(profileElement, 'hide');
+                }
+                break;
+            case 'email':
+                if (profileElement.value.length > 50){
+                    setErrorField(profileElement, 'show');
+                } else {
+                    setErrorField(profileElement, 'hide');
+                }
+                break;
+                case 'password':
+                    if(profileElement.value === "") {  
+                        document.getElementById("pswdMessage").innerHTML = "**Fill the password please!";  
+                     }  
+                      
+                    //minimum password length validation  
+                     if(profileElement.value.length < 8) {  
+                        document.getElementById("pswdMessage").innerHTML = "**Password length must be at least 8 characters";  
+                     }  
+                     
+                     //contains number validation
+                    if(profileElement.value.search(/[0-9]/) < 0){
+                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 number";  
+                    }
+                 
+                 //contains uppercase validation
+                    if(profileElement.value.search(/[A-Z]/) < 0){
+                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 uppercase letter";  
+                    }
+                 //contains lowercase validation
+                    if(profileElement.value.search(/[a-z]/) < 0){
+                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 lowercase letter";  
+                    }
+                 //contains soecial characters validation
+                    if(profileElement.value.search([/!@#$%^&*/]) < 0){
+                        document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 special character";  
+                    }
+                 //maximum length of password validation  
+                    if(profileElement.value.length > 20) {  
+                       document.getElementById("pswdMessage").innerHTML = "**Password length must not exceed 20 characters";  
+                       return false;  
+                    } else {  
+                        document.getElementById("pswdMessage").innerHTML = "Password is correct";
+                    }  
+                break;
+
+                case 'password2':
+                    let pw1 = document.getElementById("password");  
+                    if (pw1 != profileElement.value){
+                        document.getElementById("pswdConfirmMsg").innerHTML = "Passwords do not match";  
+                    } else {  
+                        document.getElementById("pswdConfirmMsg").innerHTML = "Passwords match";  
+                    }  
+
+        }
+    }
+
 }
 
 const validateForm = (event) => {
@@ -89,4 +173,5 @@ const setErrorField = (domElement, action) => {
 }
 
 //Initialize EventListeners *******************************
+addProfileEventListeners();
 addAddressEventListeners();

@@ -2,6 +2,7 @@ class User {
     constructor(product) {
         this.email = '';
         this.password = '';
+        this.password2 = '';
         this.firstname = '';
         this.lastname = '';
         this.birthday = '';
