@@ -17,6 +17,7 @@ class User {
     submitAddress = (e) => {
         e.preventDefault();
 
+        // ** The last form validation
         if (firstname.value.length > 20) {
             return;
         }
@@ -39,12 +40,9 @@ class User {
             return;
         }
 
-        this.assignFormValues();
-        document.getElementById('finalSubmit').setAttribute('form', 'shipmentForm');
-        document.getElementById('div-address').classList.remove('form-step-active');
-        document.getElementById('div-shipment').classList.add('form-step-active');
+        this.assignAddressValues();
         console.log(this);
-        removeAddressEventListeners();
+        changeDomToNextForm('address', 'ship');
     }
 
     submitLogin = (e) => {
@@ -77,12 +75,9 @@ class User {
             return;
         }
 
-        console.log(this);
         this.assignLoginValues();
-        document.getElementById('div-profile').classList.remove('form-step-active');
-        document.getElementById('div-address').classList.add('form-step-active');
-        document.getElementById('btnPrev').classList.remove('hide');
-        document.getElementById('finalSubmit').setAttribute('form', 'addressForm');
+        console.log(this);
+        changeDomToNextForm('profile', 'address');
     }
 
     assignLoginValues = () => {
@@ -91,7 +86,7 @@ class User {
         this.password = password.value;
     }
 
-    assignFormValues = () => {
+    assignAddressValues = () => {
         this.firstname = firstname.value;
         this.lastname = lastname.value;
         this.birthday = birthday.value;
@@ -103,7 +98,13 @@ class User {
         this.isRegularAdress = regularAddress.checked;
     }
 
-    removeUser() {
+    changeCountryPhoneSelect = (event) => {
+        const optionToSelect = document.querySelector(`[data-country=${event.target.value}]`);
+        countryPhone.value = optionToSelect.value;
+        countryPhone.removeAttribute('disabled');
+    }
+
+    resetUser() {
         this.email = '';
         this.password = '';
         this.firstname = '';

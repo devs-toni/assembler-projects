@@ -1,11 +1,3 @@
-const orderImg = document.querySelector('#confirmOrderImg');
-const orderProductName = document.querySelector('#confirmOrderProduct');
-const orderBattery = document.querySelector('#confirmOrderBattery');
-const orderColor = document.querySelector('#confirmOrderColor');
-const orderPrice = document.querySelector('#confirmOrderPrice');
-const orderShipping = document.querySelector('#confirmOrderShipping');
-const orderTotalPice = document.querySelector('#confirmOrderTotalPrice');
-const confirmOrderForm = document.querySelector('#confirmOrderForm');
 const confirmOrderCheckbox = document.querySelector('#confirmOrderCheckbox');
 const confirmOrderTermsCheckbox = document.querySelector('#confirmOrderTermsCheckbox');
 
@@ -17,10 +9,6 @@ class Shipment {
         this.titleGift = '';
         this.messageGift = '';
         this.imageGift = null;
-    }
-
-    showShipment = () => {
-        console.log(this);;
     }
 
     submitShipment = (e) => {
@@ -40,8 +28,8 @@ class Shipment {
                 this.cost = 5;
                 break;
             case 'premiumShipment':
-                this.cost = 10;    
-            break;
+                this.cost = 10;
+                break;
         }
 
         const isGift = document.getElementById('isGift').checked;
@@ -49,21 +37,17 @@ class Shipment {
             this.isGift = true;
             this.titleGift = document.getElementById('giftTitle').value;
             this.messageGift = document.getElementById('giftMessage').value;
-            this.imageGift = document.getElementById('giftImage').files[0];
+            this.imageGift = document.getElementById('giftImageFile').files[0];
         } else {
             this.isGift = false;
         }
 
-        this.showShipment();
-        document.getElementById('div-shipment').classList.remove('form-step-active');
-        document.getElementById('div-confirm').classList.add('form-step-active');
-        document.getElementById('finalSubmit').setAttribute('form', '');
-        document.getElementById('footer').classList.add('hide');
-        this.assignConfirmHtmlValues();
-        removeShipmentEventListeners();
+        assignConfirmHtmlValues();
+        console.log(this);
+        changeDomToNextForm('ship', 'confirm');
     }
 
-    submitConfirmForm (e) {
+    submitConfirmForm(e) {
         e.preventDefault();
         if (confirmOrderCheckbox.checked) {
             document.getElementById('div-confirm').classList.remove('form-step-active');
@@ -74,17 +58,45 @@ class Shipment {
         confirmOrderForm.removeEventListener('submit', this.submitConfirmForm, true);
     }
 
-    assignConfirmHtmlValues () {
-        orderImg.src = product.image;
-        orderProductName.textContent = product.productName;
-        orderBattery.textContent = product.batteryCapacity;
-        orderColor.textContent = product.color;
-        orderPrice.textContent = product.price;
-        orderShipping.textContent = delivery.cost;
-        orderTotalPice.textContent = parseInt(product.price) + parseInt(delivery.cost);
+    chooseShipmentType = (event) => {
+        dateShip.classList.add('visible');
+        const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        ];
+        const hours = event.target.value;
+        const now = new Date();
+        let minDate = new Date();
+        let maxDate = new Date();
+
+        switch (hours) {
+            case '72':
+                minDate.setDate(now.getDate() + 3);
+                maxDate.setDate(now.getDate() + 4);
+                break;
+            case '48':
+                minDate.setDate(now.getDate() + 2);
+                maxDate.setDate(now.getDate() + 3);
+                break;
+            case '24':
+                minDate.setDate(now.getDate() + 1);
+                maxDate.setDate(now.getDate() + 2);
+                break;
+        }
+        document.getElementById('minDate').style.fontWeight = 'bold';
+        document.getElementById('maxDate').style.fontWeight = 'bold';
+        document.getElementById('minDate').textContent = `${minDate.getDate()} de ${months[minDate.getMonth()]} de ${minDate.getFullYear()}`;
+        document.getElementById('maxDate').textContent = `${maxDate.getDate()} de ${months[maxDate.getMonth()]} de ${maxDate.getFullYear()}`;
     }
 
-    removeShipment () {
+    toggleGiftOptions = (event) => {
+        if (event.target.checked) {
+            giftOptions.classList.add('visible');
+        } else {
+            giftOptions.classList.remove('visible');
+        }
+    }
+
+    resetShipment() {
         this.type = '';
         this.cost = 0;
         this.isGift = false;

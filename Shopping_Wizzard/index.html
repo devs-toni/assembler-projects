@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="./css/order-page.css" />
     <link rel="stylesheet" href="./css/registering-time-popup.css" />
     <link rel="stylesheet" href="./css/confirm-order.css" />
-    <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
-    <script type="text/javascript" src="./js/User.js" defer></script>
+    <script type="text/javascript" src="./js/domVariables.js" defer></script>
+    <script type="text/javascript" src="./js/domMethods.js" defer></script>
     <script type="text/javascript" src="./js/Product.js" defer></script>
+    <script type="text/javascript" src="./js/User.js" defer></script>
     <script type="text/javascript" src="./js/Shipment.js" defer></script>
-    <script type="text/javascript" src="./js/Main.js" defer></script>
-    <script type="text/javascript" src="./js/progressBar.js" defer></script>
+    <script type="text/javascript" src="./js/domEventListeners.js" defer></script>
+    <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <title>Electric Scooter Factory | Shopping Wizard</title>
 </head>
@@ -59,8 +60,8 @@
                 <div id="inFram">
                     <!-- PRODUCT PAGE -->
                     <article class="product-page grid-container">
-                        <div class="product-thumbnails"></div>
-                        <div class="product-image">
+                        <div id="productThumbnails" class="product-thumbnails"></div>
+                        <div id="productImage" class="product-image">
                             <img src="./assets/products/black/black-1.png" alt="black" />
                         </div>
                         <div class="product-info">
@@ -88,7 +89,7 @@
                     <!-- ORDER PAGE -->
                     <section class="order-form hide">
                         <!-- profile page -->
-                        <div id="div-profile" class="form-step form-step-active">
+                        <div id="div-profile" class="form-step form-step-active" data-target="profile">
                             <div class="profile order-form-margin">
                                 <div class="profileForm">
                                     <h2>Profile</h2>
@@ -113,7 +114,7 @@
                                                 <label for="password2">Confirm password</label><br />
                                                 <input type="password" id="password2" class="passwordConfirmInput"
                                                     required />
-                                                    <span data-target="password2" class="error"></span>
+                                                <span data-target="password2" class="error"></span>
                                             </div>
                                         </div>
                                     </form>
@@ -121,7 +122,7 @@
                             </div>
                         </div>
                         <!-- address page -->
-                        <div id="div-address" class="form-step">
+                        <div id="div-address" class="form-step" data-target="address">
                             <div class="address order-form-margin">
                                 <div class="form">
                                     <h2>Address</h2>
@@ -202,7 +203,7 @@
                                                 <span data-target="phone" class="error"></span>
                                             </div>
                                             <div class="formEntryCheckbox">
-                                                <label class="container-adress">This is my regular
+                                                <label class="container-address">This is my regular
                                                     address
                                                     <input type="checkbox" id="regularAddress" name="regularAddress"
                                                         class="phone" />
@@ -215,7 +216,7 @@
                             </div>
                         </div>
                         <!-- shipping page -->
-                        <div id="div-shipment" class="form-step">
+                        <div id="div-shipment" class="form-step" data-target="ship">
                             <div class="shipping order-form-margin">
                                 <form id="shipmentForm">
                                     <h2 class="ship-title">Shipping</h2>
@@ -264,14 +265,14 @@
                             </div>
                         </div>
                         <!-- confirmation page -->
-                        <div id="div-confirm" class="form-step">
+                        <div id="div-confirm" class="form-step" data-target="confirm">
                             <div class="confirmation order-form-margin">
                                 <div id="confirmOrder" class="confirm-order">
                                     <div>
                                         <div>
                                             <h2>Your purchase</h2>
                                             <div>
-                                                <img id="confirmOrderImg" width="700">
+                                                <img id="confirmOrderImg" width="700" />
                                                 <div>
                                                     <h2 id="confirmOrderProduct">Product</h2>
                                                     <p id="confirmOrderBattery">Battery</p>
@@ -280,7 +281,7 @@
                                             </div>
                                         </div>
                                         <form id="confirmOrderForm">
-                                            <input type="checkbox" id="confirmOrderCheckbox">
+                                            <input type="checkbox" id="confirmOrderCheckbox" />
                                             <label>
                                                 I have read and iI accept terms and conditions
                                             </label>
@@ -292,8 +293,12 @@
                                     <div>
                                         <h3>Your order</h3>
                                         <p>Product: <span id="confirmOrderPrice">695</span>€</p>
-                                        <p>Shipping: <span id="confirmOrderShipping">9.99</span>€</p>
-                                        <p>Total: <span id="confirmOrderTotalPrice">704.94</span>€</p>
+                                        <p>
+                                            Shipping: <span id="confirmOrderShipping">9.99</span>€
+                                        </p>
+                                        <p>
+                                            Total: <span id="confirmOrderTotalPrice">704.94</span>€
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -321,7 +326,7 @@
                         <div class="footer-main-order hide">
                             <div class="btns-group">
                                 <a href="#" class="btn" id="btnPrev">Previous</a>
-                                <input type="submit" form="profileForm" value="Enviar" class="btn" id="finalSubmit" />
+                                <input type="submit" value="Enviar" class="btn" id="finalSubmit" />
                                 <button href="#" class="btn" id="btnExit">Exit</button>
                             </div>
                         </div>
