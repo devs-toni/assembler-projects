@@ -2,7 +2,8 @@
 .registering-time-popup {
     display: flex;
     justify-content: center;
-    width: 1280px;
+    width: 100%;
+    max-width: 1280px;
     height: fit-content;
     position: fixed;
     top: 30px;
@@ -32,15 +33,6 @@
 .show-popup {
     animation: 1s alternate slidein;
     top: 30px;
-}
-
-@media  screen and (max-width: 980px) {
-    .registering-time-popup {
-        margin-top: 80px;
-        justify-content: center;
-        right: 0;
-        top: 0;
-    }
 }
 
 @keyframes slideout {
