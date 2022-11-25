@@ -23,13 +23,16 @@
 }
 
 .profile .profileForm form div.formEntry {
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .profile .profileForm form .formEntry label {
-    margin-bottom: 8px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .profileGroup {
@@ -40,10 +43,20 @@
 
 
 .profile .profileForm .formEntry input {
-    font-size: 0.9em;
+    border: none !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    height: 54px;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
     outline: none;
-    border: 1px solid black;
-    padding: 3px 5px;
+    font-size: 16px;
 }
 
 /* Adress */
@@ -96,15 +109,32 @@
 
 .address .form .adress-group .formEntry label,
 .formEntry.together label {
-    margin-bottom: 8px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .address .form .adress-group .formEntry input,
 .formEntry select {
-    font-size: 0.9em;
+    border: none !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    height: 54px;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
     outline: none;
-    border: 1px solid black;
-    padding: 3px 5px;
+    font-size: 16px;
+}
+
+.country-phone-width {
+    width: 80px !important;
 }
 
 .address .form .adress-group .formEntryCheckbox {
@@ -136,12 +166,75 @@
 }
 
 .error {
+    display: inline-block;
     color: red;
     font-weight: bold;
     text-align: left;
     margin-top: 8px;
     width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
 }
+
+/*** checkbox adress***/
+.container-adress {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container-adress input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgb(187, 187, 187);
+    border-radius: 4px;
+}
+
+.container-adress input:checked~.checkmark {
+    background-color: #fb771a;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container-adress input:checked~.checkmark:after {
+    display: block;
+}
+
+.container-adress .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
 
 /* Shipping */
 
@@ -171,14 +264,14 @@
 }
 
 .ship-type input[type="radio"] {
-  margin-right: 8px;
-  cursor: pointer;
+    margin-right: 8px;
+    cursor: pointer;
 }
 
 .ship-type label {
-  font-size: 0.8em;
-  font-weight: lighter;
-  cursor: pointer;
+    font-size: 0.8em;
+    font-weight: lighter;
+    cursor: pointer;
 }
 
 .ship-type label span {
@@ -186,27 +279,27 @@
 }
 
 .ship-date {
-  display: none;
-  flex-direction: column;
+    display: none;
+    flex-direction: column;
 }
 
 .ship-date h4 {
-  font-size: 0.8em;
-  margin-top: 10px;
+    font-size: 0.8em;
+    margin-top: 10px;
 }
 
 .ship-date .estimate-date {
-  font-size: 0.5em;
-  margin: 10px 0 15px 0;
-  padding-left: 0;
+    font-size: 0.5em;
+    margin: 10px 0 15px 0;
+    padding-left: 0;
 }
 
 .ship-date .delivery-date {
-  color: black;
-  font-size: 0.6em;
-  margin-bottom: 10px;
-  font-weight: lighter;
-  padding-left: 0;
+    color: black;
+    font-size: 0.6em;
+    margin-bottom: 10px;
+    font-weight: lighter;
+    padding-left: 0;
 }
 
 .ship-gift {
@@ -225,33 +318,34 @@
 }
 
 .ship-gift-options {
-  display: none;
-  flex-direction: column;
-  margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
 }
 
 .ship-gift-options label {
-  font-size: 0.7em;
-  color: black;
-  font-weight: lighter;
-  padding-left: 0;
+    font-size: 0.7em;
+    color: black;
+    font-weight: lighter;
+    padding-left: 0;
 }
 
-.ship-gift-options textarea, .ship-gift-options input {
-  margin-top: 10px;
-  width: 300px;
-  margin-bottom: 10px;
-  outline: none;
-  resize: none;
+.ship-gift-options textarea,
+.ship-gift-options input {
+    margin-top: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+    outline: none;
+    resize: none;
 }
 
 .ship-gift-options span.error {
-  font-size: 0.8em;
-  margin: 0 0 10px 0;
+    font-size: 0.8em;
+    margin: 0 0 10px 0;
 }
 
 .visible {
-  display: flex;
+    display: flex;
 }
 
 
@@ -300,4 +394,3 @@
         grid-template-columns: auto;
     }
 }
-

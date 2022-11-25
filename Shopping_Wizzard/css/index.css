@@ -12,9 +12,9 @@ html {
     --color-primary: #333;
     --color-secondary: #959595;
     --header-footer-color: #fff;
-    --header-footer-bacground-color-primary: #df001f;
-    --header-progress: #7d2626;
-    --footer-buttons-color: #7d2626;
+    --header-footer-bacground-color-primary: #fb771a;
+    --header-progress: #fff;
+    --footer-buttons-color: #333;
     --background-color-primary: #f6f7fc;
 }
 
@@ -24,6 +24,7 @@ html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     color: var(--color-primary);
+    font-weight: 500;
 }
 
 section.order-form {
@@ -228,7 +229,7 @@ p {
 }
 
 .progress-step-active {
-    background-color: #7d2626;
+    background-color: #ffa564;
     color: #f3f3f3;
 }
 
@@ -278,6 +279,7 @@ p {
     color: var(--footer-buttons-color);
     border: none;
     border-radius: 3px;
+    font-weight: 500;
     font-size: 20px;
     font-family: bolder;
     font-weight: bolder;
@@ -317,6 +319,55 @@ p {
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
+}
+
+/****** Main styles *****/
+.main-styles-h2 {
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.main-styles-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.main-styles-input {
+    border: none;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    height: 54px;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    outline: none;
+    font-size: 16px;
+}
+
+.main-styles-select {
+    border: none;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    height: 54px;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    outline: none;
+    font-size: 16px;
 }
 
 /****** Temporal *****/
