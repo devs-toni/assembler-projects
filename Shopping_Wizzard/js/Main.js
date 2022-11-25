@@ -1,6 +1,7 @@
 //Variables ********************************
 const user = new User();
-const ship = new Shipment();
+const delivery = new Shipment();
+const product = new Product();
 
 //Address Form EventListeners *************************************************************************************
 const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
@@ -148,6 +149,13 @@ const validateForm = (event) => {
                     setErrorField(domElement, 'hide');
                 }
                 break;
+            case 'giftMessage':
+                if (domElement.value.length > 200) {
+                    setErrorField(domElement, 'show');
+                } else {
+                    setErrorField(domElement, 'hide');
+                }
+                break;
         }
         if (domElement.value.length === 0) {
             setErrorField(domElement, 'hide');
@@ -169,9 +177,59 @@ const setErrorField = (domElement, action) => {
         domElement.style.border = '1px solid black';
         errorText.textContent = '';
     }
+}
 
+// Shipping Form Event Listeners *********************************************************************************
+
+const addShipmentEventListeners = () => {
+    const isGift = document.getElementById('isGift').addEventListener('click', toggleGiftOptions);
+    document.getElementById('giftMessage').addEventListener('keydown', validateForm);
+    document.getElementById('giftMessage').addEventListener('focusout', validateForm);
+    document.getElementsByName('radioShipType').forEach(el => {
+        el.addEventListener('change', chooseShipmentType);
+    })
+}
+
+const chooseShipmentType = (event) => {
+    document.getElementById('shipDate').classList.add('visible');
+    const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    const hours = event.target.value;
+    const now = new Date();
+    let minDate = new Date();
+    let maxDate = new Date();
+
+    switch (hours) {
+        case '72':
+            minDate.setDate(now.getDate() + 3);
+            maxDate.setDate(now.getDate() + 4);
+            break;
+        case '48':
+            minDate.setDate(now.getDate() + 2);
+            maxDate.setDate(now.getDate() + 3);
+            break;
+        case '24':
+            minDate.setDate(now.getDate() + 1);
+            maxDate.setDate(now.getDate() + 2);
+            break;
+    }
+    document.getElementById('minDate').style.fontWeight = 'bold';
+    document.getElementById('maxDate').style.fontWeight = 'bold';
+    document.getElementById('minDate').textContent = `${minDate.getDate()} de ${months[minDate.getMonth()]} de ${minDate.getFullYear()}`;
+    document.getElementById('maxDate').textContent = `${maxDate.getDate()} de ${months[maxDate.getMonth()]} de ${maxDate.getFullYear()}`;
+}
+
+const toggleGiftOptions = (event) => {
+    const giftOptions = document.getElementById('shipGiftOptions');
+    if (event.target.checked) {
+        giftOptions.classList.add('visible');
+    } else {
+        giftOptions.classList.remove('visible');
+    }
 }
 
 //Initialize EventListeners *******************************
 addProfileEventListeners();
 addAddressEventListeners();
+addShipmentEventListeners();
