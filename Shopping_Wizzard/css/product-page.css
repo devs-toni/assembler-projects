@@ -121,7 +121,7 @@
 }
 
 .product-page .product-info form input[type='submit'] {
-    background-color: red;
+    background-color: #fb771a;
     color: #fff;
     width: 100%;
     max-width: 250px;
@@ -129,6 +129,8 @@
     margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
+    border: none;
+    height: 54px;
 }
 
 @media screen and (max-width: 740px) {
