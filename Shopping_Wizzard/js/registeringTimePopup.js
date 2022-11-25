@@ -1,6 +1,6 @@
 const registeringPopupDiv = document.querySelector('.registering-time-popup');
 const registeringPopupSpan = document.querySelector('#registerinTimePopup');
-const productForm = document.getElementById('product-page-form');
+const productForm = document.getElementById('productForm');
 
 let timeElapsed = 0;
 let secondsElapsed = 0;

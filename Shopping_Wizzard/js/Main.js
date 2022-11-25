@@ -3,6 +3,38 @@ const user = new User();
 const delivery = new Shipment();
 const product = new Product();
 
+//Product Form EventListeners ***********************************************************************************
+
+const addProductEventListeners = () => {
+    const batterySelect = document.querySelector('#batterySelect');
+    const colorInputs = document.querySelectorAll('[name="color"]');
+    const productPageForm = document.getElementById('productForm');
+    const btnExit = document.getElementById('btnExit');
+
+    product.getThumbnails('black');
+    productPageForm && productPageForm.addEventListener('submit', (e) => product.submitForm(e));
+
+
+    batterySelect.addEventListener('click', (e) => product.changeBatteryModel(e));
+    colorInputs.forEach((e) => e.addEventListener('click', () => product.changeColor(e.value)));
+
+    btnExit.addEventListener('click', () => {
+        productPage.classList.remove('hide');
+        productPage.style.display = 'flex';
+        orderPage.classList.add('hide');
+        headerMainProduct.classList.remove('hide');
+        headerMainProduct.style.display = 'flex';
+        headerMainOrder.classList.add('hide');
+        footerMainProduct.classList.remove('hide');
+        footerMainProduct.style.display = 'flex';
+        footerMainOrder.classList.add('hide');
+        user.removeUser();
+        product.removeProduct();
+        delivery.removeShipment();
+    });
+}
+
+
 //Address Form EventListeners *************************************************************************************
 const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
 const profileElements = ['username', 'email', 'password', 'password2'];
@@ -12,7 +44,11 @@ const addProfileEventListeners = () => {
         document.getElementById(profileInput).addEventListener('focusout', validateProfile);
         document.getElementById(profileInput).addEventListener('keydown', validateProfile);
     });
+
+    const profileForm = document.getElementById('profileForm');
+    profileForm && profileForm.addEventListener('submit', (e) => user.submitLogin(e));
 }
+
 const addAddressEventListeners = () => {
     formElements.forEach((element) => {
         document.getElementById(element).addEventListener('focusout', validateForm);
@@ -20,6 +56,8 @@ const addAddressEventListeners = () => {
     });
 
     document.getElementById('country').addEventListener('change', (event) => changeCountryPhoneSelect(event));
+    const addressForm = document.getElementById('addressForm');
+    addressForm && addressForm.addEventListener('submit', (e) => user.submitAddress(e));
 }
 
 const removeAddressEventListeners = () => {
@@ -49,62 +87,42 @@ const changeCountryPhoneSelect = (event) => {
 
 const validateProfile = (event) => {
     const profileElement = event.target;
-    if (event.type === 'keydown') setErrorField(formElement, 'hide');
-    else{
-        switch (event.target.id){
+    if (event.type === 'keydown') setErrorField(profileElement, 'hide');
+    else {
+        switch (event.target.id) {
             case 'username':
-                if (profileElement.value.length < 5 || formElement.value.length > 20){
-                }
-                break;
-            case 'email':
-                if (profileElement.value.length > 50){
+                if (profileElement.value.length < 5 || profileElement.value.length > 20) {
                     setErrorField(profileElement, 'show');
                 }
                 break;
-                case 'password':
-                    if(profileElement.value === "") {  
-                        document.getElementById("pswdEmpty").innerHTML = "**Fill the password please!";  
-                     }  
-                      
-                    //minimum password length validation  
-                    if(profileElement.value.length < 8) {  
-                        document.getElementById("pswdLength").innerHTML = "**Password length must be at least 8 characters";  
-                    }  
-                    //maximum length of password validation  
-                    if(profileElement.value.length > 20) {  
-                        document.getElementById("pswdLength").innerHTML = "**Password length must not exceed 20 characters";  
-                    }
-
-                     //contains number validation
-                    if(profileElement.value.search(/[0-9]/) < 0){
-                        document.getElementById("pswdNumber").innerHTML = "**Password must contain at least 1 number";  
-                    }
-                 
-                 //contains uppercase validation
-                    if(profileElement.value.search(/[A-Z]/) < 0){
-                        document.getElementById("pswdCase").innerHTML = "**Password must contain at least 1 uppercase letter";  
-                    }
-                 //contains lowercase validation
-                    if(profileElement.value.search(/[a-z]/) < 0){
-                        document.getElementById("pswdCase").innerHTML = "**Password must contain at least 1 lowercase letter";  
-                    }
-                 //contains soecial characters validation
-                    if(profileElement.value.search([/!@#$%^&*/]) < 0){
-                        document.getElementById("special").innerHTML = "**Password must contain at least 1 special character";  
-                    
-                    } else {  
-                        document.getElementById("pswdMessage").innerHTML = "Password is correct";
-                    }  
+            case 'email':
+                if (profileElement.value.length > 50 || !profileElement.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+                    setErrorField(profileElement, 'show');
+                }
+                break;
+            case 'password':
+                /*                 if (profileElement.value.length < 8) {
+                                    setErrorField(profileElement, 'show', '**Password must be at least 8 characters');
+                                } else if (profileElement.value.length > 20) {
+                                    setErrorField(profileElement, 'show', "**Password length must not exceed 20 characters");
+                                } else if (profileElement.value.search(/[0-9]/) < 0) {
+                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 number");
+                                } else if (profileElement.value.search(/[A-Z]/) < 0) {
+                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 uppercase letter");
+                                } else if (profileElement.value.search(/[a-z]/) < 0) {
+                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 lowercase letter");
+                                } else if (!profileElement.value.search(/[^[!@#\$%\^\&*\)\(+=._-]+$]/) < 0) {
+                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 special character");
+                                } */
                 break;
 
-                case 'password2':
-                    let pw1 = document.getElementById("password");  
-                    if (pw1 != profileElement.value){
-                        document.getElementById("pswdConfirmMsg").innerHTML = "Passwords do not match";  
-                    } else {  
-                        document.getElementById("pswdConfirmMsg").innerHTML = "Passwords match";  
-                    }  
-
+            case 'password2':
+                let pw1 = document.getElementById("password").value;
+                if (pw1 != profileElement.value) {
+                    setErrorField(profileElement, 'show', "Passwords do not match");
+                } else {
+                    setErrorField(profileElement, 'hide');
+                }
         }
     }
 
@@ -158,9 +176,14 @@ const validateForm = (event) => {
     }
 }
 
-const setErrorField = (domElement, action) => {
+const setErrorField = (domElement, action, message) => {
     let errorText = document.querySelector(`[data-target=${domElement.id}]`);
     let originalText = document.querySelector(`label[for=${domElement.id}]`).textContent;
+
+    if (message) {
+        errorText.textContent = message;
+        return;
+    }
 
     if (action === 'show') {
         domElement.style.color = 'red';
@@ -182,7 +205,20 @@ const addShipmentEventListeners = () => {
     document.getElementById('giftMessage').addEventListener('focusout', validateForm);
     document.getElementsByName('radioShipType').forEach(el => {
         el.addEventListener('change', chooseShipmentType);
-    })
+    });
+    const shipment = document.getElementById('shipmentForm');
+    shipment.addEventListener('submit', (e) => delivery.submitShipment(e));
+    const confirmOrder = document.querySelector('.confirm-order');
+    confirmOrder.addEventListener('submit', (e) => shipment.submitConfirmForm(e));
+}
+
+const removeShipmentEventListeners = () => {
+    const isGift = document.getElementById('isGift').removeEventListener('click', toggleGiftOptions);
+    document.getElementById('giftMessage').removeEventListener('keydown', validateForm);
+    document.getElementById('giftMessage').removeEventListener('focusout', validateForm);
+    document.getElementsByName('radioShipType').forEach(el => {
+        el.removeEventListener('change', chooseShipmentType);
+    });
 }
 
 const chooseShipmentType = (event) => {
@@ -215,6 +251,8 @@ const chooseShipmentType = (event) => {
     document.getElementById('maxDate').textContent = `${maxDate.getDate()} de ${months[maxDate.getMonth()]} de ${maxDate.getFullYear()}`;
 }
 
+
+
 const toggleGiftOptions = (event) => {
     const giftOptions = document.getElementById('shipGiftOptions');
     if (event.target.checked) {
@@ -228,3 +266,4 @@ const toggleGiftOptions = (event) => {
 addProfileEventListeners();
 addAddressEventListeners();
 addShipmentEventListeners();
+addProductEventListeners();

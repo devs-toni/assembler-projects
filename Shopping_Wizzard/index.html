@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="./css/registering-time-popup.css" />
     <link rel="stylesheet" href="./css/confirm-order.css" />
     <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
-    <script type="text/javascript" src="./js/User.js"></script>
-    <script type="text/javascript" src="./js/Product.js"></script>
-    <script type="text/javascript" src="./js/Shipment.js"></script>
+    <script type="text/javascript" src="./js/User.js" defer></script>
+    <script type="text/javascript" src="./js/Product.js" defer></script>
+    <script type="text/javascript" src="./js/Shipment.js" defer></script>
     <script type="text/javascript" src="./js/Main.js" defer></script>
-    <script type="text/javascript" src="./js/productPage.js" defer></script>
     <script type="text/javascript" src="./js/progressBar.js" defer></script>
-    <script type="text/javascript" src="./js/confirmOrder.js" defer></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <title>Electric Scooter Factory | Shopping Wizard</title>
 </head>
@@ -68,7 +66,7 @@
                         <div class="product-info">
                             <h2 id="productTitle">Scooter MQT45BK</h2>
                             <p id="productPrice">695 €</p>
-                            <form id="product-page-form">
+                            <form id="productForm">
                                 <div>
                                     <label for="battery">Capacidad de la bateria</label>
                                     <select id="batterySelect" name="battery">
@@ -90,36 +88,34 @@
                     <!-- ORDER PAGE -->
                     <section class="order-form hide">
                         <!-- profile page -->
-                        <div class="form-step form-step-active">
+                        <div id="div-profile" class="form-step form-step-active">
                             <div class="profile order-form-margin">
                                 <div class="profileForm">
                                     <h2>Profile</h2>
-                                    <form id="profileForm" onSubmit="user.submitLogin(event);">
+                                    <form id="profileForm">
                                         <div class="profileGroup">
                                             <div class="formEntry">
                                                 <label for="username">Username</label><br />
                                                 <input type="text" id="username" class="usernameInput" required />
+                                                <span data-target="username" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="email">Email</label><br />
                                                 <input type="email" id="email" class="emailInput" required />
+                                                <span data-target="email" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="password">Password</label><br />
                                                 <input type="password" id="password" class="passwordInput" required />
-                                                <span id="pswdMessage">
-                                                  <p id="pswdEmpty"></p>
-                                                  <p id="pswdLength"></p>
-                                                  <p id="pswdNumber"></p>
-                                                  <p id="pswdCase"></p>
-                                                  <p id="special"></p>
-                                                </span>
+                                                <span data-target="password" class="error"></span>
                                             </div>
                                             <div class="formEntry">
-                                                <label for="passwordConfirm">Confirm password</label><br />
+                                                <label for="password2">Confirm password</label><br />
                                                 <input type="password" id="password2" class="passwordConfirmInput"
                                                     required />
-                                                    <span id="pswdConfirmMessage">
+                                                    <span data-target="password2" class="error"></span>
+                  
+
 
                                             </div>
                                         </div>
@@ -128,46 +124,46 @@
                             </div>
                         </div>
                         <!-- address page -->
-                        <div class="form-step">
+                        <div id="div-address" class="form-step">
                             <div class="address order-form-margin">
                                 <div class="form">
                                     <h2>Address</h2>
-                                    <form id="formId" onSubmit="user.submitAddress(event);">
+                                    <form id="addressForm">
                                         <div class="adress-group">
                                             <div class="formEntry">
                                                 <label for="firstname">First name</label>
                                                 <input type="text" id="firstname" name="firstname"
                                                     class="firstnameInput" required />
-                                                <span data-target="firstname" id="error" class="error"></span>
+                                                <span data-target="firstname" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="lastname">Last name</label>
                                                 <input type="text" id="lastname" name="lastname" class="lastnameInput"
                                                     required />
-                                                <span data-target="lastname" id="error" class="error"></span>
+                                                <span data-target="lastname" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="birthday">Birthday</label>
                                                 <input type="date" id="birthday" name="birthday" class="birthdayInput"
                                                     placeholder="dd/mm/yyyy" required />
-                                                <span data-target="birthday" id="error" class="error"></span>
+                                                <span data-target="birthday" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="addressOne">Adress 1</label>
                                                 <input type="text" id="addressOne" name="addressOne"
                                                     class="addressOneInput" required />
-                                                <span data-target="addressOne" id="error" class="error"></span>
+                                                <span data-target="addressOne" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="addressTwo">Adress 2</label>
                                                 <input type="text" id="addressTwo" name="addressTwo"
                                                     class="addressTwoInput" />
-                                                <span data-target="addressTwo" id="error" class="error"></span>
+                                                <span data-target="addressTwo" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="postalCode">Postal Code</label>
                                                 <input type="text" id="postalCode" class="postalCodeInput" required />
-                                                <span data-target="postalCode" id="error" class="error"></span>
+                                                <span data-target="postalCode" class="error"></span>
                                             </div>
                                             <div class="formEntry">
                                                 <label for="country">Country</label>
@@ -180,7 +176,7 @@
                                                     <option value="Alemania">Alemania</option>
                                                     <option value="Grecia">Grecia</option>
                                                 </select>
-                                                <span data-target="country" id="error" class="error"></span>
+                                                <span data-target="country" class="error"></span>
                                             </div>
                                             <div class="formEntry together">
                                                 <label for="phone">Phone</label>
@@ -205,7 +201,7 @@
                                                     </select>
                                                     <input type="tel" id="phone" name="phone" class="phone" required />
                                                 </div>
-                                                <span data-target="phone" id="error" class="error"></span>
+                                                <span data-target="phone" class="error"></span>
                                             </div>
                                             <div class="formEntryCheckbox">
                                                 <label for="regularAdress">This is my regular address</label>
@@ -215,16 +211,12 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="info">
-                                    <p>You started registering <span>x minutes ago.</span></p>
-                                    <p class="hurryUp">Hurry up!</p>
-                                </div>
                             </div>
                         </div>
                         <!-- shipping page -->
-                        <div class="form-step">
+                        <div id="div-shipment" class="form-step">
                             <div class="shipping order-form-margin">
-                                <form id="formId" onSubmit="ship.submitShipment(event);">
+                                <form id="shipmentForm">
                                     <h2 class="ship-title">Shipping</h2>
                                     <div class="ship-type">
                                         <h3>Shipping type</h3>
@@ -262,7 +254,7 @@
                                         <input type="text" id="giftTitle" name="giftTitle" />
                                         <label class="ship-gift-message-title" for="giftMessage">Gift message</label>
                                         <textarea name="giftMessage" id="giftMessage" rows="6"></textarea>
-                                        <span data-target="giftMessage" id="error" class="error"></span>
+                                        <span data-target="giftMessage" class="error"></span>
                                         <label>Gift wrapper image</label>
                                         <input type="file" name="giftImageFile" id="giftImageFile"
                                             accept="image/png, image/jpeg" />
@@ -271,7 +263,7 @@
                             </div>
                         </div>
                         <!-- confirmation page -->
-                        <div class="form-step">
+                        <div id="div-confirm" class="form-step">
                             <div class="confirmation order-form-margin">
                                 <div class="confirm-order">
                                     <div>
@@ -316,7 +308,7 @@
                         </div>
                     </section>
                 </div>
-                <footer class="footer">
+                <footer id="footer" class="footer">
                     <div class="footer-main">
                         <div class="footer-main-product">
                             <p>
@@ -326,8 +318,9 @@
                         </div>
                         <div class="footer-main-order hide">
                             <div class="btns-group">
-                                <a href="#" class="btn btn-prev">Previous</a>
-                                <a href="#" class="btn btn-next">Next</a>
+                                <a href="#" class="btn" id="btnPrev">Previous</a>
+                                <input type="submit" form="profileForm" value="Enviar" class="btn" id="finalSubmit" />
+                                <button href="#" class="btn" id="btnExit">Exit</button>
                             </div>
                         </div>
                     </div>

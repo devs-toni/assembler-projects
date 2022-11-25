@@ -1,3 +1,15 @@
+const productPage = document.querySelector('.product-page');
+const thumbnails = document.querySelector('.product-thumbnails');
+const image = document.querySelector('.product-image');
+const productTitle = document.querySelector('#productTitle');
+const productPrice = document.querySelector('#productPrice');
+const colorSelect = document.querySelector('#colorSelect');
+const orderPage = document.querySelector('.order-form');
+const headerMainProduct = document.querySelector('.header-main-product');
+const headerMainOrder = document.querySelector('.header-main-order');
+const footerMainProduct = document.querySelector('.footer-main-product');
+const footerMainOrder = document.querySelector('.footer-main-order');
+
 class Product {
     constructor() {
         this.productName = '';
@@ -11,32 +23,32 @@ class Product {
         e.preventDefault();
 
         // Create product
-        product.color = e.target.color.value;
-        product.batteryCapacity = e.target.battery.value;
-        product.image = `./assets/products/${e.target.color.value}/${e.target.color.value}-1.png`;
+        this.color = e.target.color.value;
+        this.batteryCapacity = e.target.battery.value;
+        this.image = `./assets/products/${e.target.color.value}/${e.target.color.value}-1.png`;
         switch (e.target.color.value) {
             case 'black':
-                product.productName = 'Scooter MQT45BK';
+                this.productName = 'Scooter MQT45BK';
                 break;
             case 'white':
-                product.productName = 'Scooter MQT45W';
+                this.productName = 'Scooter MQT45W';
                 break;
             case 'blue':
-                product.productName = 'Scooter MQT45BE';
+                this.productName = 'Scooter MQT45BE';
                 break;
             case 'red':
-                product.productName = 'Scooter MQT45R';
+                this.productName = 'Scooter MQT45R';
                 break;
         }
         switch (e.target.battery.value) {
             case '10000mAh':
-                product.price = 695;
+                this.price = 695;
                 break;
             case '20000mAh':
-                product.price = 795;
+                this.price = 795;
                 break;
             case '30000mAh':
-                product.price = 895;
+                this.price = 895;
         }
 
         // DOM change
@@ -46,12 +58,14 @@ class Product {
         headerMainOrder.classList.remove('hide');
         footerMainProduct.classList.add('hide');
         footerMainOrder.classList.remove('hide');
+        document.getElementById('btnPrev').classList.add('hide');
 
         // Remove eventlisteners
         removeEventListener('submit', this.submitForm, true);
         removeEventListener('click', this.changeBatteryModel, true);
         removeEventListener('click', this.changeColor, true);
-        return product;
+        console.log(this);
+        document.getElementById('finalSubmit').setAttribute('form', 'profileForm');
     }
 
     changeBatteryModel(e) {

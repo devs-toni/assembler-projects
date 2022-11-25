@@ -271,12 +271,18 @@ p {
 }
 
 .btn {
-    display: flex;
-    justify-content: space-around;
+    font-family: Verdana, serif !important;
+    text-align: center;
     background-color: #fff;
+    padding: 5px 0;
     color: var(--footer-buttons-color);
     border: none;
     border-radius: 3px;
+    font-size: 20px;
+    font-family: bolder;
+    font-weight: bolder;
+    color: black;
+    cursor: pointer;
 }
 
 #formId {

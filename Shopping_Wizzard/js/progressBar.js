@@ -1,26 +1,16 @@
-const prevBtns = document.querySelectorAll(".btn-prev");
-const nextBtns = document.querySelectorAll(".btn-next");
+const prevBtn = document.getElementById("btnPrev");
+const nextBtn = document.getElementById("btnNext");
 const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 
 let formStepsNum = 0;
 
-nextBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    formStepsNum++;
-    updateFormSteps();
-    updateProgressbar();
-  });
-});
-
-prevBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
+prevBtn.addEventListener("click", () => {
     formStepsNum--;
     updateFormSteps();
     updateProgressbar();
   });
-});
 
 function updateFormSteps() {
   formSteps.forEach((formStep) => {

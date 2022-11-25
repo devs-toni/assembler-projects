@@ -22,6 +22,15 @@
     align-content: baseline;
 }
 
+.product-page .product-thumbnails img {
+    cursor: pointer;
+}
+
+.product-page .product-thumbnails img:hover {
+    opacity: 0.5;
+}
+
+
 .product-page .product-image {
     height: auto;
     width: auto;
@@ -58,10 +67,14 @@
 .product-page .product-info form label {
     font-size: 1.5em;
     margin-bottom: 20px;
+}
+
+.product-page .product-info form select {
     cursor: pointer;
 }
 
 .product-page .product-info form input[type='radio'] {
+    cursor: pointer;
     background-color: red !important;
     margin: 5px;
     margin-bottom: 20px;

@@ -1,3 +1,15 @@
+const confirmOrder = document.querySelector('.confirm-order');
+const orderImg = document.querySelector('#confirmOrderImg');
+const orderProductName = document.querySelector('#confirmOrderProduct');
+const orderBattery = document.querySelector('#confirmOrderBattery');
+const orderColor = document.querySelector('#confirmOrderColor');
+const orderPrice = document.querySelector('#confirmOrderPrice');
+const orderShipping = document.querySelector('#confirmOrderShipping');
+const orderTotalPice = document.querySelector('#confirmOrderTotalPrice');
+const confirmOrderForm = document.querySelector('#confirmOrderForm');
+const confirmOrderCheckbox = document.querySelector('#confirmOrderCheckbox');
+const confirmOrderTermsCheckbox = document.querySelector('#confirmOrderTermsCheckbox');
+
 class Shipment {
     constructor() {
         this.type = '';
@@ -44,6 +56,40 @@ class Shipment {
         }
 
         this.showShipment();
+        document.getElementById('div-shipment').classList.remove('form-step-active');
+        document.getElementById('div-confirm').classList.add('form-step-active');
+        document.getElementById('finalSubmit').setAttribute('form', '');
+        document.getElementById('footer').classList.add('hide');
+        this.assignConfirmHtmlValues();
         removeShipmentEventListeners();
+    }
+
+    submitConfirmForm (e) {
+        e.preventDefault();
+        if (confirmOrderCheckbox.checked) {
+            confirmOrder.classList.add('hide');
+        } else {
+            confirmOrderTermsCheckbox.classList.remove('hide');
+        }
+        confirmOrder.removeEventListener('submit', submitConfirmForm, true);
+    }
+
+    assignConfirmHtmlValues () {
+        orderImg.src = product.image;
+        orderProductName.textContent = product.productName;
+        orderBattery.textContent = product.batteryCapacity;
+        orderColor.textContent = product.color;
+        orderPrice.textContent = product.price;
+        orderShipping.textContent = delivery.cost;
+        orderTotalPice.textContent = parseInt(product.price) + parseInt(delivery.cost);
+    }
+
+    removeShipment () {
+        this.type = '';
+        this.cost = 0;
+        this.isGift = false;
+        this.titleGift = '';
+        this.messageGift = '';
+        this.imageGift = null;
     }
 }

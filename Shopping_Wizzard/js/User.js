@@ -2,7 +2,6 @@ class User {
     constructor(product) {
         this.email = '';
         this.password = '';
-        this.password2 = '';
         this.firstname = '';
         this.lastname = '';
         this.birthday = '';
@@ -13,10 +12,6 @@ class User {
         this.phone = '';
         this.product = product;
         this.isRegularAdress = false;
-    }
-
-    showUser = () => {
-        console.log(this);;
     }
 
     submitAddress = (e) => {
@@ -45,55 +40,53 @@ class User {
         }
 
         this.assignFormValues();
-        this.showUser();
+        document.getElementById('finalSubmit').setAttribute('form', 'shipmentForm');
+        document.getElementById('div-address').classList.remove('form-step-active');
+        document.getElementById('div-shipment').classList.add('form-step-active');
+        console.log(this);
         removeAddressEventListeners();
     }
 
     submitLogin = (e) => {
         e.preventDefault();
-        if(this.password === "") {  
-            document.getElementById("pswdMessage").innerHTML = "**Fill the password please!";  
-            return false;  
-         }  
-          
-        //minimum password length validation  
-         if(this.password.length < 8) {  
-            document.getElementById("pswdMessage").innerHTML = "**Password length must be at least 8 characters";  
-            return false;  
-         }  
-         
-         //contains number validation
-        if(this.password.search(/[0-9]/) < 0){
-            document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 number";  
+        /*         if (password.value === "") {
+                    return;
+                }
+                if (password.value.length < 8) {
+                    return;
+                }
+                if (password.value.search(/[0-9]/) < 0) {
+                    return;        
+                }
+                if (password.value.search(/[A-Z]/) < 0) {
+                    return;        
+                }
+                if (password.value.search(/[a-z]/) < 0) {
+                    return;        
+                }
+                if (password.value.search([/!@#$%^&*/  /*  ]) < 0) {
+            return;        
         }
-     
-     //contains uppercase validation
-        if(this.password.search(/[A-Z]/) < 0){
-            document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 uppercase letter";  
-        }
-     //contains lowercase validation
-        if(this.password.search(/[a-z]/) < 0){
-            document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 lowercase letter";  
-        }
-     //contains soecial characters validation
-        if(this.password.search([/!@#$%^&*/]) < 0){
-            document.getElementById("pswdMessage").innerHTML = "**Password must contain at least 1 special character";  
-        }
-     //maximum length of password validation  
-        if(this.password.length > 20) {  
-           document.getElementById("pswdMessage").innerHTML = "**Password length must not exceed 20 characters";  
-           return false;  
-        } else {  
-           alert("Password is correct");  
-        }  
+        if (password.value.length > 20) {
+            return;      
+        } */
 
-         let pw1 = document.getElementById("passwordConfirm");  
-         if(pw1 != this.password)  
-         {   
-           alert("Passwords did not match");  
-         } else {  
-           alert("Password created successfully");  
-         }  
+        if (password.value != password2.value) {
+            return;
+        }
+
+        console.log(this);
+        this.assignLoginValues();
+        document.getElementById('div-profile').classList.remove('form-step-active');
+        document.getElementById('div-address').classList.add('form-step-active');
+        document.getElementById('btnPrev').classList.remove('hide');
+        document.getElementById('finalSubmit').setAttribute('form', 'addressForm');
+    }
+
+    assignLoginValues = () => {
+        this.username = username.value;
+        this.email = email.value;
+        this.password = password.value;
     }
 
     assignFormValues = () => {
@@ -106,6 +99,21 @@ class User {
         this.country = country.value;
         this.phone = countryPhone.value + phone.value;
         this.isRegularAdress = regularAddress.checked;
+    }
+
+    removeUser() {
+        this.email = '';
+        this.password = '';
+        this.firstname = '';
+        this.lastname = '';
+        this.birthday = '';
+        this.addressOne = '';
+        this.addressTwo = '';
+        this.postalCode = '';
+        this.country = '';
+        this.phone = '';
+        this.product = product;
+        this.isRegularAdress = false;
     }
 
 }
