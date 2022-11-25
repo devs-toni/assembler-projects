@@ -103,19 +103,21 @@ const validateProfile = (event) => {
                 }
                 break;
             case 'password':
-                /*                 if (profileElement.value.length < 8) {
-                                    setErrorField(profileElement, 'show', '**Password must be at least 8 characters');
-                                } else if (profileElement.value.length > 20) {
-                                    setErrorField(profileElement, 'show', "**Password length must not exceed 20 characters");
-                                } else if (profileElement.value.search(/[0-9]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 number");
-                                } else if (profileElement.value.search(/[A-Z]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 uppercase letter");
-                                } else if (profileElement.value.search(/[a-z]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 lowercase letter");
-                                } else if (!profileElement.value.search(/[^[!@#\$%\^\&*\)\(+=._-]+$]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 special character");
-                                } */
+                const containSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+
+                if (profileElement.value.length < 8) {
+                    setErrorField(profileElement, 'show', '**Password must be at least 8 characters');
+                } else if (profileElement.value.length > 20) {
+                    setErrorField(profileElement, 'show', "**Password length must not exceed 20 characters");
+                } else if (profileElement.value.search(/[0-9]/) < 0) {
+                    setErrorField(profileElement, 'show', "**Password must contain at least 1 number");
+                } else if (profileElement.value.search(/[A-Z]/) < 0) {
+                    setErrorField(profileElement, 'show', "**Password must contain at least 1 uppercase letter");
+                } else if (profileElement.value.search(/[a-z]/) < 0) {
+                    setErrorField(profileElement, 'show', "**Password must contain at least 1 lowercase letter");
+                } else if (!containSymbol.test(password.value)) {
+                    setErrorField(profileElement, 'show', "**Password must contain at least 1 special character");
+                }
                 break;
 
             case 'password2':

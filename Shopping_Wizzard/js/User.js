@@ -49,27 +49,29 @@ class User {
 
     submitLogin = (e) => {
         e.preventDefault();
-        /*         if (password.value === "") {
-                    return;
-                }
-                if (password.value.length < 8) {
-                    return;
-                }
-                if (password.value.search(/[0-9]/) < 0) {
-                    return;        
-                }
-                if (password.value.search(/[A-Z]/) < 0) {
-                    return;        
-                }
-                if (password.value.search(/[a-z]/) < 0) {
-                    return;        
-                }
-                if (password.value.search([/!@#$%^&*/  /*  ]) < 0) {
-            return;        
+        if (password.value === "") {
+            return;
+        }
+        if (password.value.length < 8) {
+            return;
+        }
+        if (password.value.search(/[0-9]/) < 0) {
+            return;
+        }
+        if (password.value.search(/[A-Z]/) < 0) {
+            return;
+        }
+        if (password.value.search(/[a-z]/) < 0) {
+            return;
+        }
+        const containSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+        if (!containSymbol.test(password.value)) {
+            console.log('hola');
+            return;
         }
         if (password.value.length > 20) {
-            return;      
-        } */
+            return;
+        }
 
         if (password.value != password2.value) {
             return;
