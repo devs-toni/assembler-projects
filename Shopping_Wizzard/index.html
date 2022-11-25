@@ -17,6 +17,7 @@
     <script type="text/javascript" src="./js/Main.js" defer></script>
     <script type="text/javascript" src="./js/productPage.js" defer></script>
     <script type="text/javascript" src="./js/progressBar.js" defer></script>
+    <script type="text/javascript" src="./js/confirmOrder.js" defer></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <title>Electric Scooter Factory | Shopping Wizard</title>
 </head>
@@ -272,11 +273,35 @@
                         <!-- confirmation page -->
                         <div class="form-step">
                             <div class="confirmation order-form-margin">
-                                <p>Thanks-page Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
+                                <div class="confirm-order">
+                                    <div>
+                                        <div>
+                                            <h2>Your purchase</h2>
+                                            <div>
+                                                <img id="confirmOrderImg" width="700">
+                                                <div>
+                                                    <h2 id="confirmOrderProduct">Product</h2>
+                                                    <p id="confirmOrderBattery">Battery</p>
+                                                    <p id="confirmOrderColor">Color</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form id="confirmOrderForm">
+                                            <input type="checkbox" id="confirmOrderCheckbox">
+                                            <label>
+                                                I have read and iI accept terms and conditions
+                                            </label>
+                                            <p class="hide" id="confirmOrderTermsCheckbox">Please accept the terms and conditions</p>
+                                            <input type="submit" value="Buy now">
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <h3>Your order</h3>
+                                        <p>Product: <span id="confirmOrderPrice">695</span>€</p>
+                                        <p>Shipping: <span id="confirmOrderShipping">9.99</span>€</p>
+                                        <p>Total: <span id="confirmOrderTotalPrice">704.94</span>€</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- thank you page -->
@@ -307,8 +332,8 @@
                         </div>
                     </div>
                 </footer>
-
-                <!-- MAC OS WINDOW DIV'S-->
+                
+                <!-- MAC OS WINDOW DIV'S-->    
             </div>
         </div>
     </div>
