@@ -59,7 +59,7 @@ class Shipment {
     }
 
     chooseShipmentType = (event) => {
-        dateShip.classList.add('visible');
+        dateShip.classList.add('visible-date');
         const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
             "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
         ];
@@ -105,3 +105,23 @@ class Shipment {
         this.imageGift = null;
     }
 }
+
+// button submit custom
+
+const realFileBtn = document.getElementById("giftImageFile");
+const customBtn = document.getElementById("giftImageFile-button");
+const customTxt = document.getElementById("custom-text");
+
+customBtn.addEventListener("click", function() {
+  realFileBtn.click();
+});
+
+realFileBtn.addEventListener("change", function() {
+  if (realFileBtn.value) {
+    customTxt.innerHTML = realFileBtn.value.match(
+      /[\/\\]([\w\d\s\.\-\(\)]+)$/
+    )[1];
+  } else {
+    customTxt.innerHTML = "No file chosen, yet.";
+  }
+});

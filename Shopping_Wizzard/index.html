@@ -204,8 +204,7 @@
                                                 <span data-target="phone" class="error"></span>
                                             </div>
                                             <div class="formEntryCheckbox">
-                                                <label class="container-address">This is my regular
-                                                    address
+                                                <label class="container-adress">This is my regular address
                                                     <input type="checkbox" id="regularAddress" name="regularAddress"
                                                         class="phone" />
                                                     <span class="checkmark"></span>
@@ -222,23 +221,29 @@
                                 <form id="shipmentForm">
                                     <h2 class="ship-title">Shipping</h2>
                                     <div class="ship-type">
-                                        <h3>Shipping type</h3>
+                                        <h3>Shipping types:</h3>
                                         <div class="form-entry">
-                                            <input type="radio" name="radioShipType" id="freeShipment" value="72"
-                                                required />
-                                            <label for="freeShipment">Free Shipment (72H)</label>
+                                            <label for="freeShipment" class="container-shipping">Free Shipment (72H)
+                                                <input type="radio" name="radioShipType" id="freeShipment" value="72"
+                                                    required>
+                                                <span class="checkmark-shipping"></span>
+                                            </label>
                                         </div>
                                         <div class="form-entry">
-                                            <input type="radio" name="radioShipType" id="extraShipment" value="48"
-                                                required />
-                                            <label for="extraShipment">Extra shipping (48H)
-                                                <span class="price-shipment">4,99 €</span></label>
+                                            <label for="extraShipment" class="container-shipping">Extra shipping (48H)
+                                                <span class="price-shipment">4,99 €</span>
+                                                <input type="radio" name="radioShipType" id="extraShipment" value="48"
+                                                    required>
+                                                <span class="checkmark-shipping"></span>
+                                            </label>
                                         </div>
                                         <div class="form-entry">
-                                            <input type="radio" name="radioShipType" id="premiumShipment" value="24"
-                                                required />
-                                            <label for="premiumShipment">Premium (24H)
-                                                <span class="price-shipment">9,99 €</span></label>
+                                            <label for="premiumShipment" class="container-shipping">Premium (24H) <span
+                                                    class="price-shipment">9,99 €</span>
+                                                <input type="radio" name="radioShipType" id="premiumShipment" value="24"
+                                                    required>
+                                                <span class="checkmark-shipping"></span>
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="ship-date" id="shipDate">
@@ -248,58 +253,83 @@
                                             <span id="maxDate"></span>
                                         </span>
                                     </div>
-                                    <div class="ship-gift">
-                                        <input type="checkbox" id="isGift" value="isGift" />
-                                        <label for="isGift">Is it a gift?</label>
+
+
+                                    <div class="formEntryCheckbox">
+                                        <label class="container-adress">Is it a gift?
+                                            <input type="checkbox" id="isGift" value="isGift" />
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
                                     <div class="ship-gift-options" id="shipGiftOptions">
-                                        <label class="ship-gift-message-title" for="giftTitle">Gitf title</label>
+                                        <label class="ship-gift-message-title" for="giftTitle">Gift title</label>
                                         <input type="text" id="giftTitle" name="giftTitle" />
                                         <label class="ship-gift-message-title" for="giftMessage">Gift message</label>
                                         <textarea name="giftMessage" id="giftMessage" rows="6"></textarea>
                                         <span data-target="giftMessage" class="error"></span>
                                         <label>Gift wrapper image</label>
-                                        <input type="file" name="giftImageFile" id="giftImageFile"
+                                        <input type="file" name="giftImageFile" id="giftImageFile" hidden="hidden"
                                             accept="image/png, image/jpeg" />
+                                        <button type="button" id="giftImageFile-button">CHOOSE A FILE</button>
+                                        <span id="custom-text">No file chosen, yet.</span>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <!-- confirmation page -->
                         <div id="div-confirm" class="form-step" data-target="confirm">
-                            <div class="confirmation order-form-margin">
+                            <div class="confirmation">
+                                <h2 class="confirmation-page-h2">Order Details</h2>
                                 <div id="confirmOrder" class="confirm-order">
-                                    <div>
-                                        <div>
-                                            <h2>Your purchase</h2>
-                                            <div>
-                                                <img id="confirmOrderImg" width="700" />
-                                                <div>
-                                                    <h2 id="confirmOrderProduct">Product</h2>
-                                                    <p id="confirmOrderBattery">Battery</p>
-                                                    <p id="confirmOrderColor">Color</p>
-                                                </div>
-                                            </div>
+                                    <div class="grid-confirm-order-img">
+                                        <h2 class="confirmation-page-title">Your purchase</h2>
+                                        <div class="confirm-order-img">
+                                            <img id="confirmOrderImg" />
                                         </div>
+                                    </div>
+                                    <div class="grid-confirm-order-info-img">
+                                        <span class="confirm-order-label">Product name: </span>
+                                        <h2 id="confirmOrderProduct" class="confirm-order-info-img-product">Product</h2>
+                                        <span class="confirm-order-label">Battery capacity: </span>
+                                        <p id="confirmOrderBattery" class="confirm-order-info-img-product">Battery</p>
+                                        <span class="confirm-order-label">Chosen color: </span>
+                                        <p id="confirmOrderColor" class="confirm-order-info-img-product">Color</p>
+                                    </div>
+                                    <div class="grid-confirm-order-form">
                                         <form id="confirmOrderForm">
-                                            <input type="checkbox" id="confirmOrderCheckbox" />
-                                            <label>
-                                                I have read and iI accept terms and conditions
+                                            <label class="container-adress">I have read and agreed to the terms and
+                                                conditions
+                                                <input type="checkbox" id="confirmOrderCheckbox" />
+                                                <span class="checkmark"></span>
                                             </label>
-                                            <p class="hide" id="confirmOrderTermsCheckbox">Please accept the terms and
+                                            <p class="hide error" id="confirmOrderTermsCheckbox">Please accept the terms
+                                                and
                                                 conditions</p>
-                                            <input type="submit" value="Buy now">
+                                            <input type="submit" value="Buy now" class="confirm-order-buy">
                                         </form>
                                     </div>
-                                    <div>
-                                        <h3>Your order</h3>
-                                        <p>Product: <span id="confirmOrderPrice">695</span>€</p>
-                                        <p>
-                                            Shipping: <span id="confirmOrderShipping">9.99</span>€
-                                        </p>
-                                        <p>
-                                            Total: <span id="confirmOrderTotalPrice">704.94</span>€
-                                        </p>
+                                    <div class="grid-confirm-order-information">
+                                        <h3 class="confirmation-page-title">Order Info</h3>
+                                        <div class="grid-confirm-order-invoice">
+                                            <div class="grid-invoice-text">
+                                                <div class="invoice-text">Subtotal</div>
+                                                <div class="invoice-text">Shipping Cost</div>
+                                                <div class="invoice-text">Discount</div>
+                                                <div class="invoice-text-total">Total</div>
+                                            </div>
+                                            <div class="grid-invoice-result">
+                                                <div class="invoice-result"><span id="confirmOrderPrice"
+                                                        class="invoice-result">699</span>€
+                                                </div>
+                                                <div class="invoice-result"><span id="confirmOrderShipping"
+                                                        class="invoice-result">9</span>€
+                                                </div>
+                                                <div class="invoice-result"><span class="invoice-result">0</span>€
+                                                </div>
+                                                <div class="invoice-result-total"><span id="confirmOrderTotalPrice"
+                                                        class="invoice-result-total">708</span>€</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

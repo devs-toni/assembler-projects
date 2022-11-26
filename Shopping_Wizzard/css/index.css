@@ -265,10 +265,14 @@ p {
     max-width: 980px;
     padding: 10px;
     margin: auto;
+    height: 60px;
 }
 
 .footer .footer-main .footer-main-product p {
-    color: var(--header-footer-color)
+    color: var(--header-footer-color);
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
 }
 
 .btn {
