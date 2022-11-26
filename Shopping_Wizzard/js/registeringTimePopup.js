@@ -53,10 +53,20 @@ function registeringPopup() {
                 registeringPopupDiv.classList.add('hide-popup');
                 
                 clearInterval(popupInterval);
+                addProductEventListeners();
+                document.getElementById('div-confirm').classList.remove('form-step-active');
+
+                // Reset objects
                 user.resetUser();
                 product.resetProduct();
                 delivery.resetShipment();
                 order.resetOrder();
+
+                // Reset views
+                resetOrderFormsView();
+
+                // Reset forms
+                resetAllForms();
             }
         } else {
             registeringPopupDiv.classList.remove('show-popup');

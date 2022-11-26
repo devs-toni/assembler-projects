@@ -209,6 +209,7 @@ const addExitButtonEventListener = () => {
         user.resetUser();
         product.resetProduct();
         delivery.resetShipment();
+        order.resetOrder();
 
         // Reset views
         resetOrderFormsView();
