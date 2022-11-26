@@ -19,6 +19,15 @@ class Order {
         registrationMinutes.textContent = minutesElapsed;
         registrationSeconds.textContent = secondsElapsed;
 
+        registeringPopupDiv.classList.add('hide');
+
+        clearInterval(popupInterval);
         confirmOrderForm.removeEventListener('submit', this.domSetHTMLValues, true);
+    }
+
+    resetOrder() {
+        this.user = '';
+        this.product = '';
+        this.shipment = '';
     }
 }

@@ -51,8 +51,12 @@ function registeringPopup() {
                 footerMainProduct.classList.remove('hide');
                 registeringPopupDiv.classList.remove('show-popup');
                 registeringPopupDiv.classList.add('hide-popup');
+                
                 clearInterval(popupInterval);
-                product.removeProduct();
+                user.resetUser();
+                product.resetProduct();
+                delivery.resetShipment();
+                order.resetOrder();
             }
         } else {
             registeringPopupDiv.classList.remove('show-popup');
