@@ -51,7 +51,7 @@ class Shipment {
         e.preventDefault();
         if (confirmOrderCheckbox.checked) {
             document.getElementById('div-confirm').classList.remove('form-step-active');
-            document.getElementById('divThankyouPage').classList.add('form-step-active');
+            document.getElementById('divThanksPage').classList.add('form-step-active');
         } else {
             confirmOrderTermsCheckbox.classList.remove('hide');
         }

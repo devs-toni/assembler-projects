@@ -2,6 +2,7 @@
 const product = new Product();
 const user = new User();
 const delivery = new Shipment();
+const order = new Order();
 
 //Product Form EventListeners ***********************************************************************************
 const addProductEventListeners = () => {
@@ -76,6 +77,9 @@ const removeShipmentEventListeners = () => {
         el.removeEventListener('change', delivery.chooseShipmentType);
     });
 }
+
+// Order event listener
+confirmOrderForm.addEventListener('submit', () => order.domSetHTMLValues());
 
 // Form Helpers **************************************************************************************************
 const validateField = (event) => {

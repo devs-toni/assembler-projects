@@ -15,6 +15,7 @@
     <script type="text/javascript" src="./js/Product.js" defer></script>
     <script type="text/javascript" src="./js/User.js" defer></script>
     <script type="text/javascript" src="./js/Shipment.js" defer></script>
+    <script type="text/javascript" src="./js/Order.js" defer></script>
     <script type="text/javascript" src="./js/domEventListeners.js" defer></script>
     <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
@@ -304,13 +305,32 @@
                             </div>
                         </div>
                         <!-- thank you page -->
-                        <div id="divThankyouPage" class="form-step">
+                        <div id="divThanksPage" class="form-step">
                             <div class="thanks-page order-form-margin">
-                                <p>Thanks-page Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
-                                <p>Hola, mundo!</p>
+                                <div class="thanks-title">
+                                    <h2>Your order is complete!</h2>
+                                    <p>Thank you for your order!</p>
+                                </div>
+                                <div>
+                                    <div class="thanks-your-purchase">
+                                        <h3>Your purchase</h3>
+                                        <div>
+                                            <img id="thanksImage">
+                                            <p id="thanksModel">Model</p>
+                                            <p id="thanksBattery">Battery</p>
+                                            <p id="thanksColor">Color</p>
+                                        </div>
+                                        <p>Estimated date delivery:</p>
+                                        <p id="thanksArriveDate">Between 21 of July of 2020 14:00h and 21 of July of 2020 20:00h.</p>
+                                    </div>
+                                    <div class="thanks-payment-details">
+                                        <h4>Payment details</h4>
+                                        <p>Scooter: <span id="thanksPrice">14.55</span>€</p>
+                                        <p>Shipping: <span id="thanksShipping">10</span>€</p>
+                                        <p>Total: <span id="thanksTotalPrice">24.55</span>€</p>
+                                    </div>            
+                                </div>
+                                <div>Your order took: <span id="registrationMinutes">3</span> minutes and <span id="registrationSeconds">23</span> seconds</div>
                             </div>
                         </div>
                     </section>

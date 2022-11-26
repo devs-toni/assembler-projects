@@ -59,7 +59,7 @@ const giftMessage = document.getElementById('giftMessage');
 const giftImageFile = document.getElementById('giftImageFile');
 const giftOptions = document.getElementById('shipGiftOptions');
 
-// Resume Page
+// Confirmation Page
 const orderPage = document.querySelector('.order-form');
 const confirmOrder = document.querySelector('.confirm-order');
 const orderImg = document.querySelector('#confirmOrderImg');
@@ -68,4 +68,17 @@ const orderBattery = document.querySelector('#confirmOrderBattery');
 const orderColor = document.querySelector('#confirmOrderColor');
 const orderPrice = document.querySelector('#confirmOrderPrice');
 const orderShipping = document.querySelector('#confirmOrderShipping');
-const orderTotalPice = document.querySelector('#confirmOrderTotalPrice');
+const orderTotalPrice = document.querySelector('#confirmOrderTotalPrice');
+const confirmOrderForm = document.getElementById('confirmOrderForm');
+
+// Rusume page
+const thankImage = document.getElementById('thanksImage');
+const thanksModel = document.getElementById('thanksModel');
+const thanksBattery = document.getElementById('thanksBattery');
+const thanksColor = document.getElementById('thanksColor');
+const thanksArriveDate = document.getElementById('thanksArriveDate');
+const thanksPrice = document.getElementById('thanksPrice');
+const thanksShipping = document.getElementById('thanksShipping');
+const thanksTotalPrice = document.getElementById('thanksTotalPrice');
+const registrationMinutes = document.getElementById('registrationMinutes');
+const registrationSeconds = document.getElementById('registrationSeconds');

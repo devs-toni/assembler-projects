@@ -122,7 +122,7 @@ const assignConfirmHtmlValues = () => {
     orderColor.textContent = product.color;
     orderPrice.textContent = product.price;
     orderShipping.textContent = delivery.cost;
-    orderTotalPice.textContent = parseInt(product.price) + parseInt(delivery.cost);
+    orderTotalPrice.textContent = parseInt(product.price) + parseInt(delivery.cost);
 }
 
 
