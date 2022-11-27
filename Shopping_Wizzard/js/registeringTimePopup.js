@@ -51,6 +51,7 @@ function registeringPopup() {
                 footerMainProduct.classList.remove('hide');
                 registeringPopupDiv.classList.remove('show-popup');
                 registeringPopupDiv.classList.add('hide-popup');
+                footer.classList.remove('hide');
                 
                 clearInterval(popupInterval);
                 addProductEventListeners();
