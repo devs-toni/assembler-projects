@@ -204,7 +204,7 @@ const addPreviousButtonEventListener = () => {
 
 const addExitButtonEventListener = () => {
     exitButton.addEventListener('click', () => {
-        addProductEventListeners();
+        // addProductEventListeners();
         // Reset objects
         user.resetUser();
         product.resetProduct();
