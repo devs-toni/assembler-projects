@@ -54,7 +54,7 @@ function registeringPopup() {
                 footer.classList.remove('hide');
                 
                 clearInterval(popupInterval);
-                addProductEventListeners();
+                // addProductEventListeners();
                 document.getElementById('div-confirm').classList.remove('form-step-active');
 
                 // Reset objects
