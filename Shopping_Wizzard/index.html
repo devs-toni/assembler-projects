@@ -337,39 +337,104 @@
                         <!-- thank you page -->
                         <div id="divThanksPage" class="form-step">
                             <div class="thanks-page order-form-margin">
-                                <img src="assets/PartyPopperEmoji.gif" alt="Party Popper Emoji" style="width:300px; height:300px;">
                                 <div class="thanks-title">
-                                    <h2>Your order is complete!</h2>
-                                    <p>Thank you for your order!</p>
+                                    <img src="assets/PartyPopperEmoji.gif" alt="Party Popper Emoji"
+                                        style="width:300px; height:300px;">
+                                    <h2 class="thanks-title-h2">Your order is complete!</h2>
+                                    <p class="thanks-title-p">You will be receiving a confirmation email with order
+                                        details.</p>
                                 </div>
                                 <div>
                                     <div class="thanks-your-purchase">
-                                        <h3>Your purchase</h3>
-                                        <div>
-                                            <p id="thanksEmail">Email</p>
-                                            <p id="thanksName">User name</p>
-                                            <p id="thanksPhoneNumber">Phone number</p>
-                                            <p id="thanksAddress">Address</p>
-                                            <p id="thanksPostalCode">Postal code</p>
-                                            <p id="thanksCountry">Country</p>
+                                        <h3 class="thanks-page-title">Personal details</h3>
+                                        <div class="grid-thanks-page-person">
+                                            <div class="grid-thanks-page-person-1">
+                                                <span class="confirm-order-label">User name: </span>
+                                                <p id="thanksName" class="confirm-order-info-img-product">User name
+                                                </p>
+                                            </div>
+                                            <div class="grid-thanks-page-person-2">
+                                                <span class="confirm-order-label">Address: </span>
+                                                <h2 id="thanksAddress" class="confirm-order-info-img-product">
+                                                    Address</h2>
+                                            </div>
+                                            <div class="grid-thanks-page-person-3">
+                                                <span class="confirm-order-label">Email: </span>
+                                                <h2 id="thanksEmail" class="confirm-order-info-img-product">Email
+                                                </h2>
+                                            </div>
+                                            <div class="grid-thanks-page-person-4">
+                                                <span class="confirm-order-label">Postal code: </span>
+                                                <p id="thanksPostalCode" class="confirm-order-info-img-product">
+                                                    Postal code
+                                                </p>
+                                            </div>
+                                            <div class="grid-thanks-page-person-5">
+                                                <span class="confirm-order-label">Phone number: </span>
+                                                <p id="thanksPhoneNumber" class="confirm-order-info-img-product">
+                                                    Phone
+                                                    number</p>
+                                            </div>
+                                            <div class="grid-thanks-page-person-6">
+                                                <span class="confirm-order-label">Country: </span>
+                                                <p id="thanksCountry" class="confirm-order-info-img-product">Country
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <img id="thanksImage">
-                                            <p id="thanksModel">Model</p>
-                                            <p id="thanksBattery">Battery</p>
-                                            <p id="thanksColor">Color</p>
-                                        </div>
-                                        <p>Estimated date delivery:</p>
-                                        <p id="thanksArriveDate">Between 21 of July of 2020 14:00h and 21 of July of 2020 20:00h.</p>
                                     </div>
-                                    <div class="thanks-payment-details">
-                                        <h4>Payment details</h4>
-                                        <p>Scooter: <span id="thanksPrice">14.55</span>€</p>
-                                        <p>Shipping: <span id="thanksShipping">10</span>€</p>
-                                        <p>Total: <span id="thanksTotalPrice">24.55</span>€</p>
-                                    </div>            
+                                    <div class="flex-thanks-page">
+                                        <div class="grid-thanks-page-purchase">
+                                            <div class="grid-confirm-order-img">
+                                                <h2 class="thanks-page-title">Your purchase</h2>
+                                                <div class="confirm-order-img">
+                                                    <img id="thanksImage" />
+                                                </div>
+                                            </div>
+                                            <div class="grid-confirm-order-info-img">
+                                                <span class="confirm-order-label">Product name: </span>
+                                                <h2 id="thanksModel" class="confirm-order-info-img-product">Product</h2>
+                                                <span class="confirm-order-label">Battery capacity: </span>
+                                                <p id="thanksBattery" class="confirm-order-info-img-product">Battery</p>
+                                                <span class="confirm-order-label">Chosen color: </span>
+                                                <p id="thanksColor" class="confirm-order-info-img-product">Color</p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-thanks-information thanks-page-width">
+                                            <h3 class="thanks-page-title">Payment details</h3>
+                                            <div class="grid-confirm-order-invoice">
+                                                <div class="grid-invoice-text">
+                                                    <div class="invoice-text">Subtotal</div>
+                                                    <div class="invoice-text">Shipping Cost</div>
+                                                    <div class="invoice-text">Discount</div>
+                                                    <div class="invoice-text-total">Total</div>
+                                                </div>
+                                                <div class="grid-invoice-result">
+                                                    <div class="invoice-result"><span id="thanksPrice"
+                                                            class="invoice-result">699</span>€
+                                                    </div>
+                                                    <div class="invoice-result"><span id="thanksShipping"
+                                                            class="invoice-result">9</span>€
+                                                    </div>
+                                                    <div class="invoice-result"><span class="invoice-result">0</span>€
+                                                    </div>
+                                                    <div class="invoice-result-total"><span id="thanksTotalPrice"
+                                                            class="invoice-result-total">708</span>€</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>Your order took: <span id="registrationMinutes">3</span> minutes and <span id="registrationSeconds">23</span> seconds</div>
+                                <br>
+                                <div class="visible-date visible">
+                                    <p class="estimate-date">ESTIMATE DELIVERY DATE:</p>
+                                    <span class="delivery-date" id="thanksArriveDate">Between 21 of July of 2020
+                                        14:00h and 21 of July of
+                                        2020 20:00h.</span>
+                                </div><br>
+                                <div class="visible-date visible">Your order took: <span
+                                        id="registrationMinutes">3</span> minutes and <span
+                                        id="registrationSeconds">23</span> seconds
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -384,9 +449,9 @@
                         </div>
                         <div class="footer-main-order hide">
                             <div class="btns-group">
+                                <button href="#" class="btn-exit" id="btnExit">Exit</button>
                                 <a href="#" class="btn" id="btnPrev">Previous</a>
                                 <input type="submit" value="Enviar" class="btn" id="finalSubmit" />
-                                <button href="#" class="btn" id="btnExit">Exit</button>
                             </div>
                         </div>
                     </div>

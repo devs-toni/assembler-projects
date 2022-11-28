@@ -276,18 +276,30 @@ p {
 }
 
 .btn {
-    font-family: Verdana, serif !important;
+    font-family: 'Roboto', sans-serif !important;
     text-align: center;
     background-color: #fff;
     padding: 5px 0;
-    color: var(--footer-buttons-color);
-    border: none;
+    border: none !important;
     border-radius: 3px;
     font-weight: 500;
     font-size: 20px;
     font-family: bolder;
-    font-weight: bolder;
     color: black;
+    cursor: pointer;
+}
+
+.btn-exit {
+    font-family: 'Roboto', sans-serif !important;
+    text-align: center;
+    background-color: #fff;
+    padding: 5px 0;
+    color: #FF4443;
+    border: none !important;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: bolder;
     cursor: pointer;
 }
 
