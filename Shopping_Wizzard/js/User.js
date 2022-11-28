@@ -36,7 +36,7 @@ class User {
         if (country.value) {
 
         }
-        if (!phone.value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g)) {
+        if (!phone.value.match(/^\d{9}$/)) {
             return;
         }
 

@@ -167,7 +167,7 @@ const validateField = (event) => {
                 }
                 break;
             case 'phone':
-                if (!domElement.value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g)) {
+                if (!domElement.value.match(/^\d{9}$/)) {
                     setErrorField(domElement, 'show');
                 } else {
                     setErrorField(domElement, 'hide');
