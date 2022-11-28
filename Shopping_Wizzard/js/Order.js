@@ -30,6 +30,7 @@ class Order {
             clearInterval(popupInterval);
             confirmOrderForm.removeEventListener('submit', this.domSetHTMLValues, true);
             confirmOrderTermsMessage.classList.add('hide');
+            confirmOrderCheckbox.checked = false;
         } else {
             confirmOrderTermsMessage.textContent = 'Please accept the terms and conditions';
             confirmOrderTermsMessage.classList.remove('hide');
