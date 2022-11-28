@@ -9,11 +9,10 @@ class Product {
 
     submitProductForm (e) {
         e.preventDefault();
-
         // Create product
-        this.color = e.target.color.value;
-        this.batteryCapacity = e.target.battery.value;
-        this.image = `./assets/products/${e.target.color.value}/${e.target.color.value}-1.png`;
+        this.color = e.target.color.value ? e.target.color.value : 'black';
+        this.batteryCapacity = e.target.battery.value ? e.target.battery.value : '10000mAh';
+        this.image = `./assets/products/${e.target.color.value ? e.target.color.value : 'black'}/${e.target.color.value ? e.target.color.value : 'black'}-1.png`;
 
         switch (e.target.color.value) {
             case 'black':
@@ -28,6 +27,9 @@ class Product {
             case 'red':
                 this.productName = 'Scooter MQT45R';
                 break;
+            default:
+                this.productName = 'Scooter MQT45BK';
+                break;
         }
 
         switch (e.target.battery.value) {
@@ -39,6 +41,9 @@ class Product {
                 break;
             case '30000mAh':
                 this.price = 895;
+            default:
+                this.price = 695;
+                break;
         }
 
         changeDomToNextForm('product', 'profile');
@@ -54,6 +59,9 @@ class Product {
                 break;
             case '30000mAh':
                 changeProductPrice('895 €');
+                break;
+            default:
+                changeProductPrice('695 €');
                 break;
         }
     }
@@ -104,5 +112,11 @@ class Product {
         this.color = '';
         this.batteryCapacity = '';
         this.image = '';
+
+        productTitle.textContent = 'Scooter MQT45BK';
+        productPrice.textContent = '695 €';
+        changeImageColor('black');
+        resetThumbnails();
+        product.getThumbnails('black');
     }
 }
