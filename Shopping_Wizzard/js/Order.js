@@ -4,6 +4,7 @@ class Order {
         this.product = product;
         this.shipment = delivery;
     }
+    
     domSetHTMLValues(e) {
         e.preventDefault();
         console.log(this);

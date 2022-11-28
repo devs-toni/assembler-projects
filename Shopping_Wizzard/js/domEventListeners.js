@@ -37,7 +37,7 @@ const removeProfileEventListeners = () => {
 }
 
 // Address Form EventListeners *************************************************************************************
-const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
+const formElements = ['firstname', 'lastname', 'birthday', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
 const addAddressEventListeners = () => {
     addressForm.addEventListener('submit', submitAddress);
     formElements.forEach((element) => {
@@ -82,7 +82,7 @@ const removeShipmentEventListeners = () => {
 
 const addConfirmEventListeners = () => {
     confirmOrderForm.addEventListener('submit', domSetHTMLValues);
- }
+}
 
 const removeConfirmEventListeners = () => {
     confirmOrderForm.removeEventListener('submit', domSetHTMLValues);
@@ -91,7 +91,7 @@ const removeConfirmEventListeners = () => {
 // Form Helpers **************************************************************************************************
 const validateField = (event) => {
     const domElement = event.target;
-    const regex =/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+    const regex = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
 
     if (event.type === 'keydown') setErrorField(domElement, 'hide');
     else {
@@ -150,6 +150,15 @@ const validateField = (event) => {
                     setErrorField(domElement, 'hide');
                 }
                 break;
+            case 'birthday':
+                let date = new Date(domElement.value);
+                let now = new Date();
+                if ((now.getFullYear() - date.getFullYear()) < 14) {
+                    setErrorField(domElement, 'show', "Only if you are more than 14 years old");
+                } else {
+                    setErrorField(domElement, 'hide');
+                }
+                break;
             case 'postalCode':
                 if (!domElement.value.match(/^\d{5}(-\d{4})?$/)) {
                     setErrorField(domElement, 'show');
@@ -158,7 +167,7 @@ const validateField = (event) => {
                 }
                 break;
             case 'phone':
-                if (!domElement.value.match(/^[0-9]{9}$/)) {
+                if (!domElement.value.match(/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g)) {
                     setErrorField(domElement, 'show');
                 } else {
                     setErrorField(domElement, 'hide');
@@ -217,8 +226,8 @@ const addPreviousButtonEventListener = () => {
     });
 }
 
-function addExitButtonEventListener () {
-     exitButton.addEventListener('click', () => {
+function addExitButtonEventListener() {
+    exitButton.addEventListener('click', () => {
         addProductEventListeners();
         // Reset objects
         user.resetUser();
@@ -228,7 +237,7 @@ function addExitButtonEventListener () {
         resetOrderFormsView();
         // Reset forms
         resetAllForms();
-        clearInterval(popupInterval); 
+        clearInterval(popupInterval);
     });
 }
 
