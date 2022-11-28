@@ -1,5 +1,10 @@
 const confirmOrderCheckbox = document.querySelector('#confirmOrderCheckbox');
 const confirmOrderTermsCheckbox = document.querySelector('#confirmOrderTermsCheckbox');
+let minDate = new Date();
+let maxDate = new Date();
+        const months = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
 
 class Shipment {
     constructor() {
@@ -60,13 +65,8 @@ class Shipment {
 
     chooseShipmentType = (event) => {
         dateShip.classList.add('visible-date');
-        const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-            "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-        ];
         const hours = event.target.value;
         const now = new Date();
-        let minDate = new Date();
-        let maxDate = new Date();
 
         switch (hours) {
             case '72':
