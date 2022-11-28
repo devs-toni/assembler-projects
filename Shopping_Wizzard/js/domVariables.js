@@ -70,6 +70,8 @@ const orderPrice = document.querySelector('#confirmOrderPrice');
 const orderShipping = document.querySelector('#confirmOrderShipping');
 const orderTotalPrice = document.querySelector('#confirmOrderTotalPrice');
 const confirmOrderForm = document.getElementById('confirmOrderForm');
+const confirmOrderCheckbox = document.querySelector('#confirmOrderCheckbox');
+const confirmOrderTermsMessage = document.querySelector('#confirmOrderTermsMessage');
 
 // Rusume page
 const thanksPage = document.getElementById('divThanksPage');

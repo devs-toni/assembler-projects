@@ -25,8 +25,14 @@ class Order {
         thanksPostalCode.textContent = this.user.postalCode;
         thanksCountry.textContent = this.user.country;
         
-        changeDomToNextForm('confirm', 'thanks');
-        clearInterval(popupInterval);
-        confirmOrderForm.removeEventListener('submit', this.domSetHTMLValues, true);
+        if (confirmOrderCheckbox.checked) {
+            changeDomToNextForm('confirm', 'thanks');
+            clearInterval(popupInterval);
+            confirmOrderForm.removeEventListener('submit', this.domSetHTMLValues, true);
+            confirmOrderTermsMessage.classList.add('hide');
+        } else {
+            confirmOrderTermsMessage.textContent = 'Please accept the terms and conditions';
+            confirmOrderTermsMessage.classList.remove('hide');
+        }
     }
 }

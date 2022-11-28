@@ -1,5 +1,3 @@
-const confirmOrderCheckbox = document.querySelector('#confirmOrderCheckbox');
-const confirmOrderTermsCheckbox = document.querySelector('#confirmOrderTermsCheckbox');
 let minDate = new Date();
 let maxDate = new Date();
         const months = ["January", "February", "March", "April", "May", "June",

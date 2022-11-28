@@ -65,7 +65,6 @@ const changeDomToNextForm = (previous, next) => {
         footer.classList.remove('hide');
         previousButton.classList.add('hide');
         formsSubmit.classList.add('hide');
-        //REVISAR POP UP
         registeringPopupDiv.classList.add('hide');
         advance();
     } else if (previous === 'address' && next === 'profile') {
