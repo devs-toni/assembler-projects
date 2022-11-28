@@ -419,6 +419,7 @@ p {
 
     body {
         padding: 0;
+        overflow: hidden;
     }
     .window {
         position: static;

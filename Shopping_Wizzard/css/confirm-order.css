@@ -117,3 +117,45 @@
     border: none;
     height: 54px;
 }
+
+
+@media screen and (max-width: 730px) {
+    .confirm-order {
+        display: grid;
+        grid-template-columns: 200px auto;
+        grid-template-areas:
+            "a b"
+            "c c"
+            "d d";
+    }
+    .confirmation-page-title {
+        padding-top: 40px;
+    }
+    .container-adress {
+        margin-top: 40px;
+    }
+    .grid-confirm-order-invoice {
+        max-width: 260px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .confirm-order {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas:
+            "a"
+            "b"
+            "c"
+            "d";
+    }
+    .grid-confirm-order-info-img {
+        padding-top: 0px;
+
+    }
+    .grid-confirm-order-invoice {
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 0;
+    }
+}

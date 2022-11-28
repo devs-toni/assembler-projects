@@ -9,7 +9,7 @@
     padding: 20px;
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: auto 200px;
+    grid-template-columns: auto;
 }
 
 /*.profile div.profileForm {
@@ -64,7 +64,7 @@
     padding: 20px;
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: auto 200px;
+    grid-template-columns: auto;
 }
 
 .adress-group {
@@ -488,6 +488,12 @@
     }
 
     .adress-group {
+        grid-template-columns: auto;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .profileGroup {
         grid-template-columns: auto;
     }
 }
