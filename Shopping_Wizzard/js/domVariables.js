@@ -61,7 +61,7 @@ const giftOptions = document.getElementById('shipGiftOptions');
 
 // Confirmation Page
 const orderPage = document.querySelector('.order-form');
-const confirmOrder = document.querySelector('.confirm-order');
+const confirmOrder = document.querySelector('#confirmOrder');
 const orderImg = document.querySelector('#confirmOrderImg');
 const orderProductName = document.querySelector('#confirmOrderProduct');
 const orderBattery = document.querySelector('#confirmOrderBattery');
@@ -72,6 +72,7 @@ const orderTotalPrice = document.querySelector('#confirmOrderTotalPrice');
 const confirmOrderForm = document.getElementById('confirmOrderForm');
 
 // Rusume page
+const thanksPage = document.getElementById('divThanksPage');
 const thankImage = document.getElementById('thanksImage');
 const thanksModel = document.getElementById('thanksModel');
 const thanksBattery = document.getElementById('thanksBattery');
@@ -88,3 +89,17 @@ const thanksPhoneNumber = document.getElementById('thanksPhoneNumber');
 const thanksAddress = document.getElementById('thanksAddress');
 const thanksPostalCode = document.getElementById('thanksPostalCode');
 const thanksCountry = document.getElementById('thanksCountry');
+
+
+const changeBatteryModel = (e) => product.changeBatteryModel(e);
+const changeColor = (e) => product.changeColor(e.target.value);
+const changeCountryPhoneSelect = (e) => user.changeCountryPhoneSelect(e);
+const toggleGiftOptions = (e) => delivery.toggleGiftOptions(e);
+const chooseShipmentType = (e) => delivery.chooseShipmentType(e);
+
+const submitLogin = (e) => user.submitLogin(e);
+const submitAddress = (e) => user.submitAddress(e);
+const submitProductForm = (e) => product.submitProductForm(e);
+const submitShipment = (e) => delivery.submitShipment(e);
+const submitConfirmForm = (e) => delivery.submitConfirmForm(e);
+const domSetHTMLValues = (e) => order.domSetHTMLValues(e);

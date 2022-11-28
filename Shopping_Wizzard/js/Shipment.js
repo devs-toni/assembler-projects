@@ -48,19 +48,7 @@ class Shipment {
         }
 
         assignConfirmHtmlValues();
-        console.log(this);
         changeDomToNextForm('ship', 'confirm');
-    }
-
-    submitConfirmForm(e) {
-        e.preventDefault();
-        if (confirmOrderCheckbox.checked) {
-            document.getElementById('div-confirm').classList.remove('form-step-active');
-            document.getElementById('divThanksPage').classList.add('form-step-active');
-        } else {
-            confirmOrderTermsCheckbox.classList.remove('hide');
-        }
-        confirmOrderForm.removeEventListener('submit', this.submitConfirmForm, true);
     }
 
     chooseShipmentType = (event) => {
@@ -103,6 +91,8 @@ class Shipment {
         this.titleGift = '';
         this.messageGift = '';
         this.imageGift = null;
+        dateShip.classList.remove('visible-date');
+
     }
 }
 

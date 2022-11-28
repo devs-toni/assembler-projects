@@ -7,6 +7,7 @@ const changeDomToNextForm = (previous, next) => {
         removeProductEventListeners();
         addProfileEventListeners();
         // Change article 'PRODUCT' to section 'ORDER'
+        thanksPage.classList.remove('form-step-active');
         productPage.classList.add('hide');
         orderPage.classList.remove('hide');
         // Change Headers and Footers
@@ -14,6 +15,7 @@ const changeDomToNextForm = (previous, next) => {
         headerMainOrder.classList.remove('hide');
         footerMainProduct.classList.add('hide');
         footerMainOrder.classList.remove('hide');
+        formsSubmit.classList.remove('hide');
         formsSubmit.setAttribute('form', 'profileForm');
 
         // Hide the previous button
@@ -45,14 +47,26 @@ const changeDomToNextForm = (previous, next) => {
     } else if (previous === 'ship' && next === 'confirm') {
         resetShipmentForm();
 
+        addConfirmEventListeners();
         removeShipmentEventListeners();
 
         shipmentPage.classList.remove('form-step-active');
-        document.getElementById('div-confirm').classList.add('form-step-active');
+        confirmOrder.classList.add('form-step-active');
         // The next form is controlled by other button
         formsSubmit.setAttribute('form', '');
         // Hide footer to show the delivery resume
         footer.classList.add('hide');
+        advance();
+    } else if (previous === 'confirm' && next === 'thanks') {
+        removeConfirmEventListeners();
+        confirmOrder.classList.remove('form-step-active');
+        thanksPage.classList.add('form-step-active');
+        footerMainOrder.classList.remove('hide');
+        footer.classList.remove('hide');
+        previousButton.classList.add('hide');
+        formsSubmit.classList.add('hide');
+        //REVISAR POP UP
+        registeringPopupDiv.classList.add('hide');
         advance();
     } else if (previous === 'address' && next === 'profile') {
         resetAddressForm();
@@ -78,16 +92,6 @@ const changeDomToNextForm = (previous, next) => {
         formsSubmit.setAttribute('form', 'addressForm');
         goBack();
 
-    } else if (previous === 'confirm' && next === 'ship') {
-        //resetConfirmForm();
-
-        removeOrderEventListeners();
-        addShipmentEventListeners();
-
-        confirmOrder.classList.remove('form-step-active');
-        shipmentPage.classList.add('form-step-active');
-        formsSubmit.setAttribute('form', 'shipmentForm');
-        goBack();
     }
 }
 

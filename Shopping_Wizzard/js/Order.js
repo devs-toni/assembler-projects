@@ -4,9 +4,9 @@ class Order {
         this.product = product;
         this.shipment = delivery;
     }
-    domSetHTMLValues() {
+    domSetHTMLValues(e) {
+        e.preventDefault();
         console.log(this);
-
         thankImage.src = this.product.image ? this.product.image : './assets/products/black/black-1.png';
         thanksModel.textContent = this.product.productName ? this.product.productName : 'Scooter MQT45BK';
         thanksBattery.textContent = this.product.batteryCapacity ? this.product.batteryCapacity : '10000mAh';
@@ -25,10 +25,8 @@ class Order {
         thanksPostalCode.textContent = this.user.postalCode;
         thanksCountry.textContent = this.user.country;
         
-        registeringPopupDiv.classList.add('hide');
-
+        changeDomToNextForm('confirm', 'thanks');
         clearInterval(popupInterval);
         confirmOrderForm.removeEventListener('submit', this.domSetHTMLValues, true);
-        advance();
     }
 }

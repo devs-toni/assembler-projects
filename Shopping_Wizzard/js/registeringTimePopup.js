@@ -66,6 +66,8 @@ function registeringPopup() {
 
                 // Reset forms
                 resetAllForms();
+
+                addProductEventListeners();
             }
         } else {
             registeringPopupDiv.classList.remove('show-popup');

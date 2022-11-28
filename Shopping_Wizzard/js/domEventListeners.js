@@ -1,46 +1,50 @@
-//Variables ********************************
 const product = new Product();
 const user = new User();
 const delivery = new Shipment();
 const order = new Order();
 
 //Product Form EventListeners ***********************************************************************************
-const addProductEventListeners = () => {
-    batterySelector.addEventListener('click', product.changeBatteryModel);
-    colorInputs.forEach((input) => input.addEventListener('click', (e) => product.changeColor(input.value)));
+
+function addProductEventListeners() {
+    productForm.addEventListener('submit', submitProductForm);
+    batterySelector.addEventListener('click', changeBatteryModel);
+    colorInputs.forEach((input) => input.addEventListener('click', changeColor));
 }
 
-const removeProductEventListeners = () => {
-    batterySelector.removeEventListener('click', product.changeBatteryModel, true);
-    colorInputs.forEach(color => removeEventListener('click', product.changeColor, true));
+function removeProductEventListeners() {
+    productForm.removeEventListener('submit', submitProductForm);
+    batterySelector.removeEventListener('click', changeBatteryModel);
+    colorInputs.forEach(color => removeEventListener('click', changeColor));
 }
-
 
 // Profile Form EventListeners *************************************************************************************
 const profileElements = ['username', 'email', 'password', 'password2'];
-const addProfileEventListeners = () => {
-    profileElements.forEach((profileInput) => {
-        document.getElementById(profileInput).addEventListener('focusout', (e) => validateField(e));
-        document.getElementById(profileInput).addEventListener('keydown', (e) => validateField(e));
-    });
 
+const addProfileEventListeners = () => {
+    profileForm.addEventListener('submit', submitLogin);
+    profileElements.forEach((profileInput) => {
+        document.getElementById(profileInput).addEventListener('focusout', validateField);
+        document.getElementById(profileInput).addEventListener('keydown', validateField);
+    });
 }
 
 const removeProfileEventListeners = () => {
     profileElements.forEach((element) => {
-        document.getElementById(element).removeEventListener('keydown', validateField, true);
-        document.getElementById(element).removeEventListener('focusout', validateField, true);
+        document.getElementById(element).removeEventListener('keydown', validateField);
+        document.getElementById(element).removeEventListener('focusout', validateField);
     });
+    profileForm.removeEventListener('submit', submitLogin);
 }
 
 // Address Form EventListeners *************************************************************************************
 const formElements = ['firstname', 'lastname', 'addressOne', 'addressTwo', 'postalCode', 'phone'];
 const addAddressEventListeners = () => {
+    addressForm.addEventListener('submit', submitAddress);
     formElements.forEach((element) => {
         document.getElementById(element).addEventListener('focusout', validateField);
         document.getElementById(element).addEventListener('keydown', validateField);
     });
-    country.addEventListener('change', user.changeCountryPhoneSelect);
+    country.addEventListener('change', changeCountryPhoneSelect);
 }
 
 const removeAddressEventListeners = () => {
@@ -48,41 +52,44 @@ const removeAddressEventListeners = () => {
         document.getElementById(element).removeEventListener('keydown', validateField);
         document.getElementById(element).removeEventListener('focusout', validateField);
     });
-    country.removeEventListener('change', user.changeCountryPhoneSelect);
+    country.removeEventListener('change', changeCountryPhoneSelect);
+    addressForm.removeEventListener('submit', submitAddress);
 }
 
 // Shipping Form Event Listeners *********************************************************************************
 
 const addShipmentEventListeners = () => {
-    isGift.addEventListener('click', delivery.toggleGiftOptions);
+    shipmentForm.addEventListener('submit', submitShipment);
+    isGift.addEventListener('click', toggleGiftOptions);
     giftMessage.addEventListener('keydown', validateField);
     giftMessage.addEventListener('focusout', validateField);
     typeShip.forEach(el => {
-        el.addEventListener('change', delivery.chooseShipmentType);
+        el.addEventListener('change', chooseShipmentType);
     });
 }
 
 const removeShipmentEventListeners = () => {
-    isGift.removeEventListener('click', delivery.toggleGiftOptions);
+    shipmentForm.removeEventListener('submit', submitShipment);
+    isGift.removeEventListener('click', toggleGiftOptions);
     giftMessage.removeEventListener('keydown', validateField);
     giftMessage.removeEventListener('focusout', validateField);
     typeShip.forEach(el => {
-        el.removeEventListener('change', delivery.chooseShipmentType);
+        el.removeEventListener('change', chooseShipmentType);
     });
 }
 
-const addAllFormEventListeners = () => {
-    shipmentForm && shipmentForm.addEventListener('submit', (e) => delivery.submitShipment(e));
-    addressForm && addressForm.addEventListener('submit', e => user.submitAddress(e));
-    profileForm && profileForm.addEventListener('submit', e => user.submitLogin(e));
-    productForm && productForm.addEventListener('submit', e => product.submitProductForm(e));
-    confirmOrderForm.addEventListener('submit', () => order.domSetHTMLValues());
-    confirmOrder.addEventListener('submit', (e) => delivery.submitConfirmForm(e));
+// Confirm Event Listeners ***********************************************************************************
+
+const addConfirmEventListeners = () => {
+    confirmOrderForm.addEventListener('submit', domSetHTMLValues);
+ }
+
+const removeConfirmEventListeners = () => {
+    confirmOrderForm.removeEventListener('submit', domSetHTMLValues);
 }
 
 // Form Helpers **************************************************************************************************
 const validateField = (event) => {
-    console.log("Bieeeeeeeeeeeeeeeeen");
     const domElement = event.target;
     const regex =/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
 
@@ -210,29 +217,24 @@ const addPreviousButtonEventListener = () => {
     });
 }
 
-const addExitButtonEventListener = () => {
-    exitButton.addEventListener('click', () => {
+function addExitButtonEventListener () {
+     exitButton.addEventListener('click', () => {
+        addProductEventListeners();
         // Reset objects
         user.resetUser();
         product.resetProduct();
         delivery.resetShipment();
-
         // Reset views
         resetOrderFormsView();
-
         // Reset forms
         resetAllForms();
-
-        clearInterval(popupInterval);
+        clearInterval(popupInterval); 
     });
 }
 
 //Initialize EventListeners ***********************************************************************************
 product.getThumbnails('black');
 addProductEventListeners();
-addProfileEventListeners();
-addAddressEventListeners();
-addShipmentEventListeners();
+
 addPreviousButtonEventListener();
 addExitButtonEventListener();
-addAllFormEventListeners();

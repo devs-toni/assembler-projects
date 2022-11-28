@@ -41,15 +41,16 @@ class Product {
                 break;
             case '30000mAh':
                 this.price = 895;
+                break;
             default:
                 this.price = 695;
                 break;
         }
-
+        console.log(this);
         changeDomToNextForm('product', 'profile');
     }
 
-    changeBatteryModel(e) {
+     changeBatteryModel(e) {
         switch (e.target.value) {
             case '10000mAh':
                 changeProductPrice('695 €');
@@ -64,7 +65,7 @@ class Product {
                 changeProductPrice('695 €');
                 break;
         }
-    }
+    } 
 
     getThumbnails(color) {
         for (let i = 0; i < 4; i++) {
