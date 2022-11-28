@@ -64,7 +64,6 @@ class User {
         }
         const containSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
         if (!containSymbol.test(password.value)) {
-            console.log('hola');
             return;
         }
         if (password.value.length > 20) {

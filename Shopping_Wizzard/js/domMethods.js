@@ -44,8 +44,9 @@ const changeDomToNextForm = (previous, next) => {
         advance();
     } else if (previous === 'ship' && next === 'confirm') {
         resetShipmentForm();
+
         removeShipmentEventListeners();
-        //TODO Confirm EventListeners ***************************************************************************************************
+
         shipmentPage.classList.remove('form-step-active');
         document.getElementById('div-confirm').classList.add('form-step-active');
         // The next form is controlled by other button
@@ -80,7 +81,7 @@ const changeDomToNextForm = (previous, next) => {
     } else if (previous === 'confirm' && next === 'ship') {
         //resetConfirmForm();
 
-        //removeConfirmEventListeners();
+        removeOrderEventListeners();
         addShipmentEventListeners();
 
         confirmOrder.classList.remove('form-step-active');
@@ -141,7 +142,7 @@ const goBack = () => {
 
 const updateProgressbar = () => {
     progressSteps.forEach((progressStep, index) => {
-        if (index < jumps +1) {
+        if (index < jumps + 1) {
             progressStep.classList.add("progress-step-active");
         } else {
             progressStep.classList.remove("progress-step-active");

@@ -23,6 +23,7 @@ class Order {
 
         clearInterval(popupInterval);
         confirmOrderForm.removeEventListener('submit', this.domSetHTMLValues, true);
+        advance();
     }
 
     resetOrder() {

@@ -6,14 +6,11 @@ const order = new Order();
 
 //Product Form EventListeners ***********************************************************************************
 const addProductEventListeners = () => {
-
-    productForm && productForm.addEventListener('submit', e => product.submitProductForm(e));
     batterySelector.addEventListener('click', product.changeBatteryModel);
     colorInputs.forEach((input) => input.addEventListener('click', (e) => product.changeColor(input.value)));
 }
 
 const removeProductEventListeners = () => {
-    productForm.removeEventListener('click', product.submitProductForm, true)
     batterySelector.removeEventListener('click', product.changeBatteryModel, true);
     colorInputs.forEach(color => removeEventListener('click', product.changeColor, true));
 }
@@ -23,18 +20,17 @@ const removeProductEventListeners = () => {
 const profileElements = ['username', 'email', 'password', 'password2'];
 const addProfileEventListeners = () => {
     profileElements.forEach((profileInput) => {
-        document.getElementById(profileInput).addEventListener('focusout', validateField);
-        document.getElementById(profileInput).addEventListener('keydown', validateField);
+        document.getElementById(profileInput).addEventListener('focusout', (e) => validateField(e));
+        document.getElementById(profileInput).addEventListener('keydown', (e) => validateField(e));
     });
-    profileForm && profileForm.addEventListener('submit', e => user.submitLogin(e));
+
 }
 
 const removeProfileEventListeners = () => {
     profileElements.forEach((element) => {
-        document.getElementById(element).removeEventListener('keydown', validateField);
-        document.getElementById(element).removeEventListener('focusout', validateField);
+        document.getElementById(element).removeEventListener('keydown', validateField, true);
+        document.getElementById(element).removeEventListener('focusout', validateField, true);
     });
-    profileForm.addEventListener('submit', user.submitLogin);
 }
 
 // Address Form EventListeners *************************************************************************************
@@ -45,7 +41,6 @@ const addAddressEventListeners = () => {
         document.getElementById(element).addEventListener('keydown', validateField);
     });
     country.addEventListener('change', user.changeCountryPhoneSelect);
-    addressForm && addressForm.addEventListener('submit', e => user.submitAddress(e));
 }
 
 const removeAddressEventListeners = () => {
@@ -54,10 +49,10 @@ const removeAddressEventListeners = () => {
         document.getElementById(element).removeEventListener('focusout', validateField);
     });
     country.removeEventListener('change', user.changeCountryPhoneSelect);
-    addressForm.removeEventListener('submit', user.submitAddress);
 }
 
 // Shipping Form Event Listeners *********************************************************************************
+
 const addShipmentEventListeners = () => {
     isGift.addEventListener('click', delivery.toggleGiftOptions);
     giftMessage.addEventListener('keydown', validateField);
@@ -65,8 +60,6 @@ const addShipmentEventListeners = () => {
     typeShip.forEach(el => {
         el.addEventListener('change', delivery.chooseShipmentType);
     });
-    shipmentForm.addEventListener('submit', (e) => delivery.submitShipment(e));
-    confirmOrder.addEventListener('submit', (e) => delivery.submitConfirmForm(e));
 }
 
 const removeShipmentEventListeners = () => {
@@ -78,14 +71,22 @@ const removeShipmentEventListeners = () => {
     });
 }
 
-// Order event listener
-confirmOrderForm.addEventListener('submit', () => order.domSetHTMLValues());
+const addAllFormEventListeners = () => {
+    shipmentForm && shipmentForm.addEventListener('submit', (e) => delivery.submitShipment(e));
+    addressForm && addressForm.addEventListener('submit', e => user.submitAddress(e));
+    profileForm && profileForm.addEventListener('submit', e => user.submitLogin(e));
+    productForm && productForm.addEventListener('submit', e => product.submitProductForm(e));
+    confirmOrderForm.addEventListener('submit', () => order.domSetHTMLValues());
+    confirmOrder.addEventListener('submit', (e) => delivery.submitConfirmForm(e));
+}
 
 // Form Helpers **************************************************************************************************
 const validateField = (event) => {
+    console.log("Bieeeeeeeeeeeeeeeeen");
     const domElement = event.target;
-    if (event.type === 'keydown') setErrorField(domElement, 'hide');
+    const regex =/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
 
+    if (event.type === 'keydown') setErrorField(domElement, 'hide');
     else {
         switch (event.target.id) {
             case 'username':
@@ -99,19 +100,26 @@ const validateField = (event) => {
                 }
                 break;
             case 'password':
-                /*                 if (profileElement.value.length < 8) {
-                                    setErrorField(profileElement, 'show', '**Password must be at least 8 characters');
-                                } else if (profileElement.value.length > 20) {
-                                    setErrorField(profileElement, 'show', "**Password length must not exceed 20 characters");
-                                } else if (profileElement.value.search(/[0-9]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 number");
-                                } else if (profileElement.value.search(/[A-Z]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 uppercase letter");
-                                } else if (profileElement.value.search(/[a-z]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 lowercase letter");
-                                } else if (!profileElement.value.search(/[^[!@#\$%\^\&*\)\(+=._-]+$]/) < 0) {
-                                    setErrorField(profileElement, 'show', "**Password must contain at least 1 special character");
-                                } */
+                if (domElement.value.length < 8) {
+                    setErrorField(domElement, 'show', '**Password must be at least 8 characters');
+                } else if (domElement.value.length > 20) {
+                    setErrorField(domElement, 'show', "**Password length must not exceed 20 characters");
+                } else if (domElement.value.search(/[0-9]/) < 0) {
+                    setErrorField(domElement, 'show', "**Password must contain at least 1 number");
+                } else if (domElement.value.search(/[A-Z]/) < 0) {
+                    setErrorField(domElement, 'show', "**Password must contain at least 1 uppercase letter");
+                } else if (domElement.value.search(/[a-z]/) < 0) {
+                    setErrorField(domElement, 'show', "**Password must contain at least 1 lowercase letter");
+                } else if (!regex.test(domElement.value)) {
+                    setErrorField(domElement, 'show', "**Password must contain at least 1 special character");
+                }
+
+                let pw = document.getElementById("password2");
+                if (pw.value != domElement.value) {
+                    setErrorField(pw, 'show', "Password do not match");
+                } else {
+                    setErrorField(pw, 'hide');
+                }
                 break;
             case 'password2':
                 let pw1 = document.getElementById("password").value;
@@ -229,3 +237,4 @@ addAddressEventListeners();
 addShipmentEventListeners();
 addPreviousButtonEventListener();
 addExitButtonEventListener();
+addAllFormEventListeners();
