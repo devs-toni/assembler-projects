@@ -216,6 +216,8 @@ const addExitButtonEventListener = () => {
 
         // Reset forms
         resetAllForms();
+
+        clearInterval(popupInterval);
     });
 }
 
