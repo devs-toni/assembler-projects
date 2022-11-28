@@ -54,14 +54,12 @@ function registeringPopup() {
                 footer.classList.remove('hide');
                 
                 clearInterval(popupInterval);
-                // addProductEventListeners();
                 document.getElementById('div-confirm').classList.remove('form-step-active');
 
                 // Reset objects
                 user.resetUser();
                 product.resetProduct();
                 delivery.resetShipment();
-                order.resetOrder();
 
                 // Reset views
                 resetOrderFormsView();

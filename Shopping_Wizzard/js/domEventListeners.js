@@ -212,12 +212,10 @@ const addPreviousButtonEventListener = () => {
 
 const addExitButtonEventListener = () => {
     exitButton.addEventListener('click', () => {
-        // addProductEventListeners();
         // Reset objects
         user.resetUser();
         product.resetProduct();
         delivery.resetShipment();
-        order.resetOrder();
 
         // Reset views
         resetOrderFormsView();

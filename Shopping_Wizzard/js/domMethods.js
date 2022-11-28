@@ -198,11 +198,8 @@ const resetShipmentForm = () => {
 const resetOrderFormsView = () => {
     // Page Product
     headerMainProduct.classList.remove('hide');
-    // headerMainProduct.style.display = 'flex';
     productPage.classList.remove('hide');
-    // productPage.style.display = 'flex';
     footerMainProduct.classList.remove('hide');
-    // footerMainProduct.style.display = 'flex';
 
     headerMainOrder.classList.add('hide');
     orderPage.classList.add('hide');
