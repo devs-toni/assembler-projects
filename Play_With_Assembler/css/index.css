@@ -13,8 +13,6 @@ body {
     font-family: var(--font-family);
 }
 
-
-
 /************ VARIABLES GENERALES ***************/
 
 .game-window {
@@ -40,10 +38,11 @@ body {
   box-shadow: var(--box-shadow);
   padding: var(--padding-box);
   color: var(--color);
-  width: 20%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 .user-scores h3 {
+
 }
