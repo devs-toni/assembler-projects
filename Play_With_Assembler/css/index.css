@@ -1,3 +1,20 @@
+:root {
+    --background-color: rgb(226, 224, 224);
+    --box-shadow: 0 0 7px 0 black;
+    --padding-box: 20px 50px;
+    --color: black;
+
+}
+
+.main-game {
+    width: 80%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 /************ VARIABLES GENERALES ***************/
 .game-window {
     display: none;
@@ -19,3 +36,16 @@
 
 /*************** User scores ***************/
 
+.user-scores {
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    padding: var(--padding-box);
+    color: var(--color);
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.user-scores h3 {
+
+}
