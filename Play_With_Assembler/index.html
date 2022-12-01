@@ -16,17 +16,17 @@
 
 <body>
     <div>
-        <div class="game-window game-window-active">
+        <div id="userDiv" class="game-window game-window-active">
             <div class="user">
                 <h2>Choose user name</h2>
                 <form id="chooseNameForm">
                     <label for="userName">User name</label><br>
-                    <input name="userName" type="text" placeholder="Mark">
+                    <input name="userName" type="text" placeholder="Mark" value="Mark" required>
                     <input type="submit" value="Start">
                 </form>
             </div>
         </div>
-        <div class="game-window game-window-active">
+        <div id="gameDiv" class="game-window">
             <div class="game">
                 <div class="output">
                     <input type="text" name="output" id="output" placeholder="Virtual Keyboard">
@@ -66,11 +66,11 @@
                 <!--// virtual-keyboard -->
             </div>
         </div>
-        <div class="game-window">
+        <div id="finishDiv" class="game-window">
             <div class="finish">Finish</div>
         </div>
     </div>
-    <div class="user-scores">
+    <div class="user-scores hide-content">
         <p>User Scores</p>
         <div class="player-score">
             <p class="name">Mark</p>
