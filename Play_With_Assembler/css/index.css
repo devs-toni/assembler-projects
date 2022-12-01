@@ -2,28 +2,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 :root {
-  --background-color: rgb(226, 224, 224);
-  --box-shadow: 0 0 7px 0 black;
-  --padding-box: 5px 10px;
-  --color: black;
-  --font-family: "Montserrat", monospace;
+    --background-color: rgb(226, 224, 224);
+    --box-shadow: 0 0 7px 0 black;
+    --padding-box: 5px 10px;
+    --color: black;
+    --font-family: "Montserrat", monospace;
 }
 
 body {
-  font-family: var(--font-family);
-  padding: 10px;
+    font-family: var(--font-family);
+    padding: 0;
+    margin: 0;
 }
 
 /************ VARIABLES GENERALES ***************/
 
 .game-window {
-  display: none;
-  transform-origin: top;
-  animation: animate 0.5s;
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
 }
 
 .game-window-active {
-  display: block;
+    display: block;
 }
 
 .hide-content {
@@ -52,7 +53,7 @@ body {
     margin-top: 15px;
     border: 2px solid #000;
     border-radius: 5px;
-    
+
 }
 
 .game-window .user input[type='submit'] {
@@ -68,33 +69,56 @@ body {
 
 /*************** Game ***************/
 
-.row {
-  max-width: 180px;
+.game {
+    background-color: aquamarine;
+}
+
+.hangman {
+    height: 50vh;
 }
 
 .output {
-  max-width: 180px;
+    max-width: 180px;
+    height: 7vh;
 }
 
+.virtual-keyboard {
+    height: 43vh;
+}
+
+.row-5 {
+    display: flex;
+    justify-content: center;
+}
+
+.row-6 {
+    display: flex;
+    justify-content: center;
+}
+
+.virtual-keyboard input {
+    width: 50px;
+    height: 50px;
+}
 /*************** Finish ***************/
 
 /*************** User scores ***************/
 
 .user-scores {
-  background-color: var(--background-color);
-  box-shadow: var(--box-shadow);
-  padding: var(--padding-box);
-  color: var(--color);
-  margin: 0 auto;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    background-color: var(--background-color);
+    box-shadow: var(--box-shadow);
+    padding: var(--padding-box);
+    color: var(--color);
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .user-scores p {
-  font-weight: bold;
-  font-size: 1.2em;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .user-scores .player-score {
@@ -103,13 +127,13 @@ body {
 }
 
 .user-scores .player-score .name {
-  font-size: 1em;
-  margin: 0;
+    font-size: 1em;
+    margin: 0;
 }
 
 .user-scores .player-score .status {
-  font-weight: lighter;
-  font-size: 1em;
-  margin: 4px;
+    font-weight: lighter;
+    font-size: 1em;
+    margin: 4px;
 
 }
