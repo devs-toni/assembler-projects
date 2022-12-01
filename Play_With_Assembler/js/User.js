@@ -1,10 +1,8 @@
 class User {
-    constructor(name, score) {
+    constructor(name) {
         this.name = name;
-        this.score = score;
+        this.score = 'Currently playing...';
     }
 
     setScore(){}
-
-
 }
