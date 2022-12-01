@@ -1,32 +1,31 @@
+/*************** Root ***************/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 :root {
-    --background-color: rgb(226, 224, 224);
-    --box-shadow: 0 0 7px 0 black;
-    --padding-box: 20px 50px;
-    --color: black;
-
+  --background-color: rgb(226, 224, 224);
+  --box-shadow: 0 0 7px 0 black;
+  --padding-box: 20px 50px;
+  --color: black;
+  --font-family: 'Montserrat', monospace;
 }
 
-.main-game {
-    width: 80%;
-    margin:0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+body {
+    font-family: var(--font-family);
 }
+
+
 
 /************ VARIABLES GENERALES ***************/
+
 .game-window {
-    display: none;
-    transform-origin: top;
-    animation: animate 0.5s;
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
 }
 
 .game-window-active {
-    display: block;
+  display: block;
 }
-
-/*************** Root ***************/
 
 /*************** Choose user name ***************/
 
@@ -37,15 +36,14 @@
 /*************** User scores ***************/
 
 .user-scores {
-    background-color: var(--background-color);
-    box-shadow: var(--box-shadow);
-    padding: var(--padding-box);
-    color: var(--color);
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
+  padding: var(--padding-box);
+  color: var(--color);
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .user-scores h3 {
-
 }
