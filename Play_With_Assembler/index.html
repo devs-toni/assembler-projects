@@ -6,17 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/index.css" />
+    <script type="text/javascript" src="./js/domVariables.js" defer></script>
     <script type="text/javascript" src="./js/User.js" defer></script>
     <script type="text/javascript" src="./js/Game.js" defer></script>
-    <script type="text/javascript" src="./js/domVariables.js" defer></script>
     <script type="text/javascript" src="./js/index.js" defer></script>
+    <script type="text/javascript" src="./js/eventLinteners.js" defer></script>
     <title>Play With Assembler</title>
 </head>
 
 <body>
     <div>
-        <div class="game-window">
-            <div class="user">Choose user name</div>
+        <div class="game-window game-window-active">
+            <div class="user">
+                <h2>Choose user name</h2>
+                <form id="chooseNameForm">
+                    <label for="userName">User name</label><br>
+                    <input name="userName" type="text" placeholder="Mark">
+                    <input type="submit" value="Start">
+                </form>
+            </div>
         </div>
         <div class="game-window game-window-active">
             <div class="game">

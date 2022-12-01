@@ -4,5 +4,10 @@ class User {
         this.score = 'Currently playing...';
     }
 
+    setUser(e) {
+        e.preventDefault();
+        this.name = e.target[0].value;
+    }
+
     setScore(){}
 }
