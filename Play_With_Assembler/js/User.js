@@ -6,7 +6,8 @@ class User {
 
     setUser(e) {
         e.preventDefault();
-        this.name = e.target[0].value;
+        user.name = e.target[0].value;
+        changeDomToNextForm('userDiv', 'gameDiv');
     }
 
     setScore(){}
