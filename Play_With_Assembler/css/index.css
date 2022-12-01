@@ -1,3 +1,14 @@
+/************ VARIABLES GENERALES ***************/
+.game-window {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+}
+
+.game-window-active {
+    display: block;
+}
+
 /*************** Root ***************/
 
 /*************** Choose user name ***************/
