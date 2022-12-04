@@ -1,1 +1,0 @@
-userForm.addEventListener('submit', (e) => user.setUser(e));
