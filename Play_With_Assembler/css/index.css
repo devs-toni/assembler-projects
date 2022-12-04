@@ -128,6 +128,7 @@ svg {
 .virtual-keyboard input {
     width: 50px;
     height: 50px;
+    text-transform: uppercase;
 }
 
 .virtual-keyboard input.delete {
@@ -151,6 +152,8 @@ svg {
 .word-spot-light {
     font-size: 30px;
     margin: 8px 0;
+    letter-spacing: .3em;
+    text-transform: uppercase;
 }
 
 /*************** Finish ***************/
@@ -159,6 +162,13 @@ svg {
     padding: 40px;
     background-color: aquamarine;
 }
+
+.finish-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.9em;
+    padding: 15px 0;
+}
 /*************** User scores ***************/
 
 .user-scores {
@@ -166,8 +176,9 @@ svg {
     box-shadow: var(--box-shadow);
     padding: var(--padding-box);
     color: var(--color);
-    margin: 0 auto;
+    margin: 25px auto;    
     width: 90%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
