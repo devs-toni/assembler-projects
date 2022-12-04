@@ -36,42 +36,42 @@
                             <img id='hangmanPic' src="assets/images/0.jpg" alt="Hangman">
                         </div>
                         <p id="wordSpotlight" class="word-spot-light"></p>
-                        <div class="virtual-keyboard">
+                        <div id="virtualKeyboard" class="virtual-keyboard">
                             <div class="row-5">
-                                <input type="button" value="A" id="a" onclick="handleGuess('a')">
-                                <input type="button" value="B" id="b" onclick="handleGuess('b')">
-                                <input type="button" value="C" id="c" onclick="handleGuess('c')">
-                                <input type="button" value="D" id="d" onclick="handleGuess('d')">
-                                <input type="button" value="E" id="e" onclick="handleGuess('e')">
+                                <input type="button" value="A" id="a" onclick="game.handleGuess('a')">
+                                <input type="button" value="B" id="b" onclick="game.handleGuess('b')">
+                                <input type="button" value="C" id="c" onclick="game.handleGuess('c')">
+                                <input type="button" value="D" id="d" onclick="game.handleGuess('d')">
+                                <input type="button" value="E" id="e" onclick="game.handleGuess('e')">
                             </div>
                             <div class="row-6">
-                                <input type="button" value="F" id="f" onclick="handleGuess('f')">
-                                <input type="button" value="G" id="g" onclick="handleGuess('g')">
-                                <input type="button" value="H" id="h" onclick="handleGuess('h')">
-                                <input type="button" value="I" id="i" onclick="handleGuess('i')">
-                                <input type="button" value="J" id="j" onclick="handleGuess('j')">
-                                <input type="button" value="K" id="k" onclick="handleGuess('k')">
+                                <input type="button" value="F" id="f" onclick="game.handleGuess('f')">
+                                <input type="button" value="G" id="g" onclick="game.handleGuess('g')">
+                                <input type="button" value="H" id="h" onclick="game.handleGuess('h')">
+                                <input type="button" value="I" id="i" onclick="game.handleGuess('i')">
+                                <input type="button" value="J" id="j" onclick="game.handleGuess('j')">
+                                <input type="button" value="K" id="k" onclick="game.handleGuess('k')">
                             </div>
                             <div class="row-5">
-                                <input type="button" value="L" id="l" onclick="handleGuess('l')">
-                                <input type="button" value="M" id="m" onclick="handleGuess('m')">
-                                <input type="button" value="N" id="n" onclick="handleGuess('n')">
-                                <input type="button" value="O" id="o" onclick="handleGuess('o')">
-                                <input type="button" value="P" id="p" onclick="handleGuess('p')">
+                                <input type="button" value="L" id="l" onclick="game.handleGuess('l')">
+                                <input type="button" value="M" id="m" onclick="game.handleGuess('m')">
+                                <input type="button" value="N" id="n" onclick="game.handleGuess('n')">
+                                <input type="button" value="O" id="o" onclick="game.handleGuess('o')">
+                                <input type="button" value="P" id="p" onclick="game.handleGuess('p')">
                             </div>
                             <div class="row-6">
-                                <input type="button" value="Q" id="q" onclick="handleGuess('q')">
-                                <input type="button" value="R" id="r" onclick="handleGuess('r')">
-                                <input type="button" value="S" id="s" onclick="handleGuess('s')">
-                                <input type="button" value="T" id="t" onclick="handleGuess('t')">
-                                <input type="button" value="U" id="u" onclick="handleGuess('u')">
-                                <input type="button" value="V" id="v" onclick="handleGuess('v')">
+                                <input type="button" value="Q" id="q" onclick="game.handleGuess('q')">
+                                <input type="button" value="R" id="r" onclick="game.handleGuess('r')">
+                                <input type="button" value="S" id="s" onclick="game.handleGuess('s')">
+                                <input type="button" value="T" id="t" onclick="game.handleGuess('t')">
+                                <input type="button" value="U" id="u" onclick="game.handleGuess('u')">
+                                <input type="button" value="V" id="v" onclick="game.handleGuess('v')">
                             </div>
                             <div class="row-with-delete">
-                                <input type="button" value="W" id="w" onclick="handleGuess('w')">
-                                <input type="button" value="X" id="x" onclick="handleGuess('x')">
-                                <input type="button" value="Y" id="y" onclick="handleGuess('y')">
-                                <input type="button" value="Z" id="z" onclick="handleGuess('z')">
+                                <input type="button" value="W" id="w" onclick="game.handleGuess('w')">
+                                <input type="button" value="X" id="x" onclick="game.handleGuess('x')">
+                                <input type="button" value="Y" id="y" onclick="game.handleGuess('y')">
+                                <input type="button" value="Z" id="z" onclick="game.handleGuess('z')">
                                 <input type="button" value="back" class="delete" onClick="window.location.reload();">
                                 <!-- onClick=reset() -->
                             </div>

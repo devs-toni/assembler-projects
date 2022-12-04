@@ -1,4 +1,10 @@
 const user = new User();
+const game = new Game();
+
+document.getElementById('maxWrong').innerHTML = game.maxWrong;
+game.randomWord();
+game.guessedWord();
+
 
 const changeDomToNextForm = (previous, next) => {
     if (previous === 'userDiv' && next === 'gameDiv') {

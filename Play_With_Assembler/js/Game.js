@@ -1,135 +1,98 @@
 class Game {
     constructor() {
-        this.game = {};
-        this.user = {};
-        this.words = ['silla', 'sofa', 'portaviones', 'ejercito', 'televisión', 'mueble', 'mochila'];
+        this.mistakes = 0;
+        this.maxWrong = 6;
+        this.answer = '';
+        this.guessed = [];
+        this.wordStatus = null;
+        this.programming_languages = [
+            "almond",
+            /*     "banana",
+                "carrot",
+                "cashew",
+                "cherry",
+                "citron",
+                "garlic",
+                "lentel",
+                "lichee",
+                "orange",
+                "papaya",
+                "peanut",
+                "tomato",
+                "walnut", */
+            "persiana",
+            "corazon"
+        ];
     }
 
-    setUser() {
-        //Añadir el usuario introducido al user de GAME pasandole el nombre como parametro
-
-        //Actualizar scores
-
-        //Escoger palabra random y pintar escenario con cambio de div
+    randomWord() {
+        this.answer = this.programming_languages[Math.floor(Math.random() * this.programming_languages.length)];
+        for (let i = 0; i < this.answer.length; i++) {
+            document.getElementById('wordSpotlight').innerHTML += '_ ';
+        }
+        console.log(this.answer);
     }
 
-    winner() {
-        //Evaluar si el div con la palabra esta completo
+    handleGuess(chosenLetter) {
+        this.guessed.indexOf(chosenLetter) === -1 ? this.guessed.push(chosenLetter) : null;
+        document.getElementById(chosenLetter).setAttribute('disabled', true);
 
-        //Devolver resultado para seguir jugando o terminar partida
-
+        if (this.answer.indexOf(chosenLetter) >= 0) {
+            this.guessedWord();
+            this.checkIfGameWon();
+        } else if (this.answer.indexOf(chosenLetter) === -1) {
+            this.mistakes++;
+            this.updateMistakes();
+            this.checkIfGameLost();
+            this.updateHangmanPicture();
+        }
     }
 
-    chooseLetter() {
-        //Lectura de letra
-
-        //Comprobar numero de intentos
-
-        //Comprobar si es valida y actuar en consecuencia
+    guessedWord() {
+        this.wordStatus = this.answer.split('').map(letter => (this.guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+        document.getElementById('wordSpotlight').innerHTML = this.wordStatus;
     }
 
-    paintDoll() {
-        //Pintar al muñeco cuando fallas
+    checkIfGameWon() {
+        if (this.wordStatus === this.answer) {
+            gameDiv.classList.remove('game-window-active');
+            finishDiv.classList.add('game-window-active');
+/*             document.getElementById('keyboard').innerHTML = 'You Won!!!';
+ */        }
     }
 
-    showFinalGame() {
-        //Añadir puntuación al usuario
-        //Pintar pantalla ganador o perdedor
-        //Actualizar scores
+    checkIfGameLost() {
+        if (this.mistakes === this.maxWrong) {
+            document.getElementById('virtualKeyboard').style.display = 'none';
+            document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + this.answer;
+            setTimeout(() => {
+                gameDiv.classList.remove('game-window-active');
+                finishDiv.classList.add('game-window-active');
+            }, 5000);
+
+/*             document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+ */        }
     }
-}
 
-var programming_languages = [
-    "almond",
-/*     "banana",
-    "carrot",
-    "cashew",
-    "cherry",
-    "citron",
-    "garlic",
-    "lentel",
-    "lichee",
-    "orange",
-    "papaya",
-    "peanut",
-    "tomato",
-    "walnut", */
-    "persiana",
-    "corazon",
-]
-
-let answer = '';
-let maxWrong = 7;
-let mistakes = 0;
-let guessed = [];
-let wordStatus = null;
-
-function randomWord() {
-    answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
-    for (let i = 0; i < answer.length; i++) {
-        document.getElementById('wordSpotlight').innerHTML += '_ ';
+    updateMistakes() {
+        document.getElementById('mistakes').innerHTML = this.mistakes;
     }
-    console.log(answer);
-}
 
-function handleGuess(chosenLetter) {
-    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-    document.getElementById(chosenLetter).setAttribute('disabled', true);
-
-    if (answer.indexOf(chosenLetter) >= 0) {
-        guessedWord();
-        checkIfGameWon();
-    } else if (answer.indexOf(chosenLetter) === -1) {
-        mistakes++;
-        updateMistakes();
-        checkIfGameLost();
-        updateHangmanPicture();
+    updateHangmanPicture() {
+        document.getElementById('hangmanPic').src = 'assets/images/' + this.mistakes + '.jpg';
     }
-}
 
-function updateHangmanPicture() {
-    document.getElementById('hangmanPic').src = 'assets/images/' + mistakes + '.jpg';
-}
+    reset() {
+        this.mistakes = 0;
+        this.guessed = [];
+        document.getElementById('hangmanPic').src = './images/0.jpg';
 
-
-function checkIfGameWon() {
-    if (wordStatus === answer) {
-        gameDiv.classList.remove('game-window-active');
-        finishDiv.classList.add('game-window-active');
-        document.getElementById('keyboard').innerHTML = 'You Won!!!';
+        this.randomWord();
+        this.guessedWord();
+        this.updateMistakes();
+        this.generateButtons();
+        location.reload();
     }
 }
 
-function checkIfGameLost() {
-    if (mistakes === maxWrong) {
-        document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-        document.getElementById('keyboard').innerHTML = 'You Lost!!!';
-    }
-}
-
-function guessedWord() {
-    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-    document.getElementById('wordSpotlight').innerHTML = wordStatus;
-}
-
-function updateMistakes() {
-    document.getElementById('mistakes').innerHTML = mistakes;
-}
-
-function reset() {
-    mistakes = 0;
-    guessed = [];
-    document.getElementById('hangmanPic').src = './images/0.jpg';
-
-    randomWord();
-    guessedWord();
-    updateMistakes();
-    generateButtons();
-    location.reload();
-}
-
-document.getElementById('maxWrong').innerHTML = maxWrong;
-
-randomWord();
-generateButtons();
-guessedWord();
+/* generateButtons();*/
