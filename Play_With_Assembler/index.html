@@ -9,8 +9,8 @@
     <script type="text/javascript" src="./js/domVariables.js" defer></script>
     <script type="text/javascript" src="./js/User.js" defer></script>
     <script type="text/javascript" src="./js/Game.js" defer></script>
-    <script type="text/javascript" src="./js/index.js" defer></script>
     <script type="text/javascript" src="./js/eventLinteners.js" defer></script>
+    <script type="text/javascript" src="./js/index.js" defer></script>
     <title>Play With Assembler</title>
 </head>
 
@@ -22,7 +22,7 @@
                 <h2>Choose user name</h2>
                 <form id="chooseNameForm">
                     <label for="userName">User name</label><br>
-                    <input name="userName" type="text" placeholder="Mark" value="Mark" required>
+                    <input name="userName" type="text" placeholder="Mark" required>
                     <input type="submit" value="Start">
                 </form>
             </div>
@@ -35,45 +35,44 @@
                         <div class="hangman-image">
                             <img id='hangmanPic' src="assets/images/0.jpg" alt="Hangman">
                         </div>
-                        <p id="wordSpotlight" class="word-spot-light">_ _ _ _ _ _</p>
+                        <p id="wordSpotlight" class="word-spot-light"></p>
                         <div class="virtual-keyboard">
                             <div class="row-5">
-                                <input type="button" value="A" id="a" onclick="handleGuess('a')">
-                                <input type="button" value="B" id="b" onclick="handleGuess('b')">
-                                <input type="button" value="C" id="c" onclick="handleGuess('c')">
-                                <input type="button" value="D" id="d" onclick="handleGuess('d')">
-                                <input type="button" value="E" id="e" onclick="handleGuess('e')">
+                                <input data-target="alphabet" type="button" value="a">
+                                <input data-target="alphabet" type="button" value="b">
+                                <input data-target="alphabet" type="button" value="c">
+                                <input data-target="alphabet" type="button" value="d">
+                                <input data-target="alphabet" type="button" value="e">
                             </div>
                             <div class="row-6">
-                                <input type="button" value="F" id="f" onclick="handleGuess('f')">
-                                <input type="button" value="G" id="g" onclick="handleGuess('g')">
-                                <input type="button" value="H" id="h" onclick="handleGuess('h')">
-                                <input type="button" value="I" id="i" onclick="handleGuess('i')">
-                                <input type="button" value="J" id="j" onclick="handleGuess('j')">
-                                <input type="button" value="K" id="k" onclick="handleGuess('k')">
+                                <input data-target="alphabet" type="button" value="f">
+                                <input data-target="alphabet" type="button" value="g">
+                                <input data-target="alphabet" type="button" value="h">
+                                <input data-target="alphabet" type="button" value="i">
+                                <input data-target="alphabet" type="button" value="j">
+                                <input data-target="alphabet" type="button" value="k">
                             </div>
                             <div class="row-5">
-                                <input type="button" value="L" id="l" onclick="handleGuess('l')">
-                                <input type="button" value="M" id="m" onclick="handleGuess('m')">
-                                <input type="button" value="N" id="n" onclick="handleGuess('n')">
-                                <input type="button" value="O" id="o" onclick="handleGuess('o')">
-                                <input type="button" value="P" id="p" onclick="handleGuess('p')">
+                                <input data-target="alphabet" type="button" value="l">
+                                <input data-target="alphabet" type="button" value="m">
+                                <input data-target="alphabet" type="button" value="n">
+                                <input data-target="alphabet" type="button" value="o">
+                                <input data-target="alphabet" type="button" value="p">
                             </div>
                             <div class="row-6">
-                                <input type="button" value="Q" id="q" onclick="handleGuess('q')">
-                                <input type="button" value="R" id="r" onclick="handleGuess('r')">
-                                <input type="button" value="S" id="s" onclick="handleGuess('s')">
-                                <input type="button" value="T" id="t" onclick="handleGuess('t')">
-                                <input type="button" value="U" id="u" onclick="handleGuess('u')">
-                                <input type="button" value="V" id="v" onclick="handleGuess('v')">
+                                <input data-target="alphabet" type="button" value="q">
+                                <input data-target="alphabet" type="button" value="r">
+                                <input data-target="alphabet" type="button" value="s">
+                                <input data-target="alphabet" type="button" value="t">
+                                <input data-target="alphabet" type="button" value="u">
+                                <input data-target="alphabet" type="button" value="v">
                             </div>
                             <div class="row-with-delete">
-                                <input type="button" value="W" id="w" onclick="handleGuess('w')">
-                                <input type="button" value="X" id="x" onclick="handleGuess('x')">
-                                <input type="button" value="Y" id="y" onclick="handleGuess('y')">
-                                <input type="button" value="Z" id="z" onclick="handleGuess('z')">
-                                <input type="button" value="back" class="delete" onClick="window.location.reload();">
-                                <!-- onClick=reset() -->
+                                <input data-target="alphabet" type="button" value="w">
+                                <input data-target="alphabet" type="button" value="x">
+                                <input data-target="alphabet" type="button" value="y">
+                                <input data-target="alphabet" type="button" value="z">
+                                <input type="button" id="back" value="back" class="delete" onClick="window.location.reload();">
                             </div>
                         </div>
                     </div>
@@ -89,21 +88,26 @@
         </div>
         <div id="finishDiv" class="game-window">
             <div class="finish">
-                <div class="finish-div-total">Wrong Guesses: <span id='mistakes'>0</span> of <span id='maxWrong'></span>
+                <div class="finish-message" id="finishMessage">
+                    <span>The answer was: <span id="finishMessageAnswer">Word</span></span>
+                    <p id="finishMessageResult">Mark Won in 8 seconds!!!</p>
                 </div>
+                <div id="finishDivTotal" class="finish-div-total">
+                    Wrong Guesses: 6 of 6
+                </div>
+                <button type="button" id="playAgainButton">Play again</button>
             </div>
         </div>
     </div>
-    <div class="user-scores">
+    <div id="userScores" class="user-scores hide-content">
         <p>User Scores</p>
-        <div class="player-score">
-            <p class="name">Mark</p>
-            <p class="status">Currently gaming</p>
+        <div id="userScoresList">
+            <div  id="userScoresDiv" class="player-score">
+                <p id="userScoreName" class="name">Pepe</p>
+                <p id="userScoreTime" class="status">11 seconds</p>
+            </div>
         </div>
-        <div class="player-score">
-            <p class="name">David</p>
-            <p class="status">10 seconds</p>
-        </div>
+        <button type="button" id="resetScores">Reset</button>
     </div>
 </body>
 
