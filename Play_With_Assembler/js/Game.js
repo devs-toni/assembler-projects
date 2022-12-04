@@ -1,130 +1,123 @@
+let parseHistoryGameLocalStorage = JSON.parse(historyGameLS);
+
 class Game {
     constructor() {
         this.game = {};
-        this.user = {};
-        this.words = ['silla', 'sofa', 'portaviones', 'ejercito', 'televisión', 'mueble', 'mochila'];
+        this.user = user.name;
+        this.maxWrong = 6;
+        this.mistakes = 0;
+        this.guessed = [];
+        this.wordStatus = null;
+        this.words = [
+            'apple',
+            'pear',
+            'cucumber',
+            'almond',
+            'banana',
+            'carrot',
+            'cashew',
+            'cherry',
+            'citron',
+            'garlic',
+            'lentel',
+            'lichee',
+            'orange',
+            'papaya',
+            'peanut',
+            'tomato',
+            'walnut'];
+        this.answer = this.randomWord();
     }
 
-    setUser() {
-        //Añadir el usuario introducido al user de GAME pasandole el nombre como parametro
-
-        //Actualizar scores
-
-        //Escoger palabra random y pintar escenario con cambio de div
+    randomWord() {
+        let word = this.words[Math.floor(Math.random() * this.words.length)];
+        console.log(word);
+        return word;
     }
 
-    winner() {
-        //Evaluar si el div con la palabra esta completo
-
-        //Devolver resultado para seguir jugando o terminar partida
-
+    guessedWord() {
+        game.wordStatus = game.answer.split('').map(letter => (game.guessed.indexOf(letter) >= 0 ? letter : "_")).join('');
+        wordSpotlight.innerHTML = game.wordStatus;
     }
 
-    chooseLetter() {
-        //Lectura de letra
-
-        //Comprobar numero de intentos
-
-        //Comprobar si es valida y actuar en consecuencia
+    handleGuess(chosenLetter) {
+        game.guessed.indexOf(chosenLetter) === -1 ? game.guessed.push(chosenLetter) : null;
+        document.getElementById(chosenLetter).setAttribute('disabled', true);
+        if (game.answer.indexOf(chosenLetter) >= 0) {
+            endGame = Date.now();
+            game.guessedWord();
+            game.checkIfGameWon();
+            game.printUserScores(endGame);
+        } else if (game.answer.indexOf(chosenLetter) === -1) {
+            game.mistakes++;
+            game.checkIfGameLost();
+            game.updateHangmanPicture();
+        }
     }
 
-    paintDoll() {
-        //Pintar al muñeco cuando fallas
+    updateHangmanPicture() {
+        hangmanPic.src = 'assets/images/' + this.mistakes + '.jpg';
     }
 
-    showFinalGame() {
-        //Añadir puntuación al usuario
-        //Pintar pantalla ganador o perdedor
-        //Actualizar scores
+    resultGame(result) {
+        // Timming
+        totalGameTime = endGame - startGame;
+        // Next step
+        changeDomToNextForm('gameDiv', 'finishDiv');
+        // DOM print
+        userScores.classList.remove('hide-content');
+        finishMessageAnswer.textContent = game.answer;
+        finishMessageResult.textContent = `${user.name} ${result} in ${Math.round(totalGameTime / 1000)} seconds!!!`;
+    }
+
+    checkIfGameWon() {
+        if (game.wordStatus === game.answer) {
+            game.resultGame('Won');
+            // DOM
+            finishDivTotal.textContent = `Wrong Guesses: ${game.mistakes} of ${game.maxWrong}`;
+            // Create single object
+            const currentPlay = {
+                user: user.name,
+                gameTime: Math.round(totalGameTime / 1000)
+            }
+            let obj = [];
+            obj.push(currentPlay);
+            //Save in Localstorage
+            parseHistoryGameLocalStorage && parseHistoryGameLocalStorage.push(currentPlay);
+            localStorage.setItem('game-history', JSON.stringify(parseHistoryGameLocalStorage ? parseHistoryGameLocalStorage : obj));
+        }
+    }
+
+    checkIfGameLost() {
+        if (game.mistakes === game.maxWrong) {
+            game.resultGame('Lost');
+        }
+    }
+
+    printUserScores(endGame) {
+        if (!parseHistoryGameLocalStorage) {
+            userScoreName.textContent = game.user;
+            userScoreTime.textContent = `${Math.round((endGame - startGame) / 1000)} seconds`;
+        } else {
+            const div = userScoresDiv;
+            userScoresList.innerHTML = '';
+
+            parseHistoryGameLocalStorage.map((player) => {
+                let cloneDiv = div.cloneNode(true);
+                cloneDiv.children[0].textContent = player.user;
+                cloneDiv.children[1].textContent = `${player.gameTime} seconds`;
+                userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+            });
+        }
+    }
+
+    playAgain() {
+        window.location.reload();
+    }
+
+    resetScores() {
+        parseHistoryGameLocalStorage = undefined;
+        localStorage.removeItem('game-history');
+        userScores.classList.add('hide-content');
     }
 }
-
-var programming_languages = [
-    "almond",
-    "banana",
-    "carrot",
-    "cashew",
-    "cherry",
-    "citron",
-    "garlic",
-    "lentel",
-    "lichee",
-    "orange",
-    "papaya",
-    "peanut",
-    "tomato",
-    "walnut"
-]
-
-let answer = '';
-let maxWrong = 7;
-let mistakes = 0;
-let guessed = [];
-let wordStatus = null;
-
-function randomWord() {
-    answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
-}
-
-function handleGuess(chosenLetter) {
-    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-    document.getElementById(chosenLetter).setAttribute('disabled', true);
-
-    if (answer.indexOf(chosenLetter) >= 0) {
-        guessedWord();
-        checkIfGameWon();
-    } else if (answer.indexOf(chosenLetter) === -1) {
-        mistakes++;
-        updateMistakes();
-        checkIfGameLost();
-        updateHangmanPicture();
-    }
-}
-
-function updateHangmanPicture() {
-    document.getElementById('hangmanPic').src = 'assets/images/' + mistakes + '.jpg';
-}
-
-
-function checkIfGameWon() {
-    if (wordStatus === answer) {
-        gameDiv.classList.remove('game-window-active');
-        finishDiv.classList.add('game-window-active');
-        document.getElementById('keyboard').innerHTML = 'You Won!!!';
-    }
-}
-
-function checkIfGameLost() {
-    if (mistakes === maxWrong) {
-        document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-        document.getElementById('keyboard').innerHTML = 'You Lost!!!';
-    }
-}
-
-function guessedWord() {
-    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-
-    document.getElementById('wordSpotlight').innerHTML = wordStatus;
-}
-
-function updateMistakes() {
-    document.getElementById('mistakes').innerHTML = mistakes;
-}
-
-function reset() {
-    mistakes = 0;
-    guessed = [];
-    document.getElementById('hangmanPic').src = './images/0.jpg';
-
-    randomWord();
-    guessedWord();
-    updateMistakes();
-    generateButtons();
-    location.reload();
-}
-
-document.getElementById('maxWrong').innerHTML = maxWrong;
-
-randomWord();
-generateButtons();
-guessedWord();
