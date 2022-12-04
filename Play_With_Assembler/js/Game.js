@@ -41,7 +41,7 @@ class Game {
 
 var programming_languages = [
     "almond",
-    "banana",
+/*     "banana",
     "carrot",
     "cashew",
     "cherry",
@@ -53,7 +53,9 @@ var programming_languages = [
     "papaya",
     "peanut",
     "tomato",
-    "walnut"
+    "walnut", */
+    "persiana",
+    "corazon",
 ]
 
 let answer = '';
@@ -64,6 +66,10 @@ let wordStatus = null;
 
 function randomWord() {
     answer = programming_languages[Math.floor(Math.random() * programming_languages.length)];
+    for (let i = 0; i < answer.length; i++) {
+        document.getElementById('wordSpotlight').innerHTML += '_ ';
+    }
+    console.log(answer);
 }
 
 function handleGuess(chosenLetter) {
@@ -103,7 +109,6 @@ function checkIfGameLost() {
 
 function guessedWord() {
     wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-
     document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
 
