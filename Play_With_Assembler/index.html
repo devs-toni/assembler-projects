@@ -10,7 +10,6 @@
     <script type="text/javascript" src="./js/User.js" defer></script>
     <script type="text/javascript" src="./js/Game.js" defer></script>
     <script type="text/javascript" src="./js/index.js" defer></script>
-    <script type="text/javascript" src="./js/eventLinteners.js" defer></script>
     <title>Play With Assembler</title>
 </head>
 
@@ -22,7 +21,7 @@
                 <h2>Choose user name</h2>
                 <form id="chooseNameForm">
                     <label for="userName">User name</label><br>
-                    <input name="userName" type="text" placeholder="Mark" value="Mark" required>
+                    <input name="userName" type="text" placeholder="Enter your username" required>
                     <input type="submit" value="Start">
                 </form>
             </div>
@@ -94,16 +93,8 @@
             </div>
         </div>
     </div>
-    <div class="user-scores">
-        <p>User Scores</p>
-        <div class="player-score">
-            <p class="name">Mark</p>
-            <p class="status">Currently gaming</p>
-        </div>
-        <div class="player-score">
-            <p class="name">David</p>
-            <p class="status">10 seconds</p>
-        </div>
+    <div id="userScores" class="user-scores">
+        <p id="userScoresTitle">User Scores</p>
     </div>
 </body>
 
