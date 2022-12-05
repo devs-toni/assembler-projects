@@ -65,7 +65,7 @@ class Game {
         // Next step
         changeDomToNextForm('gameDiv', 'finishDiv');
         // DOM print
-        userScores.classList.remove('hide-content');
+        //userScores.classList.remove('hide-content');
         finishMessageAnswer.textContent = game.answer;
         finishMessageResult.textContent = `${user.name} ${result} in ${Math.round(totalGameTime / 1000)} seconds!!!`;
     }
@@ -118,6 +118,6 @@ class Game {
     resetScores() {
         parseHistoryGameLocalStorage = undefined;
         localStorage.removeItem('game-history');
-        userScores.classList.add('hide-content');
+        //userScores.classList.add('hide-content');
     }
 }

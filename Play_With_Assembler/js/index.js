@@ -9,13 +9,13 @@ const changeDomToNextForm = (previous, next) => {
         newGame();
         userDiv.classList.remove('game-window-active');
         gameDiv.classList.add('game-window-active');
-        userScores.classList.add('hide-content');
+        //userScores.classList.add('hide-content');
         return;
     }
     if (previous === 'gameDiv' && next === 'finishDiv') {
         gameDiv.classList.remove('game-window-active');
         finishDiv.classList.add('game-window-active');
-        userScores.classList.remove('hide-content');
+        //userScores.classList.remove('hide-content');
         return;
     }
 }
@@ -27,7 +27,7 @@ function newGame() {
 }
 
 function showIfDataExistsInLocalStorage() {
-    historyGameLS && userScores.classList.remove('hide-content');
+    //historyGameLS && userScores.classList.remove('hide-content');
 }
 
 newGame();

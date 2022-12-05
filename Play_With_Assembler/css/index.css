@@ -149,11 +149,13 @@ svg {
 .hangman-content {
     text-align: center;
 }
+
 .word-spot-light {
     font-size: 30px;
     margin: 8px 0;
     letter-spacing: .3em;
     text-transform: uppercase;
+    text-align: center;
 }
 
 /*************** Finish ***************/
@@ -169,6 +171,7 @@ svg {
     font-size: 1.9em;
     padding: 15px 0;
 }
+
 /*************** User scores ***************/
 
 .user-scores {
@@ -176,7 +179,7 @@ svg {
     box-shadow: var(--box-shadow);
     padding: var(--padding-box);
     color: var(--color);
-    margin: 25px auto;    
+    margin: 25px auto;
     width: 90%;
     max-width: 300px;
     display: flex;
@@ -204,4 +207,101 @@ svg {
     font-size: 1em;
     margin: 4px;
 
+}
+
+@media screen and (min-width: 600px) {
+    .hangman-div-responsive {
+        display: flex;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .game-window {
+        width: 70%;
+    }
+
+    .user-scores {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .container {
+        display: grid;
+        grid-template-areas:
+            "a a a"
+            "b c c"
+            "b d d";
+    }
+
+    .hangman-game-h2 {
+        grid-area: a;
+    }
+
+    .hangman-image {
+        grid-area: b;
+        height: 100%;
+    }
+
+    .word-spot-light {
+        grid-area: c;
+    }
+
+    .virtual-keyboard {
+        grid-area: d;
+        text-align: center;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .container {
+        position: relative;
+        display: grid;
+        grid-template-areas:
+            "b a a"
+            "b c c"
+            "d d d";
+    }
+
+    .hangman-game-h2 {
+        grid-area: a;
+    }
+
+    .hangman-image {
+        grid-area: b;
+        height: 100%;
+    }
+
+    .word-spot-light {
+        grid-area: c;
+    }
+
+    .virtual-keyboard {
+        grid-area: d;
+        text-align: center;
+    }
+
+    .row-5 {
+        display: inline;
+    }
+
+    .row-6 {
+        display: inline;
+    }
+
+    .row-with-delete {
+        display: inline;
+        padding-left: 0px;
+    }
+
+    .virtual-keyboard input {
+        margin: 2px;
+    }
+
+    .word-spot-light {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+    }
 }
