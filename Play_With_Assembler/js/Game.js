@@ -70,9 +70,8 @@ class Game {
         document.getElementById('currentPlay').style.display = 'none';
         changeDomToNextForm('gameDiv', 'finishDiv');
 
-        this.user.timesPlayed++;
-        this.printUserScores();
         this.saveInLocalStorage();
+        this.printUserScores();
     }
 
     checkIfGameWon() {
@@ -105,6 +104,7 @@ class Game {
         }
 
         if (!parseHistoryGameLocalStorage) {
+            currentPlay.timesPlayed++;
             this.gameHistory.push(currentPlay);
             localStorage.setItem('game-history', JSON.stringify(this.gameHistory));
             userScoreTime.innerHTML = currentPlay.gameTime;
@@ -118,12 +118,14 @@ class Game {
                 this.printUserScores();
             } else {
                 this.gameHistory.find((e, key) => {
-                    if (e.user === div.children[0].textContent) {
+                    if (e.user === div.name) {
+                        e.timesPlayed++;
                         if (currentPlay.gameTime < e.gameTime) {
                             e.timeRecord = currentPlay.gameTime;
-                            e.timesPlayed++;
                             this.addToLocalStorageObject('game-history', key, e);
                             div.children[1].textContent = currentPlay.gameTime + ' seconds';
+                        } else {
+                            this.addToLocalStorageObject('game-history', key, e);
                         }
                     }
                 });
@@ -147,33 +149,26 @@ class Game {
             if (this.user.isPlaying) {
                 this.printCurrentUser(div);
             } else {
-                let cloneDiv = div.cloneNode(true);
-                cloneDiv.id = 'score' + this.user.name;
-                cloneDiv.children[0].textContent = this.user.name;
-                console.log(this.timesPlayed);
-                cloneDiv.children[1].textContent = `${(this.gameHistory[0] && this.gameHistory[0].gameTime)} seconds`;
-                userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+                if (this.gameHistory.length > 0) {
+                    let cloneDiv = div.cloneNode(true);
+                    cloneDiv.id = 'score' + this.user.name;
+                    cloneDiv.children[0].textContent = `${this.user.name}`;
+                    cloneDiv.children[1].textContent = `${(this.gameHistory[0] && this.gameHistory[0].gameTime)} seconds`;
+                    userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+                }
             }
         } else {
             if (this.user.isPlaying) {
                 this.printCurrentUser(div);
             }
-
-            if (parseHistoryGameLocalStorage) {
-                parseHistoryGameLocalStorage.map((player) => {
-                    let cloneDiv = div.cloneNode(true);
-                    cloneDiv.id = 'score' + player.user;
-                    cloneDiv.children[0].textContent = player.user;
-                    cloneDiv.children[1].textContent = `${player.timeRecord} seconds`;
-                    userScoresList.insertAdjacentElement('beforeend', cloneDiv);
-                });
-            } else {
+            this.gameHistory.map((player) => {
                 let cloneDiv = div.cloneNode(true);
-                cloneDiv.id = 'score' + parseHistoryGameLocalStorage.user;
-                cloneDiv.children[0].textContent = parseHistoryGameLocalStorage.user;
-                cloneDiv.children[1].textContent = `${parseHistoryGameLocalStorage.timeRecord} seconds`;
+                cloneDiv.id = 'score' + player.user;
+                cloneDiv.name = player.user;
+                cloneDiv.children[0].textContent = `${player.user}`;
+                cloneDiv.children[1].textContent = `${player.timeRecord} seconds`;
                 userScoresList.insertAdjacentElement('beforeend', cloneDiv);
-            }
+            });
         }
     }
 
@@ -181,7 +176,6 @@ class Game {
     printCurrentUser(div) {
         let cloneDiv = div.cloneNode(true);
         cloneDiv.id = 'currentPlay';
-        cloneDiv.style.backgroundColor = 'coral'
         cloneDiv.children[0].textContent = this.user.name;
         cloneDiv.children[1].textContent = 'Currently playing...';
         userScoresList.insertAdjacentElement('beforebegin', cloneDiv);
@@ -189,29 +183,17 @@ class Game {
     }
 
     printUsersSavedButtons() {
-        if (JSON.parse(historyGameLS) && JSON.parse(historyGameLS).length > 0) {
+        if (this.gameHistory.length > 0) {
             JSON.parse(historyGameLS).map((e) => {
                 let newPlayer = document.createElement('input');
                 newPlayer.type = 'button';
-                newPlayer.value = `${e.user} (${e.timesPlayed})`;
+                newPlayer.value = `${e.user}`;
                 newPlayer.id = e.user;
                 newPlayer.addEventListener('click', (e) => {
                     user.playAgain(e);
                 });
                 players.insertAdjacentElement('beforeend', newPlayer);
             });
-        } else {
-            if (parseHistoryGameLocalStorage) {
-                let newPlayer = document.createElement('input');
-                newPlayer.type = 'button';
-                newPlayer.value = parseHistoryGameLocalStorage.user;
-                newPlayer.id = parseHistoryGameLocalStorage.user;
-                newPlayer.addEventListener('click', (e) => {
-                    user.playAgain(e);
-                });
-                players.insertAdjacentElement('beforeend', newPlayer);
-
-            }
         }
     }
 
