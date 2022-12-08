@@ -18,8 +18,6 @@ class Game {
             'cashew',
             'cherry',
             'citron',
-            'garlic',
-            'lentel',
             'lichee',
             'orange',
             'papaya',
