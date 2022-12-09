@@ -9,92 +9,110 @@
     <script type="text/javascript" src="./js/domVariables.js" defer></script>
     <script type="text/javascript" src="./js/User.js" defer></script>
     <script type="text/javascript" src="./js/Game.js" defer></script>
+    <script type="text/javascript" src="./js/eventLinteners.js" defer></script>
     <script type="text/javascript" src="./js/index.js" defer></script>
     <title>Play With Assembler</title>
 </head>
 
 <body>
     <h1>Hangman</h1>
-    <div>
+    <div class="background-web"></div>
+    <div class="hangman-div-responsive">
         <div id="userDiv" class="game-window game-window-active">
             <div class="user">
-                <h2>Choose user name</h2>
                 <form id="chooseNameForm">
-                    <label for="userName">User name</label><br>
+                    <label for="userName">
+                        <h2>Choose user name</h2>
+                    </label>
                     <input name="userName" type="text" placeholder="Enter your username" required>
-                    <input type="submit" value="Start">
+                    <div class="button-start">
+                        <input type="submit" value="Start">
+                    </div>
                 </form>
+                <div id="players"></div>
             </div>
         </div>
+
         <div id="gameDiv" class="game-window">
             <div class="game">
                 <div class="container">
-                    <div class="hangman-content">
-                        <h2>Fruits & Vegetables</h2>
-                        <div class="hangman-image">
-                            <img id='hangmanPic' src="assets/images/0.jpg" alt="Hangman">
+                    <h2 class="hangman-game-h2">Fruits & Vegetables</h2>
+                    <div class="hangman-image">
+                        <img id='hangmanPic' src="assets/images/0.jpg" alt="Hangman">
+                    </div>
+                    <p id="wordSpotlight" class="word-spot-light"></p>
+                    <div class="virtual-keyboard">
+                        <div class="row-5">
+                            <input data-target="alphabet" type="button" value="a">
+                            <input data-target="alphabet" type="button" value="b">
+                            <input data-target="alphabet" type="button" value="c">
+                            <input data-target="alphabet" type="button" value="d">
+                            <input data-target="alphabet" type="button" value="e">
                         </div>
-                        <p id="wordSpotlight" class="word-spot-light"></p>
-                        <div id="virtualKeyboard" class="virtual-keyboard">
-                            <div class="row-5">
-                                <input type="button" value="A" id="a" onclick="game.handleGuess('a')">
-                                <input type="button" value="B" id="b" onclick="game.handleGuess('b')">
-                                <input type="button" value="C" id="c" onclick="game.handleGuess('c')">
-                                <input type="button" value="D" id="d" onclick="game.handleGuess('d')">
-                                <input type="button" value="E" id="e" onclick="game.handleGuess('e')">
-                            </div>
-                            <div class="row-6">
-                                <input type="button" value="F" id="f" onclick="game.handleGuess('f')">
-                                <input type="button" value="G" id="g" onclick="game.handleGuess('g')">
-                                <input type="button" value="H" id="h" onclick="game.handleGuess('h')">
-                                <input type="button" value="I" id="i" onclick="game.handleGuess('i')">
-                                <input type="button" value="J" id="j" onclick="game.handleGuess('j')">
-                                <input type="button" value="K" id="k" onclick="game.handleGuess('k')">
-                            </div>
-                            <div class="row-5">
-                                <input type="button" value="L" id="l" onclick="game.handleGuess('l')">
-                                <input type="button" value="M" id="m" onclick="game.handleGuess('m')">
-                                <input type="button" value="N" id="n" onclick="game.handleGuess('n')">
-                                <input type="button" value="O" id="o" onclick="game.handleGuess('o')">
-                                <input type="button" value="P" id="p" onclick="game.handleGuess('p')">
-                            </div>
-                            <div class="row-6">
-                                <input type="button" value="Q" id="q" onclick="game.handleGuess('q')">
-                                <input type="button" value="R" id="r" onclick="game.handleGuess('r')">
-                                <input type="button" value="S" id="s" onclick="game.handleGuess('s')">
-                                <input type="button" value="T" id="t" onclick="game.handleGuess('t')">
-                                <input type="button" value="U" id="u" onclick="game.handleGuess('u')">
-                                <input type="button" value="V" id="v" onclick="game.handleGuess('v')">
-                            </div>
-                            <div class="row-with-delete">
-                                <input type="button" value="W" id="w" onclick="game.handleGuess('w')">
-                                <input type="button" value="X" id="x" onclick="game.handleGuess('x')">
-                                <input type="button" value="Y" id="y" onclick="game.handleGuess('y')">
-                                <input type="button" value="Z" id="z" onclick="game.handleGuess('z')">
-                                <input type="button" value="back" class="delete" onClick="window.location.reload();">
-                                <!-- onClick=reset() -->
-                            </div>
+                        <div class="row-6">
+                            <input data-target="alphabet" type="button" value="f">
+                            <input data-target="alphabet" type="button" value="g">
+                            <input data-target="alphabet" type="button" value="h">
+                            <input data-target="alphabet" type="button" value="i">
+                            <input data-target="alphabet" type="button" value="j">
+                            <input data-target="alphabet" type="button" value="k">
+                        </div>
+                        <div class="row-5">
+                            <input data-target="alphabet" type="button" value="l">
+                            <input data-target="alphabet" type="button" value="m">
+                            <input data-target="alphabet" type="button" value="n">
+                            <input data-target="alphabet" type="button" value="o">
+                            <input data-target="alphabet" type="button" value="p">
+                        </div>
+                        <div class="row-6">
+                            <input data-target="alphabet" type="button" value="q">
+                            <input data-target="alphabet" type="button" value="r">
+                            <input data-target="alphabet" type="button" value="s">
+                            <input data-target="alphabet" type="button" value="t">
+                            <input data-target="alphabet" type="button" value="u">
+                            <input data-target="alphabet" type="button" value="v">
+                        </div>
+                        <div class="row-with-delete">
+                            <input data-target="alphabet" type="button" value="w">
+                            <input data-target="alphabet" type="button" value="x">
+                            <input data-target="alphabet" type="button" value="y">
+                            <input data-target="alphabet" type="button" value="z">
+                            <input type="button" id="back" value="back" class="delete"
+                                onClick="window.location.reload();">
                         </div>
                     </div>
                 </div>
 
             </div>
-            <!-- ** audio background music ** 
+            <!-- ** audio background music ** -->
             <audio loop autoplay>
                 <source src="assets/quizizz32sec.mp3" type="audio/mpeg">
             </audio>
-            -->
+
             <!--// virtual-keyboard -->
         </div>
         <div id="finishDiv" class="game-window">
             <div class="finish">
-                <div class="finish-div-total">Wrong Guesses: <span id='mistakes'>0</span> of <span id='maxWrong'></span>
+                <div class="finish-message" id="finishMessage">
+                    <span>The answer was: <span id="finishMessageAnswer">Word</span></span>
+                    <p id="finishMessageResult">Mark Won in 8 seconds!!!</p>
                 </div>
+                <div id="finishDivTotal" class="finish-div-total">
+                    Wrong Guesses: 6 of 6
+                </div>
+                <button type="button" id="playAgainButton">Play again</button>
             </div>
         </div>
-    </div>
-    <div id="userScores" class="user-scores">
-        <p id="userScoresTitle">User Scores</p>
+        <div id="userScores" class="user-scores">
+            <p class="user-scores-p">User Scores</p>
+            <div id="userScoresList">
+                <div id="userScoresDiv" class="player-score">
+                    <p id="userScoreName" class="name">Pepe</p>
+                    <p id="userScoreTime" class="status">11 seconds</p>
+                </div>
+            </div>
+            <button type="button" id="resetScores">Reset</button>
+        </div>
     </div>
 </body>
 
