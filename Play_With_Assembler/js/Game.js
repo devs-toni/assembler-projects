@@ -38,7 +38,7 @@ class Game {
 
     guessedWord() {
         this.wordStatus = this.answer.split('').map(letter => (this.guessed.indexOf(letter) >= 0 ? letter : "_")).join('');
-        wordSpotlight.textContent = this.wordStatus;
+        wordSpotlight.innerHTML = this.wordStatus;
     }
 
     handleGuess(chosenLetter) {
@@ -103,48 +103,108 @@ class Game {
             timesPlayed: this.user.timesPlayed
         }
 
-function updateHangmanPicture() {
-    document.getElementById('hangmanPic').src = 'assets/images/' + mistakes + '.jpg';
-}
+        if (!parseHistoryGameLocalStorage) {
+            currentPlay.timesPlayed++;
+            this.gameHistory.push(currentPlay);
+            localStorage.setItem('game-history', JSON.stringify(this.gameHistory));
+            userScoreTime.innerHTML = currentPlay.gameTime;
+            this.printUserScores();
+        } else {
+            let div = document.getElementById('score' + currentPlay.user);
+            if (!div) {
+                currentPlay.timesPlayed++;
+                this.gameHistory.push(currentPlay);
+                localStorage.setItem('game-history', JSON.stringify(this.gameHistory));
+                this.printUserScores();
+            } else {
+                this.gameHistory.find((e, key) => {
+                    if (e.user === div.name) {
+                        e.timesPlayed++;
+                        if (currentPlay.gameTime < e.gameTime) {
+                            e.timeRecord = currentPlay.gameTime;
+                            this.addToLocalStorageObject('game-history', key, e);
+                            div.children[1].textContent = currentPlay.gameTime + ' seconds';
+                        } else {
+                            this.addToLocalStorageObject('game-history', key, e);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    addToLocalStorageObject(name, key, value) {
+        let existing = localStorage.getItem(name);
+        existing = existing ? JSON.parse(existing) : {};
+        existing[key] = value;
+        localStorage.setItem(name, JSON.stringify(existing));
+    };
 
 
-function checkIfGameWon() {
-    if (wordStatus === answer) {
-        gameDiv.classList.remove('game-window-active');
-        finishDiv.classList.add('game-window-active');
-        document.getElementById('keyboard').innerHTML = 'You Won!!!';
+    printUserScores() {
+        const div = userScoresDiv;
+        userScoresList.innerHTML = '';
+
+        if (!parseHistoryGameLocalStorage) {
+            if (this.user.isPlaying) {
+                this.printCurrentUser(div);
+            } else {
+                if (this.gameHistory.length > 0) {
+                    let cloneDiv = div.cloneNode(true);
+                    cloneDiv.id = 'score' + this.user.name;
+                    cloneDiv.children[0].textContent = `${this.user.name}`;
+                    cloneDiv.children[1].textContent = `${(this.gameHistory[0] && this.gameHistory[0].gameTime)} seconds`;
+                    userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+                }
+            }
+        } else {
+            if (this.user.isPlaying) {
+                this.printCurrentUser(div);
+            }
+            this.gameHistory.map((player) => {
+                let cloneDiv = div.cloneNode(true);
+                cloneDiv.id = 'score' + player.user;
+                cloneDiv.name = player.user;
+                cloneDiv.children[0].textContent = `${player.user}`;
+                cloneDiv.children[1].textContent = `${player.timeRecord} seconds`;
+                userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+            });
+        }
+    }
+
+
+    printCurrentUser(div) {
+        let cloneDiv = div.cloneNode(true);
+        cloneDiv.id = 'currentPlay';
+        cloneDiv.children[0].textContent = this.user.name;
+        cloneDiv.children[1].textContent = 'Currently playing...';
+        userScoresList.insertAdjacentElement('beforebegin', cloneDiv);
+        userScores.classList.remove('hide-content');
+    }
+
+    printUsersSavedButtons() {
+        if (this.gameHistory.length > 0) {
+            JSON.parse(historyGameLS).map((e) => {
+                let newPlayer = document.createElement('input');
+                newPlayer.type = 'button';
+                newPlayer.value = `${e.user}`;
+                newPlayer.id = e.user;
+                newPlayer.addEventListener('click', (e) => {
+                    user.playAgain(e);
+                });
+                players.insertAdjacentElement('beforeend', newPlayer);
+            });
+        }
+    }
+
+    playAgain() {
+        window.location.reload();
+    }
+
+    resetScores() {
+        localStorage.removeItem('game-history');
+        userScores.classList.add('hide-content');
+        players.innerHTML = '';
+        window.location.reload();
     }
 }
-
-function checkIfGameLost() {
-    if (mistakes === maxWrong) {
-        document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-        document.getElementById('keyboard').innerHTML = 'You Lost!!!';
-    }
-}
-
-function guessedWord() {
-    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-
-    document.getElementById('wordSpotlight').innerHTML = wordStatus;
-}
-
-function updateMistakes() {
-    document.getElementById('mistakes').innerHTML = mistakes;
-}
-
-function reset() {
-    mistakes = 0;
-    guessed = [];
-    document.getElementById('hangmanPic').src = './images/0.jpg';
-
-    randomWord();
-    guessedWord();
-    updateMistakes();
-    generateButtons();
-    location.reload();
-}
-
-randomWord();
-generateButtons();
-guessedWord();
