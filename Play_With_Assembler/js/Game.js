@@ -38,7 +38,7 @@ class Game {
 
     guessedWord() {
         this.wordStatus = this.answer.split('').map(letter => (this.guessed.indexOf(letter) >= 0 ? letter : "_")).join('');
-        wordSpotlight.innerHTML = this.wordStatus;
+        wordSpotlight.textContent = this.wordStatus;
     }
 
     handleGuess(chosenLetter) {
@@ -144,8 +144,6 @@ function reset() {
     generateButtons();
     location.reload();
 }
-
-document.getElementById('maxWrong').innerHTML = maxWrong;
 
 randomWord();
 generateButtons();

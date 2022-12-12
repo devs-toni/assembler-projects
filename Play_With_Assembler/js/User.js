@@ -1,7 +1,10 @@
 class User {
-    constructor(name) {
-        this.name = name;
-        this.score = 'Currently playing...';
+    constructor() {
+        this.name = '';
+        this.result = '';
+        this.isPlaying = false;
+        this.timeRecord = null;
+        this.timesPlayed = 0;
     }
 
     setUser(e) {
@@ -9,14 +12,7 @@ class User {
         this.name = e.target[0].value;
         this.isPlaying = true;
         changeDomToNextForm('userDiv', 'gameDiv');
-        pushInRegister(this.name, this.score, true);
-        game.currentUser = this;
-        timer = setInterval(() => {
-            console.log(this.time);
-            this.time += 1;
-        }, 1000);
     }
-}
 
     playAgain(e) {
         this.name = e.target.value;
