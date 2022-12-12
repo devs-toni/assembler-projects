@@ -2,8 +2,8 @@ let parseHistoryGameLocalStorage = JSON.parse(historyGameLS);
 
 class Game {
     constructor() {
-        this.game = {};
-        this.user = user.name;
+        this.gameHistory = parseHistoryGameLocalStorage ? parseHistoryGameLocalStorage : [];
+        this.user = user;
         this.maxWrong = 6;
         this.mistakes = 0;
         this.guessed = [];
@@ -18,8 +18,6 @@ class Game {
             'cashew',
             'cherry',
             'citron',
-            'garlic',
-            'lentel',
             'lichee',
             'orange',
             'papaya',
@@ -27,6 +25,9 @@ class Game {
             'tomato',
             'walnut'];
         this.answer = this.randomWord();
+        this.startPlay = Date.now();
+        this.endPlay = 0;
+        this.totalGameplay = undefined;
     }
 
     randomWord() {
@@ -36,22 +37,21 @@ class Game {
     }
 
     guessedWord() {
-        game.wordStatus = game.answer.split('').map(letter => (game.guessed.indexOf(letter) >= 0 ? letter : "_")).join('');
-        wordSpotlight.innerHTML = game.wordStatus;
+        this.wordStatus = this.answer.split('').map(letter => (this.guessed.indexOf(letter) >= 0 ? letter : "_")).join('');
+        wordSpotlight.innerHTML = this.wordStatus;
     }
 
     handleGuess(chosenLetter) {
-        game.guessed.indexOf(chosenLetter) === -1 ? game.guessed.push(chosenLetter) : null;
+        this.guessed.indexOf(chosenLetter) === -1 ? this.guessed.push(chosenLetter) : null;
         document.getElementById(chosenLetter).setAttribute('disabled', true);
-        if (game.answer.indexOf(chosenLetter) >= 0) {
-            endGame = Date.now();
-            game.guessedWord();
-            game.checkIfGameWon();
-            game.printUserScores(endGame);
-        } else if (game.answer.indexOf(chosenLetter) === -1) {
-            game.mistakes++;
-            game.checkIfGameLost();
-            game.updateHangmanPicture();
+
+        if (this.answer.indexOf(chosenLetter) >= 0) {
+            this.guessedWord();
+            this.checkIfGameWon();
+        } else if (this.answer.indexOf(chosenLetter) === -1) {
+            this.mistakes++;
+            this.checkIfGameLost();
+            this.updateHangmanPicture();
         }
     }
 
@@ -59,54 +59,140 @@ class Game {
         hangmanPic.src = 'assets/images/' + this.mistakes + '.jpg';
     }
 
-    resultGame(result) {
+    resultGame() {
         // Timming
-        totalGameTime = endGame - startGame;
-        // Next step
-        changeDomToNextForm('gameDiv', 'finishDiv');
+        this.endPlay = Date.now();
+        this.totalGameplay = Math.round((this.endPlay - this.startPlay) / 1000);
         // DOM print
-        //userScores.classList.remove('hide-content');
-        finishMessageAnswer.textContent = game.answer;
-        finishMessageResult.textContent = `${user.name} ${result} in ${Math.round(totalGameTime / 1000)} seconds!!!`;
+        finishMessageAnswer.textContent = this.answer;
+        finishMessageResult.textContent = `${this.user.name} ${this.user.result} in ${this.totalGameplay} seconds!!!`;
+        userScores.classList.remove('hide-content');
+        document.getElementById('currentPlay').style.display = 'none';
+        changeDomToNextForm('gameDiv', 'finishDiv');
+
+        this.saveInLocalStorage();
+        this.printUserScores();
     }
 
     checkIfGameWon() {
-        if (game.wordStatus === game.answer) {
-            game.resultGame('Won');
-            // DOM
-            finishDivTotal.textContent = `Wrong Guesses: ${game.mistakes} of ${game.maxWrong}`;
-            // Create single object
-            const currentPlay = {
-                user: user.name,
-                gameTime: Math.round(totalGameTime / 1000)
-            }
-            let obj = [];
-            obj.push(currentPlay);
-            //Save in Localstorage
-            parseHistoryGameLocalStorage && parseHistoryGameLocalStorage.push(currentPlay);
-            localStorage.setItem('game-history', JSON.stringify(parseHistoryGameLocalStorage ? parseHistoryGameLocalStorage : obj));
+        if (this.wordStatus === this.answer) {
+            this.user.result = 'Won';
+            this.user.isPlaying = false;
+            this.user.timeRecord = this.totalGameplay;
+            this.printUserScores();
+            this.resultGame();
+
+            finishDivTotal.textContent = `Wrong Guesses: ${this.mistakes} of ${this.maxWrong}`;
         }
     }
 
     checkIfGameLost() {
         if (game.mistakes === game.maxWrong) {
-            game.resultGame('Lost');
+            this.user.result = 'Lost';
+            this.user.isPlaying = false;
+            this.printUserScores();
+            this.resultGame();
         }
     }
 
-    printUserScores(endGame) {
-        if (!parseHistoryGameLocalStorage) {
-            userScoreName.textContent = game.user;
-            userScoreTime.textContent = `${Math.round((endGame - startGame) / 1000)} seconds`;
-        } else {
-            const div = userScoresDiv;
-            userScoresList.innerHTML = '';
+    saveInLocalStorage() {
+        let currentPlay = {
+            user: this.user.name,
+            gameTime: this.totalGameplay,
+            timeRecord: this.user.timeRecord ? this.user.timeRecord : this.totalGameplay,
+            timesPlayed: this.user.timesPlayed
+        }
 
-            parseHistoryGameLocalStorage.map((player) => {
+        if (!parseHistoryGameLocalStorage) {
+            currentPlay.timesPlayed++;
+            this.gameHistory.push(currentPlay);
+            localStorage.setItem('game-history', JSON.stringify(this.gameHistory));
+            userScoreTime.innerHTML = currentPlay.gameTime;
+            this.printUserScores();
+        } else {
+            let div = document.getElementById('score' + currentPlay.user);
+            if (!div) {
+                currentPlay.timesPlayed++;
+                this.gameHistory.push(currentPlay);
+                localStorage.setItem('game-history', JSON.stringify(this.gameHistory));
+                this.printUserScores();
+            } else {
+                this.gameHistory.find((e, key) => {
+                    if (e.user === div.name) {
+                        e.timesPlayed++;
+                        if (currentPlay.gameTime < e.gameTime) {
+                            e.timeRecord = currentPlay.gameTime;
+                            this.addToLocalStorageObject('game-history', key, e);
+                            div.children[1].textContent = currentPlay.gameTime + ' seconds';
+                        } else {
+                            this.addToLocalStorageObject('game-history', key, e);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    addToLocalStorageObject(name, key, value) {
+        let existing = localStorage.getItem(name);
+        existing = existing ? JSON.parse(existing) : {};
+        existing[key] = value;
+        localStorage.setItem(name, JSON.stringify(existing));
+    };
+
+
+    printUserScores() {
+        const div = userScoresDiv;
+        userScoresList.innerHTML = '';
+
+        if (!parseHistoryGameLocalStorage) {
+            if (this.user.isPlaying) {
+                this.printCurrentUser(div);
+            } else {
+                if (this.gameHistory.length > 0) {
+                    let cloneDiv = div.cloneNode(true);
+                    cloneDiv.id = 'score' + this.user.name;
+                    cloneDiv.children[0].textContent = `${this.user.name}`;
+                    cloneDiv.children[1].textContent = `${(this.gameHistory[0] && this.gameHistory[0].gameTime)} seconds`;
+                    userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+                }
+            }
+        } else {
+            if (this.user.isPlaying) {
+                this.printCurrentUser(div);
+            }
+            this.gameHistory.map((player) => {
                 let cloneDiv = div.cloneNode(true);
-                cloneDiv.children[0].textContent = player.user;
-                cloneDiv.children[1].textContent = `${player.gameTime} seconds`;
+                cloneDiv.id = 'score' + player.user;
+                cloneDiv.name = player.user;
+                cloneDiv.children[0].textContent = `${player.user}`;
+                cloneDiv.children[1].textContent = `${player.timeRecord} seconds`;
                 userScoresList.insertAdjacentElement('beforeend', cloneDiv);
+            });
+        }
+    }
+
+
+    printCurrentUser(div) {
+        let cloneDiv = div.cloneNode(true);
+        cloneDiv.id = 'currentPlay';
+        cloneDiv.children[0].textContent = this.user.name;
+        cloneDiv.children[1].textContent = 'Currently playing...';
+        userScoresList.insertAdjacentElement('beforebegin', cloneDiv);
+        userScores.classList.remove('hide-content');
+    }
+
+    printUsersSavedButtons() {
+        if (this.gameHistory.length > 0) {
+            JSON.parse(historyGameLS).map((e) => {
+                let newPlayer = document.createElement('input');
+                newPlayer.type = 'button';
+                newPlayer.value = `${e.user}`;
+                newPlayer.id = e.user;
+                newPlayer.addEventListener('click', (e) => {
+                    user.playAgain(e);
+                });
+                players.insertAdjacentElement('beforeend', newPlayer);
             });
         }
     }
@@ -116,8 +202,9 @@ class Game {
     }
 
     resetScores() {
-        parseHistoryGameLocalStorage = undefined;
         localStorage.removeItem('game-history');
-        //userScores.classList.add('hide-content');
+        userScores.classList.add('hide-content');
+        players.innerHTML = '';
+        window.location.reload();
     }
 }

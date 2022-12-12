@@ -1,6 +1,7 @@
 /***************** Choose user *****************/
 const userDiv = document.getElementById('userDiv');
 const userForm = document.getElementById('chooseNameForm');
+const players = document.getElementById('players');
 
 /***************** Game *****************/
 const gameDiv = document.getElementById('gameDiv');
