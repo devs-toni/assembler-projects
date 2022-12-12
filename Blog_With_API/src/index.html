@@ -1,22 +1,101 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap w/ Vite</title>
     <script type="module" src="./js/httpConnection.js"></script>
     <script src="./js/endpoints.js"></script>
     <script type="module" src="./controllers/comments.js"></script>
     <script type="module" src="./controllers/posts.js"></script>
     <script type="module" src="./controllers/users.js" defer></script>
     <script type="module" src="./js/main.js" defer></script>
-  </head>
-  <body>
+    <title>Bootstrap w/ Vite</title>
+</head>
+
+<body>
     <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Vite!</h1>
-      <button class="btn btn-primary" id="users">Users</button>
-      <button class="btn btn-primary" id="comments">Comments</button>
-      <button class="btn btn-primary" id="posts">Posts</button>
+
+        <!-- Header -->
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <img width="60" src="./assets/logo.png">
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="#" class="nav-link px-2 text-white" aria-selected="true">FAQs</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Users</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Comments</a></li>
+                    </ul>
+
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                            aria-label="Search">
+                    </form>
+
+                    <div class="text-end">
+                        <button type="button" class="btn btn-outline-light me-2">Login</button>
+                        <button type="button" class="btn btn-warning">Sign-up</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <main>
+            <ol class="list-group list-group-item">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div id="postId" class="ms-2 me-auto" data-bs-toggle="modal" data-bs-target="#showPostModal">
+                        Post title
+                    </div>
+                    <span class="badge bg-primary rounded-pill me-2">14</span>
+                    <span class="badge bg-danger rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#deletePostModal"><i class="bi bi-trash3"></i></span>
+                </li>
+            </ol>
+        </main>
+
+        <!-- Post Modal -->
+        <div class="modal fade" id="showPostModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="showModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Modal Content
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">Delete post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete the post?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </body>
+</body>
+
 </html>
