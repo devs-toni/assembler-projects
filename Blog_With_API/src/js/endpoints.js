@@ -1,6 +1,8 @@
 //All Called Local Endpoints
-const localPosts = 'http://localhost:3000';
+const localPostsEndpoint = 'http://localhost:3000';
 
 
 //All Called API Endpoints
-const posts = 'https://jsonplaceholder.typicode.com/posts';
+const usersEndpoint = 'https://jsonplaceholder.typicode.com/users';
+const postsEndpoint = 'https://jsonplaceholder.typicode.com/posts';
+const commentsEndpoint = 'https://jsonplaceholder.typicode.com/commefdsnts';
