@@ -1,14 +1,13 @@
 class User {
     constructor(name) {
         this.name = name;
-        this.score = '';
-        this.time = 0;
+        this.score = 'Currently playing...';
     }
 
     setUser(e) {
         e.preventDefault();
         this.name = e.target[0].value;
-        this.score = 'Currently playing...';
+        this.isPlaying = true;
         changeDomToNextForm('userDiv', 'gameDiv');
         pushInRegister(this.name, this.score, true);
         game.currentUser = this;
@@ -19,17 +18,9 @@ class User {
     }
 }
 
-function pushInRegister(name, score, current){
-    let playerScore = document.createElement('div');
-    let userName = document.createElement('p');
-    let userScore = document.createElement('p');
-    playerScore.classList.add('player-score');
-    userName.classList.add('name');
-    userScore.classList.add('status');
-    if (current) userScore.setAttribute('current', 'true');
-    userName.textContent = name;
-    userScore.textContent = score;
-    playerScore.appendChild(userName);
-    playerScore.appendChild(userScore);
-    document.getElementById('userScoresTitle').after(playerScore);
+    playAgain(e) {
+        this.name = e.target.value;
+        this.isPlaying = true;
+        changeDomToNextForm('userDiv', 'gameDiv');
+    }
 }

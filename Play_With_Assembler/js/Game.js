@@ -1,45 +1,44 @@
+let parseHistoryGameLocalStorage = JSON.parse(historyGameLS);
+
 class Game {
     constructor() {
-        this.users = [];
-        this.currentUser = null;
-        this.playUsers = [];
-        this.mistakes = 0;
+        this.gameHistory = parseHistoryGameLocalStorage ? parseHistoryGameLocalStorage : [];
+        this.user = user;
         this.maxWrong = 6;
-        this.answer = '';
+        this.mistakes = 0;
         this.guessed = [];
         this.wordStatus = null;
-        this.programming_languages = [
-            "almond",
-            /*     "banana",
-                "carrot",
-                "cashew",
-                "cherry",
-                "citron",
-                "garlic",
-                "lentel",
-                "lichee",
-                "orange",
-                "papaya",
-                "peanut",
-                "tomato",
-                "walnut", */
-            "persiana",
-            "corazon"
-        ];
+        this.words = [
+            'apple',
+            'pear',
+            'cucumber',
+            'almond',
+            'banana',
+            'carrot',
+            'cashew',
+            'cherry',
+            'citron',
+            'lichee',
+            'orange',
+            'papaya',
+            'peanut',
+            'tomato',
+            'walnut'];
+        this.answer = this.randomWord();
+        this.startPlay = Date.now();
+        this.endPlay = 0;
+        this.totalGameplay = undefined;
     }
 
     randomWord() {
-        this.answer = this.programming_languages[Math.floor(Math.random() * this.programming_languages.length)];
-        for (let i = 0; i < this.answer.length; i++) {
-            document.getElementById('wordSpotlight').innerHTML += '_ ';
-        }
-        console.log(this.answer);
+        let word = this.words[Math.floor(Math.random() * this.words.length)];
+        console.log(word);
+        return word;
     }
 
-    chargePreviousMatches() {
-        this.users = JSON.parse(localStorage.getItem('users'));
-        if (!this.users) this.users = [];
-        else this.users.forEach(user => pushInRegister(user.name, user.score, false));
+    guessedWord() {
+        this.wordStatus = this.answer.split('').map(letter => (this.guessed.indexOf(letter) >= 0 ? letter : "_")).join('');
+        wordSpotlight.innerHTML = this.wordStatus;
     }
 
     handleGuess(chosenLetter) {
@@ -51,69 +50,103 @@ class Game {
             this.checkIfGameWon();
         } else if (this.answer.indexOf(chosenLetter) === -1) {
             this.mistakes++;
-            this.updateMistakes();
             this.checkIfGameLost();
             this.updateHangmanPicture();
         }
     }
 
-    guessedWord() {
-        this.wordStatus = this.answer.split('').map(letter => (this.guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
-        document.getElementById('wordSpotlight').innerHTML = this.wordStatus;
+    updateHangmanPicture() {
+        hangmanPic.src = 'assets/images/' + this.mistakes + '.jpg';
+    }
+
+    resultGame() {
+        // Timming
+        this.endPlay = Date.now();
+        this.totalGameplay = Math.round((this.endPlay - this.startPlay) / 1000);
+        // DOM print
+        finishMessageAnswer.textContent = this.answer;
+        finishMessageResult.textContent = `${this.user.name} ${this.user.result} in ${this.totalGameplay} seconds!!!`;
+        userScores.classList.remove('hide-content');
+        document.getElementById('currentPlay').style.display = 'none';
+        changeDomToNextForm('gameDiv', 'finishDiv');
+
+        this.saveInLocalStorage();
+        this.printUserScores();
     }
 
     checkIfGameWon() {
         if (this.wordStatus === this.answer) {
-            gameDiv.classList.remove('game-window-active');
-            finishDiv.classList.add('game-window-active');
-            this.setScoreCurrentUser('won');
-            localStorage.setItem('users', JSON.stringify(this.users));
-            /*             document.getElementById('keyboard').innerHTML = 'You Won!!!';*/
+            this.user.result = 'Won';
+            this.user.isPlaying = false;
+            this.user.timeRecord = this.totalGameplay;
+            this.printUserScores();
+            this.resultGame();
+
+            finishDivTotal.textContent = `Wrong Guesses: ${this.mistakes} of ${this.maxWrong}`;
         }
     }
 
     checkIfGameLost() {
-        if (this.mistakes === this.maxWrong) {
-            document.getElementById('virtualKeyboard').style.display = 'none';
-            document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + this.answer;
-            this.setScoreCurrentUser('lost');
-            setTimeout(() => {
-                gameDiv.classList.remove('game-window-active');
-                finishDiv.classList.add('game-window-active');
-            }, 5000);
-
-            /*             document.getElementById('keyboard').innerHTML = 'You Lost!!!';*/
+        if (game.mistakes === game.maxWrong) {
+            this.user.result = 'Lost';
+            this.user.isPlaying = false;
+            this.printUserScores();
+            this.resultGame();
         }
     }
 
-    setScoreCurrentUser(action) {
-        clearInterval(timer);
-        if (action === 'lost') this.currentUser.score = `Lost! ${this.currentUser.time} seconds`;
-        else this.currentUser.score = `Won! ${this.currentUser.time} seconds`;
-        this.users.push(this.currentUser);
-        document.querySelector("p[current='true']").textContent = this.currentUser.score;
-        localStorage.setItem('users', JSON.stringify(this.users));
-    }    
+    saveInLocalStorage() {
+        let currentPlay = {
+            user: this.user.name,
+            gameTime: this.totalGameplay,
+            timeRecord: this.user.timeRecord ? this.user.timeRecord : this.totalGameplay,
+            timesPlayed: this.user.timesPlayed
+        }
 
-    updateMistakes() {
-        document.getElementById('mistakes').innerHTML = this.mistakes;
-    }
+function updateHangmanPicture() {
+    document.getElementById('hangmanPic').src = 'assets/images/' + mistakes + '.jpg';
+}
 
-    updateHangmanPicture() {
-        document.getElementById('hangmanPic').src = 'assets/images/' + this.mistakes + '.jpg';
-    }
 
-    reset() {
-        this.mistakes = 0;
-        this.guessed = [];
-        document.getElementById('hangmanPic').src = './images/0.jpg';
-
-        this.randomWord();
-        this.guessedWord();
-        this.updateMistakes();
-        this.generateButtons();
-        location.reload();
+function checkIfGameWon() {
+    if (wordStatus === answer) {
+        gameDiv.classList.remove('game-window-active');
+        finishDiv.classList.add('game-window-active');
+        document.getElementById('keyboard').innerHTML = 'You Won!!!';
     }
 }
 
-/* generateButtons();*/
+function checkIfGameLost() {
+    if (mistakes === maxWrong) {
+        document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
+        document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+    }
+}
+
+function guessedWord() {
+    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+
+    document.getElementById('wordSpotlight').innerHTML = wordStatus;
+}
+
+function updateMistakes() {
+    document.getElementById('mistakes').innerHTML = mistakes;
+}
+
+function reset() {
+    mistakes = 0;
+    guessed = [];
+    document.getElementById('hangmanPic').src = './images/0.jpg';
+
+    randomWord();
+    guessedWord();
+    updateMistakes();
+    generateButtons();
+    location.reload();
+}
+
+document.getElementById('maxWrong').innerHTML = maxWrong;
+
+randomWord();
+generateButtons();
+guessedWord();
