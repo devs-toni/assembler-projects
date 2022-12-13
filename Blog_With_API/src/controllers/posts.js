@@ -77,7 +77,7 @@ const loadPosts = () => {
 const openModaPost = async (e) => {
     let idUser;
     let id = e.target.parentElement.id.replace('post', '');
-    await http().get(localPostsEndpoint + '/' + id).then(res => {
+    await http().get(localPostEndpoint(id)).then(res => {
         idUser = res.userId;
         document.getElementById('modalContent').textContent = res.body;
         document.getElementById('showModalLabel').textContent = res.title;
