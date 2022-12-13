@@ -482,6 +482,9 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 380px) {
+  .main {
+    padding-bottom: 15px;
+  }
   .main .full-content {
     height: 50vh;
   }
@@ -492,6 +495,9 @@ input:checked + .slider:before {
 
   .main .buttons > .box {
     height: 20%;
+  }
+  .footer {
+    display: none;
   }
 }
 

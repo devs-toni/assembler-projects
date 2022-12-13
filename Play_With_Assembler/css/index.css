@@ -68,6 +68,7 @@ h1 {
     max-height: 500px;
     margin: auto;
     align-items: center;
+    padding: 15px;
 }
 
 
@@ -169,6 +170,11 @@ input::placeholder {
     display: flex;
     justify-content: center;
     padding-left: 30px;
+}
+
+.virtual-keyboard {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .virtual-keyboard input {
@@ -328,8 +334,8 @@ input::placeholder {
     }
 
     .virtual-keyboard input {
-        width: 46px;
-        height: 46px;
+        width: 44px;
+        height: 44px;
         margin: 2px;
     }
 }
@@ -357,7 +363,7 @@ input::placeholder {
     }
 
     .game {
-        width: 350px;
+        width: 100%;
         margin: 0 auto;
     }
 

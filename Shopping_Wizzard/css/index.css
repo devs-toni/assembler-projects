@@ -285,8 +285,12 @@ p {
     font-weight: 500;
     font-size: 20px;
     font-family: bolder;
-    color: black;
+    color: #FF4443;
     cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .btn-exit {
@@ -443,5 +447,8 @@ p {
     .btn {
         font-size: 12px;
         height: 40px;
+    }
+    .btn-exit {
+        font-size: 12px;
     }
 }

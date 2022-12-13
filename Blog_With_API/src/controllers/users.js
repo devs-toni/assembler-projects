@@ -1,10 +1,12 @@
 import { httpConnection as http } from '../js/httpConnection';
 
-const showUsers = () => {
-    http().get(usersEndpoint).then((data) => console.log(data));
+export const searchUserById = (id) => {
+    http().get(`${localUsersEndpoint}/${id}`).then(data => {
+        document.getElementById('modalUser').innerHTML = `<p>Email - ${data.email}</p>
+        <p>Username - ${data.username}</p>`
+    });
 }
 
-document.getElementById("users").addEventListener("click", showUsers);
 
 
 

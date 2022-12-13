@@ -1,5 +1,6 @@
 //All Called Local Endpoints
-const localPostsEndpoint = 'http://localhost:3000';
+const localPostsEndpoint = 'http://localhost:3000/posts';
+const localUsersEndpoint = 'http://localhost:3000/users';
 
 
 //All Called API Endpoints
