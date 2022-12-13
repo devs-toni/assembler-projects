@@ -7,7 +7,7 @@ const loadPosts = () => {
   let list = document.getElementById('posts');
 
   http().get(getPostsLocalAPI).then((data) => {
-    data.forEach( post => {
+    data.forEach( async post => {
       let cloneList = list.children[0].cloneNode(true);
       cloneList.id = `post${post.id}`;
       cloneList.children[0].onclick = (e) => openModalPost(e);
@@ -15,7 +15,7 @@ const loadPosts = () => {
       cloneList.children[2].id = `trashPost${post.id}`;
       cloneList.children[2].children[0].id = `trashPost${post.id}`;
       cloneList.children[2].onclick = (e) => waitingIdToRemovePost(e);
-      http().get(getCommentsByPostAPI(post.id)).then((comments) => {
+      await http().get(getCommentsByPostAPI(post.id)).then((comments) => {
         cloneList.children[1].textContent = comments.length;
       });
       list.appendChild(cloneList);
