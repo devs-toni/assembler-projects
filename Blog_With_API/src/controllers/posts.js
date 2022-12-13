@@ -10,7 +10,7 @@ const loadPosts = () => {
         list.removeChild(list.firstChild);
     }
 
-    http().get(localPostsEndpoint).then((data) => {
+    http().get(getPostsLocalAPI).then((data) => {
         data.forEach((post) => {
             list.append(
                 addElement( // element / classes / attributes / text /events 
@@ -77,7 +77,7 @@ const loadPosts = () => {
 const openModaPost = async (e) => {
     let idUser;
     let id = e.target.parentElement.id.replace('post', '');
-    await http().get(localPostEndpoint(id)).then(res => {
+    await http().get(fetchPostLocalAPI(id)).then(res => {
         idUser = res.userId;
         document.getElementById('modalContent').textContent = res.body;
         document.getElementById('showModalLabel').textContent = res.title;
@@ -89,7 +89,7 @@ const waitingIdToRemovePost = (e) => {
     idToRemovePost = e.target.id.replace('trashPost', '');
 }
 const removePost = async (e) => {
-    await http().del(localPostsEndpoint + '/' + idToRemovePost);
+    await http().del(getPostsLocalAPI + '/' + idToRemovePost);
     loadPosts();
 }
 

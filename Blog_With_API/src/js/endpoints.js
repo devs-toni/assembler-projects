@@ -1,12 +1,21 @@
-//All Called Local Endpoints
-const localPostsEndpoint = 'http://localhost:3000/posts';
-const localPostEndpoint = (id) => `http://localhost:3000/posts/${id}`;
-const localUsersEndpoint = 'http://localhost:3000/users';
-const localUserEndpoint = (id) => `http://localhost:3000/users/${id}`;
-const localCommentsEndpoint = 'http://localhost:3000/comments';
+///////////////////////////// Local Endpoints /////////////////////////////
+
+/* Users */
+const getUsersLocalAPI = 'http://localhost:3000/users';
+const getUserLocalAPI = id => `http://localhost:3000/users/${id}`;
+
+/* Posts */
+const getPostsLocalAPI = 'http://localhost:3000/posts';
+const fetchPostLocalAPI = id => `http://localhost:3000/posts/${id}`;
+const getPostCommentsLocalAPI = id => `http://localhost:3000/posts/${id}/comments`;
+
+/* Comments */
+const getCommentsLocalAPI = 'http://localhost:3000/comments';
+const getCommentsByPostAPI = postId => `http://localhost:3000/comments?postId=${postId}`;
 
 
-//All Called API Endpoints
+///////////////////////////// API Endpoints /////////////////////////////
+
 const usersEndpoint = 'https://jsonplaceholder.typicode.com/users';
 const postsEndpoint = 'https://jsonplaceholder.typicode.com/posts';
 const commentsEndpoint = 'https://jsonplaceholder.typicode.com/comments';
