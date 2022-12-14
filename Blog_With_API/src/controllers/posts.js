@@ -1,13 +1,11 @@
 import { httpConnection as http } from '../js/httpConnection';
-import { searchUserById } from './users';
-
 let idToRemovePost;
 
 const loadPosts = () => {
   let list = document.getElementById('posts');
 
   http().get(getPostsLocalAPI).then((data) => {
-    data.forEach( async post => {
+    data.forEach(async post => {
       let cloneList = list.children[0].cloneNode(true);
       cloneList.id = `post${post.id}`;
       cloneList.children[0].onclick = (e) => openModalPost(e);
@@ -33,7 +31,12 @@ async function openModalPost(e) {
       document.getElementById('showModalLabel').textContent = res.title;
     }
   });
-  searchUserById(idUser);
+  http().get(getUserLocalAPI(id)).then(data => {
+    if (data) {
+      document.getElementById('modalUser').innerHTML =
+        `<p>Email - ${data.email}</p><p>Username - ${data.username}</p>`
+    }
+  });
 }
 
 function waitingIdToRemovePost(e) {
