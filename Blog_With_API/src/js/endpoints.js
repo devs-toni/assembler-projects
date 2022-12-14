@@ -1,21 +1,15 @@
-///////////////////////////// Local Endpoints /////////////////////////////
+const remoteAPI = false;
+const remote = 'http://localhost:3000';
+const local = 'https://jsonplaceholder.typicode.com'
 
 /* Users */
-const getUsersLocalAPI = 'http://localhost:3000/users';
-const getUserLocalAPI = id => `http://localhost:3000/users/${id}`;
+const usersAPI = `http://${remoteAPI ? remote : local}/users`; //non-used
+const userByIdAPI = id => `http://${remoteAPI ? remote : local}/users/${id}`;
 
 /* Posts */
-const getPostsLocalAPI = 'http://localhost:3000/posts';
-const fetchPostLocalAPI = id => `http://localhost:3000/posts/${id}`;
-const getPostCommentsLocalAPI = id => `http://localhost:3000/posts/${id}/comments`;
+const postsAPI = `http://${remoteAPI ? remote : local}/posts`;
+const postByIdAPI = id => `http://${remoteAPI ? remote : local}/posts/${id}`;
 
 /* Comments */
-const getCommentsLocalAPI = 'http://localhost:3000/comments';
-const getCommentsByPostAPI = postId => `http://localhost:3000/comments?postId=${postId}`;
-
-
-///////////////////////////// API Endpoints /////////////////////////////
-
-const usersEndpoint = 'https://jsonplaceholder.typicode.com/users';
-const postsEndpoint = 'https://jsonplaceholder.typicode.com/posts';
-const commentsEndpoint = 'https://jsonplaceholder.typicode.com/comments';
+const commentsAPI = 'http://localhost:3000/comments'; //non-used
+const commentsByPostAPI = id => `http://${remoteAPI ? remote : local}/comments?postId=${id}`;

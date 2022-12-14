@@ -1,10 +1,10 @@
-import { httpConnection as http } from '../js/httpConnection';
+import { httpConnection as http } from './httpConnection';
 let idToRemovePost;
 
 const loadPosts = () => {
   let list = document.getElementById('posts');
 
-  http().get(getPostsLocalAPI).then((data) => {
+  http().get(getPostsAPI).then((data) => {
     data.forEach(async post => {
       let cloneList = list.children[0].cloneNode(true);
       cloneList.id = `post${post.id}`;
@@ -24,14 +24,14 @@ const loadPosts = () => {
 async function openModalPost(e) {
   let idUser;
   let id = e.target.parentElement.id.replace('post', '');
-  await http().get(fetchPostLocalAPI(id)).then(res => {
+  await http().get(getPostByIdAPI(id)).then(res => {
     if (res) {
       idUser = res.userId;
       document.getElementById('modalContent').textContent = res.body;
       document.getElementById('showModalLabel').textContent = res.title;
     }
   });
-  http().get(getUserLocalAPI(id)).then(data => {
+  http().get(getUserByIdAPI(id)).then(data => {
     if (data) {
       document.getElementById('modalUser').innerHTML =
         `<p>Email - ${data.email}</p><p>Username - ${data.username}</p>`
@@ -44,7 +44,7 @@ function waitingIdToRemovePost(e) {
 }
 
 async function removePost() {
-  await http().del(getPostsLocalAPI + '/' + idToRemovePost);
+  await http().del(getPostByIdAPI + '/' + idToRemovePost);
   loadPosts();
 }
 
