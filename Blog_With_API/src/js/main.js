@@ -11,6 +11,9 @@ const editTitle = document.getElementById('editTitle');
 const editBody = document.getElementById('editBody');
 const list = document.getElementById('posts');
 const editModalFooter = document.getElementById('editModalFooter');
+const notification = document.getElementById('notification');
+const deletePostToast = new bootstrap.Toast(notification)
+const notificationTitle = document.getElementById('notificationTitle');
 
 // Charge posts from DB
 
@@ -38,7 +41,7 @@ const loadPosts = async () => {
 // Configure modal when you open it.
 
 async function openModalPost(e) {
-  
+
   commentsDiv.innerHTML = '';   //Reset data inside modal
   let idUser;
   let id = e.target.parentElement.id.replace('post', '');
@@ -48,7 +51,7 @@ async function openModalPost(e) {
       idUser = result.userId;
       document.getElementById('modalContent').textContent = result.body;
       document.getElementById('showModalLabel').textContent = result.title;
-    } 
+    }
   });
 
   await http().get(userByIdAPI(idUser)).then((result) => {
@@ -77,36 +80,35 @@ async function openEditPost(e) {
   finalEditPostButton.setAttribute('edit-id', e.target.id.replace('editPost', ''));
   let idToEditPost = finalEditPostButton.getAttribute('edit-id');
 
-  await http().get(postByIdAPI(idToEditPost))
-  .then(result => {
-    editTitle.value = result.title;
-    editBody.value = result.body;
-  })
-  .then(() => {
-      http().get(userByIdAPI(idToEditPost)).then(result => {
-      editModalTitle.innerText = `${result.name} @${result.username}`;
-  })
-  .then(() => {
-    editModalFooter.children[0].id = `trashPost${idToEditPost}`;
-    editModalFooter.children[0].onclick = (e) => {
-      finalRemovePostButton.setAttribute('remove-id', e.target.id.replace('trashPost', ''));
-    }
-  });
-  });
-}
+  if (finalRemovePostButton) {
+    finalRemovePostButton.addEventListener('click', () => deletePostToast.show());
+  }
 
+  await http().get(postByIdAPI(idToEditPost))
+    .then(result => {
+      editTitle.value = result.title;
+      editBody.value = result.body;
+    })
+
+  await http().get(userByIdAPI(idToEditPost)).then(result => {
+    editModalTitle.innerText = `${result.name} @${result.username}`;
+  });
+  editModalFooter.children[0].id = `trashPost${idToEditPost}`;
+  editModalFooter.children[0].onclick = (e) => {
+    finalRemovePostButton.setAttribute('remove-id', e.target.id.replace('trashPost', ''));
+  }
+}
 // Action when edit or remove and close modal
 
-function removePost() {
-  document.getElementsByClassName('toast')[0].style.display = 'block';
+async function removePost() {
+  let idToRemovePost = finalRemovePostButton.getAttribute('remove-id');
+  await http().del(postByIdAPI(idToRemovePost));
+    notificationTitle.textContent = `Removing post ${idToRemovePost}`;
 
   setTimeout(() => {
-    let idToRemovePost = finalRemovePostButton.getAttribute('remove-id');
-    http().del(postByIdAPI(idToRemovePost)).then(() => {
-      document.getElementById(`post${idToRemovePost}`).remove();
-    });
-    document.getElementsByClassName('toast')[0].style.display = 'none';
-  },2000);
+    deletePostToast.hide();
+    document.getElementById(`post${idToRemovePost}`).remove();
+  }, 1500);
 }
 
 async function editPost(e) {

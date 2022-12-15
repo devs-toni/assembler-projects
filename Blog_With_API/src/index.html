@@ -12,15 +12,16 @@
   <body>
 
   <!-- Notification -->
-  <div class="position-relative">
-  <div class="position-absolute top-50 start-50 translate-middle mt-5 pt-5">
-    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast bg-danger bg-opacity-75 text-center fs-5 text-light" data-autohide="false" data-delay="2000">
-      <div class="toast-body">
-        Removing post...
+    <div class="toast-container position-absolute top-0 start-50 translate-middle mt-5 pt-5 ">
+      <div id="notification" class="toast bg-dark bg-opacity-75" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header text-white rounded bg-warning bg-opacity-50 border-white">
+          <strong id="notificationTitle" class="">Removing post x</strong>
+        </div>
+        <!-- <div id="notificationBody" class="toast-body text-white bg-danger bg-opacity-50 rounded-bottom">
+          Removing post selected
+        </div> -->
       </div>
     </div>
-  </div>
-  </div>
 
     <div class="container py-4 px-3 mx-auto">
       <!-- Header -->
