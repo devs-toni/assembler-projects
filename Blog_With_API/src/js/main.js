@@ -59,7 +59,13 @@ async function openModalPost(e) {
   });
   await http().get(commentsByPostAPI(id)).then((result) => {
     result.forEach((comment) => {
-      commentsDiv.innerHTML += `<p class='border-bottom pb-2'>${comment.body}</p>`;
+      commentsDiv.innerHTML += `
+        <div>
+          <h4 class='border-top pb-2 pt-4'>${comment.name}</h4>
+          <p class='pb-2'>${comment.body}</p>
+          <p class='pb-2'>${comment.email}</p>
+        </div>
+      `;
     });
   });
 }
@@ -78,8 +84,9 @@ async function openEditPost(e) {
 
 async function removePost() {
   let idToRemovePost = finalRemovePostButton.getAttribute('remove-id');
-  await http().del(postByIdAPI(idToRemovePost));
-  window.location.reload();
+  await http().del(postByIdAPI(idToRemovePost)).then(() => {
+    document.getElementById(`post${idToRemovePost}`).remove();
+  });
 }
 
 
@@ -95,11 +102,10 @@ async function editPost(e) {
       body: editBody.value,
     }
   });
-  await http().put(postByIdAPI(idToEditPost), options);
-  window.location.reload();
+  await http().put(postByIdAPI(idToEditPost), options).then(() => {
+    document.getElementById(`post${idToEditPost}`).children[0].textContent = editTitle.value;
+  });
 }
-
-// Start Process
 
 loadPosts();
 finalRemovePostButton.addEventListener('click', removePost);
