@@ -17,10 +17,6 @@
           <div
             class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
           >
-          <select name="mode" id="mode" onchange="changeMode();">
-            <option value="local">Local</option>
-            <option value="remote">Remote</option>
-          </select>
             <a
               href="/"
               class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
@@ -31,33 +27,23 @@
             <ul
               class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
             >
-              <li>
-                <a
-                  href="#"
-                  class="nav-link px-2 text-white"
-                  aria-selected="true"
-                  >FAQs</a
-                >
-              </li>
               <li><a href="#" class="nav-link px-2 text-white">Users</a></li>
               <li><a href="#" class="nav-link px-2 text-white">Comments</a></li>
             </ul>
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-              <input
-                type="search"
-                class="form-control form-control-dark"
-                placeholder="Search..."
-                aria-label="Search"
-              />
-            </form>
+            <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex justify-content-center">
+              <select class="rounded p-1" name="mode" id="mode" onchange="changeMode();">
+                <option value="local">Local</option>
+                <option value="remote">Remote</option>
+              </select>
+            </div>
 
-            <div class="text-end">
+            <!-- <div class="text-end">
               <button type="button" class="btn btn-outline-light me-2">
                 Login
               </button>
               <button type="button" class="btn btn-warning">Sign-up</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </header>
@@ -82,13 +68,6 @@
               data-bs-toggle="modal"
               data-bs-target="#editPostModal"
               ><i class="bi bi-pencil"></i>
-            </span>
-            <span
-              class="badge bg-danger rounded-pill pointer"
-              data-bs-toggle="modal"
-              data-bs-target="#deletePostModal"
-              id="trashPost1"
-              ><i class="bi bi-trash3" id="trashPost1"></i>
             </span>
           </li>
         </ol>
@@ -181,7 +160,16 @@
                   ></textarea>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div id="editModalFooter" class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deletePostModal"
+                  id="trashPost1"
+                >
+                  Delete
+                </button>
                 <button
                   type="button"
                   class="btn btn-secondary"
