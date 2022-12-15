@@ -1,106 +1,252 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" src="./js/httpConnection.js"></script>
+    <script src="./js/endpoints.js"></script>
+    <script type="module" src="./js/main.js" defer></script>
+    <title>Bootstrap w/ Vite</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="module" src="./js/httpConnection.js"></script>
-  <script src="./js/endpoints.js"></script>
-  <script type="module" src="./js/controller.js" defer></script>
-  <script type="module" src="./js/main.js" defer></script>
-  <title>Bootstrap w/ Vite</title>
-</head>
+  <body>
+    <div class="container py-4 px-3 mx-auto">
+      <!-- Header -->
+      <header class="p-3 bg-dark text-white">
+        <div class="container">
+          <div
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+          >
+          <select name="mode" id="mode" onchange="changeMode();">
+            <option value="local">Local</option>
+            <option value="remote">Remote</option>
+          </select>
+            <a
+              href="/"
+              class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+            >
+              <img width="60" src="./assets/logo.png" />
+            </a>
 
-<body>
-  <div class="container py-4 px-3 mx-auto">
+            <ul
+              class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="nav-link px-2 text-white"
+                  aria-selected="true"
+                  >FAQs</a
+                >
+              </li>
+              <li><a href="#" class="nav-link px-2 text-white">Users</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Comments</a></li>
+            </ul>
 
-    <!-- Header -->
-    <header class="p-3 bg-dark text-white">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img width="60" src="./assets/logo.png">
-          </a>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+              <input
+                type="search"
+                class="form-control form-control-dark"
+                placeholder="Search..."
+                aria-label="Search"
+              />
+            </form>
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-white" aria-selected="true">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Users</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Comments</a></li>
-          </ul>
+            <div class="text-end">
+              <button type="button" class="btn btn-outline-light me-2">
+                Login
+              </button>
+              <button type="button" class="btn btn-warning">Sign-up</button>
+            </div>
+          </div>
+        </div>
+      </header>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-          </form>
+      <!-- Main -->
+      <main>
+        <ol id="posts" class="list-group list-group-item">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+            id="post1">
+          >
+            <div
+              class="ms-2 me-auto pointer"
+              data-bs-toggle="modal"
+              data-bs-target="#showPostModal"
+            >
+              sunt aut facere repellat provident occaecati excepturi optio
+              reprehenderit
+            </div>
+            <span class="badge bg-primary rounded-pill me-2">4</span>
+            <span
+              class="badge bg-success rounded-pill pointer me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#editPostModal"
+              ><i class="bi bi-pencil"></i>
+            </span>
+            <span
+              class="badge bg-danger rounded-pill pointer"
+              data-bs-toggle="modal"
+              data-bs-target="#deletePostModal"
+              id="trashPost1"
+              ><i class="bi bi-trash3" id="trashPost1"></i>
+            </span>
+          </li>
+        </ol>
+      </main>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+      <!-- Post Modal -->
+      <div
+        class="modal fade"
+        id="showPostModal"
+        tabindex="-1"
+        aria-labelledby="showModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="showModalLabel"></h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div id="modalContent" class="modal-body"></div>
+            <div id="modalUser" class="modal-body"></div>
+            <div class="modal-body d-flex flex-column justify-content-center">
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#commentsDiv"
+                aria-expanded="false"
+                aria-controls="commentsDiv"
+              >
+                Show Comments
+              </button>
+              <div id="commentsDiv" class="collapse m-4"></div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </header>
 
-    <!-- Main -->
-    <main>
-      <ol id="posts" class="list-group list-group-item">
-        <li class="list-group-item d-flex justify-content-between align-items-start" id="post1">
-          <div class="ms-2 me-auto pointer" data-bs-toggle="modal" data-bs-target="#showPostModal">
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </div>
-          <span class="badge bg-primary rounded-pill me-2">4</span>
-          <span class="badge bg-danger rounded-pill pointer" data-bs-toggle="modal" data-bs-target="#deletePostModal"
-            id="trashPost1"><i class="bi bi-trash3" id="trashPost1"></i>
-          </span>
-        </li>
-      </ol>
-    </main>
-
-    <!-- Post Modal -->
-    <div class="modal fade" id="showPostModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="showModalLabel"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div id="modalContent" class="modal-body">
-          </div>
-          <div id="modalUser" class="modal-body">
-          </div>
-            <div class="modal-body d-flex flex-column justify-content-center">
-              <button id="commentsButton" type="button" class="btn btn-outline-dark">Show Comments</button>
-              <div id="commentsDiv" class="d-none">
-                Comments
+      <!-- Edit Modal -->
+      <div
+        class="modal fade"
+        id="editPostModal"
+        tabindex="-1"
+        aria-labelledby="editModalLabel"
+        aria-hidden="true"
+      >
+        <form id="editPostForm" class="row g-3">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Edit post</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="editTitle" class="form-label">Title</label>
+                  <input
+                    type="text"
+                    name="editTitle"
+                    class="form-control"
+                    id="editTitle"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="editBody" class="form-label">Body</label>
+                  <textarea
+                    class="form-control"
+                    name="editBody"
+                    id="editBody"
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  id="finalEditPost"
+                  class="btn btn-success"
+                  data-bs-dismiss="modal"
+                >
+                  Save
+                </button>
               </div>
             </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+      <!-- Delete Modal -->
+      <div
+        class="modal fade"
+        id="deletePostModal"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="deleteModalLabel">
+                Delete post
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete the post?
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                id="finalRemovePost"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="deleteModalLabel">Delete post</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to delete the post?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" id="finalRemovePost" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</body>
-
+  </body>
 </html>

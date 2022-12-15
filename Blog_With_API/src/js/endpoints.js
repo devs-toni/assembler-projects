@@ -1,6 +1,14 @@
-const remoteAPI = false;
+let remoteAPI = false;
 const local = 'http://localhost:3000/';
 const remote = 'https://jsonplaceholder.typicode.com/'
+
+function changeMode(){
+  if (mode.value === 'remote') {
+    remoteAPI = true;
+  } else {
+    remoteAPI = false;
+  }
+}
 
 /* Users */
 const usersAPI = `${remoteAPI ? remote : local}users`; //non-used
