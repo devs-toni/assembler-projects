@@ -15,7 +15,7 @@ const notification = document.getElementById('notification');
 const deletePostToast = new bootstrap.Toast(notification)
 const notificationTitle = document.getElementById('notificationTitle');
 
-// Charge posts from DB
+// Charge posts from db
 
 const loadPosts = async () => {
 
