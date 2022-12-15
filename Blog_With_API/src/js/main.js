@@ -57,7 +57,7 @@ async function openModalPost(e) {
         `<p>Email - ${result.email}</p><p>Username - ${result.username}</p>`;
     }
   });
-  
+
   await http().get(commentsByPostAPI(id)).then((result) => {
     if (result) {
       result.forEach((comment) => {
@@ -97,11 +97,16 @@ async function openEditPost(e) {
 
 // Action when edit or remove and close modal
 
-async function removePost() {
-  let idToRemovePost = finalRemovePostButton.getAttribute('remove-id');
-  await http().del(postByIdAPI(idToRemovePost)).then(() => {
-    document.getElementById(`post${idToRemovePost}`).remove();
-  });
+function removePost() {
+  document.getElementsByClassName('toast')[0].style.display = 'block';
+
+  setTimeout(() => {
+    let idToRemovePost = finalRemovePostButton.getAttribute('remove-id');
+    http().del(postByIdAPI(idToRemovePost)).then(() => {
+      document.getElementById(`post${idToRemovePost}`).remove();
+    });
+    document.getElementsByClassName('toast')[0].style.display = 'none';
+  },2000);
 }
 
 async function editPost(e) {
