@@ -10,11 +10,20 @@
   </head>
 
   <body>
-
-  <!-- Notification -->
-    <div class="toast-container position-absolute top-0 start-50 translate-middle mt-5 pt-5 ">
-      <div id="notification" class="toast bg-dark bg-opacity-75" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header text-white rounded bg-warning bg-opacity-50 border-white">
+    <!-- Notification -->
+    <div
+      class="toast-container position-absolute top-0 start-50 translate-middle mt-5 pt-5"
+    >
+      <div
+        id="notification"
+        class="toast bg-dark bg-opacity-75"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div
+          class="toast-header text-white rounded bg-warning bg-opacity-50 border-white"
+        >
           <strong id="notificationTitle" class="">Removing post x</strong>
         </div>
         <!-- <div id="notificationBody" class="toast-body text-white bg-danger bg-opacity-50 rounded-bottom">
@@ -44,8 +53,15 @@
               <li><a href="#" class="nav-link px-2 text-white">Comments</a></li>
             </ul>
 
-            <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex justify-content-center">
-              <select class="rounded p-1" name="mode" id="mode" onchange="changeMode();">
+            <div
+              class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex justify-content-center"
+            >
+              <select
+                class="rounded p-1"
+                name="mode"
+                id="mode"
+                onchange="changeMode();"
+              >
                 <option value="local">Local</option>
                 <option value="remote">Remote</option>
               </select>
@@ -61,12 +77,22 @@
         </div>
       </header>
 
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#createPostModal"
+      >
+        Create Post
+      </button>
+
       <!-- Main -->
       <main>
         <ol id="posts" class="list-group list-group-item">
           <li
             class="list-group-item d-flex justify-content-between align-items-start"
-            id="post1">
+            id="post1"
+          >
             <div
               class="ms-2 me-auto pointer"
               data-bs-toggle="modal"
@@ -131,6 +157,69 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Create Modal -->
+      <div
+        class="modal fade"
+        id="createPostModal"
+        tabindex="-1"
+        aria-labelledby="createModalLabel"
+        aria-hidden="true"
+      >
+        <form id="createPostForm" class="row g-3">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="createModalLabel">
+                  Edit post
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="createTitle" class="form-label">Title</label>
+                  <input
+                    type="text"
+                    name="createTitle"
+                    class="form-control"
+                    id="createTitle"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="createBody" class="form-label">Body</label>
+                  <textarea
+                    class="form-control"
+                    name="createBody"
+                    id="createBody"
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+              <div id="createModalFooter" class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  data-bs-dismiss="modal"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
 
       <!-- Edit Modal -->

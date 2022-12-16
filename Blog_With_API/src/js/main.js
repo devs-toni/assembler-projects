@@ -6,6 +6,7 @@ const commentsDiv = document.getElementById('commentsDiv');
 const finalRemovePostButton = document.getElementById('finalRemovePost');
 const finalEditPostButton = document.getElementById('finalEditPost');
 const editPostForm = document.getElementById('editPostForm');
+const createPostForm = document.getElementById('createPostForm');
 const editModalTitle = document.getElementById('editModalLabel');
 const editTitle = document.getElementById('editTitle');
 const editBody = document.getElementById('editBody');
@@ -98,6 +99,7 @@ async function openEditPost(e) {
     finalRemovePostButton.setAttribute('remove-id', e.target.id.replace('trashPost', ''));
   }
 }
+
 // Action when edit or remove and close modal
 
 async function removePost() {
@@ -128,6 +130,24 @@ async function editPost(e) {
   });
 }
 
+async function createPost(e) {
+  e.preventDefault();
+  let id;
+  await http().get(postsAPI).then(result => {
+    console.log(result);
+    id = result[result.length-1].id + 1;
+  });
+  let options = {};
+  options.body = {
+    id,
+    title: createTitle.value,
+    body: createBody.value,
+  }
+  await http().post(postsAPI, options);
+  loadPosts();
+}
+
 loadPosts();
 finalRemovePostButton.addEventListener('click', removePost);
 editPostForm.addEventListener('submit', editPost);
+createPostForm.addEventListener('submit', createPost);
