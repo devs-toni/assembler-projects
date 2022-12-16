@@ -46,6 +46,7 @@ async function openModalPost(e) {
   let id = e.target.parentElement.id.replace('post', '');
 
   commentsDiv.innerHTML = '';   //Reset data inside modal
+  commentsDiv.classList.remove('show'); // Collapse comments
 
   await http().get(postByIdAPI(id)).then(result => {
     if (result) {
