@@ -53,7 +53,6 @@ async function openModalPost(e) {
       document.getElementById('showModalLabel').textContent = result.title;
     }
   });
-
   await http().get(userByIdAPI(idUser)).then((result) => {
     if (result) {
       document.getElementById('modalUser').innerHTML =
@@ -79,18 +78,19 @@ async function openModalPost(e) {
 async function openEditPost(e) {
   finalEditPostButton.setAttribute('edit-id', e.target.id.replace('editPost', ''));
   let idToEditPost = finalEditPostButton.getAttribute('edit-id');
-
+  let idUser;
   if (finalRemovePostButton) {
     finalRemovePostButton.addEventListener('click', () => deletePostToast.show());
   }
 
   await http().get(postByIdAPI(idToEditPost))
     .then(result => {
+      idUser = result.userId;
       editTitle.value = result.title;
       editBody.value = result.body;
     })
 
-  await http().get(userByIdAPI(idToEditPost)).then(result => {
+  await http().get(userByIdAPI(idUser)).then(result => {
     editModalTitle.innerText = `${result.name} @${result.username}`;
   });
   editModalFooter.children[0].id = `trashPost${idToEditPost}`;
@@ -103,7 +103,7 @@ async function openEditPost(e) {
 async function removePost() {
   let idToRemovePost = finalRemovePostButton.getAttribute('remove-id');
   await http().del(postByIdAPI(idToRemovePost));
-    notificationTitle.textContent = `Removing post ${idToRemovePost}`;
+  notificationTitle.textContent = `Removing post ${idToRemovePost}`;
 
   setTimeout(() => {
     deletePostToast.hide();
