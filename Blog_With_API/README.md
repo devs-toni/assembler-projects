@@ -1,6 +1,6 @@
 # Blog whit API - MSD OCT22
 
-Project created by [Antonio Rufino](https://github.com/DTPF) & [David Pizarro](https://github.com/DTPF)
+Project created by [Antonio Rufino](https://github.com/devs-toni) & [David Pizarro](https://github.com/DTPF)
 
 ## Requriments
 
