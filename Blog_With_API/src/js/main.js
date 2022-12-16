@@ -44,7 +44,7 @@ const loadPosts = async () => {
 async function openModalPost(e) {
   let idUser;
   let id = e.target.parentElement.id.replace('post', '');
-
+  commentsDiv.classList.remove('show');
   commentsDiv.innerHTML = '';   //Reset data inside modal
 
   await http().get(postByIdAPI(id)).then(result => {
