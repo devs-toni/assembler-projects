@@ -26,15 +26,12 @@
         >
           <strong id="notificationTitle" class="">Removing post x</strong>
         </div>
-        <!-- <div id="notificationBody" class="toast-body text-white bg-danger bg-opacity-50 rounded-bottom">
-          Removing post selected
-        </div> -->
       </div>
     </div>
 
     <div class="container py-4 px-3 mx-auto">
       <!-- Header -->
-      <header class="p-3 bg-dark text-white">
+      <header class="p-3 bg-dark text-white shadow">
         <div class="container">
           <div
             class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
@@ -66,29 +63,21 @@
                 <option value="remote">Remote</option>
               </select>
             </div>
-
-            <!-- <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">
-                Login
-              </button>
-              <button type="button" class="btn btn-warning">Sign-up</button>
-            </div> -->
           </div>
         </div>
       </header>
-
       <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#createPostModal"
-      >
-        Create Post
-      </button>
+          type="button"
+          class="btn btn-outline-primary col-12 shadow d-flex justify-content-center mt-3 mb-3"
+          data-bs-toggle="modal"
+          data-bs-target="#createPostModal"
+        >
+          +
+        </button>
 
       <!-- Main -->
       <main>
-        <ol id="posts" class="list-group list-group-item">
+        <ol id="posts" class="list-group list-group-item shadow rounded">
           <li
             class="list-group-item d-flex justify-content-between align-items-start"
             id="post1"
