@@ -10,7 +10,7 @@ const createPostForm = document.getElementById('createPostForm');
 const editModalTitle = document.getElementById('editModalLabel');
 const editTitle = document.getElementById('editTitle');
 const editBody = document.getElementById('editBody');
-const list = document.getElementById('posts');
+const posts = document.getElementById('posts');
 const editModalFooter = document.getElementById('editModalFooter');
 const notification = document.getElementById('notification');
 const deletePostToast = new bootstrap.Toast(notification)
@@ -23,29 +23,29 @@ const loadPosts = async () => {
   await http().get(postsAPI).then((data) => {
     data.forEach(async post => {
       if (post) {
-        let cloneList = list.children[0].cloneNode(true);
-        cloneList.id = `post${post.id}`;
-        cloneList.children[0].onclick = openModalPost;
-        cloneList.children[0].textContent = post.title;
-        cloneList.children[2].id = `editPost${post.id}`;
-        cloneList.children[2].children[0].id = `editPost${post.id}`;
-        cloneList.children[2].onclick = openEditPost;
+        let clonePost = posts.children[0].cloneNode(true);
+        clonePost.id = `post${post.id}`;
+        clonePost.children[0].onclick = openModalPost;
+        clonePost.children[0].textContent = post.title;
+        clonePost.children[2].id = `editPost${post.id}`;
+        clonePost.children[2].children[0].id = `editPost${post.id}`;
+        clonePost.children[2].onclick = openEditPost;
         await http().get(commentsByPostAPI(post.id)).then((comments) => {
-          cloneList.children[1].textContent = comments.length;
+          clonePost.children[1].textContent = comments.length;
         });
-        list.appendChild(cloneList);
+        posts.appendChild(clonePost);
       }
     });
-  }).then(() => list.removeChild(list.children[0]));
+  }).then(() => posts.removeChild(posts.children[0]));
 }
 
 // Configure modal when you open it.
 
 async function openModalPost(e) {
-
-  commentsDiv.innerHTML = '';   //Reset data inside modal
   let idUser;
   let id = e.target.parentElement.id.replace('post', '');
+
+  commentsDiv.innerHTML = '';   //Reset data inside modal
 
   await http().get(postByIdAPI(id)).then(result => {
     if (result) {
@@ -54,6 +54,7 @@ async function openModalPost(e) {
       document.getElementById('showModalLabel').textContent = result.title;
     }
   });
+
   await http().get(userByIdAPI(idUser)).then((result) => {
     if (result) {
       document.getElementById('modalUser').innerHTML =
@@ -135,7 +136,7 @@ async function createPost(e) {
   let id;
   await http().get(postsAPI).then(result => {
     console.log(result);
-    id = result[result.length-1].id + 1;
+    id = result[result.length - 1].id + 1;
   });
   let options = {};
   options.body = {
