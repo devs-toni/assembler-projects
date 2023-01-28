@@ -2,10 +2,6 @@
 
 Project created by [Joe Alt](https://github.com/joejoyjoy) & [Pablo](https://github.com/pablohgb)
 
-## Requriments
-
-- [node.js]
-
 ## Install
 
 ```bash
