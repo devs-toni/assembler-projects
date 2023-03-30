@@ -25,15 +25,15 @@ $ git clone https://github.com/joejoyjoy/assembler-projects.git
 
 Coding a real project is the best way to learn JavaScript, and a calculator is one of the best projects to start with. A calculator covers all the complex interactions with UI and JavaScript and is simple enough for any particular level you may have.
 
-<img src="./assets/home.png" alt="Calculator UI/UX">
+<img src="./assets/home.png" alt="Calculator UI/UX" width="300px">
 
 <b>⬆️Calculator UI/UX⬆️</b>
 
-<img src="./assets/hd-calculator-gif.gif" alt="Light Mode and Dark Mode"/>
+<img src="./assets/hd-calculator-gif.gif" alt="Light Mode and Dark Mode" width="300px">
 
 <b>⬆️Calculator switch Light Mode & Dark Mode.⬆️</b>
 
-<img src="./assets/history.png" alt="Web preview app desktop and mobile version">
+<img src="./assets/history.png" alt="Web preview app desktop and mobile version" width="300px">
 
 <b>⬆️Calculator history mode⬆️</b> You can select and continue calculation. Also able to delete history.
 
