@@ -2,10 +2,10 @@
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 
-[Calculator](Calculator/README.md)
-[Play with Assembler](Play_With_Assembler/README.md)
-[Shopping Wizzard](Shopping_Wizzard/README.md)
-[Blog with API](blog_with_API/README.md)
+[Calculator](Calculator)
+[Play with Assembler](Play_With_Assembler)
+[Shopping Wizzard](Shopping_Wizzard)
+[Blog with API](blog_with_API)
 
 ## Contributors ✨
 
