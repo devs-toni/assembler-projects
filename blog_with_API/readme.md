@@ -41,7 +41,7 @@ json-server --watch db.json
 
 ## Preview of Project
 
-<img src='./assets/readmePreview.jpg' width='600' alt='Project Blog using API jsonplaceholder.typicode.com'>
+<img src='./src/assets/preview.png' width='600' alt='Project Blog using API jsonplaceholder.typicode.com'>
 
 ## Contributors ✨
 
@@ -54,11 +54,11 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
   <tbody>
     <tr>
         <td align="center">
-            <a href="https://github.com/joejoyjoy">
-                <img src="https://avatars.githubusercontent.com/u/73751755" width="100px" alt="Joe Alt"/>
+            <a href="https://github.com/devs-toni">
+                <img src="https://avatars.githubusercontent.com/u/103459716" width="100px" alt="Joe Alt"/>
                 <br />
                 <sub>
-                <b>Joe Alt</b>
+                <b>Antonio Rufino Casasus</b>
                 </sub>
             </a>
             <br />
@@ -66,10 +66,10 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
         </td>
         <td align="center">
             <a href="https://github.com/pablohgb">
-                <img src="https://avatars.githubusercontent.com/u/80101321" width="100px" alt="Pablo Herrero"/>
+                <img src="https://avatars.githubusercontent.com/u/60478224" width="100px" alt="Pablo Herrero"/>
                 <br />
                 <sub>
-                <b>Pablo Herrero</b>
+                <b>David T. Pizarro Frick</b>
                 </sub>
             </a>
             <br />
