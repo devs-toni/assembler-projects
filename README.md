@@ -1,20 +1,22 @@
-`#HTML` `#CSS` `#JavaScript` `#assembler-institute-of-technology`
+`#master-in-software-engineering` `#assembler-institute-of-technology`
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 
-# Shopping wizzard <!-- omit in toc -->
+## Table of Projects
+* [Calculator](#calculator) <span style="color:grey">· 14 November 2022</span>
+* [Shopping Wizzard](#shopping-wizzard) <span style="color:grey">· 22 November 2022</span>
+* [Play with Assembler](#play-with-assembler) <span style="color:grey">· 1 December 2022</span>
+* [Blog with API](#blog-with-api) <span style="color:grey">· 12 December 2022</span>
 
-In this project we developed a shopping process form with several steps, where each step will have its own validation. All of this in one HTML page and the content change dynamically.
-This Shopping process is an HTML form with custom CSS styles and JS validation. This project has helped us as a team:
-* To improve our knowledge of JavaScript
-* Learn to work with the HTML DOM.
-* Learn and improve our knowledge in logic processes
-* Learn to validate forms using Javascript.
-
-## Table of Contents <!-- omit in toc -->
-
-- [Getting Started](#getting-started)
-- [The Project](#the-project)
+## General info
+This repo contains all experimental projects made to help as a team become better developers.
+It was a fun and helpful way to learn the fundamental parts of web development, we hope you can have as much fun as we had well creating the projects by taking a look one by one.
+	
+## Technologies
+This projects are mostly created by:
+* HTML
+* CSS
+* Vanilla JavaScript
 
 ### Getting Started
 
@@ -24,34 +26,36 @@ First, you will need to clone the repo:
 $ git clone https://github.com/joejoyjoy/assembler-projects.git
 ```
 
-## The Project
+## Calculator
+This is a demo app that helped us learn the fundamentals of JavaScript by creating together a HTML, CSS, and JS calculator made with and without EVAL.
+In this project we develop a calculator with two graphical styles: Light Mode & Dark Mode. [See full project demo & sours code](Calculator)
+<p float="left">
+  <img src="./Calculator/assets/home.png" alt="Calculator UI/UX" width="300px">
+  <img src="./Calculator/assets/hd-calculator-gif.gif" alt="Light Mode and Dark Mode" width="300px">
+</p>
 
+## Shopping Wizzard
 This shopping wizzard user friendly interface is make to simulate a shopping experience from choosing the size and color to make the purchase(on bank cards involved). 
-Our project theme is carried away into selling electric kick scooters. To make it more fun we have added a timer during the purchase, if it exceeds you will be redirect to the main page.
+Our project theme is carried away into selling electric kick scooters. To make it more fun we have added a timer during the purchase, if it exceeds you will be redirect to the main page. [See full project demo & sours code](Shopping_Wizzard)
 
-1. You will friendly be welcomed into the main page where you can select your perfect fit.
-2. After so you will be greet into a SignUp form page where the password need to be the same.
-	1. Password must be at least 8 characters, minimum of 1 lower case letter [a-z], minimum of 1 upper case letter [A-Z], minimum of 1 numeric character [0-9] and a minimum of 1 special character: ~`!@#$%^&*()-_+={}[]|\;:"<>,./?
-3. After so the address where the electric kick scooter will be delivered will be asked.
-4. The shipping page will be shown so you can choose what you want as delivery. How faster the delivery how more expensive it gets. You can also add a gift card for free! 
-5. The hole experience comes down to this moment... The validation and final button to confirm the purchase.
 
-<img src="./assets/readme/electric-scooter-home.jpg" alt="Electric kick scooter - Landing page" width="600px">
+<img src="./Shopping_Wizzard/assets/readme/electric-scooter-home.jpg" alt="Electric kick scooter - Landing page" width="600px">
+<img src="./Shopping_Wizzard/assets/readme/electric-scooter-address.jpg" alt="Electric kick scooter - Address page" width="600px">
 
-<b>⬆️Landing page⬆️</b> You can select battery capacity and your favorite color of scooter.
+## Play with Assembler
+In this game you will play Hangman in which you will have to discover the hidden word by choosing letters.
+You will have to guess a word by clicking the letter boxes on the screen before the hangman is drawn on the screen. [See full project demo & sours code](Play_With_Assembler)
 
-<img src="./assets/readme/electric-scooter-address.jpg" alt="Electric kick scooter - Address page" width="600px">
+<p float="left">
+ <img src="./Play_With_Assembler/assets/readme/front.png" alt="Calculator UI/UX" width="300px">
+<img src="./Play_With_Assembler/assets/readme/game.png" alt="Light Mode and Dark Mode" width="300px">
+</p>
 
-<b>⬆️Address page⬆️</b> You can fill out your personal details. 
-You can also navigate to previous page if needed.
+## Blog with API
+Created a Blog from JSONplaceholder server using Twitter designed framework Bootstrap.
+[See full project demo & sours code](blog_with_API)
+<img src='./blog_with_API/assets/readmePreview.jpg' width='600' alt='Project Blog using API jsonplaceholder.typicode.com'>
 
-<img src="./assets/readme/electric-scooter-shipping.jpg" alt="Electric kick scooter - Shipping page" width="800px">
-
-<b>⬆️Shipping page⬆️</b> You can select your preferred option of shipment. You can also add a gift letter with a image.
-
-<img src="./assets/readme/electric-completed-video.gif" alt="Electric kick scooter - Success page" width="800px">
-
-<b>⬆️Success page⬆️</b> Congratulations! You will receive your customized scooter soon.
 
 ## Contributors ✨
 

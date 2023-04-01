@@ -45,6 +45,7 @@ body {
 
 /***************************************************** PRINCIPAL STYLES */
 .main {
+  position: relative;
   width: 320px;
   margin: 60px auto;
   font-family: "Montserrat", sans-serif;
@@ -256,10 +257,9 @@ div[name="hide"] {
 div[name="show"] {
   display: flex;
   flex-flow: column;
-
   height: 303.5px;
   position: absolute;
-  top: 270px;
+  bottom: 40px;
   width: 320px;
   opacity: 1;
   transition: height 2s ease-in-out, opacity 2s;
@@ -299,7 +299,7 @@ div[name="hideTrash"] {
 div[name="showTrash"] {
   position: absolute;
   width: 320px;
-  top: 573.5px;
+  bottom: 10px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   transition: height 1.9s ease-in-out, opacity 1.9s;
