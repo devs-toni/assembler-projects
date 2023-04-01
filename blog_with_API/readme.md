@@ -9,9 +9,13 @@ Created a Blog from JSONplaceholder server using Twitter designed framework Boot
 
 ## Table of Contents <!-- omit in toc -->
 
-- [Getting Started](#getting-started)
-- [Install](#install)
-- [Run local database](#run-local-database)
+- [Blog with API - Assembler Institute of Technology - MSD OCT22](#blog-with-api---assembler-institute-of-technology---msd-oct22)
+    - [Getting Started](#getting-started)
+  - [Install](#install)
+  - [Run local database](#run-local-database)
+  - [Preview of Project](#preview-of-project)
+  - [Contributors ✨](#contributors-)
+  - [Credits](#credits)
 
 ### Getting Started
 
