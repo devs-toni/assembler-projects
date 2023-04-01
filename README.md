@@ -36,7 +36,7 @@ In this project we develop a calculator with two graphical styles: Light Mode & 
 
 ## Shopping Wizzard
 This shopping wizzard user friendly interface is make to simulate a shopping experience from choosing the size and color to make the purchase(on bank cards involved). 
-Our project theme is carried away into selling electric kick scooters. To make it more fun we have added a timer during the purchase, if it exceeds you will be redirect to the main page. [See full project demo & sours code](Shopping_Wizzard)
+Our project theme is carried away into selling electric kick scooters. To make it more fun we have added a timer during the purchase, if it exceeds you will be redirect to the main page. [See full project demo & source code](Shopping_Wizzard)
 
 
 <img src="./Shopping_Wizzard/assets/readme/electric-scooter-home.jpg" alt="Electric kick scooter - Landing page" width="600px">
@@ -44,7 +44,7 @@ Our project theme is carried away into selling electric kick scooters. To make i
 
 ## Play with Assembler
 In this game you will play Hangman in which you will have to discover the hidden word by choosing letters.
-You will have to guess a word by clicking the letter boxes on the screen before the hangman is drawn on the screen. [See full project demo & sours code](Play_With_Assembler)
+You will have to guess a word by clicking the letter boxes on the screen before the hangman is drawn on the screen. [See full project demo & source code](Play_With_Assembler)
 
 <p float="left">
  <img src="./Play_With_Assembler/assets/readme/front.png" alt="Calculator UI/UX" width="300px">
@@ -53,8 +53,8 @@ You will have to guess a word by clicking the letter boxes on the screen before 
 
 ## Blog with API
 Created a Blog from JSONplaceholder server using Twitter designed framework Bootstrap.
-[See full project demo & sours code](blog_with_API)
-<img src='./blog_with_API/assets/readmePreview.jpg' width='600' alt='Project Blog using API jsonplaceholder.typicode.com'>
+[See full project demo & source code](blog_with_API)
+<img src='./Blog_With_API/src/assets/preview.png' width='600' alt='Project Blog using API jsonplaceholder.typicode.com'>
 
 
 ## Contributors ✨
